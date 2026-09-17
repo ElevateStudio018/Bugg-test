@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { Icon } from "./Icon";
 import { Eyebrow } from "./Eyebrow";
 import { useInView, usePrefersReducedMotion } from "@/hooks/useInView";
 import { processSteps } from "@/lib/process";
@@ -29,9 +28,9 @@ function ProcessStepItem({
       ref={ref}
       className="relative grid grid-cols-[auto_1fr] items-start gap-x-6 py-6 lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-x-10 lg:py-10"
     >
-      <div className="relative z-10 flex w-12 justify-center lg:col-start-2 lg:w-auto lg:justify-self-center">
-        <div className="flex h-12 w-12 items-center justify-center rounded-full border-4 border-white bg-dark">
-          <Icon name={step.icon} className="h-5 w-5 text-white" />
+      <div className="relative z-10 flex w-14 justify-center lg:col-start-2 lg:w-auto lg:justify-self-center">
+        <div className="flex h-14 w-14 items-center justify-center border-2 border-dark bg-white text-lg font-extrabold text-dark">
+          {String(index + 1).padStart(2, "0")}
         </div>
       </div>
 

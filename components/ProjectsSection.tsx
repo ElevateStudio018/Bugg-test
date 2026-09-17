@@ -1,15 +1,19 @@
 import Link from "next/link";
 import { Eyebrow } from "./Eyebrow";
 import { Reveal } from "./Reveal";
-import { ProjectsMasonry } from "./ProjectsMasonry";
+import { IndexList } from "./IndexList";
 import { buttonClasses } from "./Button";
 import { projectItems } from "@/lib/projects";
 
-const featuredItems = projectItems.slice(0, 6);
+const featuredItems = projectItems.slice(0, 6).map((item) => ({
+  key: item.id,
+  icon: item.icon,
+  title: item.category,
+}));
 
 export function ProjectsSection() {
   return (
-    <section id="projekt" className="scroll-mt-24 bg-mist">
+    <section id="projekt" className="scroll-mt-24 bg-white">
       <div className="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
         <Reveal>
           <Eyebrow index={2} label="Våra projekt" className="mb-5" />
@@ -20,7 +24,7 @@ export function ProjectsSection() {
         </Reveal>
 
         <div className="mt-12">
-          <ProjectsMasonry items={featuredItems} />
+          <IndexList items={featuredItems} />
         </div>
 
         <Reveal className="mt-12 flex justify-center">

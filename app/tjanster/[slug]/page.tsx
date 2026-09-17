@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { PlaceholderArt } from "@/components/PlaceholderArt";
 import { Eyebrow } from "@/components/Eyebrow";
 import { Reveal } from "@/components/Reveal";
-import { ServiceCard } from "@/components/ServiceCard";
+import { IndexList } from "@/components/IndexList";
 import { FinalCta } from "@/components/FinalCta";
 import { services, getServiceBySlug } from "@/lib/services";
 import { company } from "@/lib/content";
@@ -59,23 +58,16 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <div className="pt-16 lg:pt-20">
-        <div className="aspect-[16/9] w-full lg:aspect-[21/9]">
-          <PlaceholderArt
-            icon={service.icon}
-            alt={`${company.legalName} — ${service.name} i ${company.city}`}
-            className="h-full w-full"
-          />
-        </div>
-      </div>
+      <section className="bg-dark px-6 pb-16 pt-32 sm:px-10 sm:pb-20 sm:pt-40 lg:px-16 lg:pb-24 lg:pt-48">
+        <Eyebrow label="Tjänster" light className="mb-5" />
+        <h1 className="max-w-3xl text-h2-mobile text-white lg:text-h1">{service.name}</h1>
+      </section>
 
       <section className="bg-white">
         <div className="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
           <div className="max-w-3xl">
             <Reveal>
-              <Eyebrow label="Tjänster" className="mb-5" />
-              <h1 className="text-h2-mobile text-dark lg:text-h1">{service.name}</h1>
-              <p className="mt-6 text-base leading-relaxed text-gray-body sm:text-lg">{service.description[0]}</p>
+              <p className="text-base leading-relaxed text-gray-body sm:text-lg">{service.description[0]}</p>
             </Reveal>
 
             {service.description.length > 1 && (
@@ -91,18 +83,22 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      <section className="bg-mist">
-        <div className="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
+      <section className="bg-white">
+        <div className="mx-auto max-w-content px-4 pb-20 sm:px-6 lg:px-8 lg:pb-32">
           <Reveal>
             <Eyebrow label="Fler tjänster" className="mb-5" />
             <h2 className="text-h2-mobile text-dark lg:text-h2">Fler tjänster</h2>
           </Reveal>
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {otherServices.map((item, index) => (
-              <Reveal key={item.slug} delayMs={(index % 3) * 80}>
-                <ServiceCard service={item} />
-              </Reveal>
-            ))}
+          <div className="mt-10">
+            <IndexList
+              items={otherServices.map((item) => ({
+                key: item.slug,
+                icon: item.icon,
+                title: item.name,
+                description: item.shortDescription,
+                href: `/tjanster/${item.slug}`,
+              }))}
+            />
           </div>
         </div>
       </section>

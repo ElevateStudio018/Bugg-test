@@ -20,6 +20,7 @@ import {
   Loader2,
   CheckCircle2,
   ExternalLink,
+  ArrowRight,
   type LucideProps,
 } from "lucide-react";
 
@@ -45,6 +46,7 @@ const iconMap = {
   Loader2,
   CheckCircle2,
   ExternalLink,
+  ArrowRight,
 };
 
 export type IconKey = keyof typeof iconMap;

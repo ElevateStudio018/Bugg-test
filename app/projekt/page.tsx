@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ProjectsMasonry } from "@/components/ProjectsMasonry";
+import { IndexList } from "@/components/IndexList";
 import { Eyebrow } from "@/components/Eyebrow";
 import { Reveal } from "@/components/Reveal";
 import { FinalCta } from "@/components/FinalCta";
@@ -27,7 +27,16 @@ export default function ProjectGalleryPage() {
           </Reveal>
 
           <div className="mt-12">
-            <ProjectsMasonry items={projectItems} categories={projectCategories} showFilter />
+            <IndexList
+              items={projectItems.map((item) => ({
+                key: item.id,
+                icon: item.icon,
+                title: item.category,
+                category: item.category,
+              }))}
+              categories={projectCategories}
+              showFilter
+            />
           </div>
 
           <Reveal className="mt-12 flex justify-center">

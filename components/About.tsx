@@ -1,6 +1,5 @@
 "use client";
 
-import { PlaceholderArt } from "./PlaceholderArt";
 import { Eyebrow } from "./Eyebrow";
 import { Reveal } from "./Reveal";
 import { buttonClasses } from "./Button";
@@ -11,22 +10,23 @@ import { useQuoteModal } from "@/contexts/QuoteModalContext";
 export function About() {
   const { open } = useQuoteModal();
 
+  const facts = [
+    { label: "Grundades", value: String(company.foundedYear) },
+    { label: "Anställda", value: `~${company.employeeCountValue}` },
+    { label: "Erfarenhet", value: `${company.yearsExperienceValue}+ år` },
+  ];
+
   return (
     <section id="om-oss" className="scroll-mt-24 bg-white">
       <div className="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
-            <PlaceholderArt
-              icon="Hammer"
-              alt={`Hantverkare från ${company.legalName} i arbete`}
-              className="aspect-[4/3] w-full border border-dark/10"
-            />
-          </Reveal>
+        <Reveal>
+          <Eyebrow index={1} label={about.heading} className="mb-5" />
+          <h2 className="text-h2-mobile text-dark lg:text-h2">{about.heading}</h2>
+        </Reveal>
 
-          <Reveal delayMs={100}>
-            <Eyebrow index={1} label={about.heading} className="mb-5" />
-            <h2 className="text-h2-mobile text-dark lg:text-h2">{about.heading}</h2>
-            <p className="mt-3 text-lg font-semibold text-dark">{about.subheading}</p>
+        <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-[2fr_1fr] lg:gap-16">
+          <Reveal delayMs={80}>
+            <p className="text-xl font-bold leading-snug text-dark sm:text-2xl">{about.subheading}</p>
 
             <div className="mt-6 space-y-4">
               {about.paragraphs.map((paragraph, index) => (
@@ -49,6 +49,17 @@ export function About() {
             </div>
 
             <p className="mt-4 text-[13px] text-gray-body">Org.nr: {company.orgNumber}</p>
+          </Reveal>
+
+          <Reveal delayMs={140} className="border-t border-dark/10 pt-8 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+            <dl className="space-y-8">
+              {facts.map((fact) => (
+                <div key={fact.label}>
+                  <dt className="text-xs font-semibold uppercase tracking-widest text-steel">{fact.label}</dt>
+                  <dd className="mt-1 text-3xl font-extrabold text-dark">{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
           </Reveal>
         </div>
       </div>
