@@ -62,14 +62,6 @@ export const rotAvdrag = {
     "Som privatperson kan ni vid renovering och tillbyggnad få göra ett avdrag på 30% av arbetskostnaden upp till max 50 000 kr per person. Vi sköter ansökan till Skatteverket och avdraget gör vi direkt på er faktura.",
 };
 
-// Real trust signals — every value here is traceable to the client's own
-// text. Nothing here is estimated or invented.
-export const trustStats = [
-  { value: company.yearsExperienceValue, suffix: "+", label: "års erfarenhet" },
-  { value: company.employeeCountValue, prefix: "~", label: "anställda" },
-  { value: company.foundedYear, label: "grundades" },
-] as const;
-
 export const footerBlurb = `${company.legalName} - Byggföretag i Uppsala`;
 export const footerCopyright = `© ${new Date().getFullYear()} - ${company.legalName}, ditt byggföretag i Uppsala`;
 

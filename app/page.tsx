@@ -1,5 +1,4 @@
 import { Hero } from "@/components/Hero";
-import { TrustBar } from "@/components/TrustBar";
 import { About } from "@/components/About";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ProcessSection } from "@/components/ProcessSection";
@@ -36,7 +35,6 @@ export default function HomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Hero />
-      <TrustBar />
       <About />
       <ProjectsSection />
       <ProcessSection />
