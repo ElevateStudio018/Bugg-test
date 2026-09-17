@@ -11,6 +11,8 @@ const config: Config = {
       colors: {
         accent: "rgb(253, 190, 51)",
         dark: "#030F27",
+        steel: "#7C8AA3",
+        mist: "#F2F4F7",
         gray: {
           body: "#666666",
         },
@@ -19,18 +21,19 @@ const config: Config = {
         poppins: ["Poppins", "sans-serif"],
       },
       fontSize: {
-        h1: ["60px", { lineHeight: "1.15", fontWeight: "700" }],
-        "h1-mobile": ["40px", { lineHeight: "1.2", fontWeight: "700" }],
-        h2: ["40px", { lineHeight: "1.2", fontWeight: "700" }],
-        "h2-mobile": ["30px", { lineHeight: "1.25", fontWeight: "700" }],
-        h3: ["20px", { lineHeight: "1.3", fontWeight: "600" }],
+        h1: ["88px", { lineHeight: "0.98", fontWeight: "800", letterSpacing: "-0.02em" }],
+        "h1-mobile": ["44px", { lineHeight: "1.05", fontWeight: "800", letterSpacing: "-0.02em" }],
+        h2: ["56px", { lineHeight: "1.02", fontWeight: "800", letterSpacing: "-0.02em" }],
+        "h2-mobile": ["36px", { lineHeight: "1.08", fontWeight: "800", letterSpacing: "-0.01em" }],
+        h3: ["22px", { lineHeight: "1.3", fontWeight: "600" }],
+        eyebrow: ["12px", { lineHeight: "1.4", fontWeight: "700", letterSpacing: "0.18em" }],
       },
       spacing: {
         18: "72px",
         22: "88px",
       },
       maxWidth: {
-        content: "1280px",
+        content: "1440px",
       },
       keyframes: {
         "fade-up": {

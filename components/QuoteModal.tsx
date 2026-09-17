@@ -77,7 +77,7 @@ export function QuoteModal() {
         aria-modal="true"
         aria-labelledby="quote-modal-heading"
         tabIndex={-1}
-        className={`relative m-auto w-full max-w-md rounded-[3px] bg-white p-6 shadow-2xl transition-all duration-200 sm:p-8 ${
+        className={`relative m-auto w-full max-w-md bg-white p-6 shadow-2xl transition-all duration-200 sm:p-8 ${
           isVisible ? "scale-100 opacity-100" : "scale-95 opacity-0"
         }`}
       >
@@ -85,7 +85,7 @@ export function QuoteModal() {
           type="button"
           onClick={close}
           aria-label="Stäng"
-          className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-[3px] text-dark transition-colors hover:bg-dark/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-dark"
+          className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center text-dark transition-colors hover:bg-dark/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-dark"
         >
           <Icon name="X" className="h-6 w-6" />
         </button>

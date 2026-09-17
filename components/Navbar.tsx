@@ -65,9 +65,9 @@ export function Navbar() {
         </Link>
 
         <nav aria-label="Huvudmeny" className="hidden lg:block">
-          <ul className="flex items-center gap-8">
+          <ul className="flex items-center gap-9">
             <li>
-              <Link href="/" className="text-[15px] font-medium text-white transition-colors hover:text-accent">
+              <Link href="/" className="text-xs font-semibold uppercase tracking-widest text-white/80 transition-colors hover:text-white">
                 Hem
               </Link>
             </li>
@@ -82,20 +82,20 @@ export function Navbar() {
                 aria-haspopup="menu"
                 aria-expanded={isServicesOpen}
                 onClick={() => setIsServicesOpen(true)}
-                className="flex items-center gap-1 text-[15px] font-medium text-white transition-colors hover:text-accent"
+                className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-white/80 transition-colors hover:text-white"
               >
                 Tjänster
-                <Icon name="ChevronDown" className={`h-4 w-4 transition-transform ${isServicesOpen ? "rotate-180" : ""}`} />
+                <Icon name="ChevronDown" className={`h-3.5 w-3.5 transition-transform ${isServicesOpen ? "rotate-180" : ""}`} />
               </button>
               {isServicesOpen && (
                 <div className="absolute left-1/2 top-full w-72 -translate-x-1/2 pt-3">
-                  <ul className="animate-fade-up rounded-[3px] border border-white/10 bg-dark py-2 shadow-2xl">
+                  <ul className="animate-fade-up divide-y divide-white/10 border border-white/10 bg-dark py-1 shadow-2xl">
                     {services.map((service) => (
                       <li key={service.slug}>
                         <Link
                           href={`/tjanster/${service.slug}`}
                           onClick={() => setIsServicesOpen(false)}
-                          className="block px-5 py-3 text-[15px] text-white transition-colors hover:bg-white/5 hover:text-accent"
+                          className="block px-5 py-3 text-[13px] text-white/80 transition-colors hover:bg-white/5 hover:text-white"
                         >
                           {service.name}
                         </Link>
@@ -106,24 +106,24 @@ export function Navbar() {
               )}
             </li>
             <li>
-              <Link href="/projekt" className="text-[15px] font-medium text-white transition-colors hover:text-accent">
+              <Link href="/projekt" className="text-xs font-semibold uppercase tracking-widest text-white/80 transition-colors hover:text-white">
                 Projekt
               </Link>
             </li>
             <li>
-              <Link href="/#om-oss" className="text-[15px] font-medium text-white transition-colors hover:text-accent">
+              <Link href="/#om-oss" className="text-xs font-semibold uppercase tracking-widest text-white/80 transition-colors hover:text-white">
                 Om oss
               </Link>
             </li>
             <li>
-              <Link href="/#kontakt" className="text-[15px] font-medium text-white transition-colors hover:text-accent">
+              <Link href="/#kontakt" className="text-xs font-semibold uppercase tracking-widest text-white/80 transition-colors hover:text-white">
                 Kontakt
               </Link>
             </li>
           </ul>
         </nav>
 
-        <button type="button" onClick={open} className={`${buttonClasses("accent")} hidden lg:inline-flex`}>
+        <button type="button" onClick={open} className={`${buttonClasses("primary-inverse")} hidden lg:inline-flex`}>
           Få gratis offert
         </button>
 
@@ -143,7 +143,7 @@ export function Navbar() {
           <nav aria-label="Mobilmeny" className="max-h-[calc(100dvh-4rem)] overflow-y-auto px-4 py-4 sm:px-6">
             <ul className="flex flex-col">
               <li>
-                <Link href="/" className="block py-3 text-[15px] font-semibold text-white">
+                <Link href="/" className="block py-3 text-sm font-bold uppercase tracking-widest text-white">
                   Hem
                 </Link>
               </li>
@@ -152,7 +152,7 @@ export function Navbar() {
                   type="button"
                   aria-expanded={isMobileServicesOpen}
                   onClick={() => setIsMobileServicesOpen((prev) => !prev)}
-                  className="flex w-full items-center justify-between py-3 text-[15px] font-semibold text-white"
+                  className="flex w-full items-center justify-between py-3 text-sm font-bold uppercase tracking-widest text-white"
                 >
                   Tjänster
                   <Icon name="ChevronDown" className={`h-5 w-5 transition-transform ${isMobileServicesOpen ? "rotate-180" : ""}`} />
@@ -161,7 +161,7 @@ export function Navbar() {
                   <ul className="pb-2 pl-4">
                     {services.map((service) => (
                       <li key={service.slug}>
-                        <Link href={`/tjanster/${service.slug}`} className="block py-2.5 text-sm text-white/80 hover:text-accent">
+                        <Link href={`/tjanster/${service.slug}`} className="block py-2.5 text-sm text-white/80 hover:text-white">
                           {service.name}
                         </Link>
                       </li>
@@ -170,22 +170,22 @@ export function Navbar() {
                 )}
               </li>
               <li>
-                <Link href="/projekt" className="block border-b border-white/10 py-3 text-[15px] font-semibold text-white">
+                <Link href="/projekt" className="block border-b border-white/10 py-3 text-sm font-bold uppercase tracking-widest text-white">
                   Projekt
                 </Link>
               </li>
               <li>
-                <Link href="/#om-oss" className="block border-b border-white/10 py-3 text-[15px] font-semibold text-white">
+                <Link href="/#om-oss" className="block border-b border-white/10 py-3 text-sm font-bold uppercase tracking-widest text-white">
                   Om oss
                 </Link>
               </li>
               <li>
-                <Link href="/#kontakt" className="block py-3 text-[15px] font-semibold text-white">
+                <Link href="/#kontakt" className="block py-3 text-sm font-bold uppercase tracking-widest text-white">
                   Kontakt
                 </Link>
               </li>
             </ul>
-            <button type="button" onClick={open} className={`${buttonClasses("accent")} mt-4 w-full`}>
+            <button type="button" onClick={open} className={`${buttonClasses("primary-inverse")} mt-4 w-full`}>
               Få gratis offert
             </button>
           </nav>

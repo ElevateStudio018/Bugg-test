@@ -1,8 +1,9 @@
 "use client";
 
 import { PlaceholderArt } from "./PlaceholderArt";
+import { Eyebrow } from "./Eyebrow";
 import { buttonClasses } from "./Button";
-import { hero } from "@/lib/content";
+import { company, hero } from "@/lib/content";
 import { usePrefersReducedMotion } from "@/hooks/useInView";
 import { useQuoteModal } from "@/contexts/QuoteModalContext";
 
@@ -37,11 +38,12 @@ export function Hero() {
           )}
         </div>
 
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-dark/85 via-dark/65 to-dark/55" aria-hidden="true" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-dark/90 via-dark/55 to-dark/35" aria-hidden="true" />
 
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-6 text-center">
-          <h1 className="max-w-3xl text-h1-mobile text-white lg:text-h1">{hero.heading}</h1>
-          <button type="button" onClick={open} className={`${buttonClasses("accent")} mt-8`}>
+        <div className="absolute inset-0 z-20 flex flex-col justify-end px-6 pb-14 sm:px-10 sm:pb-20 lg:px-16 lg:pb-28">
+          <Eyebrow label={`${company.legalName} · Sedan ${company.foundedYear}`} light rule={false} className="mb-6" />
+          <h1 className="max-w-4xl text-h1-mobile text-white lg:text-h1">{hero.heading}</h1>
+          <button type="button" onClick={open} className={`${buttonClasses("primary-inverse")} mt-10 self-start`}>
             Få gratis offert
           </button>
         </div>

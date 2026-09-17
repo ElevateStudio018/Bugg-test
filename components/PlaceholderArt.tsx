@@ -40,8 +40,8 @@ export function PlaceholderArt({ icon, className = "", tag = true, alt }: Placeh
         <path
           d="M 200 58 A 92 92 0 0 1 292 150"
           fill="none"
-          stroke="rgb(253, 190, 51)"
-          strokeWidth="3"
+          stroke="#7C8AA3"
+          strokeWidth="2"
           strokeLinecap="round"
         />
         <circle cx="200" cy="150" r="60" fill="#030F27" />
@@ -50,7 +50,7 @@ export function PlaceholderArt({ icon, className = "", tag = true, alt }: Placeh
         <Icon name={icon} className="h-12 w-12 text-white" strokeWidth={1.5} />
       </div>
       {tag && (
-        <span className="absolute bottom-3 left-3 rounded-sm border border-dark/10 bg-white/90 px-2 py-1 text-[11px] font-medium text-gray-body">
+        <span className="absolute bottom-3 left-3 border border-dark/10 bg-white/90 px-2 py-1 text-[11px] font-medium text-gray-body">
           Platshållarbild
         </span>
       )}

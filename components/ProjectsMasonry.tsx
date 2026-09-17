@@ -37,7 +37,7 @@ export function ProjectsMasonry({ items, categories = [], showFilter = false }: 
               key={category}
               type="button"
               onClick={() => setActiveCategory(category)}
-              className={buttonClasses(activeCategory === category ? "accent" : "outline", "px-4 py-2 text-sm")}
+              className={buttonClasses(activeCategory === category ? "primary" : "outline", "px-4 py-2 text-sm")}
             >
               {category}
             </button>
@@ -48,13 +48,13 @@ export function ProjectsMasonry({ items, categories = [], showFilter = false }: 
       <div className="columns-1 gap-6 sm:columns-2 lg:columns-3">
         {filteredItems.map((item, index) => (
           <Reveal key={item.id} delayMs={(index % 3) * 80} className="mb-6 break-inside-avoid">
-            <figure className="overflow-hidden rounded-[3px] border border-dark/10">
+            <figure className="overflow-hidden border border-dark/10">
               <PlaceholderArt
                 icon={item.icon}
                 alt={`${item.category} i ${company.city}`}
                 className={`w-full ${aspectClass[item.aspect]}`}
               />
-              <figcaption className="border-t border-dark/10 bg-white px-4 py-3 text-sm font-medium text-dark">
+              <figcaption className="border-t border-dark/10 bg-white px-4 py-3 text-xs font-semibold uppercase tracking-wider text-dark">
                 {item.category}
               </figcaption>
             </figure>

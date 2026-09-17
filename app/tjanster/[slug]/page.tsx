@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PlaceholderArt } from "@/components/PlaceholderArt";
+import { Eyebrow } from "@/components/Eyebrow";
 import { Reveal } from "@/components/Reveal";
 import { ServiceCard } from "@/components/ServiceCard";
 import { FinalCta } from "@/components/FinalCta";
@@ -69,9 +70,10 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       </div>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+        <div className="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
           <div className="max-w-3xl">
             <Reveal>
+              <Eyebrow label="Tjänster" className="mb-5" />
               <h1 className="text-h2-mobile text-dark lg:text-h1">{service.name}</h1>
               <p className="mt-6 text-base leading-relaxed text-gray-body sm:text-lg">{service.description[0]}</p>
             </Reveal>
@@ -89,9 +91,10 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      <section className="bg-white">
-        <div className="mx-auto max-w-content px-4 pb-16 sm:px-6 lg:px-8 lg:pb-28">
+      <section className="bg-mist">
+        <div className="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
           <Reveal>
+            <Eyebrow label="Fler tjänster" className="mb-5" />
             <h2 className="text-h2-mobile text-dark lg:text-h2">Fler tjänster</h2>
           </Reveal>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

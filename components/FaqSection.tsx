@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 import { Icon } from "./Icon";
+import { Eyebrow } from "./Eyebrow";
 import { Reveal } from "./Reveal";
 import { faqItems } from "@/lib/faq";
 
@@ -10,9 +11,10 @@ export function FaqSection() {
   const idPrefix = useId();
 
   return (
-    <section id="faq" className="scroll-mt-24 bg-white">
-      <div className="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8 lg:py-28">
-        <Reveal className="mx-auto max-w-2xl text-center">
+    <section id="faq" className="scroll-mt-24 bg-mist">
+      <div className="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
+        <Reveal className="max-w-2xl">
+          <Eyebrow index={4} label="Vanliga frågor" className="mb-5" />
           <h2 className="text-h2-mobile text-dark lg:text-h2">Vanliga frågor</h2>
           <p className="mt-4 text-base leading-relaxed text-gray-body">
             Svar på några av de frågor vi ofta får om våra bygg- och renoveringsprojekt.

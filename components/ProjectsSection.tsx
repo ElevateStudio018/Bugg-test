@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Eyebrow } from "./Eyebrow";
 import { Reveal } from "./Reveal";
 import { ProjectsMasonry } from "./ProjectsMasonry";
 import { buttonClasses } from "./Button";
@@ -8,11 +9,12 @@ const featuredItems = projectItems.slice(0, 6);
 
 export function ProjectsSection() {
   return (
-    <section id="projekt" className="scroll-mt-24 bg-white">
-      <div className="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8 lg:py-28">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <h2 className="text-h2-mobile text-dark lg:text-h2">Våra projekt</h2>
-          <p className="mt-4 text-base leading-relaxed text-gray-body">
+    <section id="projekt" className="scroll-mt-24 bg-mist">
+      <div className="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
+        <Reveal>
+          <Eyebrow index={2} label="Våra projekt" className="mb-5" />
+          <h2 className="max-w-2xl text-h2-mobile text-dark lg:text-h2">Våra projekt</h2>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-gray-body">
             Ett urval av bygg- och renoveringsprojekt vi har genomfört i Uppsala med omnejd.
           </p>
         </Reveal>
@@ -22,7 +24,7 @@ export function ProjectsSection() {
         </div>
 
         <Reveal className="mt-12 flex justify-center">
-          <Link href="/projekt" className={buttonClasses("accent")}>
+          <Link href="/projekt" className={buttonClasses("primary")}>
             Se alla projekt
           </Link>
         </Reveal>

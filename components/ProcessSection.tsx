@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { Icon } from "./Icon";
+import { Eyebrow } from "./Eyebrow";
 import { useInView, usePrefersReducedMotion } from "@/hooks/useInView";
 import { processSteps } from "@/lib/process";
 
@@ -63,15 +64,16 @@ export function ProcessSection() {
 
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8 lg:py-28">
+      <div className="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-h2-mobile text-dark lg:text-h2">Så går det till</h2>
+          <Eyebrow index={3} label="Så går det till" rule={false} className="justify-center" />
+          <h2 className="mt-5 text-h2-mobile text-dark lg:text-h2">Så går det till</h2>
           <p className="mt-4 text-base leading-relaxed text-gray-body">
             Fyra tydliga steg från första kontakt till färdig renovering.
           </p>
         </div>
 
-        <div className="relative mt-8">
+        <div className="relative mt-16">
           <div className="absolute bottom-0 left-6 top-0 w-0.5 -translate-x-1/2 bg-gray-body/25 lg:left-1/2" aria-hidden="true" />
           <div
             className="absolute left-6 top-0 w-0.5 -translate-x-1/2 bg-accent transition-[height] duration-500 ease-out lg:left-1/2"

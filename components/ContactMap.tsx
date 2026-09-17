@@ -1,4 +1,5 @@
 import { Icon } from "./Icon";
+import { Eyebrow } from "./Eyebrow";
 import { Reveal } from "./Reveal";
 import { QuoteForm } from "./QuoteForm";
 import { company } from "@/lib/content";
@@ -11,8 +12,9 @@ const mapLinkHref = `https://www.google.com/maps/search/?api=1&query=${mapQuery}
 export function ContactMap() {
   return (
     <section id="kontakt" className="scroll-mt-24 bg-white">
-      <div className="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8 lg:py-28">
-        <Reveal className="mx-auto max-w-2xl text-center">
+      <div className="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
+        <Reveal className="max-w-2xl">
+          <Eyebrow index={5} label="Kontakta oss" className="mb-5" />
           <h2 className="text-h2-mobile text-dark lg:text-h2">Kontakta oss</h2>
           <p className="mt-4 text-base leading-relaxed text-gray-body">
             Hör av dig för en kostnadsfri offert, så återkommer vi så snart vi kan.
@@ -56,7 +58,7 @@ export function ContactMap() {
           </Reveal>
 
           <Reveal delayMs={150} className="lg:col-span-2">
-            <div className="relative aspect-video w-full overflow-hidden rounded-[3px] border border-dark/10">
+            <div className="relative aspect-video w-full overflow-hidden border border-dark/10">
               <iframe
                 src={mapEmbedSrc}
                 title={`Karta till ${company.legalName}`}
@@ -69,7 +71,7 @@ export function ContactMap() {
               href={mapLinkHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-dark transition-colors hover:text-accent"
+              className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-dark transition-colors hover:text-steel"
             >
               Öppna i Google Maps
               <Icon name="ExternalLink" className="h-4 w-4" />

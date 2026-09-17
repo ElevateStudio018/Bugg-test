@@ -32,7 +32,7 @@ const renoveringTyper = [
 ];
 
 const fieldBaseClass =
-  "w-full rounded-[3px] border border-dark/15 bg-white pl-11 pr-4 py-3 text-base text-dark placeholder:text-gray-body/60 transition-colors duration-150 focus:border-dark focus:outline focus:outline-2 focus:outline-accent/60";
+  "w-full border border-dark/15 bg-white pl-11 pr-4 py-3 text-base text-dark placeholder:text-gray-body/60 transition-colors duration-150 focus:border-dark focus:outline focus:outline-2 focus:outline-dark/30";
 
 const labelClass = "mb-2 block text-sm font-medium text-dark";
 
@@ -205,7 +205,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
         </div>
       </div>
 
-      <button type="submit" disabled={isSubmitting} className={buttonClasses("accent", "w-full disabled:opacity-70")}>
+      <button type="submit" disabled={isSubmitting} className={buttonClasses("primary", "w-full disabled:opacity-70")}>
         {isSubmitting ? (
           <>
             <Icon name="Loader2" className="mr-2 h-5 w-5 animate-spin" />

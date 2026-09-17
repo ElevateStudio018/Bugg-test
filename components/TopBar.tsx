@@ -14,11 +14,11 @@ export function TopBar() {
   return (
     <div
       aria-hidden={!visible}
-      className={`fixed inset-x-0 top-0 z-50 flex h-10 items-center justify-center bg-accent transition-opacity duration-300 ease-out ${
+      className={`fixed inset-x-0 top-0 z-50 flex h-10 items-center justify-center border-b border-accent bg-dark transition-opacity duration-300 ease-out ${
         visible ? "opacity-100" : "pointer-events-none opacity-0"
       }`}
     >
-      <a href={toTelHref(company.phoneNational)} className="text-sm font-semibold text-dark">
+      <a href={toTelHref(company.phoneNational)} className="text-sm font-semibold tracking-wide text-white">
         {toIntlDisplay(company.phoneNational)}
       </a>
     </div>

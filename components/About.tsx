@@ -1,6 +1,7 @@
 "use client";
 
 import { PlaceholderArt } from "./PlaceholderArt";
+import { Eyebrow } from "./Eyebrow";
 import { Reveal } from "./Reveal";
 import { buttonClasses } from "./Button";
 import { about, company } from "@/lib/content";
@@ -12,17 +13,18 @@ export function About() {
 
   return (
     <section id="om-oss" className="scroll-mt-24 bg-white">
-      <div className="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8 lg:py-28">
+      <div className="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <PlaceholderArt
               icon="Hammer"
               alt={`Hantverkare från ${company.legalName} i arbete`}
-              className="aspect-[4/3] w-full rounded-[3px] border border-dark/10"
+              className="aspect-[4/3] w-full border border-dark/10"
             />
           </Reveal>
 
           <Reveal delayMs={100}>
+            <Eyebrow index={1} label={about.heading} className="mb-5" />
             <h2 className="text-h2-mobile text-dark lg:text-h2">{about.heading}</h2>
             <p className="mt-3 text-lg font-semibold text-dark">{about.subheading}</p>
 
@@ -35,7 +37,7 @@ export function About() {
             </div>
 
             <div className="mt-8 flex items-center gap-4">
-              <button type="button" onClick={open} className={buttonClasses("accent", "px-4 sm:px-6")}>
+              <button type="button" onClick={open} className={buttonClasses("primary", "px-4 sm:px-6")}>
                 Få gratis offert
               </button>
               <a
