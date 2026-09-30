@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { Eyebrow } from "./Eyebrow";
+import { Icon } from "./Icon";
 import { useInView, usePrefersReducedMotion } from "@/hooks/useInView";
 import { processSteps } from "@/lib/process";
 
@@ -39,7 +40,10 @@ function ProcessStepItem({
           revealed ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
         } ${isEven ? "lg:col-start-1 lg:text-right" : "lg:col-start-3 lg:text-left"}`}
       >
-        <h3 className="text-h3 text-dark">{step.title}</h3>
+        <div className="inline-flex h-10 w-10 items-center justify-center border border-dark/15 bg-mist text-dark">
+          <Icon name={step.icon} className="h-5 w-5" />
+        </div>
+        <h3 className="mt-3 text-h3 text-dark">{step.title}</h3>
         <p className="mt-2 text-base leading-relaxed text-gray-body">{step.description}</p>
       </div>
     </div>
