@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Eyebrow } from "./Eyebrow";
 import { Reveal } from "./Reveal";
-import { IndexList } from "./IndexList";
+import { ProjectGrid } from "./ProjectGrid";
 import { buttonClasses } from "./Button";
 import { company } from "@/lib/content";
 import { projectItems } from "@/lib/projects";
@@ -9,6 +9,7 @@ import { projectItems } from "@/lib/projects";
 const featuredItems = projectItems.slice(0, 6).map((item) => ({
   key: item.id,
   icon: item.icon,
+  image: item.image,
   title: item.category,
 }));
 
@@ -25,7 +26,7 @@ export function ProjectsSection() {
         </Reveal>
 
         <div className="mt-12">
-          <IndexList items={featuredItems} />
+          <ProjectGrid items={featuredItems} />
         </div>
 
         <Reveal className="mt-12 flex justify-center">

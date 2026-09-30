@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IndexList } from "@/components/IndexList";
+import { ProjectGrid } from "@/components/ProjectGrid";
 import { Eyebrow } from "@/components/Eyebrow";
 import { Reveal } from "@/components/Reveal";
 import { FinalCta } from "@/components/FinalCta";
@@ -27,10 +27,11 @@ export default function ProjectGalleryPage() {
           </Reveal>
 
           <div className="mt-12">
-            <IndexList
+            <ProjectGrid
               items={projectItems.map((item) => ({
                 key: item.id,
                 icon: item.icon,
+                image: item.image,
                 title: item.category,
                 category: item.category,
               }))}
