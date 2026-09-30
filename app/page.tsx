@@ -8,7 +8,7 @@ import { FinalCta } from "@/components/FinalCta";
 import { company } from "@/lib/content";
 import { toTelHref } from "@/lib/format";
 
-const siteUrl = "https://www.flottsundsbygg.se";
+const siteUrl = "https://www.markmontagebeab.se";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -16,7 +16,7 @@ const jsonLd = {
   name: company.legalName,
   url: siteUrl,
   telephone: toTelHref(company.phoneNational).replace("tel:", ""),
-  email: company.email,
+  ...(company.email ? { email: company.email } : {}),
   address: {
     "@type": "PostalAddress",
     streetAddress: company.address.street,

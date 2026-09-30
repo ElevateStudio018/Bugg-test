@@ -33,15 +33,17 @@ export function ContactMap() {
                   </a>
                 </div>
               </li>
-              <li className="flex items-start gap-3">
-                <Icon name="Mail" className="mt-0.5 h-5 w-5 shrink-0 text-dark" />
-                <div>
-                  <p className="text-sm font-medium text-dark">E-post</p>
-                  <a href={`mailto:${company.email}`} className="break-all text-base text-gray-body transition-colors hover:text-dark">
-                    {company.email}
-                  </a>
-                </div>
-              </li>
+              {company.email && (
+                <li className="flex items-start gap-3">
+                  <Icon name="Mail" className="mt-0.5 h-5 w-5 shrink-0 text-dark" />
+                  <div>
+                    <p className="text-sm font-medium text-dark">E-post</p>
+                    <a href={`mailto:${company.email}`} className="break-all text-base text-gray-body transition-colors hover:text-dark">
+                      {company.email}
+                    </a>
+                  </div>
+                </li>
+              )}
               <li className="flex items-start gap-3">
                 <Icon name="MapPin" className="mt-0.5 h-5 w-5 shrink-0 text-dark" />
                 <div>

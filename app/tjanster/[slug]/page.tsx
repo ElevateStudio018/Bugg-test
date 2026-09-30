@@ -7,7 +7,7 @@ import { FinalCta } from "@/components/FinalCta";
 import { services, getServiceBySlug } from "@/lib/services";
 import { company } from "@/lib/content";
 
-const siteUrl = "https://www.flottsundsbygg.se";
+const siteUrl = "https://www.markmontagebeab.se";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -50,7 +50,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       "@type": "HomeAndConstructionBusiness",
       name: company.legalName,
       telephone: `+46${company.phoneNational.replace(/[^\d]/g, "").replace(/^0/, "")}`,
-      email: company.email,
+      ...(company.email ? { email: company.email } : {}),
     },
   };
 

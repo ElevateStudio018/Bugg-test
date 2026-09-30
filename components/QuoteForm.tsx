@@ -9,7 +9,7 @@ interface FormValues {
   namn: string;
   telefon: string;
   epost: string;
-  typAvRenovering: string;
+  typAvArbete: string;
   beskrivning: string;
 }
 
@@ -17,17 +17,19 @@ const initialValues: FormValues = {
   namn: "",
   telefon: "",
   epost: "",
-  typAvRenovering: "",
+  typAvArbete: "",
   beskrivning: "",
 };
 
 type FormErrors = Partial<Record<keyof FormValues, string>>;
 
-const renoveringTyper = [
-  { value: "badrum", label: "Badrum" },
-  { value: "kok", label: "Kök" },
-  { value: "totalrenovering", label: "Totalrenovering" },
-  { value: "malning", label: "Målning/ytskikt" },
+const arbetsTyper = [
+  { value: "schaktning-markarbeten", label: "Schaktning & markarbeten" },
+  { value: "dranering", label: "Dränering" },
+  { value: "grundlaggning", label: "Grundläggning" },
+  { value: "va-arbeten", label: "VA-arbeten" },
+  { value: "anlaggning-vagar-planer", label: "Anläggning av vägar & planer" },
+  { value: "stenlaggning", label: "Stenläggning & plattsättning" },
   { value: "annat", label: "Annat" },
 ];
 
@@ -56,7 +58,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.epost.trim())) {
       next.epost = "Ange en giltig e-postadress.";
     }
-    if (!values.typAvRenovering) next.typAvRenovering = "Välj typ av renovering.";
+    if (!values.typAvArbete) next.typAvArbete = "Välj typ av arbete.";
     return next;
   }
 
@@ -158,22 +160,22 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
 
       <div>
         <label htmlFor={`${idPrefix}-typ`} className={labelClass}>
-          Typ av renovering
+          Typ av arbete
         </label>
         <div className="relative">
           <Icon name="Wrench" className="pointer-events-none absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-body" />
           <select
             id={`${idPrefix}-typ`}
-            value={values.typAvRenovering}
-            onChange={(e) => handleChange("typAvRenovering", e.target.value)}
+            value={values.typAvArbete}
+            onChange={(e) => handleChange("typAvArbete", e.target.value)}
             className={`${fieldBaseClass} appearance-none pr-11`}
-            aria-invalid={Boolean(errors.typAvRenovering)}
-            aria-describedby={errors.typAvRenovering ? `${idPrefix}-typ-error` : undefined}
+            aria-invalid={Boolean(errors.typAvArbete)}
+            aria-describedby={errors.typAvArbete ? `${idPrefix}-typ-error` : undefined}
           >
             <option value="" disabled>
-              Välj typ av renovering
+              Välj typ av arbete
             </option>
-            {renoveringTyper.map((typ) => (
+            {arbetsTyper.map((typ) => (
               <option key={typ.value} value={typ.value}>
                 {typ.label}
               </option>
@@ -181,9 +183,9 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
           </select>
           <Icon name="ChevronDown" className="pointer-events-none absolute right-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-body" />
         </div>
-        {errors.typAvRenovering && (
+        {errors.typAvArbete && (
           <p id={`${idPrefix}-typ-error`} className="mt-1.5 text-[13px] text-red-600">
-            {errors.typAvRenovering}
+            {errors.typAvArbete}
           </p>
         )}
       </div>

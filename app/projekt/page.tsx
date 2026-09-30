@@ -9,7 +9,7 @@ import { projectCategories, projectItems } from "@/lib/projects";
 
 export const metadata: Metadata = {
   title: "Våra projekt",
-  description: `Se exempel på bygg- och renoveringsprojekt utförda av ${company.legalName} i ${company.serviceArea}.`,
+  description: `Se exempel på mark- och grundarbeten utförda av ${company.legalName} i ${company.serviceArea}.`,
   alternates: { canonical: "/projekt" },
 };
 
@@ -22,7 +22,7 @@ export default function ProjectGalleryPage() {
             <Eyebrow label="Våra projekt" className="mb-5" />
             <h1 className="text-h2-mobile text-dark lg:text-h2">Våra projekt</h1>
             <p className="mt-4 text-base leading-relaxed text-gray-body">
-              Ett urval av bygg- och renoveringsprojekt vi har genomfört i {company.serviceArea}.
+              Ett urval av mark- och grundarbeten vi har genomfört i {company.serviceArea}.
             </p>
           </Reveal>
 

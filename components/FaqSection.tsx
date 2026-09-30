@@ -17,7 +17,7 @@ export function FaqSection() {
           <Eyebrow index={4} label="Vanliga frågor" className="mb-5" />
           <h2 className="text-h2-mobile text-dark lg:text-h2">Vanliga frågor</h2>
           <p className="mt-4 text-base leading-relaxed text-gray-body">
-            Svar på några av de frågor vi ofta får om våra bygg- och renoveringsprojekt.
+            Svar på några av de frågor vi ofta får om våra mark- och grundarbeten.
           </p>
         </Reveal>
 

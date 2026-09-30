@@ -60,7 +60,7 @@ export function NavOverlay({ onClose }: { onClose: () => void }) {
     <div ref={overlayRef} role="dialog" aria-modal="true" aria-label="Meny" className="fixed inset-0 z-[60] flex flex-col bg-dark">
       <div className="mx-auto flex h-16 w-full max-w-content items-center justify-between px-4 sm:px-6 lg:h-20 lg:px-8">
         <Link href="/" onClick={onClose} className="whitespace-nowrap text-base font-bold text-white sm:text-lg lg:text-xl">
-          Flottsunds Bygg <span className="text-accent">AB</span>
+          Markmontage <span className="text-accent">BEAB</span>
         </Link>
         <button
           type="button"

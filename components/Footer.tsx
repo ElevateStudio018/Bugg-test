@@ -11,7 +11,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           <div>
             <Link href="/" className="text-lg font-bold text-dark">
-              Flottsunds Bygg <span className="text-accent">AB</span>
+              Markmontage <span className="text-accent">BEAB</span>
             </Link>
             <p className="mt-4 text-[15px] leading-relaxed text-gray-body">{footerBlurb}</p>
             <p className="mt-4 text-[12px] text-gray-body">Org.nr: {company.orgNumber}</p>
@@ -47,12 +47,14 @@ export function Footer() {
                   <span className="break-words">{toIntlDisplay(company.phoneNational)}</span>
                 </a>
               </li>
-              <li>
-                <a href={`mailto:${company.email}`} className="flex items-center gap-2 text-[15px] text-gray-body transition-colors hover:text-dark">
-                  <Icon name="Mail" className="h-4 w-4 shrink-0" />
-                  <span className="break-all">{company.email}</span>
-                </a>
-              </li>
+              {company.email && (
+                <li>
+                  <a href={`mailto:${company.email}`} className="flex items-center gap-2 text-[15px] text-gray-body transition-colors hover:text-dark">
+                    <Icon name="Mail" className="h-4 w-4 shrink-0" />
+                    <span className="break-all">{company.email}</span>
+                  </a>
+                </li>
+              )}
               <li>
                 <Link href="/#faq" className="text-[15px] text-gray-body transition-colors hover:text-dark">
                   Läs mer om ROT-avdrag

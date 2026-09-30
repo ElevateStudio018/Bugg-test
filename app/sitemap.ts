@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { services } from "@/lib/services";
 
-const siteUrl = "https://www.flottsundsbygg.se";
+const siteUrl = "https://www.markmontagebeab.se";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [

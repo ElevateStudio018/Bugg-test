@@ -3,6 +3,7 @@ import { Eyebrow } from "./Eyebrow";
 import { Reveal } from "./Reveal";
 import { IndexList } from "./IndexList";
 import { buttonClasses } from "./Button";
+import { company } from "@/lib/content";
 import { projectItems } from "@/lib/projects";
 
 const featuredItems = projectItems.slice(0, 6).map((item) => ({
@@ -19,7 +20,7 @@ export function ProjectsSection() {
           <Eyebrow index={2} label="Våra projekt" className="mb-5" />
           <h2 className="max-w-2xl text-h2-mobile text-dark lg:text-h2">Våra projekt</h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-gray-body">
-            Ett urval av bygg- och renoveringsprojekt vi har genomfört i Uppsala med omnejd.
+            Ett urval av mark- och grundarbeten vi har genomfört i {company.serviceArea}.
           </p>
         </Reveal>
 

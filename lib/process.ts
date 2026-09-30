@@ -22,8 +22,8 @@ export const processSteps: ProcessStep[] = [
       "Du får en tydlig och fast offert innan något arbete påbörjas, så att du vet exakt vad som ingår och vad projektet kostar.",
   },
   {
-    title: "Renovering",
+    title: "Genomförande",
     description:
-      "Vårt team genomför arbetet enligt tidsplan, med löpande avstämning och fokus på högsta kvalitet hela vägen till nyckelfärdigt resultat.",
+      "Vårt team genomför arbetet enligt tidsplan, med löpande avstämning och fokus på högsta kvalitet hela vägen till ett färdigställt resultat.",
   },
 ];

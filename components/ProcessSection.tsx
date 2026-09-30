@@ -68,7 +68,7 @@ export function ProcessSection() {
           <Eyebrow index={3} label="Så går det till" rule={false} className="justify-center" />
           <h2 className="mt-5 text-h2-mobile text-dark lg:text-h2">Så går det till</h2>
           <p className="mt-4 text-base leading-relaxed text-gray-body">
-            Fyra tydliga steg från första kontakt till färdig renovering.
+            Fyra tydliga steg från första kontakt till avslutat markarbete.
           </p>
         </div>
 

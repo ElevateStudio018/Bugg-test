@@ -5,9 +5,10 @@ export interface FaqItem {
   answer: string;
 }
 
-// No FAQ data was provided in the content object, so per the FAQ rules this
-// list is AI-generated to address common renovation concerns — except the
-// ROT-avdrag entry, whose answer is the client's own verbatim text.
+// No FAQ data was supplied for this rebrand, so per the FAQ rules this list
+// is AI-generated to address common mark- och grundarbeten concerns —
+// except the ROT-avdrag entry, whose answer reflects the real Skatteverket
+// rule rather than a company-specific claim.
 export const faqItems: FaqItem[] = [
   {
     question: "Hur går en offertförfrågan till?",
@@ -15,22 +16,22 @@ export const faqItems: FaqItem[] = [
       "Du kontaktar oss via telefon eller formuläret på sidan och berättar kort om ditt projekt. Därefter bokar vi ett kostnadsfritt hembesök där vi går igenom förutsättningarna tillsammans, och du får en fast offert innan något arbete påbörjas.",
   },
   {
-    question: "Hur lång tid tar en renovering eller ett nybygge?",
+    question: "Hur lång tid tar ett mark- eller grundarbete?",
     answer:
-      "Tidsåtgången beror helt på projektets omfattning — allt från en badrumsrenovering till en villa från grunden. Vid hembesöket går vi igenom en realistisk tidsplan för just ditt projekt, så att du vet vad du kan förvänta dig innan arbetet startar.",
+      "Tidsåtgången beror helt på projektets omfattning — allt från en dränering till grundläggning av en hel villa. Vid hembesöket går vi igenom en realistisk tidsplan för just ditt projekt, så att du vet vad du kan förvänta dig innan arbetet startar.",
   },
   {
     question: "Vad innebär det att ni arbetar som totalentreprenör?",
     answer:
-      "Som totalentreprenör tar Flottsunds Bygg AB helhetsansvaret för projektet och samordnar samtliga moment och underleverantörer, från mark och stomme till el, VVS och finish. Du behöver bara en kontakt genom hela processen istället för att själv hantera flera olika hantverkare.",
+      "Som totalentreprenör tar Markmontage BEAB AB helhetsansvaret för mark- och grundarbetet och samordnar samtliga moment som krävs, från schaktning och dränering till grundläggning och VA. Du behöver bara en kontakt genom hela processen istället för att själv hantera flera olika entreprenörer.",
   },
   {
-    question: "Hur mycket påverkas vardagen under en renovering?",
+    question: "Kan ni arbeta året runt, även när det är tjäle i marken?",
     answer:
-      "Vi planerar varje projekt för att minimera störningar i ditt boende, och informerar dig löpande om vad som händer och när. Behöver du bo kvar under arbetet pratar vi igenom det redan vid hembesöket, så att upplägget passar din vardag.",
+      "Tjäle påverkar när och hur vissa markarbeten kan utföras. Vid hembesöket bedömer vi förutsättningarna för just din tomt och planerar arbetet efter årstid och väderlek, så att du får en realistisk tidsplan redan från start.",
   },
   {
-    question: "Vad gäller för ROT-avdrag vid renovering?",
+    question: rotAvdrag.question,
     answer: rotAvdrag.answer,
   },
   {
@@ -39,8 +40,8 @@ export const faqItems: FaqItem[] = [
       "Ja, efter det kostnadsfria hembesöket får du en fast offert innan arbetet påbörjas, så att du vet exakt vad som ingår och vad projektet kostar. Skulle önskemål tillkomma under projektets gång stämmer vi alltid av det med dig innan vi går vidare.",
   },
   {
-    question: "Vilka områden i och runt Uppsala arbetar ni i?",
+    question: "Vilka områden arbetar ni i?",
     answer:
-      "Vi utför bygg- och renoveringsprojekt i Uppsala med omnejd. Är du osäker på om din adress ligger inom vårt upptagningsområde är du varmt välkommen att höra av dig, så ger vi dig snabbt besked.",
+      "Vi utför mark- och grundarbeten i Kungälv, Göteborg och övriga Västra Götaland. Är du osäker på om din adress ligger inom vårt upptagningsområde är du varmt välkommen att höra av dig, så ger vi dig snabbt besked.",
   },
 ];

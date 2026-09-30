@@ -12,17 +12,17 @@ import { ConfirmationToast } from "@/components/ConfirmationToast";
 import { QuoteModalProvider } from "@/contexts/QuoteModalContext";
 import { company, intro } from "@/lib/content";
 
-const siteUrl = "https://www.flottsundsbygg.se";
+const siteUrl = "https://www.markmontagebeab.se";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${company.legalName} | Byggföretag i Uppsala`,
+    default: `${company.legalName} | Mark- och grundarbeten i Kungälv & Göteborg`,
     template: `%s | ${company.legalName}`,
   },
   description: intro.lead,
   openGraph: {
-    title: `${company.legalName} | Byggföretag i Uppsala`,
+    title: `${company.legalName} | Mark- och grundarbeten i Kungälv & Göteborg`,
     description: intro.lead,
     url: siteUrl,
     siteName: company.legalName,
