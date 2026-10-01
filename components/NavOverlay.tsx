@@ -85,7 +85,7 @@ export function NavOverlay({ onClose }: { onClose: () => void }) {
           aria-label="Stäng meny"
           className="-mr-1 flex h-12 w-12 items-center justify-center text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
         >
-          <Icon name="X" strokeWidth={2.75} className="h-8 w-8" />
+          <Icon name="X" strokeWidth={1.75} className="h-8 w-8" />
         </button>
       </div>
 

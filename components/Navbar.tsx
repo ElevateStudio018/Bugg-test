@@ -77,12 +77,12 @@ export function Navbar() {
               onClick={() => setIsMenuOpen(true)}
               aria-expanded={isMenuOpen}
               aria-label="Öppna meny"
-              className="group -mr-1.5 flex h-12 w-12 flex-col items-end justify-center gap-[7px] rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+              className="group -mr-1.5 flex h-12 w-12 flex-col items-end justify-center gap-[8px] rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
             >
-              {/* Three equal, thick bars with rounded ends. */}
-              <span className="block h-1 w-8 rounded-full bg-white" />
-              <span className="block h-1 w-8 rounded-full bg-white" />
-              <span className="block h-1 w-8 rounded-full bg-white" />
+              {/* Three equal, thin bars with rounded ends. */}
+              <span className="block h-[2px] w-8 rounded-full bg-white" />
+              <span className="block h-[2px] w-8 rounded-full bg-white" />
+              <span className="block h-[2px] w-8 rounded-full bg-white" />
             </button>
           </div>
         </div>
