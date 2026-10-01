@@ -1,55 +1,101 @@
 import { Reveal } from "./Reveal";
-import { ArrowLabel, arrowLinkClasses } from "./Button";
+import { Icon, type IconKey } from "./Icon";
+import { ArrowLabel, buttonClasses } from "./Button";
 import { companyPhotos } from "@/lib/photos";
 
+interface Block {
+  heading: string;
+  text: string;
+  icon: IconKey;
+  link: { href: string; label: string };
+  photo: string;
+  /** Part of the photo to keep in the card (CSS object-position). */
+  focus: string;
+}
+
 // Restates claims the site already makes (About, the process steps and the service pages).
-const blocks = [
+const blocks: Block[] = [
   {
     heading: "Tydligt från start",
     text: "Vid ett kostnadsfritt hembesök går vi igenom förutsättningarna på plats. Därefter får du en fast offert, så att du vet vad som ingår innan något arbete påbörjas.",
+    icon: "Home",
     link: { href: "#process", label: "Så går det till" },
+    photo: companyPhotos.arbete,
+    focus: "20% 45%",
   },
   {
     heading: "Anpassat efter marken",
     text: "Varje uppdrag anpassas efter förhållandena på platsen – från lera och berg till mer lättarbetad mark, och efter markens bärighet och grundvatten.",
+    icon: "Layers",
     link: { href: "#tjanster", label: "Se våra tjänster" },
+    photo: companyPhotos.minigravare,
+    focus: "88% 70%",
   },
 ];
 
 export function GroundworkFeature() {
   return (
-    <section className="relative isolate overflow-hidden bg-olive-dark text-center text-white">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={companyPhotos.arbete}
-        alt=""
-        loading="lazy"
-        className="absolute inset-0 -z-10 h-full w-full object-cover"
-      />
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-b from-black/55 via-black/65 to-black/80" />
+    <section>
+      {/* Photo band: heading on the darker left side, the work itself on the right. */}
+      <div className="relative isolate overflow-hidden bg-olive-dark text-white">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={companyPhotos.gravmaskinRor}
+          alt=""
+          loading="lazy"
+          className="absolute inset-0 -z-10 h-full w-full object-cover object-[72%_35%] lg:object-[60%_75%]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-black/80 via-black/60 to-black/45 lg:via-black/45 lg:to-black/5"
+        />
 
-      <div className="mx-auto max-w-[1040px] px-[18px] py-16 sm:px-6 lg:py-28">
-        <Reveal className="mx-auto max-w-[760px]">
-          <h2 className="text-balance text-display lg:text-[56px] lg:leading-[1.06]">Ett bygge är aldrig starkare än sin grund</h2>
-          <p className="mt-3 text-copy lg:mt-5 lg:text-lead">
-            Därför lägger vi stor vikt vid fackmannamässigt utförande i varje moment – från första spadtaget till färdig
-            yta.
-          </p>
-        </Reveal>
+        <div className="mx-auto max-w-content px-4 pb-24 pt-14 sm:px-6 lg:px-8 lg:pb-44 lg:pt-24">
+          <Reveal className="max-w-[560px] lg:max-w-[640px]">
+            <h2 className="text-balance text-display lg:text-[56px] lg:leading-[1.06]">Ett bygge är aldrig starkare än sin grund</h2>
+            <p className="mt-4 text-copy text-white/90 lg:mt-6 lg:text-lead">
+              Därför lägger vi stor vikt vid fackmannamässigt utförande i varje moment – från första spadtaget till färdig
+              yta.
+            </p>
+          </Reveal>
+        </div>
+      </div>
 
-        {/* The two points sit side by side under a thin rule, split by a vertical line (stacked on mobile). */}
-        <div className="mt-10 grid divide-y divide-white/25 border-t border-white/25 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:mt-16">
+      {/* The two points as cards that overlap the bottom of the photo band. */}
+      <div className="relative mx-auto -mt-12 max-w-content px-3 pb-16 sm:px-6 lg:-mt-28 lg:px-8 lg:pb-24">
+        <div className="grid gap-4 lg:gap-6 xl:grid-cols-2">
           {blocks.map((block, index) => (
-            <Reveal
-              key={block.heading}
-              delayMs={index * 120}
-              className="py-10 last:pb-0 sm:px-8 sm:pb-0 lg:px-12 lg:pt-12"
-            >
-              <h3 className="text-h3 lg:text-[26px]">{block.heading}</h3>
-              <p className="mt-4 text-copy lg:text-lead">{block.text}</p>
-              <a href={block.link.href} className={arrowLinkClasses("white", "mt-5")}>
-                <ArrowLabel>{block.link.label}</ArrowLabel>
-              </a>
+            <Reveal key={block.heading} delayMs={index * 100} className="h-full">
+              <article className="flex h-full flex-col bg-cream sm:flex-row">
+                <div className="flex flex-1 flex-col p-6 sm:p-8 lg:p-10">
+                  <div className="flex items-center gap-4">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center bg-olive text-white">
+                      <Icon name={block.icon} className="h-6 w-6" />
+                    </span>
+                    <h3 className="text-h3 text-ink">{block.heading}</h3>
+                  </div>
+                  <p className="mt-5 text-copy leading-[1.4] text-coal">{block.text}</p>
+                  <div className="mt-auto pt-7">
+                    <a href={block.link.href} className={buttonClasses("olive", "group/arrow")}>
+                      <span>
+                        <ArrowLabel spaced>{block.link.label}</ArrowLabel>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Cut on the diagonal: along the top on mobile, along the left edge beside the text. */}
+                <div className="relative h-52 [clip-path:polygon(0_16%,100%_0,100%_100%,0_100%)] sm:h-auto sm:w-[40%] sm:shrink-0 sm:[clip-path:polygon(18%_0,100%_0,100%_100%,0_100%)]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={block.photo}
+                    alt=""
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover"
+                    style={{ objectPosition: block.focus }}
+                  />
+                </div>
+              </article>
             </Reveal>
           ))}
         </div>
