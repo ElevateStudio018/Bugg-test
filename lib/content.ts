@@ -32,9 +32,10 @@ export const company = {
 } as const;
 
 export const hero = {
+  eyebrow: `${company.legalName} · Sedan ${company.foundedYear}`,
   heading: "Mark- och grundarbeten i Kungälv & Göteborg",
-  subheading: "– schaktning, dränering, grundläggning och VA-arbeten sedan 2002",
-  image: pexelsPhoto(6915593, 1920),
+  subheading: "Schaktning, dränering, grundläggning och VA-arbeten – från första spadtaget till färdig yta.",
+  image: pexelsPhoto(13098128, 2400),
 } as const;
 
 export const intro = {

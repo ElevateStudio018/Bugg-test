@@ -24,7 +24,7 @@ export const services: Service[] = [
     shortDescription:
       "Schaktning och markarbeten som förbereder tomten inför bygget, anpassat efter markförhållandena.",
     icon: "Shovel",
-    image: pexelsPhoto(13098128),
+    image: pexelsPhoto(2449603),
     description: [
       "Ett bygge börjar alltid under mark, och rätt förberett underlag avgör hur resten av projektet går. Markmontage BEAB AB utför schaktning och markarbeten i Kungälv, Göteborg och övriga Västra Götaland, både som en del av större entreprenader och som fristående uppdrag.",
       "Vi hanterar schaktning för grund, ledningar och anslutningar, samt terrassering och iordningställande av tomtmark inför fortsatt byggnation. Varje uppdrag anpassas efter markförhållandena på plats, från lera och berg till mer lättarbetad mark.",
