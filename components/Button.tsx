@@ -7,8 +7,8 @@ const pillBase =
 
 const pillVariants: Record<ButtonVariant, string> = {
   moss: "bg-moss text-white hover:bg-moss-dark focus-visible:outline-moss",
-  "olive-outline": "border-2 border-olive text-olive hover:bg-olive hover:text-white focus-visible:outline-olive",
-  "light-outline": "border-2 border-white/80 text-white hover:bg-white hover:text-olive focus-visible:outline-white",
+  "olive-outline": "border-[1.5px] border-olive text-olive hover:bg-olive hover:text-white focus-visible:outline-olive",
+  "light-outline": "border-[1.5px] border-white text-white hover:bg-white hover:text-olive focus-visible:outline-white",
 };
 
 export function buttonClasses(variant: ButtonVariant = "moss", className = ""): string {
@@ -26,7 +26,7 @@ export function arrowLinkClasses(tone: "ink" | "white" = "ink", className = ""):
  * so a label that breaks over several lines still ends with "word >" instead of the
  * chevron drifting off on its own.
  */
-export function ArrowLabel({ children }: { children: string }) {
+export function ArrowLabel({ children, spaced = false }: { children: string; spaced?: boolean }) {
   const splitAt = children.lastIndexOf(" ") + 1;
   return (
     <>
@@ -37,7 +37,9 @@ export function ArrowLabel({ children }: { children: string }) {
           name="ChevronRight"
           strokeWidth={1.5}
           aria-hidden="true"
-          className="ml-2.5 inline-block h-5 w-5 align-[-0.3em] transition-transform duration-200 group-hover/arrow:translate-x-1"
+          className={`inline-block h-6 w-6 align-[-0.36em] transition-transform duration-200 group-hover/arrow:translate-x-1 ${
+            spaced ? "ml-1.5" : ""
+          }`}
         />
       </span>
     </>

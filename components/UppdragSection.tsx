@@ -6,7 +6,7 @@ import { uppdragItems } from "@/lib/uppdrag";
 
 export function UppdragSection() {
   return (
-    <section className="py-16 sm:py-20 lg:py-28">
+    <section className="pb-10 pt-16 sm:pb-14 sm:pt-20 lg:pb-20 lg:pt-28">
       <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
         <Reveal className="max-w-3xl">
           <h2 className="text-h2 text-ink lg:text-h2-lg">Uppdrag vi utför</h2>

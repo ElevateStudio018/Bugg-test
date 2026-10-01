@@ -2,6 +2,9 @@ import { Hero } from "@/components/Hero";
 import { ServicesSection } from "@/components/ServicesSection";
 import { MapSection } from "@/components/MapSection";
 import { UppdragSection } from "@/components/UppdragSection";
+import { StatsBand } from "@/components/StatsBand";
+import { GroundworkFeature } from "@/components/GroundworkFeature";
+import { PromoSection } from "@/components/PromoSection";
 import { About } from "@/components/About";
 import { ProcessSection } from "@/components/ProcessSection";
 import { FaqSection } from "@/components/FaqSection";
@@ -39,6 +42,9 @@ export default function HomePage() {
       <ServicesSection />
       <MapSection />
       <UppdragSection />
+      <StatsBand />
+      <GroundworkFeature />
+      <PromoSection />
       <About />
       <ProcessSection />
       <FaqSection />

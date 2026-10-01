@@ -18,7 +18,7 @@ export function About() {
       <div className="mx-auto grid max-w-content grid-cols-1 gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16 lg:px-8 lg:py-28">
         <Reveal>
           <h2 className="text-h2 text-ink lg:text-h2-lg">{about.heading}</h2>
-          <p className="mt-6 text-lead font-semibold text-ink lg:text-[22px]">{about.subheading}</p>
+          <p className="mt-6 text-copy font-semibold text-ink lg:text-[22px]">{about.subheading}</p>
           <div className="mt-6 space-y-4">
             {about.paragraphs.map((paragraph) => (
               <p key={paragraph} className="text-copy text-coal">

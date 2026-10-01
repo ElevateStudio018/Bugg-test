@@ -77,7 +77,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
             <h1 className="mt-4 text-[38px] font-semibold leading-[1.1] tracking-[-0.01em] text-ink lg:text-[56px]">
               {service.name}
             </h1>
-            <p className="mt-6 text-lead text-coal lg:text-[21px]">{service.shortDescription}</p>
+            <p className="mt-6 text-copy text-coal lg:text-[21px]">{service.shortDescription}</p>
             <div className="mt-6 space-y-5">
               {service.description.map((paragraph) => (
                 <p key={paragraph} className="text-copy text-coal lg:text-[18px]">

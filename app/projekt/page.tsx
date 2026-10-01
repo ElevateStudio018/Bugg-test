@@ -20,7 +20,7 @@ export default function UppdragPage() {
       <h1 className="mt-8 text-[38px] font-semibold leading-[1.1] tracking-[-0.01em] text-ink lg:text-[56px]">
         Uppdrag vi utför
       </h1>
-      <p className="mt-5 max-w-3xl text-lead text-coal lg:text-[21px]">
+      <p className="mt-5 max-w-3xl text-copy text-coal lg:text-[21px]">
         Från första spadtaget till färdig yta. Här är de typer av uppdrag vi tar oss an – välj ett för att läsa mer om
         tjänsten.
       </p>

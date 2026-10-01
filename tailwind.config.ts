@@ -17,20 +17,27 @@ const config: Config = {
         ink: "#222222",
         coal: "#333333",
         ash: "#8C8A82",
+        // Promo box tones and the inactive carousel dot, sampled from the reference screenshots.
+        bark: "#403627",
+        khaki: "#827049",
+        pebble: "#B6B5AE",
       },
       fontFamily: {
         sans: ["Figtree", ...defaultTheme.fontFamily.sans],
       },
+      // Mobile sizes are width-matched against the reference screenshots (Figtree equivalents):
+      // 17px body with tight ~1.12 leading, 29px section headings, 17px uppercase links.
       fontSize: {
-        display: ["34px", { lineHeight: "1.12", letterSpacing: "-0.01em", fontWeight: "600" }],
+        display: ["33px", { lineHeight: "1.15", letterSpacing: "-0.01em", fontWeight: "600" }],
         "display-lg": ["60px", { lineHeight: "1.06", letterSpacing: "-0.015em", fontWeight: "600" }],
-        h2: ["31px", { lineHeight: "1.15", letterSpacing: "-0.01em", fontWeight: "600" }],
+        h2: ["29px", { lineHeight: "1.14", letterSpacing: "-0.01em", fontWeight: "600" }],
         "h2-lg": ["46px", { lineHeight: "1.1", letterSpacing: "-0.015em", fontWeight: "600" }],
-        h3: ["22px", { lineHeight: "1.25", fontWeight: "600" }],
-        lead: ["19px", { lineHeight: "1.5" }],
-        copy: ["17px", { lineHeight: "1.65" }],
-        label: ["15px", { lineHeight: "1.35", letterSpacing: "0.14em", fontWeight: "700" }],
+        h3: ["22px", { lineHeight: "1.18", fontWeight: "600" }],
+        lead: ["19px", { lineHeight: "1.3" }],
+        copy: ["17px", { lineHeight: "1.12" }],
+        label: ["17px", { lineHeight: "1.18", letterSpacing: "0.03em", fontWeight: "700" }],
         tag: ["13px", { lineHeight: "1", letterSpacing: "0.2em", fontWeight: "700" }],
+        stat: ["50px", { lineHeight: "1", letterSpacing: "-0.01em", fontWeight: "800" }],
       },
       maxWidth: {
         content: "1280px",

@@ -11,10 +11,10 @@ export function Hero() {
       </div>
 
       <div className="bg-olive">
-        <div className="mx-auto max-w-content px-4 pb-14 pt-9 sm:px-6 sm:pb-16 sm:pt-12 lg:px-8 lg:pb-20 lg:pt-14">
+        <div className="mx-auto max-w-content px-4 pb-8 pt-5 sm:px-6 sm:pb-14 sm:pt-10 lg:px-8 lg:pb-20 lg:pt-14">
           <h1 className="max-w-4xl text-display text-white lg:text-display-lg">{hero.heading}</h1>
-          <p className="mt-4 max-w-2xl text-lead text-white lg:mt-5 lg:text-[22px]">{hero.subheading}</p>
-          <QuoteTrigger className={arrowLinkClasses("white", "mt-8 lg:mt-10")}>
+          <p className="mt-5 max-w-2xl text-copy text-white lg:mt-6 lg:text-[22px]">{hero.subheading}</p>
+          <QuoteTrigger className={arrowLinkClasses("white", "mt-4 lg:mt-8")}>
             <ArrowLabel>Få en kostnadsfri offert</ArrowLabel>
           </QuoteTrigger>
         </div>
