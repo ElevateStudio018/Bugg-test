@@ -6,6 +6,7 @@ const siteUrl = "https://www.markmontagebeab.se";
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${siteUrl}/`, changeFrequency: "monthly", priority: 1 },
+    { url: `${siteUrl}/om-oss`, changeFrequency: "yearly", priority: 0.8 },
     { url: `${siteUrl}/projekt`, changeFrequency: "monthly", priority: 0.8 },
   ];
 

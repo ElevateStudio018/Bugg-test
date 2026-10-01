@@ -21,7 +21,7 @@ interface NavRow {
 const rows: NavRow[] = [
   { number: "01", label: "Hem", href: "/" },
   { number: "03", label: "Uppdrag", href: "/projekt" },
-  { number: "04", label: "Om oss", href: "/#om-oss" },
+  { number: "04", label: "Om oss", href: "/om-oss" },
   { number: "05", label: "Kontakt", href: "/#kontakt" },
 ];
 

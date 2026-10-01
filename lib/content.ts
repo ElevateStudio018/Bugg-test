@@ -56,6 +56,29 @@ export const about = {
   ],
 };
 
+export const aboutFacts: { label: string; value: string }[] = [
+  { label: "Grundat", value: String(company.foundedYear) },
+  { label: "Anställda", value: `Cirka ${company.employeeCountValue}` },
+  { label: "Säte", value: `${company.address.city}, ${company.city}` },
+  { label: "Verksamhet", value: "Mark- och grundarbeten" },
+  { label: "Org.nr", value: company.orgNumber },
+];
+
+// The /om-oss page. Decorative stock photos (not the company's own sites); the copy only restates
+// what the About text, the process steps and the service pages already say.
+export const aboutPage = {
+  heroImage: pexelsPhoto(6356206, 1920),
+  middleImage: pexelsPhoto(159306, 1920),
+  foundation: {
+    heading: "Vi lägger grunden för ditt bygge",
+    text: `Vi utför bland annat schaktning, dränering, grundläggning och VA-arbeten i ${company.serviceArea} – och tar helhetsansvar som totalentreprenör på större projekt. Oavsett uppdrag lägger vi stor vikt vid fackmannamässigt utförande i varje moment.`,
+  },
+  together: {
+    heading: "Från första spadtaget till färdig yta",
+    text: "Du hör av dig, vi kommer ut på ett kostnadsfritt hembesök och du får en fast offert innan något arbete påbörjas. Därefter genomför vi arbetet enligt tidsplan, med löpande avstämning hela vägen.",
+  },
+};
+
 // General Swedish tax rule (Skatteverket), scoped to the work types it
 // actually covers — not a claim that all of the company's work qualifies.
 export const rotAvdrag = {
