@@ -22,7 +22,8 @@ const rows: NavRow[] = [
   { number: "01", label: "Hem", href: "/" },
   { number: "03", label: "Uppdrag", href: "/projekt" },
   { number: "04", label: "Om oss", href: "/om-oss" },
-  { number: "05", label: "Kontakt", href: "/#kontakt" },
+  { number: "05", label: "Certifikat", href: "/certifikat" },
+  { number: "06", label: "Kontakt", href: "/#kontakt" },
 ];
 
 function RowLink({ row, onClose }: { row: NavRow; onClose: () => void }) {
@@ -97,7 +98,7 @@ export function NavOverlay({ onClose }: { onClose: () => void }) {
               <span className="text-sm font-bold text-white/50">02</span>
               <span className="text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Tjänster</span>
             </div>
-            <ul className="ml-[2.6rem] mt-4 grid grid-cols-1 gap-x-10 gap-y-1 sm:grid-cols-2">
+            <ul className="ml-[2.6rem] mt-4 grid grid-cols-1 gap-x-10 gap-y-1 sm:grid-cols-2 xl:grid-cols-4">
               {services.map((service) => (
                 <li key={service.slug}>
                   <Link

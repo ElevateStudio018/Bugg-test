@@ -9,6 +9,7 @@ import { toTelHref } from "@/lib/format";
 
 const companyLinks = [
   { label: "Om oss", href: "/om-oss" },
+  { label: "Certifikat", href: "/certifikat" },
   { label: "Uppdrag", href: "/projekt" },
   { label: "Så går det till", href: "/#process" },
   { label: "Vanliga frågor", href: "/#faq" },

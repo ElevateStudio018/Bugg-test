@@ -1,4 +1,5 @@
 import {
+  BadgeCheck,
   HardHat,
   Layers,
   Shovel,
@@ -25,6 +26,7 @@ import {
 } from "lucide-react";
 
 const iconMap = {
+  BadgeCheck,
   HardHat,
   Layers,
   Shovel,
