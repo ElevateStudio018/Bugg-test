@@ -29,8 +29,8 @@ function RowLink({ row, onClose }: { row: NavRow; onClose: () => void }) {
   return (
     <li className="border-b border-white/15 py-4">
       <Link href={row.href} onClick={onClose} className="group flex items-baseline gap-4">
-        <span className="text-sm font-bold text-moss">{row.number}</span>
-        <span className="text-3xl font-semibold text-white transition-colors group-hover:text-moss sm:text-4xl lg:text-5xl">
+        <span className="text-sm font-bold text-white/50">{row.number}</span>
+        <span className="text-3xl font-semibold text-white transition-colors group-hover:text-white/70 sm:text-4xl lg:text-5xl">
           {row.label}
         </span>
       </Link>
@@ -94,7 +94,7 @@ export function NavOverlay({ onClose }: { onClose: () => void }) {
 
           <li className="border-b border-white/15 py-4">
             <div className="flex items-baseline gap-4">
-              <span className="text-sm font-bold text-moss">02</span>
+              <span className="text-sm font-bold text-white/50">02</span>
               <span className="text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Tjänster</span>
             </div>
             <ul className="ml-[2.6rem] mt-4 grid grid-cols-1 gap-x-10 gap-y-1 sm:grid-cols-2">
@@ -103,7 +103,7 @@ export function NavOverlay({ onClose }: { onClose: () => void }) {
                   <Link
                     href={`/tjanster/${service.slug}`}
                     onClick={onClose}
-                    className="block py-1.5 text-[17px] text-white/75 transition-colors hover:text-moss"
+                    className="block py-1.5 text-[17px] text-white/75 transition-colors hover:text-white"
                   >
                     {service.name}
                   </Link>
@@ -123,8 +123,8 @@ export function NavOverlay({ onClose }: { onClose: () => void }) {
           <button type="button" onClick={handleCtaClick} className={buttonClasses("moss", "w-full sm:w-auto")}>
             Få gratis offert
           </button>
-          <a href={toTelHref(company.phoneNational)} className="flex items-center gap-3 text-[18px] font-semibold text-white hover:text-moss">
-            <Icon name="Phone" className="h-5 w-5 text-moss" />
+          <a href={toTelHref(company.phoneNational)} className="flex items-center gap-3 text-[18px] font-semibold text-white hover:text-white/70">
+            <Icon name="Phone" className="h-5 w-5 text-white/60" />
             {company.phoneNational}
           </a>
         </div>

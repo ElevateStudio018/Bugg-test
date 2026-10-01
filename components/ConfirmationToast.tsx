@@ -14,7 +14,7 @@ export function ConfirmationToast() {
       }`}
     >
       <div className="flex items-center gap-3 bg-olive px-5 py-4 shadow-2xl">
-        <Icon name="CheckCircle2" className="h-6 w-6 shrink-0 text-moss" />
+        <Icon name="CheckCircle2" className="h-6 w-6 shrink-0 text-white/80" />
         <p className="text-[16px] font-semibold text-white">Tack! Vi återkommer strax</p>
       </div>
     </div>

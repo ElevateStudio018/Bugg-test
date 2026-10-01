@@ -47,6 +47,7 @@ export const intro = {
 // none was provided for this rebrand.
 export const about = {
   heading: "Om oss",
+  image: pexelsPhoto(6245621, 1400),
   subheading: `${company.legalName} har sin bas i Romelanda utanför Kungälv och grundades ${company.foundedYear}`,
   paragraphs: [
     `${company.legalName} är ett entreprenadföretag inom mark- och grundarbeten, verksamt i ${company.serviceArea}. Vi utför bland annat schaktning, dränering, grundläggning och VA-arbeten, och tar även helhetsansvar som totalentreprenör på större projekt.`,

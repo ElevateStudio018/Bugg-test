@@ -21,7 +21,7 @@ export function StatsBand() {
               // Number first visually, but the label stays the <dt> so it is read before the value.
               <div key={stat.label} className="flex flex-col-reverse">
                 <dt className="text-[17px] leading-[1.35] lg:text-[19px]">{stat.label}</dt>
-                <dd className="text-stat text-moss lg:text-[72px]">{stat.value}</dd>
+                <dd className="text-stat text-white lg:text-[72px]">{stat.value}</dd>
               </div>
             ))}
           </dl>

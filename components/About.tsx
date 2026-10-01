@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { Reveal } from "./Reveal";
-import { FaktaBox } from "./FaktaBox";
 import { ArrowLabel, arrowLinkClasses } from "./Button";
-import { about, aboutFacts } from "@/lib/content";
+import { about } from "@/lib/content";
 
 export function About() {
   return (
@@ -18,7 +17,10 @@ export function About() {
         </Reveal>
 
         <Reveal delayMs={120} className="lg:pt-2">
-          <FaktaBox title="Fakta om oss" rows={aboutFacts} />
+          <div className="relative aspect-[4/3] overflow-hidden bg-olive/20 lg:aspect-[4/5]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={about.image} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+          </div>
         </Reveal>
       </div>
     </section>

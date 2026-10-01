@@ -16,7 +16,7 @@ const companyLinks = [
 ];
 
 const headingClass = "text-[26px] font-semibold leading-tight";
-const linkClass = "text-[18px] text-white transition-colors hover:text-moss";
+const linkClass = "text-[18px] text-white transition-colors hover:text-white/70";
 
 export function Footer() {
   return (
@@ -29,21 +29,21 @@ export function Footer() {
             <h2 className={headingClass}>Kontakt</h2>
             <ul className="mt-6 space-y-5 text-[20px] leading-snug">
               <li>
-                <a href={toTelHref(company.phoneNational)} className="flex items-center gap-5 transition-colors hover:text-moss">
-                  <Icon name="Phone" strokeWidth={2.25} className="h-7 w-7 shrink-0 text-moss" />
+                <a href={toTelHref(company.phoneNational)} className="flex items-center gap-5 transition-colors hover:text-white/70">
+                  <Icon name="Phone" strokeWidth={2.25} className="h-7 w-7 shrink-0 text-white/60" />
                   {company.phoneNational}
                 </a>
               </li>
               {company.email && (
                 <li>
-                  <a href={`mailto:${company.email}`} className="flex items-center gap-5 transition-colors hover:text-moss">
-                    <Icon name="Mail" strokeWidth={2.25} className="h-7 w-7 shrink-0 text-moss" />
+                  <a href={`mailto:${company.email}`} className="flex items-center gap-5 transition-colors hover:text-white/70">
+                    <Icon name="Mail" strokeWidth={2.25} className="h-7 w-7 shrink-0 text-white/60" />
                     <span className="break-all">{company.email}</span>
                   </a>
                 </li>
               )}
               <li className="flex items-start gap-5">
-                <Icon name="MapPin" strokeWidth={2.25} className="mt-0.5 h-7 w-7 shrink-0 text-moss" />
+                <Icon name="MapPin" strokeWidth={2.25} className="mt-0.5 h-7 w-7 shrink-0 text-white/60" />
                 <span>
                   {company.address.street}
                   <br />

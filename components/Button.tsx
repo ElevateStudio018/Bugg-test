@@ -17,7 +17,7 @@ export function buttonClasses(variant: ButtonVariant = "moss", className = ""): 
 
 /** Uppercase, letter-spaced text link with a chevron — the site's secondary call to action. */
 export function arrowLinkClasses(tone: "ink" | "white" = "ink", className = ""): string {
-  const color = tone === "white" ? "text-white hover:text-moss" : "text-ink hover:text-moss";
+  const color = tone === "white" ? "text-white hover:text-white/70" : "text-ink hover:text-moss";
   return `group/arrow inline-block text-left text-label uppercase transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current ${color} ${className}`;
 }
 
