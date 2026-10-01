@@ -34,9 +34,9 @@ const arbetsTyper = [
 ];
 
 const fieldBaseClass =
-  "w-full border border-dark/15 bg-white pl-11 pr-4 py-3 text-base text-dark placeholder:text-gray-body/60 transition-colors duration-150 focus:border-dark focus:outline focus:outline-2 focus:outline-dark/30";
+  "w-full border border-ink/15 bg-white py-3.5 pl-12 pr-4 text-[17px] text-ink placeholder:text-ash transition-colors duration-150 focus:border-olive focus:outline focus:outline-2 focus:outline-olive/25";
 
-const labelClass = "mb-2 block text-sm font-medium text-dark";
+const labelClass = "mb-2 block text-[15px] font-semibold text-ink";
 
 export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal" }) {
   const [values, setValues] = useState<FormValues>(initialValues);
@@ -91,7 +91,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
           Namn
         </label>
         <div className="relative">
-          <Icon name="User" className="pointer-events-none absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-body" />
+          <Icon name="User" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash" />
           <input
             id={`${idPrefix}-namn`}
             type="text"
@@ -104,7 +104,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
           />
         </div>
         {errors.namn && (
-          <p id={`${idPrefix}-namn-error`} className="mt-1.5 text-[13px] text-red-600">
+          <p id={`${idPrefix}-namn-error`} className="mt-1.5 text-[14px] text-red-700">
             {errors.namn}
           </p>
         )}
@@ -115,7 +115,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
           Telefon
         </label>
         <div className="relative">
-          <Icon name="Phone" className="pointer-events-none absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-body" />
+          <Icon name="Phone" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash" />
           <input
             id={`${idPrefix}-telefon`}
             type="tel"
@@ -128,7 +128,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
           />
         </div>
         {errors.telefon && (
-          <p id={`${idPrefix}-telefon-error`} className="mt-1.5 text-[13px] text-red-600">
+          <p id={`${idPrefix}-telefon-error`} className="mt-1.5 text-[14px] text-red-700">
             {errors.telefon}
           </p>
         )}
@@ -139,7 +139,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
           E-post
         </label>
         <div className="relative">
-          <Icon name="Mail" className="pointer-events-none absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-body" />
+          <Icon name="Mail" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash" />
           <input
             id={`${idPrefix}-epost`}
             type="email"
@@ -152,7 +152,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
           />
         </div>
         {errors.epost && (
-          <p id={`${idPrefix}-epost-error`} className="mt-1.5 text-[13px] text-red-600">
+          <p id={`${idPrefix}-epost-error`} className="mt-1.5 text-[14px] text-red-700">
             {errors.epost}
           </p>
         )}
@@ -163,7 +163,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
           Typ av arbete
         </label>
         <div className="relative">
-          <Icon name="Wrench" className="pointer-events-none absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-body" />
+          <Icon name="Wrench" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash" />
           <select
             id={`${idPrefix}-typ`}
             value={values.typAvArbete}
@@ -181,10 +181,10 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
               </option>
             ))}
           </select>
-          <Icon name="ChevronDown" className="pointer-events-none absolute right-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-body" />
+          <Icon name="ChevronDown" className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash" />
         </div>
         {errors.typAvArbete && (
-          <p id={`${idPrefix}-typ-error`} className="mt-1.5 text-[13px] text-red-600">
+          <p id={`${idPrefix}-typ-error`} className="mt-1.5 text-[14px] text-red-700">
             {errors.typAvArbete}
           </p>
         )}
@@ -195,19 +195,19 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
           Kort beskrivning
         </label>
         <div className="relative">
-          <Icon name="MessageSquare" className="pointer-events-none absolute left-3.5 top-3.5 h-5 w-5 text-gray-body" />
+          <Icon name="MessageSquare" className="pointer-events-none absolute left-4 top-4 h-5 w-5 text-ash" />
           <textarea
             id={`${idPrefix}-beskrivning`}
             rows={3}
             value={values.beskrivning}
             onChange={(e) => handleChange("beskrivning", e.target.value)}
             placeholder="Berätta kort om ditt projekt..."
-            className={`${fieldBaseClass} resize-none pt-3.5`}
+            className={`${fieldBaseClass} resize-none`}
           />
         </div>
       </div>
 
-      <button type="submit" disabled={isSubmitting} className={buttonClasses("primary", "w-full disabled:opacity-70")}>
+      <button type="submit" disabled={isSubmitting} className={buttonClasses("moss", "w-full disabled:opacity-70")}>
         {isSubmitting ? (
           <>
             <Icon name="Loader2" className="mr-2 h-5 w-5 animate-spin" />
@@ -219,7 +219,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
       </button>
 
       {variant === "modal" && (
-        <p className="text-center text-[13px] text-gray-body">
+        <p className="text-center text-[14px] text-ash">
           Du kan stänga rutan när som helst genom att klicka utanför eller på{" "}
           <button type="button" onClick={close} className="underline underline-offset-2">
             X

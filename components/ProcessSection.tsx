@@ -1,93 +1,35 @@
-"use client";
-
-import { useCallback, useEffect, useState } from "react";
-import { Eyebrow } from "./Eyebrow";
 import { Icon } from "./Icon";
-import { useInView, usePrefersReducedMotion } from "@/hooks/useInView";
+import { Reveal } from "./Reveal";
 import { processSteps } from "@/lib/process";
 
-function ProcessStepItem({
-  index,
-  isEven,
-  onReveal,
-}: {
-  index: number;
-  isEven: boolean;
-  onReveal: (index: number) => void;
-}) {
-  const step = processSteps[index];
-  const { ref, isInView } = useInView<HTMLDivElement>(0.5);
-  const reducedMotion = usePrefersReducedMotion();
-  const revealed = reducedMotion || isInView;
-
-  useEffect(() => {
-    if (isInView) onReveal(index);
-  }, [isInView, index, onReveal]);
-
-  return (
-    <div
-      ref={ref}
-      className="relative grid grid-cols-[auto_1fr] items-start gap-x-6 py-6 lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-x-10 lg:py-10"
-    >
-      <div className="relative z-10 flex w-14 justify-center lg:col-start-2 lg:w-auto lg:justify-self-center">
-        <div className="flex h-14 w-14 items-center justify-center border-2 border-dark bg-white text-lg font-extrabold text-dark">
-          {String(index + 1).padStart(2, "0")}
-        </div>
-      </div>
-
-      <div
-        className={`transition-all duration-500 ease-out lg:row-start-1 ${
-          revealed ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
-        } ${isEven ? "lg:col-start-1 lg:text-right" : "lg:col-start-3 lg:text-left"}`}
-      >
-        <div className="inline-flex h-10 w-10 items-center justify-center border border-dark/15 bg-mist text-dark">
-          <Icon name={step.icon} className="h-5 w-5" />
-        </div>
-        <h3 className="mt-3 text-h3 text-dark">{step.title}</h3>
-        <p className="mt-2 text-base leading-relaxed text-gray-body">{step.description}</p>
-      </div>
-    </div>
-  );
-}
-
 export function ProcessSection() {
-  const [revealedSteps, setRevealedSteps] = useState<Set<number>>(new Set());
-  const reducedMotion = usePrefersReducedMotion();
-
-  const handleReveal = useCallback((index: number) => {
-    setRevealedSteps((prev) => {
-      if (prev.has(index)) return prev;
-      const next = new Set(prev);
-      next.add(index);
-      return next;
-    });
-  }, []);
-
-  const filledPercent = reducedMotion ? 100 : (revealedSteps.size / processSteps.length) * 100;
-
   return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
-        <div className="mx-auto max-w-2xl text-center">
-          <Eyebrow index={3} label="Så går det till" rule={false} className="justify-center" />
-          <h2 className="mt-5 text-h2-mobile text-dark lg:text-h2">Så går det till</h2>
-          <p className="mt-4 text-base leading-relaxed text-gray-body">
-            Fyra tydliga steg från första kontakt till avslutat markarbete.
-          </p>
-        </div>
+    <section id="process" className="scroll-mt-20">
+      <div className="mx-auto max-w-content px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
+        <Reveal className="max-w-3xl">
+          <h2 className="text-h2 text-ink lg:text-h2-lg">Så går det till</h2>
+          <p className="mt-5 text-copy text-coal lg:text-lead">Fyra tydliga steg från första kontakt till avslutat markarbete.</p>
+        </Reveal>
 
-        <div className="relative mt-16">
-          <div className="absolute bottom-0 left-6 top-0 w-0.5 -translate-x-1/2 bg-gray-body/25 lg:left-1/2" aria-hidden="true" />
-          <div
-            className="absolute left-6 top-0 w-0.5 -translate-x-1/2 bg-accent transition-[height] duration-500 ease-out lg:left-1/2"
-            style={{ height: `${filledPercent}%` }}
-            aria-hidden="true"
-          />
-
+        <ol className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((step, index) => (
-            <ProcessStepItem key={step.title} index={index} isEven={index % 2 === 0} onReveal={handleReveal} />
+            <Reveal as="li" key={step.title} delayMs={index * 80} className="flex flex-col bg-cream p-7 sm:p-8">
+              <div className="flex items-center justify-between">
+                <span className="flex h-12 w-12 items-center justify-center bg-moss text-white">
+                  <Icon name={step.icon} className="h-6 w-6" />
+                </span>
+                <span className="text-[44px] font-semibold leading-none text-ink/15" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <h3 className="mt-7 text-h3 text-ink">
+                <span className="sr-only">Steg {index + 1}: </span>
+                {step.title}
+              </h3>
+              <p className="mt-3 text-[16px] leading-relaxed text-coal">{step.description}</p>
+            </Reveal>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

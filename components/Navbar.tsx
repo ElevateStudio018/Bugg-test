@@ -3,16 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Icon } from "./Icon";
 import { NavOverlay } from "./NavOverlay";
-import { buttonClasses } from "./Button";
-import { useHeroTopBar } from "@/hooks/useHeroTopBar";
-import { useQuoteModal } from "@/contexts/QuoteModalContext";
+import { Wordmark } from "./Wordmark";
 
 export function Navbar() {
-  const topBarVisible = useHeroTopBar();
   const pathname = usePathname();
-  const { open } = useQuoteModal();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -37,31 +32,23 @@ export function Navbar() {
 
   return (
     <>
-      <header
-        className={`fixed inset-x-0 z-40 bg-dark transition-[top] duration-300 ease-out ${
-          topBarVisible ? "top-10" : "top-0"
-        }`}
-      >
-        <div className="mx-auto flex h-16 max-w-content items-center justify-between px-4 sm:px-6 lg:h-20 lg:px-8">
-          <Link href="/" className="whitespace-nowrap text-base font-bold text-white sm:text-lg lg:text-xl">
-            Markmontage <span className="text-accent">BEAB</span>
+      <header className="fixed inset-x-0 top-0 z-40 bg-olive">
+        <div className="mx-auto flex h-16 max-w-content items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
+          <Link href="/" aria-label="Markmontage BEAB AB – startsida">
+            <Wordmark />
           </Link>
 
-          <div className="flex items-center gap-5">
-            <button type="button" onClick={open} className={`${buttonClasses("primary-inverse")} hidden sm:inline-flex`}>
-              Få gratis offert
-            </button>
-            <button
-              type="button"
-              onClick={() => setIsMenuOpen(true)}
-              aria-expanded={isMenuOpen}
-              aria-label="Öppna meny"
-              className="flex items-center gap-2 text-white"
-            >
-              <span className="hidden text-xs font-semibold uppercase tracking-widest sm:inline">Meny</span>
-              <Icon name="Menu" className="h-6 w-6" />
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen(true)}
+            aria-expanded={isMenuOpen}
+            aria-label="Öppna meny"
+            className="-mr-1 flex h-12 w-12 flex-col items-end justify-center gap-[9px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+          >
+            <span className="block h-[2.5px] w-10 rounded-full bg-white" />
+            <span className="block h-[2.5px] w-10 rounded-full bg-white" />
+            <span className="block h-[2.5px] w-10 rounded-full bg-white" />
+          </button>
         </div>
       </header>
 

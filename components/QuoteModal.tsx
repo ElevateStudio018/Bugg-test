@@ -70,14 +70,14 @@ export function QuoteModal() {
         if (e.target === e.currentTarget) close();
       }}
     >
-      <div className="absolute inset-0 bg-dark/70" aria-hidden="true" />
+      <div className="absolute inset-0 bg-olive/75" aria-hidden="true" />
       <div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="quote-modal-heading"
         tabIndex={-1}
-        className={`relative m-auto w-full max-w-md bg-white p-6 shadow-2xl transition-all duration-200 sm:p-8 ${
+        className={`relative m-auto w-full max-w-md bg-cream p-6 shadow-2xl transition-all duration-200 sm:p-8 ${
           isVisible ? "scale-100 opacity-100" : "scale-95 opacity-0"
         }`}
       >
@@ -85,11 +85,11 @@ export function QuoteModal() {
           type="button"
           onClick={close}
           aria-label="Stäng"
-          className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center text-dark transition-colors hover:bg-dark/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-dark"
+          className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center text-ink transition-colors hover:bg-ink/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-olive"
         >
-          <Icon name="X" className="h-6 w-6" />
+          <Icon name="X" strokeWidth={1.5} className="h-7 w-7" />
         </button>
-        <h2 id="quote-modal-heading" className="mb-6 pr-10 text-h3 text-dark">
+        <h2 id="quote-modal-heading" className="mb-6 pr-10 text-[26px] font-semibold leading-tight text-ink">
           Få en kostnadsfri offert
         </h2>
         <QuoteForm variant="modal" />

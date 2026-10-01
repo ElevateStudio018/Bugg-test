@@ -1,12 +1,7 @@
 import {
   HardHat,
-  Maximize2,
-  Hammer,
-  ChefHat,
-  Bath,
   Layers,
   Shovel,
-  Ruler,
   Droplets,
   Waves,
   Route,
@@ -16,7 +11,8 @@ import {
   MapPin,
   FileText,
   ChevronDown,
-  Menu,
+  ChevronLeft,
+  ChevronRight,
   X,
   User,
   Mail,
@@ -25,19 +21,13 @@ import {
   Loader2,
   CheckCircle2,
   ExternalLink,
-  ArrowRight,
   type LucideProps,
 } from "lucide-react";
 
 const iconMap = {
   HardHat,
-  Maximize2,
-  Hammer,
-  ChefHat,
-  Bath,
   Layers,
   Shovel,
-  Ruler,
   Droplets,
   Waves,
   Route,
@@ -47,7 +37,8 @@ const iconMap = {
   MapPin,
   FileText,
   ChevronDown,
-  Menu,
+  ChevronLeft,
+  ChevronRight,
   X,
   User,
   Mail,
@@ -56,7 +47,6 @@ const iconMap = {
   Loader2,
   CheckCircle2,
   ExternalLink,
-  ArrowRight,
 };
 
 export type IconKey = keyof typeof iconMap;

@@ -3,8 +3,11 @@
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { Icon } from "./Icon";
+import { Wordmark } from "./Wordmark";
 import { buttonClasses } from "./Button";
 import { services } from "@/lib/services";
+import { company } from "@/lib/content";
+import { toTelHref } from "@/lib/format";
 import { useQuoteModal } from "@/contexts/QuoteModalContext";
 
 const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
@@ -17,10 +20,23 @@ interface NavRow {
 
 const rows: NavRow[] = [
   { number: "01", label: "Hem", href: "/" },
-  { number: "03", label: "Projekt", href: "/projekt" },
+  { number: "03", label: "Uppdrag", href: "/projekt" },
   { number: "04", label: "Om oss", href: "/#om-oss" },
   { number: "05", label: "Kontakt", href: "/#kontakt" },
 ];
+
+function RowLink({ row, onClose }: { row: NavRow; onClose: () => void }) {
+  return (
+    <li className="border-b border-white/15 py-4">
+      <Link href={row.href} onClick={onClose} className="group flex items-baseline gap-4">
+        <span className="text-sm font-bold text-moss">{row.number}</span>
+        <span className="text-3xl font-semibold text-white transition-colors group-hover:text-moss sm:text-4xl lg:text-5xl">
+          {row.label}
+        </span>
+      </Link>
+    </li>
+  );
+}
 
 export function NavOverlay({ onClose }: { onClose: () => void }) {
   const { open: openQuoteModal } = useQuoteModal();
@@ -57,46 +73,37 @@ export function NavOverlay({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <div ref={overlayRef} role="dialog" aria-modal="true" aria-label="Meny" className="fixed inset-0 z-[60] flex flex-col bg-dark">
-      <div className="mx-auto flex h-16 w-full max-w-content items-center justify-between px-4 sm:px-6 lg:h-20 lg:px-8">
-        <Link href="/" onClick={onClose} className="whitespace-nowrap text-base font-bold text-white sm:text-lg lg:text-xl">
-          Markmontage <span className="text-accent">BEAB</span>
+    <div ref={overlayRef} role="dialog" aria-modal="true" aria-label="Meny" className="fixed inset-0 z-[60] flex flex-col bg-olive">
+      <div className="mx-auto flex h-16 w-full max-w-content items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
+        <Link href="/" onClick={onClose} aria-label="Markmontage BEAB AB – startsida">
+          <Wordmark />
         </Link>
         <button
           type="button"
           onClick={onClose}
           aria-label="Stäng meny"
-          className="flex h-11 w-11 items-center justify-center text-white"
+          className="-mr-1 flex h-12 w-12 items-center justify-center text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
         >
-          <Icon name="X" className="h-7 w-7" />
+          <Icon name="X" strokeWidth={1.5} className="h-9 w-9" />
         </button>
       </div>
 
       <nav aria-label="Huvudmeny" className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 lg:px-8">
         <ul className="mx-auto max-w-content">
-          {rows.slice(0, 1).map((row) => (
-            <li key={row.href} className="border-b border-white/10 py-4">
-              <Link href={row.href} onClick={onClose} className="group flex items-baseline gap-4">
-                <span className="text-sm font-semibold text-steel">{row.number}</span>
-                <span className="text-3xl font-extrabold text-white transition-colors group-hover:text-white/80 sm:text-4xl lg:text-5xl">
-                  {row.label}
-                </span>
-              </Link>
-            </li>
-          ))}
+          <RowLink row={rows[0]} onClose={onClose} />
 
-          <li className="border-b border-white/10 py-4">
+          <li className="border-b border-white/15 py-4">
             <div className="flex items-baseline gap-4">
-              <span className="text-sm font-semibold text-steel">02</span>
-              <span className="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">Tjänster</span>
+              <span className="text-sm font-bold text-moss">02</span>
+              <span className="text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Tjänster</span>
             </div>
-            <ul className="ml-[3.25rem] mt-4 grid grid-cols-1 gap-x-10 gap-y-2 sm:grid-cols-2">
+            <ul className="ml-[2.6rem] mt-4 grid grid-cols-1 gap-x-10 gap-y-1 sm:grid-cols-2">
               {services.map((service) => (
                 <li key={service.slug}>
                   <Link
                     href={`/tjanster/${service.slug}`}
                     onClick={onClose}
-                    className="block py-1.5 text-base text-white/70 transition-colors hover:text-white"
+                    className="block py-1.5 text-[17px] text-white/75 transition-colors hover:text-moss"
                   >
                     {service.name}
                   </Link>
@@ -106,22 +113,21 @@ export function NavOverlay({ onClose }: { onClose: () => void }) {
           </li>
 
           {rows.slice(1).map((row) => (
-            <li key={row.href} className="border-b border-white/10 py-4">
-              <Link href={row.href} onClick={onClose} className="group flex items-baseline gap-4">
-                <span className="text-sm font-semibold text-steel">{row.number}</span>
-                <span className="text-3xl font-extrabold text-white transition-colors group-hover:text-white/80 sm:text-4xl lg:text-5xl">
-                  {row.label}
-                </span>
-              </Link>
-            </li>
+            <RowLink key={row.href} row={row} onClose={onClose} />
           ))}
         </ul>
       </nav>
 
-      <div className="border-t border-white/10 px-4 py-6 sm:px-6 lg:px-8">
-        <button type="button" onClick={handleCtaClick} className={buttonClasses("primary-inverse", "w-full sm:w-auto")}>
-          Få gratis offert
-        </button>
+      <div className="border-t border-white/15 px-4 py-6 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-content flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <button type="button" onClick={handleCtaClick} className={buttonClasses("moss", "w-full sm:w-auto")}>
+            Få gratis offert
+          </button>
+          <a href={toTelHref(company.phoneNational)} className="flex items-center gap-3 text-[18px] font-semibold text-white hover:text-moss">
+            <Icon name="Phone" className="h-5 w-5 text-moss" />
+            {company.phoneNational}
+          </a>
+        </div>
       </div>
     </div>
   );

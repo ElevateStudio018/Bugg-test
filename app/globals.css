@@ -8,13 +8,22 @@
   }
 
   body {
-    font-family: "Poppins", sans-serif;
-    color: #030f27;
-    background-color: #ffffff;
+    color: #333333;
+    background-color: #e3e1d8;
   }
 
   * {
     overflow-wrap: break-word;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 }
 

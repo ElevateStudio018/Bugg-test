@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import "@fontsource/poppins/400.css";
-import "@fontsource/poppins/500.css";
-import "@fontsource/poppins/600.css";
-import "@fontsource/poppins/700.css";
+import "@fontsource/figtree/400.css";
+import "@fontsource/figtree/500.css";
+import "@fontsource/figtree/600.css";
+import "@fontsource/figtree/700.css";
+import "@fontsource/figtree/800.css";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
-import { TopBar } from "@/components/TopBar";
 import { Footer } from "@/components/Footer";
 import { QuoteModal } from "@/components/QuoteModal";
 import { ConfirmationToast } from "@/components/ConfirmationToast";
@@ -37,11 +37,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="sv">
-      <body className="bg-white text-dark antialiased">
+      <body className="bg-sand font-sans text-coal antialiased">
         <QuoteModalProvider>
-          <TopBar />
           <Navbar />
-          <main>{children}</main>
+          <main className="pt-16 sm:pt-20">{children}</main>
           <Footer />
           <QuoteModal />
           <ConfirmationToast />

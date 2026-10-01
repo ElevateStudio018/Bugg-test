@@ -1,29 +1,65 @@
 import Link from "next/link";
 import { Icon } from "./Icon";
-import { company, footerBlurb, footerCopyright } from "@/lib/content";
+import { Topography } from "./Topography";
+import { QuoteTrigger } from "./QuoteTrigger";
+import { buttonClasses } from "./Button";
+import { company, footerCopyright } from "@/lib/content";
 import { services } from "@/lib/services";
-import { toIntlDisplay, toTelHref } from "@/lib/format";
+import { toTelHref } from "@/lib/format";
+
+const companyLinks = [
+  { label: "Om oss", href: "/#om-oss" },
+  { label: "Uppdrag", href: "/projekt" },
+  { label: "Så går det till", href: "/#process" },
+  { label: "Vanliga frågor", href: "/#faq" },
+  { label: "Kontakt", href: "/#kontakt" },
+];
+
+const headingClass = "text-[26px] font-semibold leading-tight";
+const linkClass = "text-[18px] text-white transition-colors hover:text-moss";
 
 export function Footer() {
   return (
-    <footer className="border-t-2 border-accent bg-white text-dark">
-      <div className="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+    <footer className="relative overflow-hidden bg-olive text-white">
+      <Topography className="pointer-events-none absolute -bottom-40 -right-48 h-[620px] w-[620px] text-white/[0.09] sm:-right-24" />
+
+      <div className="relative mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+        <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr] lg:gap-10">
           <div>
-            <Link href="/" className="text-lg font-bold text-dark">
-              Markmontage <span className="text-accent">BEAB</span>
-            </Link>
-            <p className="mt-4 text-[15px] leading-relaxed text-gray-body">{footerBlurb}</p>
-            <p className="mt-4 text-[12px] text-gray-body">Org.nr: {company.orgNumber}</p>
-            <p className="text-[12px] text-gray-body">VAT: {company.vatNumber}</p>
+            <h2 className={headingClass}>Kontakt</h2>
+            <ul className="mt-6 space-y-5 text-[20px] leading-snug">
+              <li>
+                <a href={toTelHref(company.phoneNational)} className="flex items-center gap-5 transition-colors hover:text-moss">
+                  <Icon name="Phone" strokeWidth={2.25} className="h-7 w-7 shrink-0 text-moss" />
+                  {company.phoneNational}
+                </a>
+              </li>
+              {company.email && (
+                <li>
+                  <a href={`mailto:${company.email}`} className="flex items-center gap-5 transition-colors hover:text-moss">
+                    <Icon name="Mail" strokeWidth={2.25} className="h-7 w-7 shrink-0 text-moss" />
+                    <span className="break-all">{company.email}</span>
+                  </a>
+                </li>
+              )}
+              <li className="flex items-start gap-5">
+                <Icon name="MapPin" strokeWidth={2.25} className="mt-0.5 h-7 w-7 shrink-0 text-moss" />
+                <span>
+                  {company.address.street}
+                  <br />
+                  {company.address.postalCode} {company.address.city}
+                </span>
+              </li>
+            </ul>
+            <QuoteTrigger className={buttonClasses("moss", "mt-9")}>Få gratis offert</QuoteTrigger>
           </div>
 
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-steel">Tjänster</h3>
-            <ul className="mt-5 space-y-3">
+            <h2 className={headingClass}>Tjänster</h2>
+            <ul className="mt-6 space-y-3">
               {services.map((service) => (
                 <li key={service.slug}>
-                  <Link href={`/tjanster/${service.slug}`} className="text-[15px] text-gray-body transition-colors hover:text-dark">
+                  <Link href={`/tjanster/${service.slug}`} className={linkClass}>
                     {service.name}
                   </Link>
                 </li>
@@ -32,40 +68,24 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-steel">Områden</h3>
-            <ul className="mt-5 space-y-3">
-              <li className="text-[15px] text-gray-body">{company.serviceArea}</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-steel">Kontakt &amp; länkar</h3>
-            <ul className="mt-5 space-y-3">
-              <li>
-                <a href={toTelHref(company.phoneNational)} className="flex items-center gap-2 text-[15px] text-gray-body transition-colors hover:text-dark">
-                  <Icon name="Phone" className="h-4 w-4 shrink-0" />
-                  <span className="break-words">{toIntlDisplay(company.phoneNational)}</span>
-                </a>
-              </li>
-              {company.email && (
-                <li>
-                  <a href={`mailto:${company.email}`} className="flex items-center gap-2 text-[15px] text-gray-body transition-colors hover:text-dark">
-                    <Icon name="Mail" className="h-4 w-4 shrink-0" />
-                    <span className="break-all">{company.email}</span>
-                  </a>
+            <h2 className={headingClass}>Markmontage</h2>
+            <ul className="mt-6 space-y-3">
+              {companyLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className={linkClass}>
+                    {link.label}
+                  </Link>
                 </li>
-              )}
-              <li>
-                <Link href="/#faq" className="text-[15px] text-gray-body transition-colors hover:text-dark">
-                  Läs mer om ROT-avdrag
-                </Link>
-              </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        <div className="mt-16 border-t border-dark/10 pt-8">
-          <p className="text-[12px] text-gray-body">{footerCopyright}</p>
+        <div className="mt-16 flex flex-col gap-2 border-t border-white/15 pt-6 text-[14px] text-white/70 sm:flex-row sm:justify-between">
+          <p>{footerCopyright}</p>
+          <p>
+            Org.nr {company.orgNumber} · VAT {company.vatNumber}
+          </p>
         </div>
       </div>
     </footer>

@@ -1,29 +1,45 @@
-import { ButtonHTMLAttributes } from "react";
+import { Icon } from "./Icon";
 
-export type ButtonVariant = "primary" | "primary-inverse" | "ghost" | "outline";
+export type ButtonVariant = "moss" | "olive-outline" | "light-outline";
 
-const base =
-  "inline-flex items-center justify-center rounded-none font-poppins font-bold text-base px-6 py-3.5 transition-all duration-150 ease-out hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:scale-[0.98] active:shadow-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:scale-100";
+const pillBase =
+  "inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-center text-label uppercase transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
 
-const variants: Record<ButtonVariant, string> = {
-  primary: "bg-dark text-white border border-dark focus-visible:outline-dark",
-  "primary-inverse": "bg-white text-dark border border-white focus-visible:outline-white",
-  ghost: "bg-transparent text-white border border-white/70 hover:border-white focus-visible:outline-white",
-  outline: "bg-white text-dark border border-dark/20 hover:border-dark/60 focus-visible:outline-dark",
+const pillVariants: Record<ButtonVariant, string> = {
+  moss: "bg-moss text-white hover:bg-moss-dark focus-visible:outline-moss",
+  "olive-outline": "border-2 border-olive text-olive hover:bg-olive hover:text-white focus-visible:outline-olive",
+  "light-outline": "border-2 border-white/80 text-white hover:bg-white hover:text-olive focus-visible:outline-white",
 };
 
-export function buttonClasses(variant: ButtonVariant = "primary", className = ""): string {
-  return `${base} ${variants[variant]} ${className}`;
+export function buttonClasses(variant: ButtonVariant = "moss", className = ""): string {
+  return `${pillBase} ${pillVariants[variant]} ${className}`;
 }
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: ButtonVariant;
+/** Uppercase, letter-spaced text link with a chevron — the site's secondary call to action. */
+export function arrowLinkClasses(tone: "ink" | "white" = "ink", className = ""): string {
+  const color = tone === "white" ? "text-white hover:text-moss" : "text-ink hover:text-moss";
+  return `group/arrow inline-block text-left text-label uppercase transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current ${color} ${className}`;
 }
 
-export function Button({ variant = "primary", className = "", children, ...rest }: ButtonProps) {
+/**
+ * Label + chevron for arrow links. The last word and the chevron share a no-wrap span,
+ * so a label that breaks over several lines still ends with "word >" instead of the
+ * chevron drifting off on its own.
+ */
+export function ArrowLabel({ children }: { children: string }) {
+  const splitAt = children.lastIndexOf(" ") + 1;
   return (
-    <button className={buttonClasses(variant, className)} {...rest}>
-      {children}
-    </button>
+    <>
+      {children.slice(0, splitAt)}
+      <span className="whitespace-nowrap">
+        {children.slice(splitAt)}
+        <Icon
+          name="ChevronRight"
+          strokeWidth={1.5}
+          aria-hidden="true"
+          className="ml-2.5 inline-block h-5 w-5 align-[-0.3em] transition-transform duration-200 group-hover/arrow:translate-x-1"
+        />
+      </span>
+    </>
   );
 }

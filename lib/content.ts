@@ -6,6 +6,8 @@
 // components consuming them must handle that rather than filling in a
 // placeholder.
 
+import { pexelsPhoto } from "./pexels";
+
 export const company = {
   legalName: "Markmontage BEAB AB",
   shortName: "Markmontage",
@@ -30,8 +32,9 @@ export const company = {
 } as const;
 
 export const hero = {
-  label: null, // No Google rating found for this company — hero rating label omitted.
   heading: "Mark- och grundarbeten i Kungälv & Göteborg",
+  subheading: "– schaktning, dränering, grundläggning och VA-arbeten sedan 2002",
+  image: pexelsPhoto(6915593, 1920),
 } as const;
 
 export const intro = {
@@ -53,12 +56,6 @@ export const about = {
   ],
 };
 
-export const servicesIntro = {
-  heading: "Våra tjänster",
-  lead: `Vi utför mark- och grundarbeten i ${company.serviceArea}.`,
-  body: `${company.legalName} är specialiserade på mark- och grundarbeten och tar även helhetsansvar som totalentreprenör på större projekt. Vår strävan är alltid att uppnå högsta kvalité samt att vara flexibla och lyhörda för kundens önskemål.`,
-};
-
 // General Swedish tax rule (Skatteverket), scoped to the work types it
 // actually covers — not a claim that all of the company's work qualifies.
 export const rotAvdrag = {
@@ -67,7 +64,6 @@ export const rotAvdrag = {
     "Som privatperson kan du få ROT-avdrag på arbetskostnaden för vissa mark- och grundarbeten vid din bostad, till exempel dränering och grundförstärkning i samband med renovering eller tillbyggnad — avdraget är 30% av arbetskostnaden, upp till max 50 000 kr per person och år. Vi hjälper dig med ansökan till Skatteverket och drar av beloppet direkt på fakturan.",
 };
 
-export const footerBlurb = `${company.legalName} - Mark- och grundarbeten i Kungälv och Göteborg`;
 export const footerCopyright = `© ${new Date().getFullYear()} - ${company.legalName}`;
 
 // No Google rating and no reviews were found for this company, so per the

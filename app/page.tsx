@@ -1,10 +1,11 @@
 import { Hero } from "@/components/Hero";
+import { ServicesSection } from "@/components/ServicesSection";
+import { MapSection } from "@/components/MapSection";
+import { UppdragSection } from "@/components/UppdragSection";
 import { About } from "@/components/About";
-import { ProjectsSection } from "@/components/ProjectsSection";
 import { ProcessSection } from "@/components/ProcessSection";
 import { FaqSection } from "@/components/FaqSection";
-import { ContactMap } from "@/components/ContactMap";
-import { FinalCta } from "@/components/FinalCta";
+import { ContactSection } from "@/components/ContactSection";
 import { company } from "@/lib/content";
 import { toTelHref } from "@/lib/format";
 
@@ -35,12 +36,13 @@ export default function HomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Hero />
+      <ServicesSection />
+      <MapSection />
+      <UppdragSection />
       <About />
-      <ProjectsSection />
       <ProcessSection />
       <FaqSection />
-      <ContactMap />
-      <FinalCta />
+      <ContactSection />
     </>
   );
 }

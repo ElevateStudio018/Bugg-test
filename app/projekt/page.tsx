@@ -1,51 +1,41 @@
 import type { Metadata } from "next";
-import { ProjectGrid } from "@/components/ProjectGrid";
-import { Eyebrow } from "@/components/Eyebrow";
-import { Reveal } from "@/components/Reveal";
-import { FinalCta } from "@/components/FinalCta";
-import { GalleryCtaButton } from "./GalleryCtaButton";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { UppdragGrid } from "@/components/UppdragGrid";
+import { QuoteTrigger } from "@/components/QuoteTrigger";
+import { buttonClasses } from "@/components/Button";
 import { company } from "@/lib/content";
-import { projectCategories, projectItems } from "@/lib/projects";
+import { uppdragItems, uppdragTags } from "@/lib/uppdrag";
 
 export const metadata: Metadata = {
-  title: "Våra projekt",
-  description: `Se exempel på mark- och grundarbeten utförda av ${company.legalName} i ${company.serviceArea}.`,
+  title: "Uppdrag vi utför",
+  description: `De typer av mark- och grundarbeten som ${company.legalName} utför i ${company.serviceArea}.`,
   alternates: { canonical: "/projekt" },
 };
 
-export default function ProjectGalleryPage() {
+export default function UppdragPage() {
   return (
-    <>
-      <section className="bg-white pt-16 lg:pt-20">
-        <div className="mx-auto max-w-content px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
-          <Reveal className="max-w-2xl">
-            <Eyebrow label="Våra projekt" className="mb-5" />
-            <h1 className="text-h2-mobile text-dark lg:text-h2">Våra projekt</h1>
-            <p className="mt-4 text-base leading-relaxed text-gray-body">
-              Ett urval av mark- och grundarbeten vi har genomfört i {company.serviceArea}.
-            </p>
-          </Reveal>
+    <div className="mx-auto max-w-content px-4 pb-16 pt-10 sm:px-6 sm:pb-20 lg:px-8 lg:pb-28 lg:pt-14">
+      <Breadcrumbs items={[{ label: "Hem", href: "/" }, { label: "Uppdrag" }]} />
 
-          <div className="mt-12">
-            <ProjectGrid
-              items={projectItems.map((item) => ({
-                key: item.id,
-                icon: item.icon,
-                image: item.image,
-                title: item.category,
-                category: item.category,
-              }))}
-              categories={projectCategories}
-              showFilter
-            />
-          </div>
+      <h1 className="mt-8 text-[38px] font-semibold leading-[1.1] tracking-[-0.01em] text-ink lg:text-[56px]">
+        Uppdrag vi utför
+      </h1>
+      <p className="mt-5 max-w-3xl text-lead text-coal lg:text-[21px]">
+        Från första spadtaget till färdig yta. Här är de typer av uppdrag vi tar oss an – välj ett för att läsa mer om
+        tjänsten.
+      </p>
 
-          <Reveal className="mt-12 flex justify-center">
-            <GalleryCtaButton />
-          </Reveal>
-        </div>
-      </section>
-      <FinalCta />
-    </>
+      <div className="mt-10">
+        <UppdragGrid items={uppdragItems} tags={uppdragTags} />
+      </div>
+
+      <div className="mt-16 border-l-[6px] border-olive pl-6 lg:mt-20">
+        <h2 className="text-h2 text-ink lg:text-[38px]">Har du ett markprojekt på gång?</h2>
+        <p className="mt-4 max-w-2xl text-copy text-coal">
+          Berätta kort om ditt projekt, så återkommer vi med nästa steg.
+        </p>
+        <QuoteTrigger className={buttonClasses("moss", "mt-7")}>Få gratis offert</QuoteTrigger>
+      </div>
+    </div>
   );
 }
