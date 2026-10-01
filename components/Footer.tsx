@@ -23,7 +23,13 @@ const linkClass = "text-[18px] text-white transition-colors hover:text-white/70"
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-olive text-white">
-      <Topography className="pointer-events-none absolute -bottom-40 -right-48 h-[620px] w-[620px] text-white/[0.09] sm:-right-24" />
+      {/* Faint contour lines spread over the whole footer. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 text-white/[0.05]">
+        <Topography className="absolute -left-56 -top-48 h-[760px] w-[760px]" />
+        <Topography className="absolute left-[38%] top-[20%] h-[680px] w-[680px] -translate-x-1/2" />
+        <Topography className="absolute -bottom-56 -right-40 h-[760px] w-[760px]" />
+        <Topography className="absolute -right-72 -top-64 hidden h-[620px] w-[620px] lg:block" />
+      </div>
 
       <div className="relative mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <div className="mb-12 border-b border-white/15 pb-10 lg:mb-14">
