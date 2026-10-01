@@ -84,8 +84,8 @@ export function GroundworkFeature() {
                   </div>
                 </div>
 
-                {/* Cut on the diagonal: along the top on mobile, along the left edge beside the text. */}
-                <div className="relative h-52 [clip-path:polygon(0_16%,100%_0,100%_100%,0_100%)] sm:h-auto sm:w-[40%] sm:shrink-0 sm:[clip-path:polygon(18%_0,100%_0,100%_100%,0_100%)]">
+                {/* Beside the text, cut on the diagonal along its left edge. Left out on phones, where the cards follow straight on. */}
+                <div className="relative hidden sm:block sm:w-[40%] sm:shrink-0 sm:[clip-path:polygon(18%_0,100%_0,100%_100%,0_100%)]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={block.photo}
