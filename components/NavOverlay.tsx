@@ -85,7 +85,7 @@ export function NavOverlay({ onClose }: { onClose: () => void }) {
           aria-label="Stäng meny"
           className="-mr-1 flex h-12 w-12 items-center justify-center text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
         >
-          <Icon name="X" strokeWidth={1.5} className="h-9 w-9" />
+          <Icon name="X" strokeWidth={2.75} className="h-8 w-8" />
         </button>
       </div>
 
@@ -121,7 +121,7 @@ export function NavOverlay({ onClose }: { onClose: () => void }) {
 
       <div className="border-t border-white/15 px-4 py-6 sm:px-6 lg:px-8">
         <div className="mx-auto flex max-w-content flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <button type="button" onClick={handleCtaClick} className={buttonClasses("moss", "w-full sm:w-auto")}>
+          <button type="button" onClick={handleCtaClick} className={buttonClasses("light-outline", "w-full sm:w-auto")}>
             Få gratis offert
           </button>
           <a href={toTelHref(company.phoneNational)} className="flex items-center gap-3 text-[18px] font-semibold text-white hover:text-white/70">

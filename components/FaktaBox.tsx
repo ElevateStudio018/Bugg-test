@@ -5,7 +5,7 @@ export interface FaktaRow {
 
 export function FaktaBox({ title, rows }: { title: string; rows: FaktaRow[] }) {
   return (
-    <div className="bg-moss px-6 py-7 text-white sm:px-8 sm:py-8">
+    <div className="bg-olive px-6 py-7 text-white sm:px-8 sm:py-8">
       <h3 className="text-[24px] font-semibold leading-tight">{title}</h3>
       <dl className="mt-3">
         {rows.map((row) => (

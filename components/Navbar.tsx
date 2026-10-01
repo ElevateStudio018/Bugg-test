@@ -77,11 +77,12 @@ export function Navbar() {
               onClick={() => setIsMenuOpen(true)}
               aria-expanded={isMenuOpen}
               aria-label="Öppna meny"
-              className="-mr-1 flex h-12 w-12 flex-col items-end justify-center gap-[9px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+              className="group -mr-1.5 flex h-12 w-12 flex-col items-end justify-center gap-[7px] rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
             >
-              <span className="block h-[2.5px] w-10 rounded-full bg-white" />
-              <span className="block h-[2.5px] w-10 rounded-full bg-white" />
-              <span className="block h-[2.5px] w-10 rounded-full bg-white" />
+              {/* Thick, rounded bars; the shorter middle bar stretches on hover. */}
+              <span className="block h-1 w-8 rounded-full bg-white" />
+              <span className="block h-1 w-6 rounded-full bg-white transition-all duration-200 group-hover:w-8" />
+              <span className="block h-1 w-8 rounded-full bg-white" />
             </button>
           </div>
         </div>

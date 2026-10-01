@@ -34,7 +34,7 @@ export default function CertifikatPage() {
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
             {certificates.map((certificate) => (
               <li key={certificate.name} className="flex flex-col bg-cream p-6 lg:p-8">
-                <Icon name="BadgeCheck" className="h-9 w-9 text-moss" />
+                <Icon name="BadgeCheck" className="h-9 w-9 text-olive" />
                 <h2 className="mt-5 text-h3 text-ink">{certificate.name}</h2>
                 {certificate.issuer && <p className="mt-2 text-[15px] text-ash">Utfärdat av {certificate.issuer}</p>}
                 {certificate.description && (
@@ -51,7 +51,7 @@ export default function CertifikatPage() {
             <h2 className="text-h3 text-ink">Certifikaten läggs upp inom kort</h2>
             <p className="mt-3 text-copy leading-[1.35] text-coal">
               Har du frågor om våra certifikat och behörigheter är du välkommen att ringa oss på{" "}
-              <a href={toTelHref(company.phoneNational)} className="font-semibold text-ink underline underline-offset-4 hover:text-moss">
+              <a href={toTelHref(company.phoneNational)} className="font-semibold text-ink underline underline-offset-4 hover:text-olive">
                 {company.phoneNational}
               </a>
               .
@@ -64,7 +64,7 @@ export default function CertifikatPage() {
           <p className="mt-4 max-w-2xl text-copy text-coal">
             Berätta kort om ditt projekt, så återkommer vi med nästa steg.
           </p>
-          <QuoteTrigger className={buttonClasses("moss", "mt-7")}>Få gratis offert</QuoteTrigger>
+          <QuoteTrigger className={buttonClasses("olive", "mt-7")}>Få gratis offert</QuoteTrigger>
         </div>
       </div>
     </>

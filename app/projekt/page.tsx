@@ -34,7 +34,7 @@ export default function UppdragPage() {
         <p className="mt-4 max-w-2xl text-copy text-coal">
           Berätta kort om ditt projekt, så återkommer vi med nästa steg.
         </p>
-        <QuoteTrigger className={buttonClasses("moss", "mt-7")}>Få gratis offert</QuoteTrigger>
+        <QuoteTrigger className={buttonClasses("olive", "mt-7")}>Få gratis offert</QuoteTrigger>
       </div>
     </div>
   );

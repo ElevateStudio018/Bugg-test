@@ -20,7 +20,7 @@ export function FaqSection() {
             Hittar du inte svaret? Ring oss på{" "}
             <a
               href={toTelHref(company.phoneNational)}
-              className="whitespace-nowrap font-semibold text-ink transition-colors duration-200 hover:text-moss"
+              className="whitespace-nowrap font-semibold text-ink transition-colors duration-200 hover:text-olive"
             >
               {company.phoneNational}
             </a>

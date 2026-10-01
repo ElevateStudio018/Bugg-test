@@ -207,7 +207,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
         </div>
       </div>
 
-      <button type="submit" disabled={isSubmitting} className={buttonClasses("moss", "w-full disabled:opacity-70")}>
+      <button type="submit" disabled={isSubmitting} className={buttonClasses("olive", "w-full disabled:opacity-70")}>
         {isSubmitting ? (
           <>
             <Icon name="Loader2" className="mr-2 h-5 w-5 animate-spin" />

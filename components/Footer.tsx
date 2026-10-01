@@ -52,7 +52,7 @@ export function Footer() {
                 </span>
               </li>
             </ul>
-            <QuoteTrigger className={buttonClasses("moss", "mt-9")}>Få gratis offert</QuoteTrigger>
+            <QuoteTrigger className={buttonClasses("light-outline", "mt-9")}>Få gratis offert</QuoteTrigger>
           </div>
 
           <div>

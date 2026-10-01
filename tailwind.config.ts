@@ -11,7 +11,6 @@ const config: Config = {
     extend: {
       colors: {
         olive: { DEFAULT: "#1C2817", dark: "#131C10" },
-        moss: { DEFAULT: "#3E5D27", dark: "#2F4A1C" },
         sand: "#E3E1D8",
         cream: "#F2F0E9",
         ink: "#222222",

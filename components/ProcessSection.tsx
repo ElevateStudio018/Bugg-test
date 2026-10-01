@@ -15,7 +15,7 @@ export function ProcessSection() {
           {processSteps.map((step, index) => (
             <Reveal as="li" key={step.title} delayMs={index * 80} className="flex flex-col bg-cream p-7 sm:p-8">
               <div className="flex items-center justify-between">
-                <span className="flex h-12 w-12 items-center justify-center bg-moss text-white">
+                <span className="flex h-12 w-12 items-center justify-center bg-olive text-white">
                   <Icon name={step.icon} className="h-6 w-6" />
                 </span>
                 <span className="text-[44px] font-semibold leading-none text-ink/15" aria-hidden="true">

@@ -54,7 +54,7 @@ export function UppdragCarousel({ items }: { items: UppdragItem[] }) {
   }
 
   const arrowClass =
-    "absolute top-1/2 z-10 flex h-16 w-12 -translate-y-1/2 items-center justify-center bg-olive text-white transition-colors duration-200 hover:bg-moss focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-olive";
+    "absolute top-1/2 z-10 flex h-16 w-12 -translate-y-1/2 items-center justify-center bg-olive text-white transition-colors duration-200 hover:bg-olive-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-olive";
 
   return (
     <div>
@@ -96,7 +96,7 @@ export function UppdragCarousel({ items }: { items: UppdragItem[] }) {
             >
               <span
                 className={`block h-[11px] w-[11px] rounded-full transition-colors duration-200 ${
-                  page === activePage ? "bg-moss" : "bg-pebble group-hover/dot:bg-ash"
+                  page === activePage ? "bg-olive" : "bg-pebble group-hover/dot:bg-ash"
                 }`}
               />
             </button>

@@ -73,7 +73,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
 
         <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
           <article>
-            <span className="inline-block bg-moss px-4 py-[11px] text-tag uppercase text-white">Tjänst</span>
+            <span className="inline-block bg-olive px-4 py-[11px] text-tag uppercase text-white">Tjänst</span>
             <h1 className="mt-4 text-[38px] font-semibold leading-[1.1] tracking-[-0.01em] text-ink lg:text-[56px]">
               {service.name}
             </h1>
@@ -111,25 +111,25 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
               <p className="mt-1 text-[17px] text-coal">Mark- och grundarbeten sedan {company.foundedYear}</p>
               <ul className="mt-6 space-y-4 text-[18px] text-ink">
                 <li>
-                  <a href={toTelHref(company.phoneNational)} className="flex items-center gap-4 transition-colors hover:text-moss">
-                    <Icon name="Phone" strokeWidth={2.25} className="h-6 w-6 shrink-0 text-moss" />
+                  <a href={toTelHref(company.phoneNational)} className="flex items-center gap-4 transition-colors hover:text-olive">
+                    <Icon name="Phone" strokeWidth={2.25} className="h-6 w-6 shrink-0 text-olive" />
                     {company.phoneNational}
                   </a>
                 </li>
                 {company.email && (
                   <li>
-                    <a href={`mailto:${company.email}`} className="flex items-center gap-4 transition-colors hover:text-moss">
-                      <Icon name="Mail" strokeWidth={2.25} className="h-6 w-6 shrink-0 text-moss" />
+                    <a href={`mailto:${company.email}`} className="flex items-center gap-4 transition-colors hover:text-olive">
+                      <Icon name="Mail" strokeWidth={2.25} className="h-6 w-6 shrink-0 text-olive" />
                       <span className="break-all">{company.email}</span>
                     </a>
                   </li>
                 )}
                 <li className="flex items-start gap-4">
-                  <Icon name="MapPin" strokeWidth={2.25} className="mt-0.5 h-6 w-6 shrink-0 text-moss" />
+                  <Icon name="MapPin" strokeWidth={2.25} className="mt-0.5 h-6 w-6 shrink-0 text-olive" />
                   {company.address.full}
                 </li>
               </ul>
-              <QuoteTrigger className={buttonClasses("moss", "mt-8 w-full")}>Få gratis offert</QuoteTrigger>
+              <QuoteTrigger className={buttonClasses("olive", "mt-8 w-full")}>Få gratis offert</QuoteTrigger>
             </div>
 
             <Link href="/#tjanster" className={buttonClasses("olive-outline", "w-full")}>

@@ -19,7 +19,7 @@ export function ServiceCard({ service, wide = false }: { service: Service; wide?
       </div>
       <div className="flex flex-1 flex-col justify-between gap-6 px-6 py-6 sm:px-8 sm:py-8">
         <h3 className="text-h3 text-ink">{service.name}</h3>
-        <span className="text-label uppercase text-ink transition-colors duration-200 group-hover:text-moss">
+        <span className="text-label uppercase text-ink transition-colors duration-200 group-hover:text-olive">
           <ArrowLabel spaced>{`Läs mer om ${service.name}`}</ArrowLabel>
         </span>
       </div>
