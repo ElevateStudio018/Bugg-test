@@ -79,9 +79,9 @@ export function Navbar() {
               aria-label="Öppna meny"
               className="group -mr-1.5 flex h-12 w-12 flex-col items-end justify-center gap-[7px] rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
             >
-              {/* Thick, rounded bars; the shorter middle bar stretches on hover. */}
+              {/* Three equal, thick bars with rounded ends. */}
               <span className="block h-1 w-8 rounded-full bg-white" />
-              <span className="block h-1 w-6 rounded-full bg-white transition-all duration-200 group-hover:w-8" />
+              <span className="block h-1 w-8 rounded-full bg-white" />
               <span className="block h-1 w-8 rounded-full bg-white" />
             </button>
           </div>

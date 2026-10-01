@@ -4,8 +4,8 @@ import { hero } from "@/lib/content";
 
 export function Hero() {
   return (
-    // The photo fills the first screen on every device under an even dark filter; the text sits just below the
-    // middle on the left, in white.
+    // The photo fills the first screen on every device under an even dark filter. The white text sits near the
+    // bottom on phones and tablets, and just below the middle on the left on desktop.
     <section className="relative isolate flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden bg-olive-dark sm:min-h-[calc(100svh-5rem)]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -15,7 +15,7 @@ export function Hero() {
       />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-black/45" />
 
-      <div className="mx-auto my-auto w-full max-w-content px-4 pt-[14svh] sm:px-6 lg:px-8 lg:pt-[8svh]">
+      <div className="mx-auto mt-auto w-full max-w-content px-4 pb-12 sm:px-6 sm:pb-16 lg:my-auto lg:px-8 lg:pb-0 lg:pt-[8svh]">
         <p className="text-tag uppercase text-white/85 lg:text-[14px]">{hero.eyebrow}</p>
         <h1 className="mt-4 max-w-[9.5em] text-[36px] font-semibold leading-[1.04] tracking-[-0.02em] text-white min-[380px]:text-[40px] sm:text-[56px] lg:mt-6 lg:text-[52px] xl:text-[64px] 2xl:text-[88px]">
           {hero.heading}
