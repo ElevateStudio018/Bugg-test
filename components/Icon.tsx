@@ -1,5 +1,4 @@
 import {
-  ArrowUpRight,
   HardHat,
   Layers,
   Shovel,
@@ -26,7 +25,6 @@ import {
 } from "lucide-react";
 
 const iconMap = {
-  ArrowUpRight,
   HardHat,
   Layers,
   Shovel,
