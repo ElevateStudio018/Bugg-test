@@ -4,16 +4,22 @@ import { hero } from "@/lib/content";
 
 export function Hero() {
   return (
-    // Desktop: the photo fills the first screen and the text sits on its open sky, top left, above the skyline.
+    // Desktop: the photo fills the first screen; the text sits just below the middle on the left, in white on a
+    // soft dark shade that fades out before the crew on the right.
     // Phones and tablets: the text sits on a sky-coloured top (matched to the photo) and the photo fills the
     // rest below, fading in at its top edge, so the crew stays in view instead of a tight crop.
     <section className="relative isolate flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden bg-gradient-to-b from-[#bcc3d1] to-[#adb6c8] sm:min-h-[calc(100svh-5rem)]">
-      <div className="mx-auto w-full max-w-content px-4 pt-10 sm:px-6 sm:pt-14 lg:px-8 lg:pt-[6svh]">
-        <p className="text-tag uppercase text-olive lg:text-[14px]">{hero.eyebrow}</p>
-        <h1 className="mt-4 max-w-[9.5em] text-[40px] font-semibold leading-[1.04] tracking-[-0.02em] text-olive sm:text-[56px] lg:mt-6 xl:text-[64px] 2xl:text-[88px]">
+      <div className="mx-auto w-full max-w-content px-4 pt-10 sm:px-6 sm:pt-14 lg:my-auto lg:px-8 lg:pt-[8svh]">
+        <p className="text-tag uppercase text-olive lg:text-[14px] lg:text-white/85">{hero.eyebrow}</p>
+        <h1 className="mt-4 max-w-[9.5em] text-[40px] font-semibold leading-[1.04] tracking-[-0.02em] text-olive sm:text-[56px] lg:text-white lg:mt-6 lg:text-[52px] xl:text-[64px] 2xl:text-[88px]">
           {hero.heading}
         </h1>
-        <QuoteTrigger className={buttonClasses("olive", "group/arrow mt-8 lg:mt-10")}>
+        <QuoteTrigger
+          className={buttonClasses(
+            "olive",
+            "group/arrow mt-8 lg:mt-10 lg:bg-white lg:text-olive lg:hover:bg-sand lg:focus-visible:outline-white",
+          )}
+        >
           <span>
             <ArrowLabel spaced>Begär offert</ArrowLabel>
           </span>
@@ -26,6 +32,10 @@ export function Hero() {
           src={hero.image}
           alt=""
           className="absolute inset-0 h-full w-full object-cover object-[72%_bottom] [mask-image:linear-gradient(to_bottom,transparent,black_35%)] lg:object-[75%_55%] lg:[mask-image:none]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 hidden bg-gradient-to-r from-black/60 via-black/35 via-[38%] to-transparent to-[62%] lg:block"
         />
       </div>
     </section>
