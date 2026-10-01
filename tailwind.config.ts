@@ -17,9 +17,7 @@ const config: Config = {
         ink: "#222222",
         coal: "#333333",
         ash: "#8C8A82",
-        // Promo box tones and the inactive carousel dot, sampled from the reference screenshots.
-        bark: "#403627",
-        khaki: "#827049",
+        // Inactive carousel dot.
         pebble: "#B6B5AE",
       },
       fontFamily: {
