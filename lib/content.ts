@@ -34,7 +34,7 @@ export const company = {
 export const hero = {
   eyebrow: `${company.legalName} · Sedan ${company.foundedYear}`,
   heading: "Mark- och grundarbeten i Kungälv & Göteborg",
-  image: companyPhotos.heroGravmaskin,
+  image: companyPhotos.heroHamnen,
 } as const;
 
 export const intro = {
