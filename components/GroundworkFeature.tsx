@@ -1,6 +1,6 @@
 import { Reveal } from "./Reveal";
 import { ArrowLabel } from "./Button";
-import workPhoto from "@/assets/photos/markmontage-arbete.webp";
+import { companyPhotos } from "@/lib/photos";
 
 // Restates claims the site already makes (About, the process steps and the service pages).
 const blocks = [
@@ -23,7 +23,7 @@ export function GroundworkFeature() {
       <div className="relative aspect-[4/3] w-full sm:aspect-[16/9] lg:absolute lg:inset-0 lg:-z-10 lg:aspect-auto">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={workPhoto.src}
+          src={companyPhotos.arbete}
           alt=""
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover object-[center_35%]"

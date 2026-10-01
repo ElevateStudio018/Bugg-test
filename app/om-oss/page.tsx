@@ -15,9 +15,9 @@ export const metadata: Metadata = {
 export default function OmOssPage() {
   return (
     <>
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-olive/20 sm:aspect-[2/1] lg:aspect-auto lg:h-[min(56vh,600px)]">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-olive/20 sm:aspect-[2/1] lg:aspect-auto lg:h-[min(66vh,700px)]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={aboutPage.heroImage} alt="" className="absolute inset-0 h-full w-full object-cover" />
+        <img src={aboutPage.heroImage} alt="" className="absolute inset-0 h-full w-full object-cover object-[center_35%]" />
       </div>
 
       <div className="mx-auto max-w-content px-4 pb-14 pt-8 sm:px-6 sm:pb-20 lg:px-8 lg:pb-24 lg:pt-10">

@@ -4,6 +4,7 @@ import { Reveal } from "./Reveal";
 import { QuoteTrigger } from "./QuoteTrigger";
 import { Topography } from "./Topography";
 import { pexelsPhoto } from "@/lib/pexels";
+import { companyPhotos } from "@/lib/photos";
 
 type Side = "left" | "right";
 
@@ -56,7 +57,7 @@ export function PromoSection() {
       <div className="mx-auto max-w-content space-y-8 sm:px-6 lg:space-y-20 lg:px-8">
         <PromoBox
           side="left"
-          image={pexelsPhoto(12063807, 1600)}
+          image={companyPhotos.kabeltrumma}
           heading="Hela markarbetet hos en entreprenör"
           text="Som totalentreprenör tar vi helhetsansvaret – från schaktning och dränering till grundläggning, VA-arbeten och färdig mark. Du får en kontaktperson genom hela projektet."
         >

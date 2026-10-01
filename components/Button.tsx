@@ -1,13 +1,12 @@
 import { Icon } from "./Icon";
 
-export type ButtonVariant = "moss" | "white" | "olive-outline" | "light-outline";
+export type ButtonVariant = "moss" | "olive-outline" | "light-outline";
 
 const pillBase =
   "inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-center text-label uppercase transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
 
 const pillVariants: Record<ButtonVariant, string> = {
   moss: "bg-moss text-white hover:bg-moss-dark focus-visible:outline-moss",
-  white: "bg-white text-olive hover:bg-sand focus-visible:outline-white",
   "olive-outline": "border-[1.5px] border-olive text-olive hover:bg-olive hover:text-white focus-visible:outline-olive",
   "light-outline": "border-[1.5px] border-white text-white hover:bg-white hover:text-olive focus-visible:outline-white",
 };

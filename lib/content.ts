@@ -6,7 +6,7 @@
 // components consuming them must handle that rather than filling in a
 // placeholder.
 
-import { pexelsPhoto } from "./pexels";
+import { companyPhotos } from "./photos";
 
 export const company = {
   legalName: "Markmontage BEAB AB",
@@ -35,7 +35,7 @@ export const hero = {
   eyebrow: `${company.legalName} · Sedan ${company.foundedYear}`,
   heading: "Mark- och grundarbeten i Kungälv & Göteborg",
   subheading: "Schaktning, dränering, grundläggning och VA-arbeten – från första spadtaget till färdig yta.",
-  image: pexelsPhoto(13098128, 2400),
+  image: companyPhotos.schaktKabel,
 } as const;
 
 export const intro = {
@@ -48,7 +48,7 @@ export const intro = {
 // none was provided for this rebrand.
 export const about = {
   heading: "Om oss",
-  image: pexelsPhoto(6245621, 1400),
+  image: companyPhotos.teamet,
   subheading: `${company.legalName} har sin bas i Romelanda utanför Kungälv och grundades ${company.foundedYear}`,
   paragraphs: [
     `${company.legalName} är ett entreprenadföretag inom mark- och grundarbeten, verksamt i ${company.serviceArea}. Vi utför bland annat schaktning, dränering, grundläggning och VA-arbeten, och tar även helhetsansvar som totalentreprenör på större projekt.`,
@@ -66,11 +66,11 @@ export const aboutFacts: { label: string; value: string }[] = [
   { label: "Org.nr", value: company.orgNumber },
 ];
 
-// The /om-oss page. Decorative stock photos (not the company's own sites); the copy only restates
+// The /om-oss page. Photos are the company's own; the copy only restates
 // what the About text, the process steps and the service pages already say.
 export const aboutPage = {
-  heroImage: pexelsPhoto(6356206, 1920),
-  middleImage: pexelsPhoto(159306, 1920),
+  heroImage: companyPhotos.teamet,
+  middleImage: companyPhotos.gravmaskinRor,
   foundation: {
     heading: "Vi lägger grunden för ditt bygge",
     text: `Vi utför bland annat schaktning, dränering, grundläggning och VA-arbeten i ${company.serviceArea} – och tar helhetsansvar som totalentreprenör på större projekt. Oavsett uppdrag lägger vi stor vikt vid fackmannamässigt utförande i varje moment.`,

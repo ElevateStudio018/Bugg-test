@@ -1,4 +1,5 @@
 import { pexelsPhoto } from "./pexels";
+import { companyPhotos } from "./photos";
 
 export type ServiceIconKey = "HardHat" | "Layers" | "Shovel" | "Droplets" | "Waves" | "Route" | "LayoutGrid";
 
@@ -24,7 +25,7 @@ export const services: Service[] = [
     shortDescription:
       "Schaktning och markarbeten som förbereder tomten inför bygget, anpassat efter markförhållandena.",
     icon: "Shovel",
-    image: pexelsPhoto(2449603),
+    image: companyPhotos.minigravare,
     description: [
       "Ett bygge börjar alltid under mark, och rätt förberett underlag avgör hur resten av projektet går. Markmontage BEAB AB utför schaktning och markarbeten i Kungälv, Göteborg och övriga Västra Götaland, både som en del av större entreprenader och som fristående uppdrag.",
       "Vi hanterar schaktning för grund, ledningar och anslutningar, samt terrassering och iordningställande av tomtmark inför fortsatt byggnation. Varje uppdrag anpassas efter markförhållandena på plats, från lera och berg till mer lättarbetad mark.",
@@ -66,7 +67,7 @@ export const services: Service[] = [
     shortDescription:
       "Vatten- och avloppsarbeten från anslutning till kommunalt nät till ledningar på egen tomt.",
     icon: "Waves",
-    image: pexelsPhoto(29301874),
+    image: companyPhotos.gravmaskinRor,
     description: [
       "Vatten- och avloppsarbeten kräver både rätt kompetens och rätt tillstånd, eftersom felaktigt utförda VA-installationer kan bli kostsamma att åtgärda. Markmontage BEAB AB utför VA-arbeten i Kungälv, Göteborg och övriga Västra Götaland.",
       "Vi lägger och byter ledningar för vatten, spillvatten och dagvatten, samt utför anslutningar till kommunalt VA-nät eller enskilda avloppsanläggningar. Arbetet utförs enligt gällande branschregler för VA-installationer.",
