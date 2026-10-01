@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Icon } from "./Icon";
 import { Topography } from "./Topography";
+import { Wordmark } from "./Wordmark";
 import { QuoteTrigger } from "./QuoteTrigger";
 import { buttonClasses } from "./Button";
 import { company, footerCopyright } from "@/lib/content";
@@ -25,6 +26,16 @@ export function Footer() {
       <Topography className="pointer-events-none absolute -bottom-40 -right-48 h-[620px] w-[620px] text-white/[0.09] sm:-right-24" />
 
       <div className="relative mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+        <div className="mb-12 border-b border-white/15 pb-10 lg:mb-14">
+          <Link
+            href="/"
+            aria-label="Markmontage BEAB AB – startsida"
+            className="inline-block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+          >
+            <Wordmark />
+          </Link>
+        </div>
+
         <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr] lg:gap-10">
           <div>
             <h2 className={headingClass}>Kontakt</h2>
