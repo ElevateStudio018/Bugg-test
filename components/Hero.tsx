@@ -10,14 +10,16 @@ export function Hero() {
     // rest below, fading in at its top edge, so the crew stays in view instead of a tight crop.
     <section className="relative isolate flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden bg-gradient-to-b from-[#bcc3d1] to-[#adb6c8] sm:min-h-[calc(100svh-5rem)]">
       <div className="mx-auto w-full max-w-content px-4 pt-10 sm:px-6 sm:pt-14 lg:my-auto lg:px-8 lg:pt-[8svh]">
-        <p className="text-tag uppercase text-olive lg:text-[14px] lg:text-white/85">{hero.eyebrow}</p>
+        <p className="text-tag uppercase text-olive lg:text-[14px] lg:text-white/85">
+          {hero.eyebrow}
+        </p>
         <h1 className="mt-4 max-w-[9.5em] text-[40px] font-semibold leading-[1.04] tracking-[-0.02em] text-olive sm:text-[56px] lg:text-white lg:mt-6 lg:text-[52px] xl:text-[64px] 2xl:text-[88px]">
           {hero.heading}
         </h1>
         <QuoteTrigger
           className={buttonClasses(
             "olive",
-            "group/arrow mt-8 lg:mt-10 lg:bg-white lg:text-olive lg:hover:bg-moss lg:hover:text-white lg:focus-visible:outline-white",
+            "group/arrow mt-8 lg:mt-10 lg:focus-visible:outline-white",
           )}
         >
           <span>

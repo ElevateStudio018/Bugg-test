@@ -6,6 +6,15 @@ import { useEffect, useState } from "react";
 import { NavOverlay } from "./NavOverlay";
 import { Wordmark } from "./Wordmark";
 
+// Shown in the bar on desktop; the menu (hamburger) keeps the full list, including every service.
+const barLinks = [
+  { label: "Tjänster", href: "/#tjanster" },
+  { label: "Uppdrag", href: "/projekt" },
+  { label: "Om oss", href: "/om-oss" },
+  { label: "Certifikat", href: "/certifikat" },
+  { label: "Kontakt", href: "/#kontakt" },
+];
+
 export function Navbar() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,17 +47,43 @@ export function Navbar() {
             <Wordmark />
           </Link>
 
-          <button
-            type="button"
-            onClick={() => setIsMenuOpen(true)}
-            aria-expanded={isMenuOpen}
-            aria-label="Öppna meny"
-            className="-mr-1 flex h-12 w-12 flex-col items-end justify-center gap-[9px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
-          >
-            <span className="block h-[2.5px] w-10 rounded-full bg-white" />
-            <span className="block h-[2.5px] w-10 rounded-full bg-white" />
-            <span className="block h-[2.5px] w-10 rounded-full bg-white" />
-          </button>
+          <div className="flex items-center gap-8">
+            <nav aria-label="Snabblänkar" className="hidden lg:block">
+              <ul className="flex items-center gap-8">
+                {barLinks.map((link) => {
+                  const isActive =
+                    !link.href.includes("#") && pathname.startsWith(link.href);
+                  return (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        aria-current={isActive ? "page" : undefined}
+                        className={`relative py-2 text-[16px] font-semibold transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:bg-white after:transition-transform after:duration-200 hover:text-white hover:after:scale-x-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white ${
+                          isActive
+                            ? "text-white after:scale-x-100"
+                            : "text-white/75 after:scale-x-0"
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+
+            <button
+              type="button"
+              onClick={() => setIsMenuOpen(true)}
+              aria-expanded={isMenuOpen}
+              aria-label="Öppna meny"
+              className="-mr-1 flex h-12 w-12 flex-col items-end justify-center gap-[9px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+            >
+              <span className="block h-[2.5px] w-10 rounded-full bg-white" />
+              <span className="block h-[2.5px] w-10 rounded-full bg-white" />
+              <span className="block h-[2.5px] w-10 rounded-full bg-white" />
+            </button>
+          </div>
         </div>
       </header>
 
