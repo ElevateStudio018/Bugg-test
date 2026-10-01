@@ -62,7 +62,7 @@ export function GroundworkFeature() {
       </div>
 
       {/* The two points as cards that overlap the bottom of the photo band. */}
-      <div className="relative mx-auto -mt-12 max-w-content px-3 pb-16 sm:px-6 lg:-mt-28 lg:px-8 lg:pb-24">
+      <div className="relative mx-auto -mt-12 max-w-content px-3 sm:px-6 lg:-mt-28 lg:px-8">
         <div className="grid gap-4 lg:gap-6 xl:grid-cols-2">
           {blocks.map((block, index) => (
             <Reveal key={block.heading} delayMs={index * 100} className="h-full">
