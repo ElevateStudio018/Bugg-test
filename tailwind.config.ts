@@ -10,8 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        olive: { DEFAULT: "#3D4724", dark: "#2F3719" },
-        moss: { DEFAULT: "#849E3F", dark: "#6F8733" },
+        olive: { DEFAULT: "#24321D", dark: "#1A2515" },
+        moss: { DEFAULT: "#6E8B35", dark: "#5A7329" },
         sand: "#E3E1D8",
         cream: "#F2F0E9",
         ink: "#222222",
