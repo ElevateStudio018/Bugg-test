@@ -4,8 +4,8 @@ import { hero } from "@/lib/content";
 
 export function Hero() {
   return (
-    // Desktop: the photo fills the first screen; the text sits just below the middle on the left, in white on a
-    // soft dark shade that fades out before the crew on the right.
+    // Desktop: the photo fills the first screen under an even dark filter; the text sits just below the middle
+    // on the left, in white.
     // Phones and tablets: the text sits on a sky-coloured top (matched to the photo) and the photo fills the
     // rest below, fading in at its top edge, so the crew stays in view instead of a tight crop.
     <section className="relative isolate flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden bg-gradient-to-b from-[#bcc3d1] to-[#adb6c8] sm:min-h-[calc(100svh-5rem)]">
@@ -17,7 +17,7 @@ export function Hero() {
         <QuoteTrigger
           className={buttonClasses(
             "olive",
-            "group/arrow mt-8 lg:mt-10 lg:bg-white lg:text-olive lg:hover:bg-sand lg:focus-visible:outline-white",
+            "group/arrow mt-8 lg:mt-10 lg:bg-white lg:text-olive lg:hover:bg-moss lg:hover:text-white lg:focus-visible:outline-white",
           )}
         >
           <span>
@@ -35,7 +35,7 @@ export function Hero() {
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 hidden bg-gradient-to-r from-black/60 via-black/35 via-[38%] to-transparent to-[62%] lg:block"
+          className="absolute inset-0 hidden bg-black/45 lg:block"
         />
       </div>
     </section>
