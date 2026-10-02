@@ -34,7 +34,7 @@ export function ContactSection() {
                 <DrawIcon
                   name={row.icon}
                   strokeWidth={2.25}
-                  delayMs={250 + index * 150}
+                  delayMs={150 + index * 80}
                   className="mt-1 flex shrink-0"
                   iconClassName="h-7 w-7 text-olive"
                 />

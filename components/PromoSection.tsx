@@ -36,7 +36,7 @@ function PromoBox({ side, image, heading, text, children }: PromoBoxProps) {
         <ZoomImage src={image} loading="lazy" parallax="band" className="h-full w-full object-cover" />
       </div>
       {/* The box lands on the photo a moment after the photo itself. */}
-      <Reveal delayMs={180} className={`relative mx-2 -mt-12 sm:mx-6 lg:-mt-48 lg:w-[46%] ${classes.box}`}>
+      <Reveal delayMs={60} className={`relative mx-2 -mt-12 sm:mx-6 lg:-mt-48 lg:w-[46%] ${classes.box}`}>
         <div className="relative overflow-hidden bg-olive px-8 pb-8 pt-7 text-white lg:p-12">
           <Topography
             className={`pointer-events-none absolute h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 text-white/[0.09] ${classes.pattern}`}

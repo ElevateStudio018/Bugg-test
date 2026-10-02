@@ -14,7 +14,7 @@ export function GrowLine({ className = "", axis = "x" }: { className?: string; a
     <span
       ref={ref}
       aria-hidden="true"
-      className={`block transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+      className={`block transition-transform duration-300 ease-[cubic-bezier(0.33,1,0.68,1)] ${
         axis === "x" ? "origin-left" : "origin-top"
       } ${isInView ? "" : hidden} ${className}`}
     />

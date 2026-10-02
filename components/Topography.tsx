@@ -40,10 +40,10 @@ export function Topography({ className = "" }: { className?: string }) {
           d={d}
           pathLength={1}
           strokeDasharray={1}
-          className={`transition-[stroke-dashoffset] duration-[2400ms] ease-out ${
+          className={`transition-[stroke-dashoffset] duration-[600ms] ease-[cubic-bezier(0.33,1,0.68,1)] ${
             isInView ? "[stroke-dashoffset:0]" : "[stroke-dashoffset:1]"
           }`}
-          style={{ transitionDelay: `${index * 150}ms` }}
+          style={{ transitionDelay: `${150 + index * 30}ms` }}
         />
       ))}
     </svg>

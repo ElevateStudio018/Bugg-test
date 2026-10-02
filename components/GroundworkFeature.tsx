@@ -73,7 +73,7 @@ export function GroundworkFeature() {
                   <div className="flex items-center gap-4">
                     <DrawIcon
                       name={block.icon}
-                      delayMs={350 + index * 120}
+                      delayMs={150 + index * 60}
                       className="flex h-12 w-12 shrink-0 items-center justify-center bg-olive text-white"
                       iconClassName="h-6 w-6"
                     />

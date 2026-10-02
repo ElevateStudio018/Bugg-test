@@ -3,15 +3,17 @@ import { GrowLine } from "./GrowLine";
 import { Reveal } from "./Reveal";
 import { processSteps } from "@/lib/process";
 
-// Each card's top edge draws in and then its icon draws itself. Where cards share a row (2 columns from sm, 4 from lg)
-// the later ones wait, so the edges run from step to step like a timeline.
+// Each card fades up, its top edge draws in and then its icon draws itself, on one quick beat. Cards sharing a row
+// (2 columns from sm, 4 from lg) come a beat apart, so the edges run from step to step like a timeline; a card alone
+// on its row (phones) doesn't wait.
 const stagger = [
-  { line: "delay-200", icon: "[--draw-delay:450ms]" },
-  { line: "delay-200 sm:delay-[450ms]", icon: "[--draw-delay:450ms] sm:[--draw-delay:700ms]" },
-  { line: "delay-200 lg:delay-[700ms]", icon: "[--draw-delay:450ms] lg:[--draw-delay:950ms]" },
+  { card: "delay-0", line: "delay-100", icon: "[--draw-delay:200ms]" },
+  { card: "delay-0 sm:delay-[70ms]", line: "delay-100 sm:delay-[170ms]", icon: "[--draw-delay:200ms] sm:[--draw-delay:270ms]" },
+  { card: "delay-0 lg:delay-[140ms]", line: "delay-100 lg:delay-[240ms]", icon: "[--draw-delay:200ms] lg:[--draw-delay:340ms]" },
   {
-    line: "delay-200 sm:delay-[450ms] lg:delay-[950ms]",
-    icon: "[--draw-delay:450ms] sm:[--draw-delay:700ms] lg:[--draw-delay:1200ms]",
+    card: "delay-0 sm:delay-[70ms] lg:delay-[210ms]",
+    line: "delay-100 sm:delay-[170ms] lg:delay-[310ms]",
+    icon: "[--draw-delay:200ms] sm:[--draw-delay:270ms] lg:[--draw-delay:410ms]",
   },
 ];
 
@@ -26,7 +28,11 @@ export function ProcessSection() {
 
         <ol className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((step, index) => (
-            <Reveal as="li" key={step.title} delayMs={index * 80} className="relative flex flex-col bg-cream p-7 sm:p-8">
+            <Reveal
+              as="li"
+              key={step.title}
+              className={`relative flex flex-col bg-cream p-7 sm:p-8 ${stagger[index % stagger.length].card}`}
+            >
               <GrowLine className={`absolute inset-x-0 top-0 h-[3px] bg-olive ${stagger[index % stagger.length].line}`} />
               <div className="flex items-center justify-between">
                 <DrawIcon

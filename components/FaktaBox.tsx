@@ -19,10 +19,10 @@ export function FaktaBox({ title, rows }: { title: string; rows: FaktaRow[] }) {
         {rows.map((row, index) => (
           <div
             key={row.label}
-            className={`relative grid grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-4 py-4 text-[17px] leading-snug after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:bg-white/70 after:transition-transform after:duration-700 after:ease-out after:[transition-delay:var(--line-delay)] last:pb-0 last:after:hidden ${
+            className={`relative grid grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-4 py-4 text-[17px] leading-snug after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:bg-white/70 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.33,1,0.68,1)] after:[transition-delay:var(--line-delay)] last:pb-0 last:after:hidden ${
               isInView ? "after:scale-x-100" : "after:scale-x-0"
             }`}
-            style={{ "--line-delay": `${150 + index * 120}ms` } as CSSProperties}
+            style={{ "--line-delay": `${60 + index * 50}ms` } as CSSProperties}
           >
             <dt className="font-bold">{row.label}:</dt>
             <dd>{row.value}</dd>

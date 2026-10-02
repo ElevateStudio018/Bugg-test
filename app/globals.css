@@ -46,7 +46,7 @@
 
 .icon-draw.is-drawn svg * {
   stroke-dashoffset: 0;
-  transition: stroke-dashoffset 0.9s cubic-bezier(0.65, 0, 0.35, 1) var(--draw-delay, 0ms);
+  transition: stroke-dashoffset 0.35s cubic-bezier(0.33, 1, 0.68, 1) var(--draw-delay, 0ms);
 }
 
 /* Scroll-linked motion, left out with reduced motion and where the browser can't tie animations to scrolling. */
