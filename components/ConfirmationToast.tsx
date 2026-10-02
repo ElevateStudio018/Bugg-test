@@ -18,15 +18,14 @@ export function ConfirmationToast() {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth={1.75}
+          strokeWidth={2.2}
           strokeLinecap="round"
           strokeLinejoin="round"
           aria-hidden="true"
-          className="h-6 w-6 shrink-0 text-white/80"
+          className="h-6 w-6 shrink-0 text-white"
         >
-          <circle cx="12" cy="12" r="10" />
           <path
-            d="m9 12 2 2 4-4"
+            d="m7 12 3 3 7-7"
             pathLength={1}
             strokeDasharray={1}
             className={`transition-[stroke-dashoffset] duration-500 ease-out ${
