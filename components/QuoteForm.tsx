@@ -4,8 +4,8 @@ import { FormEvent, useId, useState, type CSSProperties } from "react";
 import { Icon } from "./Icon";
 import { buttonClasses, tapTarget } from "./Button";
 import { useQuoteModal } from "@/contexts/QuoteModalContext";
-import { company } from "@/lib/company";
-import { toTelHref } from "@/lib/format";
+import { fill, toTelHref } from "@/lib/site/format.ts";
+import type { SiteData } from "@/lib/site/schema.ts";
 
 interface FormValues {
   namn: string;
@@ -26,24 +26,22 @@ const initialValues: FormValues = {
 // "kontakt" is the error when neither phone nor e-mail is given; one of them is enough.
 type FormErrors = Partial<Record<keyof FormValues | "kontakt", string>>;
 
-const arbetsTyper = [
-  { value: "schaktning-markarbeten", label: "Schaktning & markarbeten" },
-  { value: "dranering", label: "Dränering" },
-  { value: "grundlaggning", label: "Grundläggning" },
-  { value: "va-arbeten", label: "VA-arbeten" },
-  { value: "anlaggning-vagar-planer", label: "Anläggning av vägar & planer" },
-  { value: "stenlaggning", label: "Stenläggning & plattläggning" },
-  { value: "annat", label: "Annat" },
-];
+/** What the form needs from the content: its texts, the kinds of work to choose from and how to reach the company. */
+export interface QuoteFormContent {
+  texts: SiteData["form"];
+  workTypes: { id: string; label: string }[];
+  phone: string;
+  email: string;
+}
 
 const fieldBaseClass =
-  "w-full border border-ink/15 bg-white py-3.5 pl-12 pr-4 text-[17px] text-ink placeholder:text-ash transition-colors duration-150 focus:border-olive focus:outline focus:outline-2 focus:outline-olive/25";
+  "w-full border border-line/15 bg-field py-3.5 pl-12 pr-4 text-[17px] text-heading placeholder:text-muted transition-colors duration-150 focus:border-accent focus:outline focus:outline-2 focus:outline-accent/25";
 
-const labelClass = "mb-2 block text-[15px] font-semibold text-ink";
+const labelClass = "mb-2 block text-[15px] font-semibold text-heading";
 
 // Requests go by e-mail through FormSubmit (formsubmit.co), as the site has no server of its own. The first request to a
 // new address only sends an activation e-mail there; nothing is forwarded until its link has been clicked.
-const SUBMIT_URL = `https://formsubmit.co/ajax/${company.email}`;
+const submitUrl = (email: string) => `https://formsubmit.co/ajax/${email}`;
 
 const fieldIds: Record<keyof FormValues, string> = {
   namn: "namn",
@@ -53,7 +51,8 @@ const fieldIds: Record<keyof FormValues, string> = {
   beskrivning: "beskrivning",
 };
 
-export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal" }) {
+export function QuoteForm({ variant = "inline", content }: { variant?: "inline" | "modal"; content: QuoteFormContent }) {
+  const { texts, workTypes, phone, email } = content;
   const [values, setValues] = useState<FormValues>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -90,11 +89,11 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
     const next: FormErrors = {};
     const telefon = values.telefon.trim();
     const epost = values.epost.trim();
-    if (!values.namn.trim()) next.namn = "Ange ditt namn.";
-    if (!telefon && !epost) next.kontakt = "Ange telefonnummer eller e-postadress, så att vi kan nå dig.";
-    if (telefon && !/^[\d\s()+-]{6,}$/.test(telefon)) next.telefon = "Ange ett giltigt telefonnummer.";
-    if (epost && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(epost)) next.epost = "Ange en giltig e-postadress.";
-    if (!values.typAvArbete) next.typAvArbete = "Välj typ av arbete.";
+    if (!values.namn.trim()) next.namn = texts.errors.name;
+    if (!telefon && !epost) next.kontakt = texts.errors.contact;
+    if (telefon && !/^[\d\s()+-]{6,}$/.test(telefon)) next.telefon = texts.errors.phone;
+    if (epost && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(epost)) next.epost = texts.errors.email;
+    if (!values.typAvArbete) next.typAvArbete = texts.errors.workType;
     return next;
   }
 
@@ -119,18 +118,18 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
     setIsSubmitting(true);
     setSendFailed(false);
     try {
-      const response = await fetch(SUBMIT_URL, {
+      const response = await fetch(submitUrl(email), {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          _subject: `Offertförfrågan från ${values.namn.trim()}`,
+          _subject: fill(texts.emailSubject, { namn: values.namn.trim() }),
           _template: "table",
           _captcha: "false",
           ...(values.epost.trim() ? { _replyto: values.epost.trim() } : {}),
           Namn: values.namn.trim(),
           Telefon: values.telefon.trim() || "–",
           "E-post": values.epost.trim() || "–",
-          "Typ av arbete": arbetsTyper.find((typ) => typ.value === values.typAvArbete)?.label ?? values.typAvArbete,
+          "Typ av arbete": workTypes.find((typ) => typ.id === values.typAvArbete)?.label ?? values.typAvArbete,
           Beskrivning: values.beskrivning.trim() || "–",
         }),
       });
@@ -150,10 +149,10 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
       <div {...entrance(0)}>
         <label htmlFor={`${idPrefix}-namn`} className={labelClass}>
-          Namn
+          {texts.labels.name}
         </label>
         <div className="group/field relative">
-          <Icon name="User" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash transition-colors duration-200 group-focus-within/field:text-olive" />
+          <Icon name="User" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
           <input
             id={`${idPrefix}-namn`}
             type="text"
@@ -166,7 +165,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
           />
         </div>
         {errors.namn && (
-          <p id={`${idPrefix}-namn-error`} className="mt-1.5 animate-error-in text-[14px] text-red-700">
+          <p id={`${idPrefix}-namn-error`} className="mt-1.5 animate-error-in text-[14px] text-error">
             {errors.namn}
           </p>
         )}
@@ -174,10 +173,10 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
 
       <div {...entrance(1)}>
         <label htmlFor={`${idPrefix}-telefon`} className={labelClass}>
-          Telefon
+          {texts.labels.phone}
         </label>
         <div className="group/field relative">
-          <Icon name="Phone" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash transition-colors duration-200 group-focus-within/field:text-olive" />
+          <Icon name="Phone" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
           <input
             id={`${idPrefix}-telefon`}
             type="tel"
@@ -190,7 +189,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
           />
         </div>
         {errors.telefon && (
-          <p id={`${idPrefix}-telefon-error`} className="mt-1.5 animate-error-in text-[14px] text-red-700">
+          <p id={`${idPrefix}-telefon-error`} className="mt-1.5 animate-error-in text-[14px] text-error">
             {errors.telefon}
           </p>
         )}
@@ -198,10 +197,10 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
 
       <div {...entrance(2)}>
         <label htmlFor={`${idPrefix}-epost`} className={labelClass}>
-          E-post
+          {texts.labels.email}
         </label>
         <div className="group/field relative">
-          <Icon name="Mail" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash transition-colors duration-200 group-focus-within/field:text-olive" />
+          <Icon name="Mail" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
           <input
             id={`${idPrefix}-epost`}
             type="email"
@@ -214,24 +213,24 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
           />
         </div>
         {errors.epost && (
-          <p id={`${idPrefix}-epost-error`} className="mt-1.5 animate-error-in text-[14px] text-red-700">
+          <p id={`${idPrefix}-epost-error`} className="mt-1.5 animate-error-in text-[14px] text-error">
             {errors.epost}
           </p>
         )}
         <p
           id={`${idPrefix}-kontakt`}
-          className={`mt-1.5 text-[14px] ${errors.kontakt ? "animate-error-in text-red-700" : "text-ash"}`}
+          className={`mt-1.5 text-[14px] ${errors.kontakt ? "animate-error-in text-error" : "text-muted"}`}
         >
-          {errors.kontakt ?? "Det räcker med telefon eller e-post."}
+          {errors.kontakt ?? texts.contactHint}
         </p>
       </div>
 
       <div {...entrance(3)}>
         <label htmlFor={`${idPrefix}-typ`} className={labelClass}>
-          Typ av arbete
+          {texts.labels.workType}
         </label>
         <div className="group/field relative">
-          <Icon name="Wrench" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash transition-colors duration-200 group-focus-within/field:text-olive" />
+          <Icon name="Wrench" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
           <select
             id={`${idPrefix}-typ`}
             value={values.typAvArbete}
@@ -241,18 +240,18 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
             aria-describedby={errors.typAvArbete ? `${idPrefix}-typ-error` : undefined}
           >
             <option value="" disabled>
-              Välj typ av arbete
+              {texts.workTypePlaceholder}
             </option>
-            {arbetsTyper.map((typ) => (
-              <option key={typ.value} value={typ.value}>
+            {workTypes.map((typ) => (
+              <option key={typ.id} value={typ.id}>
                 {typ.label}
               </option>
             ))}
           </select>
-          <Icon name="ChevronDown" className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash transition-colors duration-200 group-focus-within/field:text-olive" />
+          <Icon name="ChevronDown" className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
         </div>
         {errors.typAvArbete && (
-          <p id={`${idPrefix}-typ-error`} className="mt-1.5 animate-error-in text-[14px] text-red-700">
+          <p id={`${idPrefix}-typ-error`} className="mt-1.5 animate-error-in text-[14px] text-error">
             {errors.typAvArbete}
           </p>
         )}
@@ -260,16 +259,16 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
 
       <div {...entrance(4)}>
         <label htmlFor={`${idPrefix}-beskrivning`} className={labelClass}>
-          Kort beskrivning
+          {texts.labels.description}
         </label>
         <div className="group/field relative">
-          <Icon name="MessageSquare" className="pointer-events-none absolute left-4 top-4 h-5 w-5 text-ash transition-colors duration-200 group-focus-within/field:text-olive" />
+          <Icon name="MessageSquare" className="pointer-events-none absolute left-4 top-4 h-5 w-5 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
           <textarea
             id={`${idPrefix}-beskrivning`}
             rows={3}
             value={values.beskrivning}
             onChange={(e) => handleChange("beskrivning", e.target.value)}
-            placeholder="Berätta kort om ditt projekt…"
+            placeholder={texts.descriptionPlaceholder}
             className={`${fieldBaseClass} resize-none`}
           />
         </div>
@@ -277,21 +276,21 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
 
       {/* Wrapped, so the entrance doesn't hold the button's own press-in transform. */}
       <div {...entrance(5)}>
-        <button type="submit" disabled={isSubmitting} className={buttonClasses("olive", "w-full disabled:opacity-70")}>
+        <button type="submit" disabled={isSubmitting} className={buttonClasses("solid", "w-full disabled:opacity-70")}>
           {isSubmitting ? (
             <>
               <Icon name="Loader2" className="mr-2 h-5 w-5 animate-spin" />
-              Skickar…
+              {texts.sending}
             </>
           ) : (
-            "Skicka förfrågan"
+            texts.submit
           )}
         </button>
         {sendFailed && (
-          <p role="alert" className="mt-3 animate-error-in text-[14px] text-red-700">
-            Förfrågan kunde inte skickas. Försök igen eller ring oss på{" "}
-            <a href={toTelHref(company.phoneNational)} className={`${tapTarget} whitespace-nowrap font-semibold underline underline-offset-2`}>
-              {company.phoneNational}
+          <p role="alert" className="mt-3 animate-error-in text-[14px] text-error">
+            {texts.sendFailed}{" "}
+            <a href={toTelHref(phone)} className={`${tapTarget} whitespace-nowrap font-semibold underline underline-offset-2`}>
+              {phone}
             </a>
             .
           </p>
@@ -299,10 +298,10 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
       </div>
 
       {variant === "modal" && (
-        <p className={`text-center text-[14px] text-ash ${entrance(6).className}`} style={entrance(6).style}>
-          Du kan stänga rutan när som helst genom att klicka utanför eller på{" "}
+        <p className={`text-center text-[14px] text-muted ${entrance(6).className}`} style={entrance(6).style}>
+          {texts.closeHint}{" "}
           <button type="button" onClick={close} className={`${tapTarget} underline underline-offset-2`}>
-            X
+            {texts.closeHintButton}
           </button>
           .
         </p>

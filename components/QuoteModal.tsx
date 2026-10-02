@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { QuoteForm } from "./QuoteForm";
+import { QuoteForm, type QuoteFormContent } from "./QuoteForm";
 import { useQuoteModal } from "@/contexts/QuoteModalContext";
 
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
 
-export function QuoteModal() {
+export function QuoteModal({ content, closeLabel }: { content: QuoteFormContent; closeLabel: string }) {
   const { isOpen, close } = useQuoteModal();
   const [isMounted, setIsMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -76,22 +76,22 @@ export function QuoteModal() {
         if (e.target === e.currentTarget) close();
       }}
     >
-      <div className="absolute inset-0 bg-olive/75" aria-hidden="true" />
+      <div className="absolute inset-0 bg-primary/75" aria-hidden="true" />
       <div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="quote-modal-heading"
         tabIndex={-1}
-        className={`relative m-auto w-full max-w-md bg-cream p-6 shadow-2xl transition-all sm:p-8 ${
+        className={`relative m-auto w-full max-w-md bg-card p-6 shadow-2xl transition-all sm:p-8 ${
           isVisible ? "scale-100 opacity-100 duration-200" : "scale-95 opacity-0 duration-300"
         }`}
       >
         <button
           type="button"
           onClick={close}
-          aria-label="Stäng"
-          className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center text-ink transition-colors hover:bg-ink/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-olive"
+          aria-label={closeLabel}
+          className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center text-heading transition-colors hover:bg-heading/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
         >
           {/* Two thin bars that swing into a cross as the panel opens, drawn like the menu's close button. */}
           <span aria-hidden="true" className="relative h-6 w-6">
@@ -105,10 +105,10 @@ export function QuoteModal() {
             ))}
           </span>
         </button>
-        <h2 id="quote-modal-heading" className="mb-6 animate-rise-fast pr-10 text-[26px] font-semibold leading-tight text-ink [animation-delay:40ms]">
-          Begär offert
+        <h2 id="quote-modal-heading" className="mb-6 animate-rise-fast pr-10 text-[26px] font-semibold leading-tight text-heading [animation-delay:40ms]">
+          {content.texts.modalHeading}
         </h2>
-        <QuoteForm variant="modal" />
+        <QuoteForm variant="modal" content={content} />
       </div>
     </div>
   );

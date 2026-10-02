@@ -4,11 +4,19 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Icon } from "./Icon";
 import { UppdragCard } from "./UppdragCard";
 import { useInView, usePrefersReducedMotion } from "@/hooks/useInView";
-import type { UppdragItem } from "@/lib/uppdrag";
+import { fill } from "@/lib/site/format.ts";
+import type { Uppdrag } from "@/lib/site/schema.ts";
 
 const GAP_PX = 16;
 
-export function UppdragCarousel({ items }: { items: UppdragItem[] }) {
+export interface CarouselLabels {
+  previous: string;
+  next: string;
+  /** {n} and {total} are filled in. */
+  goTo: string;
+}
+
+export function UppdragCarousel({ items, labels }: { items: (Uppdrag & { id: string })[]; labels: CarouselLabels }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const reducedMotion = usePrefersReducedMotion();
   const { ref: entranceRef, isInView } = useInView<HTMLDivElement>(0.15);
@@ -56,7 +64,7 @@ export function UppdragCarousel({ items }: { items: UppdragItem[] }) {
 
   // The arrows fade out at either end instead of disappearing, and their chevron nudges the way it points on hover.
   const arrowClass =
-    "group/nav absolute top-1/2 z-10 flex h-16 w-12 -translate-y-1/2 items-center justify-center bg-olive text-white transition duration-200 hover:bg-olive-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-olive disabled:pointer-events-none disabled:opacity-0";
+    "group/nav absolute top-1/2 z-10 flex h-16 w-12 -translate-y-1/2 items-center justify-center bg-accent text-on-primary transition duration-200 hover:bg-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:pointer-events-none disabled:opacity-0";
 
   return (
     <div>
@@ -96,7 +104,7 @@ export function UppdragCarousel({ items }: { items: UppdragItem[] }) {
           onClick={() => step(-1)}
           disabled={!canPrev}
           aria-hidden={!canPrev}
-          aria-label="Föregående uppdrag"
+          aria-label={labels.previous}
           className={`${arrowClass} left-0`}
         >
           <Icon
@@ -110,7 +118,7 @@ export function UppdragCarousel({ items }: { items: UppdragItem[] }) {
           onClick={() => step(1)}
           disabled={!canNext}
           aria-hidden={!canNext}
-          aria-label="Nästa uppdrag"
+          aria-label={labels.next}
           className={`${arrowClass} right-0`}
         >
           <Icon
@@ -128,14 +136,14 @@ export function UppdragCarousel({ items }: { items: UppdragItem[] }) {
               key={page}
               type="button"
               onClick={() => goTo(page)}
-              aria-label={`Gå till position ${page + 1} av ${pageCount}`}
+              aria-label={fill(labels.goTo, { n: page + 1, total: pageCount })}
               aria-current={page === activePage ? "true" : undefined}
-              className="group/dot px-[12.5px] py-[16.5px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-olive"
+              className="group/dot px-[12.5px] py-[16.5px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
             >
               {/* The current position stretches from a dot into a short bar. */}
               <span
                 className={`block h-[11px] rounded-full transition-all duration-300 ease-out ${
-                  page === activePage ? "w-7 bg-olive" : "w-[11px] bg-pebble group-hover/dot:bg-ash"
+                  page === activePage ? "w-7 bg-accent" : "w-[11px] bg-subtle group-hover/dot:bg-muted"
                 }`}
               />
             </button>

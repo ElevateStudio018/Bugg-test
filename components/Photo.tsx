@@ -4,13 +4,14 @@ import { useRef, type CSSProperties } from "react";
 import { useImageLoaded } from "@/hooks/useImageLoaded";
 
 /**
- * A lazily loaded, decorative photo that fades in once it has arrived instead of popping in. Pass any other
- * transitions it needs (such as a hover zoom) as `transition`; the fade is added to them.
+ * A lazily loaded photo that fades in once it has arrived instead of popping in. Pass any other transitions it needs
+ * (such as a hover zoom) as `transition`; the fade is added to them.
  */
 export function Photo({
   src,
   srcSet,
   sizes,
+  alt = "",
   className = "",
   style,
   transition,
@@ -18,6 +19,7 @@ export function Photo({
   src: string;
   srcSet?: string;
   sizes?: string;
+  alt?: string;
   className?: string;
   style?: CSSProperties;
   transition?: string;
@@ -32,7 +34,7 @@ export function Photo({
       src={src}
       srcSet={srcSet}
       sizes={sizes}
-      alt=""
+      alt={alt}
       loading="lazy"
       // Hidden at once while loading; only the way in is animated.
       style={{ ...style, transition: isLoaded ? [transition, "opacity 700ms ease-out"].filter(Boolean).join(", ") : transition }}

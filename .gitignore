@@ -24,3 +24,7 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# generated before each build
+/content/snapshot.json
+/public/site-version.json

@@ -1,18 +1,24 @@
 import { Icon } from "./Icon";
 
-export type ButtonVariant = "olive" | "olive-outline" | "light-outline";
+/**
+ * "solid": the filled button. "outline": its outlined twin on light backgrounds. The "on-…" variants are the outlined
+ * button on a dark surface — the menu, the footer or a band in the primary colour — in that surface's text colour.
+ */
+export type ButtonVariant = "solid" | "outline" | "on-nav" | "on-footer" | "on-primary";
 
 // Pressing a button squeezes it in a touch.
 const pillBase =
   "inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-center text-label uppercase transition duration-200 active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
 
 const pillVariants: Record<ButtonVariant, string> = {
-  olive: "bg-olive text-white hover:bg-olive-dark focus-visible:outline-olive",
-  "olive-outline": "border-[1.5px] border-olive text-olive hover:bg-olive hover:text-white focus-visible:outline-olive",
-  "light-outline": "border-[1.5px] border-white text-white hover:bg-white hover:text-olive focus-visible:outline-white",
+  solid: "bg-button text-button-text hover:bg-button-hover focus-visible:outline-button",
+  outline: "border-[1.5px] border-button text-button hover:bg-button hover:text-button-text focus-visible:outline-button",
+  "on-nav": "border-[1.5px] border-nav-text text-nav-text hover:bg-nav-text hover:text-nav focus-visible:outline-nav-text",
+  "on-footer": "border-[1.5px] border-footer-text text-footer-text hover:bg-footer-text hover:text-footer focus-visible:outline-footer-text",
+  "on-primary": "border-[1.5px] border-on-primary text-on-primary hover:bg-on-primary hover:text-primary focus-visible:outline-on-primary",
 };
 
-export function buttonClasses(variant: ButtonVariant = "olive", className = ""): string {
+export function buttonClasses(variant: ButtonVariant = "solid", className = ""): string {
   return `${pillBase} ${pillVariants[variant]} ${className}`;
 }
 
@@ -20,9 +26,8 @@ export function buttonClasses(variant: ButtonVariant = "olive", className = ""):
 export const tapTarget = "relative before:absolute before:-inset-x-2 before:-inset-y-3";
 
 /** Uppercase, letter-spaced text link with a chevron — the site's secondary call to action. */
-export function arrowLinkClasses(tone: "ink" | "white" = "ink", className = ""): string {
-  const color = tone === "white" ? "text-white hover:text-white/70" : "text-ink hover:text-olive";
-  return `${tapTarget} group/arrow inline-block text-left text-label uppercase transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current ${color} ${className}`;
+export function arrowLinkClasses(className = ""): string {
+  return `${tapTarget} group/arrow inline-block text-left text-label uppercase transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current text-link hover:text-accent ${className}`;
 }
 
 /**

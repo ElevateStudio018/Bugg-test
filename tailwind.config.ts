@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
-import defaultTheme from "tailwindcss/defaultTheme";
+
+const role = (name: string) => `rgb(var(--c-${name}) / <alpha-value>)`;
 
 const config: Config = {
   content: [
@@ -9,19 +10,33 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // Every colour is a theme role from the content document (lib/site/theme.ts writes the variables), so the admin
+      // can change them. The channels-only variables keep Tailwind's opacity modifiers (bg-primary/20) working.
       colors: {
-        olive: { DEFAULT: "#1C2817", dark: "#131C10" },
-        sand: "#E3E1D8",
-        cream: "#F2F0E9",
-        ink: "#222222",
-        coal: "#333333",
-        // Secondary text: dark enough for 4.5:1 contrast on sand, cream and white.
-        ash: "#63625C",
-        // Inactive carousel dot.
-        pebble: "#B6B5AE",
+        primary: role("primary"),
+        secondary: role("secondary"),
+        accent: role("accent"),
+        page: role("background"),
+        card: role("surface"),
+        body: role("text"),
+        heading: role("heading"),
+        muted: role("muted"),
+        subtle: role("subtle"),
+        line: role("border"),
+        field: role("input"),
+        link: role("link"),
+        button: { DEFAULT: role("button"), hover: role("button-hover"), text: role("button-text") },
+        nav: { DEFAULT: role("navigation"), text: role("navigation-text") },
+        footer: { DEFAULT: role("footer"), text: role("footer-text") },
+        "on-primary": role("on-primary"),
+        success: role("success"),
+        warning: role("warning"),
+        error: role("error"),
       },
       fontFamily: {
-        sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+        sans: ["var(--font-body)"],
+        heading: ["var(--font-heading)"],
+        button: ["var(--font-button)"],
       },
       // Mobile sizes are width-matched against the reference screenshots (Figtree equivalents):
       // 17px body with tight ~1.12 leading, 29px section headings, 17px uppercase links.

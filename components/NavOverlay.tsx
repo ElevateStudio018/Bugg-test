@@ -7,31 +7,18 @@ import { BurgerIcon, burgerButtonClasses } from "./BurgerIcon";
 import { Icon } from "./Icon";
 import { Wordmark } from "./Wordmark";
 import { buttonClasses } from "./Button";
-import { company } from "@/lib/company";
-import { toTelHref } from "@/lib/format";
+import type { NavContent } from "./Navbar";
+import { toTelHref } from "@/lib/site/format.ts";
 import { useQuoteModal } from "@/contexts/QuoteModalContext";
 import { usePrefersReducedMotion } from "@/hooks/useInView";
 
 const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
-
-export interface MenuService {
-  slug: string;
-  name: string;
-}
 
 interface NavRow {
   number: string;
   label: string;
   href: string;
 }
-
-const rows: NavRow[] = [
-  { number: "01", label: "Hem", href: "/" },
-  { number: "03", label: "Uppdrag", href: "/projekt" },
-  { number: "04", label: "Om oss", href: "/om-oss" },
-  { number: "05", label: "Certifikat", href: "/certifikat" },
-  { number: "06", label: "Kontakt", href: "/#kontakt" },
-];
 
 /** Classes and delay that slide one part of the menu up into place as the menu opens. */
 interface Entrance {
@@ -41,16 +28,16 @@ interface Entrance {
 
 function RowLink({ row, onClose, entrance, isCurrent }: { row: NavRow; onClose: () => void; entrance: Entrance; isCurrent: boolean }) {
   return (
-    <li className={`border-b border-white/15 py-4 ${entrance.className}`} style={entrance.style}>
+    <li className={`border-b border-nav-text/15 py-4 ${entrance.className}`} style={entrance.style}>
       <Link href={row.href} onClick={onClose} aria-current={isCurrent ? "page" : undefined} className="group flex items-baseline gap-4">
         <span
-          className={`text-sm font-bold transition-colors duration-300 group-hover:text-white ${isCurrent ? "text-white" : "text-white/50"}`}
+          className={`text-sm font-bold transition-colors duration-300 group-hover:text-nav-text ${isCurrent ? "text-nav-text" : "text-nav-text/50"}`}
         >
           {row.number}
         </span>
         {/* The page you are on is underlined. */}
         <span
-          className={`text-3xl font-semibold text-white transition duration-300 ease-out group-hover:translate-x-2 group-hover:text-white/70 sm:text-4xl lg:text-5xl ${
+          className={`text-3xl font-semibold text-nav-text transition duration-300 ease-out group-hover:translate-x-2 group-hover:text-nav-text/70 sm:text-4xl lg:text-5xl ${
             isCurrent ? "underline decoration-2 underline-offset-[10px]" : ""
           }`}
         >
@@ -61,7 +48,9 @@ function RowLink({ row, onClose, entrance, isCurrent }: { row: NavRow; onClose: 
   );
 }
 
-export function NavOverlay({ onClose, services }: { onClose: () => void; services: MenuService[] }) {
+export function NavOverlay({ content, onClose }: { content: NavContent; onClose: () => void }) {
+  const { services, labels } = content;
+  const rows = content.menu.map((row, index) => ({ ...row, number: String(index + 1).padStart(2, "0") }));
   const pathname = usePathname();
   const current = pathname.replace(/\/$/, "") || "/";
   const { open: openQuoteModal } = useQuoteModal();
@@ -141,70 +130,72 @@ export function NavOverlay({ onClose, services }: { onClose: () => void; service
   }
 
   return (
-    <div ref={overlayRef} role="dialog" aria-modal="true" aria-label="Meny" className="fixed inset-0 z-[60] flex flex-col bg-olive pr-[var(--scrollbar-width,0px)]">
+    <div ref={overlayRef} role="dialog" aria-modal="true" aria-label={labels.menu} className="fixed inset-0 z-[60] flex flex-col bg-nav pr-[var(--scrollbar-width,0px)]">
       <div className="mx-auto flex h-16 w-full max-w-content items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
-        <Link href="/" onClick={onClose} aria-label="Markmontage BEAB AB – startsida" className="flex min-h-12 items-center">
-          <Wordmark />
+        <Link href="/" onClick={onClose} aria-label={labels.homeLink} className="flex min-h-12 items-center text-nav-text">
+          <Wordmark content={content.logo} />
         </Link>
-        <button type="button" onClick={onClose} aria-label="Stäng meny" className={burgerButtonClasses}>
+        <button type="button" onClick={onClose} aria-label={labels.closeMenu} className={burgerButtonClasses}>
           <BurgerIcon cross={hasEntered} />
         </button>
       </div>
 
       <div className="relative min-h-0 flex-1">
-        <nav ref={navRef} aria-label="Huvudmeny" className="h-full overflow-y-auto px-4 py-6 sm:px-6 lg:px-8">
+        <nav ref={navRef} aria-label={labels.mainMenu} className="h-full overflow-y-auto px-4 py-6 sm:px-6 lg:px-8">
           <ul className="mx-auto max-w-content">
-            <RowLink row={rows[0]} onClose={onClose} entrance={entrance(0)} isCurrent={current === rows[0].href} />
-
-            <li className={`border-b border-white/15 py-4 ${entrance(1).className}`} style={entrance(1).style}>
-              <div className="flex items-baseline gap-4">
-                <span className={`text-sm font-bold ${current.startsWith("/tjanster/") ? "text-white" : "text-white/50"}`}>02</span>
-                <span className="text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Tjänster</span>
-              </div>
-              <ul className="ml-[2.6rem] mt-2.5 grid grid-cols-1 gap-x-10 sm:grid-cols-2 xl:grid-cols-4">
-                {services.map((service) => (
-                  <li key={service.slug}>
-                    <Link
-                      href={`/tjanster/${service.slug}`}
-                      onClick={onClose}
-                      aria-current={current === `/tjanster/${service.slug}` ? "page" : undefined}
-                      className={`block py-3 text-[17px] transition duration-300 ease-out hover:translate-x-1.5 hover:text-white ${
-                        current === `/tjanster/${service.slug}` ? "text-white underline underline-offset-[6px]" : "text-white/75"
-                      }`}
-                    >
-                      {service.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </li>
-
-            {rows.slice(1).map((row, index) => (
-              <RowLink key={row.href} row={row} onClose={onClose} entrance={entrance(index + 2)} isCurrent={current === row.href} />
-            ))}
+            {rows.map((row, index) =>
+              row.kind === "services" ? (
+                <li key={row.id} className={`border-b border-nav-text/15 py-4 ${entrance(index).className}`} style={entrance(index).style}>
+                  <div className="flex items-baseline gap-4">
+                    <span className={`text-sm font-bold ${current.startsWith("/tjanster/") ? "text-nav-text" : "text-nav-text/50"}`}>{row.number}</span>
+                    <span className="text-3xl font-semibold text-nav-text sm:text-4xl lg:text-5xl">{row.label}</span>
+                  </div>
+                  <ul className="ml-[2.6rem] mt-2.5 grid grid-cols-1 gap-x-10 sm:grid-cols-2 xl:grid-cols-4">
+                    {services.map((service) => (
+                      <li key={service.slug}>
+                        <Link
+                          href={`/tjanster/${service.slug}`}
+                          onClick={onClose}
+                          aria-current={current === `/tjanster/${service.slug}` ? "page" : undefined}
+                          className={`block py-3 text-[17px] transition duration-300 ease-out hover:translate-x-1.5 hover:text-nav-text ${
+                            current === `/tjanster/${service.slug}` ? "text-nav-text underline underline-offset-[6px]" : "text-nav-text/75"
+                          }`}
+                        >
+                          {service.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ) : (
+                <RowLink key={row.id} row={row} onClose={onClose} entrance={entrance(index)} isCurrent={current === row.href} />
+              )
+            )}
           </ul>
         </nav>
         {/* The rows fade into the background where the list runs on, rather than being cut off by the bottom bar. */}
         <div
           aria-hidden="true"
-          className={`pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-olive to-olive/0 transition-opacity duration-300 ${
+          className={`pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-nav to-nav/0 transition-opacity duration-300 ${
             moreBelow ? "opacity-100" : "opacity-0"
           }`}
         />
       </div>
 
       <div
-        className={`border-t border-white/15 px-4 py-6 sm:px-6 lg:px-8 ${entrance(rows.length + 1).className}`}
-        style={entrance(rows.length + 1).style}
+        className={`border-t border-nav-text/15 px-4 py-6 sm:px-6 lg:px-8 ${entrance(rows.length).className}`}
+        style={entrance(rows.length).style}
       >
         <div className="mx-auto flex max-w-content flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <button type="button" onClick={handleCtaClick} className={buttonClasses("light-outline", "w-full sm:w-auto")}>
-            Begär offert
+          <button type="button" onClick={handleCtaClick} className={buttonClasses("on-nav", "w-full sm:w-auto")}>
+            {content.menuButton}
           </button>
-          <a href={toTelHref(company.phoneNational)} className="flex items-center gap-3 text-[18px] font-semibold text-white hover:text-white/70">
-            <Icon name="Phone" className="h-5 w-5 text-white/60" />
-            {company.phoneNational}
-          </a>
+          {content.phone && (
+            <a href={toTelHref(content.phone)} className="flex items-center gap-3 text-[18px] font-semibold text-nav-text hover:text-nav-text/70">
+              <Icon name="Phone" className="h-5 w-5 text-nav-text/60" />
+              {content.phone}
+            </a>
+          )}
         </div>
       </div>
     </div>

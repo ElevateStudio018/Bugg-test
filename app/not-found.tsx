@@ -1,22 +1,28 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { SiteShell } from "@/components/site/SiteShell";
+import { SiteLink } from "@/components/SiteLink";
 import { buttonClasses } from "@/components/Button";
+import { getSite } from "@/lib/site/data.ts";
 
-export const metadata: Metadata = {
-  title: "Sidan hittades inte",
-};
+export function generateMetadata(): Metadata {
+  return { title: getSite().notFound.seoTitle };
+}
 
 export default function NotFound() {
+  const site = getSite();
+  const texts = site.notFound;
   return (
-    <div className="mx-auto max-w-content px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
-      <p className="text-tag uppercase text-ash">Fel 404</p>
-      <h1 className="mt-4 text-display text-ink lg:text-[56px] lg:leading-[1.08]">Sidan hittades inte</h1>
-      <p className="mt-4 max-w-prose text-copy text-coal lg:text-lead">
-        Sidan du letar efter finns inte längre, eller så har adressen ändrats.
-      </p>
-      <Link href="/" className={buttonClasses("olive", "mt-8")}>
-        Till startsidan
-      </Link>
-    </div>
+    <SiteShell site={site}>
+      <div className="mx-auto max-w-content px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+        {texts.eyebrow && <p className="text-tag uppercase text-muted">{texts.eyebrow}</p>}
+        <h1 className="mt-4 text-display text-heading lg:text-[56px] lg:leading-[1.08]">{texts.heading}</h1>
+        {texts.text && <p className="mt-4 max-w-prose text-copy text-body lg:text-lead">{texts.text}</p>}
+        {texts.button.label && (
+          <SiteLink href={texts.button.href} className={buttonClasses("solid", "mt-8")}>
+            {texts.button.label}
+          </SiteLink>
+        )}
+      </div>
+    </SiteShell>
   );
 }

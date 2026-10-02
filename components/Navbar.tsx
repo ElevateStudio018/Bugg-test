@@ -5,21 +5,31 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { BurgerIcon, burgerButtonClasses } from "./BurgerIcon";
 import { Icon } from "./Icon";
-import { NavOverlay, type MenuService } from "./NavOverlay";
-import { Wordmark } from "./Wordmark";
-import { company } from "@/lib/company";
-import { toTelHref } from "@/lib/format";
+import { NavOverlay } from "./NavOverlay";
+import { Wordmark, type LogoContent } from "./Wordmark";
+import { toTelHref } from "@/lib/site/format.ts";
 
-// Shown in the bar on desktop; the menu (hamburger) keeps the full list, including every service.
-const barLinks = [
-  { label: "Tjänster", href: "/#tjanster" },
-  { label: "Uppdrag", href: "/projekt" },
-  { label: "Om oss", href: "/om-oss" },
-  { label: "Certifikat", href: "/certifikat" },
-  { label: "Kontakt", href: "/#kontakt" },
-];
+/** What the header and its menu need from the content, as it is handed to the browser. */
+export interface NavContent {
+  /** Shown in the bar on wide screens; the menu keeps the full list, including every service. */
+  barLinks: { id: string; label: string; href: string }[];
+  menu: { id: string; label: string; href: string; kind: "link" | "services" }[];
+  menuButton: string;
+  services: { slug: string; name: string }[];
+  phone: string;
+  logo: LogoContent;
+  labels: {
+    callPrefix: string;
+    homeLink: string;
+    openMenu: string;
+    closeMenu: string;
+    menu: string;
+    mainMenu: string;
+    quickLinks: string;
+  };
+}
 
-export function Navbar({ services }: { services: MenuService[] }) {
+export function Navbar({ content }: { content: NavContent }) {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -50,27 +60,24 @@ export function Navbar({ services }: { services: MenuService[] }) {
 
   return (
     <>
-      <header className="header-shadow fixed inset-x-0 top-0 z-40 bg-olive">
+      <header className="header-shadow fixed inset-x-0 top-0 z-40 bg-nav">
         <div className="mx-auto flex h-16 max-w-content items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
-          <Link href="/" aria-label="Markmontage BEAB AB – startsida" className="flex min-h-12 items-center">
-            <Wordmark />
+          <Link href="/" aria-label={content.labels.homeLink} className="flex min-h-12 items-center text-nav-text">
+            <Wordmark content={content.logo} />
           </Link>
 
           <div className="flex items-center gap-8">
-            <nav aria-label="Snabblänkar" className="hidden lg:block">
+            <nav aria-label={content.labels.quickLinks} className="hidden lg:block">
               <ul className="flex items-center gap-8">
-                {barLinks.map((link) => {
-                  const isActive =
-                    !link.href.includes("#") && pathname.startsWith(link.href);
+                {content.barLinks.map((link) => {
+                  const isActive = !link.href.includes("#") && pathname.startsWith(link.href);
                   return (
-                    <li key={link.href}>
+                    <li key={link.id}>
                       <Link
                         href={link.href}
                         aria-current={isActive ? "page" : undefined}
-                        className={`relative py-2 text-[16px] font-semibold transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:bg-white after:transition-transform after:duration-200 hover:text-white hover:after:scale-x-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white ${
-                          isActive
-                            ? "text-white after:scale-x-100"
-                            : "text-white/75 after:scale-x-0"
+                        className={`relative py-2 text-[16px] font-semibold transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:bg-nav-text after:transition-transform after:duration-200 hover:text-nav-text hover:after:scale-x-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-nav-text ${
+                          isActive ? "text-nav-text after:scale-x-100" : "text-nav-text/75 after:scale-x-0"
                         }`}
                       >
                         {link.label}
@@ -83,19 +90,21 @@ export function Navbar({ services }: { services: MenuService[] }) {
 
             <div className="flex items-center gap-1 sm:gap-3">
               {/* Calling is always one tap away. */}
-              <a
-                href={toTelHref(company.phoneNational)}
-                aria-label={`Ring ${company.phoneNational}`}
-                className="flex h-12 w-12 items-center justify-center rounded-xl text-white transition-colors hover:text-white/75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
-              >
-                <Icon name="Phone" className="h-6 w-6" />
-              </a>
+              {content.phone && (
+                <a
+                  href={toTelHref(content.phone)}
+                  aria-label={`${content.labels.callPrefix} ${content.phone}`}
+                  className="flex h-12 w-12 items-center justify-center rounded-xl text-nav-text transition-colors hover:text-nav-text/75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-nav-text"
+                >
+                  <Icon name="Phone" className="h-6 w-6" />
+                </a>
+              )}
 
               <button
                 type="button"
                 onClick={() => setIsMenuOpen(true)}
                 aria-expanded={isMenuOpen}
-                aria-label="Öppna meny"
+                aria-label={content.labels.openMenu}
                 className={burgerButtonClasses}
               >
                 {/* A cross while the menu is open, so once the menu closes it turns back into bars in view. */}
@@ -106,7 +115,7 @@ export function Navbar({ services }: { services: MenuService[] }) {
         </div>
       </header>
 
-      {isMenuOpen && <NavOverlay services={services} onClose={() => setIsMenuOpen(false)} />}
+      {isMenuOpen && <NavOverlay content={content} onClose={() => setIsMenuOpen(false)} />}
     </>
   );
 }

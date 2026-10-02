@@ -1,12 +1,13 @@
 import type { MetadataRoute } from "next";
-
-const siteUrl = "https://www.markmontagebeab.se";
+import { getSite } from "@/lib/site/data.ts";
 
 export default function robots(): MetadataRoute.Robots {
+  const siteUrl = getSite().settings.siteUrl;
   return {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: "/admin/",
     },
     sitemap: `${siteUrl}/sitemap.xml`,
   };

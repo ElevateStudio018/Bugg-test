@@ -2,7 +2,7 @@
 
 import { CONFIRMATION_MS, useQuoteModal } from "@/contexts/QuoteModalContext";
 
-export function ConfirmationToast() {
+export function ConfirmationToast({ message }: { message: string }) {
   const { confirmationVisible } = useQuoteModal();
 
   return (
@@ -12,7 +12,7 @@ export function ConfirmationToast() {
         confirmationVisible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0"
       }`}
     >
-      <div className="relative flex items-center gap-3 overflow-hidden bg-olive px-5 py-4 shadow-2xl">
+      <div className="relative flex items-center gap-3 overflow-hidden bg-success px-5 py-4 shadow-2xl">
         {/* The tick draws itself as the message appears. */}
         <svg
           viewBox="0 0 24 24"
@@ -22,7 +22,7 @@ export function ConfirmationToast() {
           strokeLinecap="round"
           strokeLinejoin="round"
           aria-hidden="true"
-          className="h-7 w-7 shrink-0 text-white"
+          className="h-7 w-7 shrink-0 text-on-primary"
         >
           <path
             d="m4 12.5 5 5L20 6.5"
@@ -33,11 +33,11 @@ export function ConfirmationToast() {
             }`}
           />
         </svg>
-        <p className="text-[16px] font-semibold text-white">Tack! Vi återkommer strax</p>
+        <p className="text-[16px] font-semibold text-on-primary">{message}</p>
         {/* A thin line along the bottom runs out over the time the message stays. */}
         <span
           aria-hidden="true"
-          className={`absolute inset-x-0 bottom-0 h-[3px] origin-left bg-white/30 ${confirmationVisible ? "animate-toast-timer" : "scale-x-0"}`}
+          className={`absolute inset-x-0 bottom-0 h-[3px] origin-left bg-on-primary/30 ${confirmationVisible ? "animate-toast-timer" : "scale-x-0"}`}
           style={{ animationDuration: `${CONFIRMATION_MS}ms` }}
         />
       </div>

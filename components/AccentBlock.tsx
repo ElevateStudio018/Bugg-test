@@ -5,7 +5,7 @@ import { GrowLine } from "./GrowLine";
 export function AccentBlock({ className = "", children }: { className?: string; children: ReactNode }) {
   return (
     <div className={`relative pl-[30px] ${className}`}>
-      <GrowLine axis="y" className="absolute inset-y-0 left-0 w-[6px] bg-olive" />
+      <GrowLine axis="y" className="absolute inset-y-0 left-0 w-[6px] bg-accent" />
       {children}
     </div>
   );
