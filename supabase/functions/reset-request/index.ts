@@ -40,7 +40,8 @@ Deno.serve(
     if (!parsed.success) throw new UserError(400, "confirm", "Skriv RENSA för att bekräfta.");
     if (await pending()) throw new UserError(409, "already_pending", "Det finns redan en begäran som väntar på godkännande.");
 
-    const { data: snapshot } = await service.from("site_snapshot").select("version, data").eq("id", 1).single();
+    const { data: snapshot, error: snapshotError } = await service.from("site_snapshot").select("version, data").eq("id", 1).single();
+    if (snapshotError || !snapshot) throw snapshotError ?? new Error("No published snapshot");
     const token = randomToken();
     const expires = Date.now() + HOURS_VALID * 60 * 60 * 1000;
     const { data: created, error } = await service
