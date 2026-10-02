@@ -8,6 +8,7 @@ import { FaktaBox } from "@/components/FaktaBox";
 import { ServiceCard } from "@/components/ServiceCard";
 import { QuoteTrigger } from "@/components/QuoteTrigger";
 import { buttonClasses } from "@/components/Button";
+import { ZoomImage } from "@/components/ZoomImage";
 import { services, getServiceBySlug } from "@/lib/services";
 import { company } from "@/lib/content";
 import { toTelHref } from "@/lib/format";
@@ -64,8 +65,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <div className="relative aspect-[16/9] w-full overflow-hidden bg-olive/20 lg:aspect-auto lg:h-[min(56vh,600px)]">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={service.image} alt="" className="absolute inset-0 h-full w-full object-cover" />
+        <ZoomImage src={service.image} className="absolute inset-0 h-full w-full object-cover" />
       </div>
 
       <div className="mx-auto max-w-content px-4 pb-16 pt-8 sm:px-6 sm:pb-20 lg:px-8 lg:pb-28 lg:pt-10">

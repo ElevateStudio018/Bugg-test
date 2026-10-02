@@ -1,6 +1,7 @@
 import { Reveal } from "./Reveal";
 import { Icon, type IconKey } from "./Icon";
 import { ArrowLabel, buttonClasses } from "./Button";
+import { ZoomImage } from "./ZoomImage";
 import { companyPhotos } from "@/lib/photos";
 
 interface Block {
@@ -38,10 +39,8 @@ export function GroundworkFeature() {
     <section>
       {/* Photo band: heading on the darker left side, the work itself on the right. */}
       <div className="relative isolate overflow-hidden bg-olive-dark text-white">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <ZoomImage
           src={companyPhotos.gravmaskinRor}
-          alt=""
           loading="lazy"
           className="absolute inset-0 -z-10 h-full w-full object-cover object-[72%_35%] lg:object-[60%_75%]"
         />

@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaktaBox } from "@/components/FaktaBox";
 import { QuoteTrigger } from "@/components/QuoteTrigger";
 import { buttonClasses } from "@/components/Button";
+import { ZoomImage } from "@/components/ZoomImage";
 import { about, aboutFacts, aboutPage, company } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -16,8 +17,7 @@ export default function OmOssPage() {
   return (
     <>
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-olive/20 sm:aspect-[2/1] lg:aspect-auto lg:h-[min(66vh,700px)]">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={aboutPage.heroImage} alt="" className="absolute inset-0 h-full w-full object-cover object-[center_35%]" />
+        <ZoomImage src={aboutPage.heroImage} className="absolute inset-0 h-full w-full object-cover object-[center_35%]" />
       </div>
 
       <div className="mx-auto max-w-content px-4 pb-14 pt-8 sm:px-6 sm:pb-20 lg:px-8 lg:pb-24 lg:pt-10">
@@ -44,10 +44,8 @@ export default function OmOssPage() {
         <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-6 lg:mt-16">
           {aboutPage.photos.map((photo) => (
             <div key={photo.src} className="relative aspect-[4/5] overflow-hidden bg-olive/20 sm:aspect-[4/3]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <ZoomImage
                 src={photo.src}
-                alt=""
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover"
                 style={{ objectPosition: photo.focus }}
@@ -70,8 +68,7 @@ export default function OmOssPage() {
         </div>
 
         <div className="relative aspect-[3/2] w-full overflow-hidden bg-olive-dark sm:aspect-[2/1] lg:aspect-auto lg:h-[min(60vh,620px)]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={aboutPage.middleImage} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+          <ZoomImage src={aboutPage.middleImage} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
         </div>
 
         <div className="mx-auto max-w-content px-6 pb-16 pt-6 lg:px-8 lg:pb-24 lg:pt-16">

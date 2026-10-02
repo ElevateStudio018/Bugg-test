@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Reveal } from "./Reveal";
 import { QuoteTrigger } from "./QuoteTrigger";
 import { Topography } from "./Topography";
+import { ZoomImage } from "./ZoomImage";
 import { pexelsPhoto } from "@/lib/pexels";
 import { companyPhotos } from "@/lib/photos";
 
@@ -32,8 +33,7 @@ function PromoBox({ side, image, heading, text, children }: PromoBoxProps) {
   return (
     <Reveal>
       <div className="aspect-[2/1] w-full overflow-hidden bg-olive/20 lg:aspect-[21/9]">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={image} alt="" loading="lazy" className="h-full w-full object-cover" />
+        <ZoomImage src={image} loading="lazy" className="h-full w-full object-cover" />
       </div>
       <div
         className={`relative mx-2 -mt-12 overflow-hidden bg-olive px-8 pb-8 pt-7 text-white sm:mx-6 lg:-mt-48 lg:w-[46%] lg:p-12 ${classes.box}`}

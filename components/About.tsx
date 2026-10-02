@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Reveal } from "./Reveal";
 import { ArrowLabel, arrowLinkClasses } from "./Button";
+import { ZoomImage } from "./ZoomImage";
 import { about } from "@/lib/content";
 
 export function About() {
@@ -18,8 +19,7 @@ export function About() {
 
         <Reveal delayMs={120} className="lg:pt-2">
           <div className="relative aspect-[4/3] overflow-hidden bg-olive/20 lg:aspect-[4/5]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={about.image} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+            <ZoomImage src={about.image} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
           </div>
         </Reveal>
       </div>

@@ -1,6 +1,5 @@
 "use client";
 
-import { Icon } from "./Icon";
 import { useQuoteModal } from "@/contexts/QuoteModalContext";
 
 export function ConfirmationToast() {
@@ -14,7 +13,27 @@ export function ConfirmationToast() {
       }`}
     >
       <div className="flex items-center gap-3 bg-olive px-5 py-4 shadow-2xl">
-        <Icon name="CheckCircle2" className="h-6 w-6 shrink-0 text-white/80" />
+        {/* The tick draws itself as the message appears. */}
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={1.75}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+          className="h-6 w-6 shrink-0 text-white/80"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <path
+            d="m9 12 2 2 4-4"
+            pathLength={1}
+            strokeDasharray={1}
+            className={`transition-[stroke-dashoffset] duration-500 ease-out ${
+              confirmationVisible ? "delay-200 [stroke-dashoffset:0]" : "[stroke-dashoffset:1]"
+            }`}
+          />
+        </svg>
         <p className="text-[16px] font-semibold text-white">Tack! Vi återkommer strax</p>
       </div>
     </div>

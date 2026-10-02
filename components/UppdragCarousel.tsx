@@ -67,11 +67,17 @@ export function UppdragCarousel({ items }: { items: UppdragItem[] }) {
           ref={trackRef}
           className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto before:w-[calc(8%-16px)] before:shrink-0 after:w-[calc(8%-16px)] after:shrink-0 sm:before:hidden sm:after:hidden"
         >
-          {items.map((item) => (
+          {items.map((item, index) => (
+            // Phones: the cards either side of the current one sit a little smaller and dimmer, shrinking away from
+            // it, and grow to full size as they slide into the middle.
             <div
               key={item.id}
               data-slide
-              className="w-[84%] shrink-0 snap-center sm:w-[calc((100%-16px)/2)] sm:snap-start lg:w-[calc((100%-32px)/3)]"
+              className={`w-[84%] shrink-0 snap-center transition duration-300 ease-out sm:w-[calc((100%-16px)/2)] sm:snap-start lg:w-[calc((100%-32px)/3)] ${
+                index === activePage
+                  ? ""
+                  : `max-sm:scale-[0.94] max-sm:opacity-60 ${index < activePage ? "max-sm:origin-right" : "max-sm:origin-left"}`
+              }`}
             >
               <UppdragCard item={item} />
             </div>

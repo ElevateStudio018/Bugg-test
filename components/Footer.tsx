@@ -18,7 +18,9 @@ const companyLinks = [
 ];
 
 const headingClass = "text-[19px] font-semibold leading-tight lg:text-[22px]";
-const linkClass = "text-[15px] leading-snug text-white transition-colors hover:text-white/70 lg:text-[16px]";
+// A thin line slides in from the left under a link on hover, like the links in the top bar.
+const linkClass =
+  "relative inline-block text-[15px] leading-snug text-white transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-out hover:text-white/70 hover:after:scale-x-100 lg:text-[16px]";
 
 export function Footer() {
   return (
