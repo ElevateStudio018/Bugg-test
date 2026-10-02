@@ -24,6 +24,8 @@ export const company = {
     city: "Romelanda",
     country: "SE",
     full: "Lybeck 140, 442 91 Romelanda",
+    // Where Lybeck 140 lies (hitta.se), for the map.
+    geo: { lat: 57.90671, lng: 12.019944 },
   },
   phoneNational: "031-385 41 41",
   // The general address on the company's own contact page (markmontage.se/kontakta-oss).

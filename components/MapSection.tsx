@@ -3,9 +3,10 @@ import { Reveal } from "./Reveal";
 import { ArrowLabel, arrowLinkClasses } from "./Button";
 import { company } from "@/lib/content";
 
-const mapQuery = encodeURIComponent(company.address.full);
-const mapEmbedSrc = `https://www.google.com/maps?q=${mapQuery}&z=9&output=embed`;
-const mapLinkHref = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
+// By coordinates rather than the address text, which Google has placed in Norway.
+const { lat, lng } = company.address.geo;
+const mapEmbedSrc = `https://www.google.com/maps?q=${lat},${lng}&z=11&hl=sv&output=embed`;
+const mapLinkHref = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
 
 export function MapSection() {
   return (
@@ -18,7 +19,7 @@ export function MapSection() {
         </Reveal>
       </div>
 
-      <div className="h-[420px] w-full bg-olive/20 sm:h-[480px] lg:h-[560px]">
+      <div className="h-[420px] w-full bg-olive/20 sm:h-[480px] lg:h-[300px]">
         <iframe
           src={mapEmbedSrc}
           title={`Karta: ${company.legalName}, ${company.address.full}`}
