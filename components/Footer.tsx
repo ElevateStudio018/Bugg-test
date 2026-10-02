@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { Icon } from "./Icon";
-import { Topography } from "./Topography";
 import { Wordmark } from "./Wordmark";
 import { QuoteTrigger } from "./QuoteTrigger";
 import { buttonClasses } from "./Button";
 import { company, footerCopyright } from "@/lib/content";
 import { services } from "@/lib/services";
 import { toTelHref } from "@/lib/format";
+import topography from "@/assets/patterns/topography.svg";
 
 const companyLinks = [
   { label: "Om oss", href: "/om-oss" },
@@ -23,13 +23,16 @@ const linkClass = "text-[18px] text-white transition-colors hover:text-white/70"
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-olive text-white">
-      {/* Faint contour lines spread over the whole footer. */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 text-white/[0.05]">
-        <Topography className="absolute -left-56 -top-48 h-[760px] w-[760px]" />
-        <Topography className="absolute left-[38%] top-[20%] h-[680px] w-[680px] -translate-x-1/2" />
-        <Topography className="absolute -bottom-56 -right-40 h-[760px] w-[760px]" />
-        <Topography className="absolute -right-72 -top-64 hidden h-[620px] w-[620px] lg:block" />
-      </div>
+      {/* One continuous, seamlessly tiling contour map over the whole footer, very faint. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-repeat opacity-[0.07]"
+        style={{
+          backgroundImage: `url(${topography.src})`,
+          backgroundSize: `${topography.width}px ${topography.height}px`,
+          backgroundPosition: "center top",
+        }}
+      />
 
       <div className="relative mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <div className="mb-12 border-b border-white/15 pb-10 lg:mb-14">
