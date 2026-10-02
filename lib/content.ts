@@ -12,8 +12,9 @@ export const company = {
   legalName: "Markmontage BEAB AB",
   shortName: "Markmontage",
   foundedYear: 2002,
-  employeeCountLabel: "cirka 8 anställda",
-  employeeCountValue: 8,
+  // Headcount as given by the company (the registry still lists an older figure).
+  employeeCountLabel: "18 anställda",
+  employeeCountValue: 18,
   yearsExperienceLabel: "över 20 års erfarenhet",
   yearsExperienceValue: 24,
   city: "Kungälv",
@@ -59,7 +60,7 @@ export const about = {
 
 export const aboutFacts: { label: string; value: string }[] = [
   { label: "Grundat", value: String(company.foundedYear) },
-  { label: "Anställda", value: `Cirka ${company.employeeCountValue}` },
+  { label: "Anställda", value: String(company.employeeCountValue) },
   { label: "Säte", value: `${company.address.city}, ${company.city}` },
   { label: "Verksamhet", value: "Mark- och grundarbeten" },
   { label: "Org.nr", value: company.orgNumber },
