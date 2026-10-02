@@ -427,3 +427,9 @@ verify_jwt = false
 verify_jwt = false
 [functions.admin-invite]
 verify_jwt = false
+[functions.credits-topup]
+verify_jwt = false
+[functions.reset-request]
+verify_jwt = false
+[functions.reset-decision]
+verify_jwt = false

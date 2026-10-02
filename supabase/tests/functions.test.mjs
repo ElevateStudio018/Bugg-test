@@ -166,6 +166,82 @@ await test("submit-quote: a bot filling the hidden field is thanked and ignored;
   assert.equal(none.status, 400);
 });
 
+await test("credits-topup adds a pack, mails customer and agency; the fourth order in a day waits", async () => {
+  await clearMocks();
+  const balance = async () => (await call("/rest/v1/credit_balance?select=balance", { method: "GET", token: adminToken })).json[0].balance;
+  const before = await balance();
+  const bad = await fn("credits-topup", { token: adminToken, body: { credits: 7 } });
+  assert.equal(bad.status, 400);
+  const res = await fn("credits-topup", { token: adminToken, body: { credits: 50 } });
+  assert.equal(res.status, 200, JSON.stringify(res.json));
+  assert.equal(res.json.status, "completed");
+  assert.equal(await balance(), before + 50);
+  const mails = (await mocked()).filter((r) => r.url === "/emails");
+  assert.deepEqual(mails.map((m) => m.body.to[0]).sort(), ["elevate.studio018@gmail.com", "info@markmontage.se"]);
+  assert.match(mails.find((m) => m.body.to[0] === "info@markmontage.se").body.html, /årsfakturan/);
+  await fn("credits-topup", { token: adminToken, body: { credits: 50 } });
+  await fn("credits-topup", { token: adminToken, body: { credits: 50 } });
+  const fourth = await fn("credits-topup", { token: adminToken, body: { credits: 500 } });
+  assert.equal(fourth.json.status, "pending_approval");
+  assert.equal(await balance(), before + 150);
+});
+
+let approveLink;
+let denyLink;
+await test("reset-request needs RENSA, changes nothing and mails signed links", async () => {
+  await clearMocks();
+  const versionBefore = (await call("/rest/v1/site_snapshot?select=version", { method: "GET" })).json[0].version;
+  const unconfirmed = await fn("reset-request", { token: adminToken, body: { confirm: "rensa" } });
+  assert.equal(unconfirmed.status, 400);
+  const res = await fn("reset-request", { token: adminToken, body: { confirm: "RENSA", reason: "Vill börja om" } });
+  assert.equal(res.status, 200, JSON.stringify(res.json));
+  assert.equal(res.json.status, "pending");
+  const again = await fn("reset-request", { token: adminToken, body: { confirm: "RENSA" } });
+  assert.equal(again.status, 409);
+  const versionAfter = (await call("/rest/v1/site_snapshot?select=version", { method: "GET" })).json[0].version;
+  assert.equal(versionAfter, versionBefore);
+  const mails = (await mocked()).filter((r) => r.url === "/emails");
+  const agency = mails.find((m) => m.body.to[0] === "elevate.studio018@gmail.com");
+  const links = [...agency.body.html.matchAll(/href="([^"]+reset-decision[^"]+)"/g)].map((m) => m[1].replace(/&amp;/g, "&"));
+  approveLink = links.find((l) => l.includes("action=approve"));
+  denyLink = links.find((l) => l.includes("action=deny"));
+  assert.ok(approveLink && denyLink);
+  assert.ok(mails.some((m) => m.body.to[0] === "info@markmontage.se"));
+});
+
+await test("reset-decision refuses a tampered link", async () => {
+  const tampered = approveLink.replace("action=approve", "action=deny");
+  const res = await fetch(tampered);
+  assert.equal(res.status, 400);
+});
+
+await test("approving resets to the original after a backup; the link then stops working", async () => {
+  await clearMocks();
+  const res = await fetch(approveLink);
+  const html = await res.text();
+  assert.equal(res.status, 200, html);
+  assert.match(html, /Godkänt/);
+  const site = (await call("/rest/v1/site_snapshot?select=data,version", { method: "GET" })).json[0];
+  assert.equal(site.data.pages.items.hem.sections.items.hero.heading, "Mark- och grundarbeten i Kungälv & Göteborg");
+  const history = (await call("/rest/v1/rpc/revision_list", { token: adminToken, body: {} })).json;
+  assert.equal(history[0].source, "reset");
+  assert.equal(history[1].source, "backup");
+  assert.ok((await mocked()).some((r) => r.url.endsWith("/dispatches")));
+  const reuse = await fetch(approveLink);
+  assert.equal(reuse.status, 409);
+  const deny = await fetch(denyLink);
+  assert.equal(deny.status, 409);
+});
+
+await test("a pending request can be withdrawn by the customer", async () => {
+  const res = await fn("reset-request", { token: adminToken, body: { confirm: "RENSA" } });
+  assert.equal(res.json.status, "pending");
+  const cancel = await fn("reset-request", { method: "DELETE", token: adminToken });
+  assert.equal(cancel.json.status, "cancelled");
+  const state = await fn("reset-request", { method: "GET", token: adminToken });
+  assert.equal(state.json.pending, null);
+});
+
 for (const [status, name, message] of results) console.log(status.padEnd(4), name, message ? `— ${message}` : "");
 const failed = results.filter(([s]) => s === "FAIL").length;
 console.log(failed ? `${failed} failed` : `all ${results.length} passed`);
