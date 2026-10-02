@@ -12,7 +12,7 @@ export const processSteps: ProcessStep[] = [
   {
     title: "Kontakt",
     description:
-      "Du hör av dig via telefon eller formulär och berättar kort om ditt projekt, så återkommer vi snabbt med nästa steg.",
+      "Du hör av dig via telefon eller formuläret och berättar kort om ditt projekt, så återkommer vi snabbt med nästa steg.",
     icon: "Phone",
   },
   {

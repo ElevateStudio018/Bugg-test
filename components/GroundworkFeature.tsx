@@ -28,7 +28,7 @@ const blocks: Block[] = [
   },
   {
     heading: "Anpassat efter marken",
-    text: "Varje uppdrag anpassas efter förhållandena på platsen – från lera och berg till mer lättarbetad mark, och efter markens bärighet och grundvatten.",
+    text: "Varje uppdrag anpassas efter förhållandena på platsen – från lera och berg till mer lättarbetad mark – och efter markens bärighet och grundvattennivå.",
     icon: "Layers",
     link: { href: "#tjanster", label: "Se våra tjänster" },
     photo: companyPhotos.minigravare,

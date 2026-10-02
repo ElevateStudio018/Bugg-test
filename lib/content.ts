@@ -1,10 +1,9 @@
 // Real business data for Markmontage BEAB AB, gathered from public Swedish
-// business registries (allabolag.se, bolagsfakta.se, hitta.se) since the
-// client did not supply a content object for this rebrand. Nothing here is
-// invented — fields with no confirmed public source (there is no listed
-// email or website for this company) are left out rather than fabricated;
-// components consuming them must handle that rather than filling in a
-// placeholder.
+// business registries (allabolag.se, bolagsfakta.se, hitta.se) and the
+// company's own website (markmontage.se), since the client did not supply a
+// content object for this rebrand. Nothing here is invented — fields with no
+// confirmed public source are left out rather than fabricated; components
+// consuming them must handle that rather than filling in a placeholder.
 
 import { companyPhotos } from "./photos";
 
@@ -27,7 +26,8 @@ export const company = {
     full: "Lybeck 140, 442 91 Romelanda",
   },
   phoneNational: "031-385 41 41",
-  email: null as string | null,
+  // The general address on the company's own contact page (markmontage.se/kontakta-oss).
+  email: "info@markmontage.se" as string | null,
   orgNumber: "556625-8157",
   vatNumber: "SE556625815701",
 } as const;
@@ -40,7 +40,7 @@ export const hero = {
 
 export const intro = {
   heading: "Mark- och grundarbeten i Kungälv & Göteborg",
-  lead: `${company.legalName} utför mark- och grundarbeten i ${company.serviceArea}`,
+  lead: `${company.legalName} utför mark- och grundarbeten i ${company.serviceArea}.`,
 };
 
 // Written from confirmed registry facts (founding year, address, employee
@@ -49,7 +49,7 @@ export const intro = {
 export const about = {
   heading: "Om oss",
   image: companyPhotos.teamet,
-  subheading: `${company.legalName} har sin bas i Romelanda utanför Kungälv och grundades ${company.foundedYear}`,
+  subheading: `${company.legalName} har sin bas i Romelanda utanför Kungälv och grundades ${company.foundedYear}.`,
   paragraphs: [
     `${company.legalName} är ett entreprenadföretag inom mark- och grundarbeten, verksamt i ${company.serviceArea}. Vi utför bland annat schaktning, dränering, grundläggning och VA-arbeten, och tar även helhetsansvar som totalentreprenör på större projekt.`,
     `${company.legalName} har ${company.yearsExperienceLabel} inom branschen. Ett bygge är aldrig starkare än sin grund, och vi lägger därför stor vikt vid fackmannamässigt utförande i varje moment av mark- och grundarbetet.`,
@@ -89,12 +89,12 @@ export const aboutPage = {
 // General Swedish tax rule (Skatteverket), scoped to the work types it
 // actually covers — not a claim that all of the company's work qualifies.
 export const rotAvdrag = {
-  question: "Kan jag få ROT-avdrag på mark- och grundarbete?",
+  question: "Kan jag få rotavdrag på mark- och grundarbete?",
   answer:
-    "Som privatperson kan du få ROT-avdrag på arbetskostnaden för vissa mark- och grundarbeten vid din bostad, till exempel dränering och grundförstärkning i samband med renovering eller tillbyggnad — avdraget är 30% av arbetskostnaden, upp till max 50 000 kr per person och år. Vi hjälper dig med ansökan till Skatteverket och drar av beloppet direkt på fakturan.",
+    "Som privatperson kan du få rotavdrag på arbetskostnaden för vissa mark- och grundarbeten vid din bostad, till exempel dränering och grundförstärkning i samband med renovering eller tillbyggnad. Avdraget är 30 procent av arbetskostnaden, upp till 50 000 kronor per person och år. Vi drar av beloppet direkt på fakturan och sköter ansökan till Skatteverket.",
 };
 
-export const footerCopyright = `© ${new Date().getFullYear()} - ${company.legalName}`;
+export const footerCopyright = `© ${new Date().getFullYear()} ${company.legalName}`;
 
 // No Google rating and no reviews were found for this company, so per the
 // reviews rules the entire Reviews section must stay hidden rather than

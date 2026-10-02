@@ -4,6 +4,8 @@ import { FormEvent, useId, useState, type CSSProperties } from "react";
 import { Icon } from "./Icon";
 import { buttonClasses } from "./Button";
 import { useQuoteModal } from "@/contexts/QuoteModalContext";
+import { company } from "@/lib/content";
+import { toTelHref } from "@/lib/format";
 
 interface FormValues {
   namn: string;
@@ -29,7 +31,7 @@ const arbetsTyper = [
   { value: "grundlaggning", label: "Grundläggning" },
   { value: "va-arbeten", label: "VA-arbeten" },
   { value: "anlaggning-vagar-planer", label: "Anläggning av vägar & planer" },
-  { value: "stenlaggning", label: "Stenläggning & plattsättning" },
+  { value: "stenlaggning", label: "Stenläggning & plattläggning" },
   { value: "annat", label: "Annat" },
 ];
 
@@ -37,6 +39,10 @@ const fieldBaseClass =
   "w-full border border-ink/15 bg-white py-3.5 pl-12 pr-4 text-[17px] text-ink placeholder:text-ash transition-colors duration-150 focus:border-olive focus:outline focus:outline-2 focus:outline-olive/25";
 
 const labelClass = "mb-2 block text-[15px] font-semibold text-ink";
+
+// Requests go by e-mail through FormSubmit (formsubmit.co), as the site has no server of its own. The first request to a
+// new address only sends an activation e-mail there; nothing is forwarded until its link has been clicked.
+const SUBMIT_URL = `https://formsubmit.co/ajax/${company.email}`;
 
 const fieldIds: Record<keyof FormValues, string> = {
   namn: "namn",
@@ -50,6 +56,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
   const [values, setValues] = useState<FormValues>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [sendFailed, setSendFailed] = useState(false);
   const idPrefix = useId();
   const { showConfirmation, close } = useQuoteModal();
 
@@ -99,7 +106,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
     if (errors[key]) setErrors((prev) => ({ ...prev, [key]: undefined }));
   }
 
-  function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault();
     const nextErrors = validate();
     setErrors(nextErrors);
@@ -109,11 +116,33 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
     }
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSendFailed(false);
+    try {
+      const response = await fetch(SUBMIT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `Offertförfrågan från ${values.namn.trim()}`,
+          _template: "table",
+          _captcha: "false",
+          _replyto: values.epost.trim(),
+          Namn: values.namn.trim(),
+          Telefon: values.telefon.trim(),
+          "E-post": values.epost.trim(),
+          "Typ av arbete": arbetsTyper.find((typ) => typ.value === values.typAvArbete)?.label ?? values.typAvArbete,
+          Beskrivning: values.beskrivning.trim() || "–",
+        }),
+      });
+      const result: { success?: string | boolean } | null = await response.json().catch(() => null);
+      if (!response.ok || String(result?.success) !== "true") throw new Error("Not sent");
       setValues(initialValues);
       showConfirmation();
-    }, 1000);
+    } catch {
+      // Kept as typed, so it can be sent again or read out over the phone.
+      setSendFailed(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -233,7 +262,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
             rows={3}
             value={values.beskrivning}
             onChange={(e) => handleChange("beskrivning", e.target.value)}
-            placeholder="Berätta kort om ditt projekt..."
+            placeholder="Berätta kort om ditt projekt…"
             className={`${fieldBaseClass} resize-none`}
           />
         </div>
@@ -245,12 +274,21 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
           {isSubmitting ? (
             <>
               <Icon name="Loader2" className="mr-2 h-5 w-5 animate-spin" />
-              Skickar...
+              Skickar…
             </>
           ) : (
             "Skicka förfrågan"
           )}
         </button>
+        {sendFailed && (
+          <p role="alert" className="mt-3 animate-error-in text-[14px] text-red-700">
+            Förfrågan kunde inte skickas. Försök igen eller ring oss på{" "}
+            <a href={toTelHref(company.phoneNational)} className="whitespace-nowrap font-semibold underline underline-offset-2">
+              {company.phoneNational}
+            </a>
+            .
+          </p>
+        )}
       </div>
 
       {variant === "modal" && (

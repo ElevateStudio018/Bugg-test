@@ -18,7 +18,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "Hur lång tid tar ett mark- eller grundarbete?",
     answer:
-      "Tidsåtgången beror helt på projektets omfattning — allt från en dränering till grundläggning av en hel villa. Vid hembesöket går vi igenom en realistisk tidsplan för just ditt projekt, så att du vet vad du kan förvänta dig innan arbetet startar.",
+      "Tidsåtgången beror helt på projektets omfattning – allt från en dränering till grundläggning av en hel villa. Vid hembesöket går vi igenom en realistisk tidsplan för just ditt projekt, så att du vet vad du kan förvänta dig innan arbetet startar.",
   },
   {
     question: "Vad innebär det att ni arbetar som totalentreprenör?",
@@ -37,11 +37,11 @@ export const faqItems: FaqItem[] = [
   {
     question: "Ger ni fast pris på era projekt?",
     answer:
-      "Ja, efter det kostnadsfria hembesöket får du en fast offert innan arbetet påbörjas, så att du vet exakt vad som ingår och vad projektet kostar. Skulle önskemål tillkomma under projektets gång stämmer vi alltid av det med dig innan vi går vidare.",
+      "Ja, efter det kostnadsfria hembesöket får du en fast offert innan arbetet påbörjas, så att du vet exakt vad som ingår och vad projektet kostar. Skulle nya önskemål tillkomma under projektets gång stämmer vi alltid av med dig innan vi går vidare.",
   },
   {
     question: "Vilka områden arbetar ni i?",
     answer:
-      "Vi utför mark- och grundarbeten i Kungälv, Göteborg och övriga Västra Götaland. Är du osäker på om din adress ligger inom vårt upptagningsområde är du varmt välkommen att höra av dig, så ger vi dig snabbt besked.",
+      "Vi utför mark- och grundarbeten i Kungälv, Göteborg och övriga Västra Götaland. Är du osäker på om vi arbetar där du bor är du varmt välkommen att höra av dig, så ger vi dig snabbt besked.",
   },
 ];

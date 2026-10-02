@@ -112,7 +112,7 @@ export function Footer() {
         >
           <p>{footerCopyright}</p>
           <p>
-            Org.nr {company.orgNumber} · VAT {company.vatNumber}
+            Org.nr {company.orgNumber} · Momsreg.nr {company.vatNumber}
           </p>
         </Reveal>
       </div>

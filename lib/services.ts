@@ -25,13 +25,13 @@ export const services: Service[] = [
     slug: "schaktning-markarbeten",
     name: "Schaktning & markarbeten",
     shortDescription:
-      "Schaktning och markarbeten som förbereder tomten inför bygget, anpassat efter markförhållandena.",
+      "Schaktning och markarbeten som förbereder tomten inför bygget, anpassade efter markförhållandena.",
     icon: "Shovel",
     image: companyPhotos.minigravare,
     description: [
-      "Ett bygge börjar alltid under mark, och rätt förberett underlag avgör hur resten av projektet går. Markmontage BEAB AB utför schaktning och markarbeten i Kungälv, Göteborg och övriga Västra Götaland, både som en del av större entreprenader och som fristående uppdrag.",
+      "Ett bygge börjar alltid under mark, och ett väl förberett underlag avgör hur resten av projektet går. Markmontage BEAB AB utför schaktning och markarbeten i Kungälv, Göteborg och övriga Västra Götaland, både som en del av större entreprenader och som fristående uppdrag.",
       "Vi hanterar schaktning för grund, ledningar och anslutningar, samt terrassering och iordningställande av tomtmark inför fortsatt byggnation. Varje uppdrag anpassas efter markförhållandena på plats, från lera och berg till mer lättarbetad mark.",
-      "Som totalentreprenör kan vi samordna schaktningen med efterföljande moment som grundläggning och VA-arbeten, så att projektet flyter samman utan onödiga avbrott mellan de olika entreprenörerna.",
+      "Som totalentreprenör kan vi samordna schaktningen med efterföljande moment som grundläggning och VA-arbeten, så att projektet flyter på utan onödiga avbrott mellan olika entreprenörer.",
       "Kontakta oss för en kostnadsfri offert, så tittar vi tillsammans på förutsättningarna för just din tomt.",
     ],
   },
@@ -39,13 +39,13 @@ export const services: Service[] = [
     slug: "dranering",
     name: "Dränering",
     shortDescription:
-      "Dränering som skyddar grunden mot fukt och sättningsskador, utfört enligt branschens riktlinjer.",
+      "Dränering som skyddar grunden mot fukt och sättningsskador, utförd enligt branschens riktlinjer.",
     icon: "Droplets",
     image: pexelsPhoto(9389356),
     description: [
       "Bristfällig dränering är en av de vanligaste orsakerna till fukt- och sättningsskador i äldre hus. Markmontage BEAB AB utför dränering i Kungälv, Göteborg och övriga Västra Götaland, både vid nybyggnation och som åtgärd vid befintliga fuktproblem.",
       "Arbetet omfattar schaktning runt grunden, ny dränering och fuktskydd, samt återfyllning och iordningställande av marken efteråt. Vi lägger stor vikt vid att dräneringen leder bort vatten på rätt sätt, anpassat efter husets grundläggning och markens lutning.",
-      "Dränering vid en befintlig bostad kan i många fall ROT-berättiga arbetskostnaden — vi hjälper dig gärna med vad som gäller för just ditt hus.",
+      "Dränering vid en befintlig bostad ger i många fall rätt till rotavdrag för arbetskostnaden – vi berättar gärna vad som gäller för just ditt hus.",
       "Kontakta oss för ett kostnadsfritt hembesök, så gör vi en bedömning av dräneringen vid din fastighet.",
     ],
   },
@@ -59,7 +59,7 @@ export const services: Service[] = [
     description: [
       "Grunden bär hela byggnaden, och felaktigt utförd grundläggning är svår och kostsam att åtgärda i efterhand. Markmontage BEAB AB utför grundläggning i Kungälv, Göteborg och övriga Västra Götaland, vid såväl nybyggnation som tillbyggnad.",
       "Vi utför bland annat gjutning av platta på mark, grundsulor och källargrunder, alltid anpassat efter markens bärighet och grundvattenförhållandena på platsen. Markisolering och fuktskydd ingår som en naturlig del av arbetet.",
-      "Genom vår erfarenhet inom mark- och grundarbeten vet vi vad som krävs för en grund som håller över tid, och samordnar vid behov arbetet med övriga entreprenörer i projektet.",
+      "Tack vare vår erfarenhet av mark- och grundarbeten vet vi vad som krävs för en grund som håller över tid. Vid behov samordnar vi arbetet med övriga entreprenörer i projektet.",
       "Hör av dig för en kostnadsfri offert, så berättar vi mer om vad som gäller för grundläggningen på just din tomt.",
     ],
   },
@@ -67,7 +67,7 @@ export const services: Service[] = [
     slug: "va-arbeten",
     name: "VA-arbeten",
     shortDescription:
-      "Vatten- och avloppsarbeten från anslutning till kommunalt nät till ledningar på egen tomt.",
+      "Vatten- och avloppsarbeten – ledningar på den egna tomten och anslutning till det kommunala nätet.",
     icon: "Waves",
     image: companyPhotos.gravmaskinRor,
     description: [
@@ -93,13 +93,13 @@ export const services: Service[] = [
   },
   {
     slug: "stenlaggning",
-    name: "Stenläggning & plattsättning",
+    name: "Stenläggning & plattläggning",
     shortDescription:
-      "Stenläggning och plattsättning utomhus med stabilt underlag för gångar, uteplatser och infarter.",
+      "Stenläggning och plattläggning utomhus med stabilt underlag för gångar, uteplatser och infarter.",
     icon: "LayoutGrid",
     image: pexelsPhoto(6083),
     description: [
-      "En hållbar stenläggning avgörs av underarbetet minst lika mycket som av själva stenen eller plattan. Markmontage BEAB AB utför stenläggning och plattsättning utomhus i Kungälv, Göteborg och övriga Västra Götaland.",
+      "En hållbar stenläggning avgörs av underarbetet minst lika mycket som av själva stenen eller plattan. Markmontage BEAB AB utför stenläggning och plattläggning utomhus i Kungälv, Göteborg och övriga Västra Götaland.",
       "Vi bygger upp bärlager och sättsand enligt branschens riktlinjer inför läggning av marksten, plattor eller kantsten till gångar, uteplatser och infarter, så att ytan ligger stabilt och jämnt även efter flera års användning.",
       "Vid behov kombinerar vi stenläggningen med dränering under ytan för att leda bort vatten och minska risken för sättningar och ogräs i fogarna.",
       "Kontakta oss för en kostnadsfri offert på stenläggningen vid din fastighet.",
@@ -114,8 +114,8 @@ export const services: Service[] = [
     image: companyPhotos.vagarbete,
     imageFocus: "28% 50%",
     description: [
-      "På större projekt är det ofta en fördel att samla mark- och grundarbetet hos en och samma entreprenör. Markmontage BEAB AB åtar oss totalentreprenader inom mark- och grundarbeten i Kungälv, Göteborg och övriga Västra Götaland.",
-      "Som totalentreprenör tar vi helhetsansvaret för projektet — från schaktning och dränering till grundläggning, VA-arbeten och färdigställande av mark — och samordnar de moment som krävs för att arbetet ska flyta på utan onödiga förseningar.",
+      "På större projekt är det ofta en fördel att samla mark- och grundarbetet hos en och samma entreprenör. Markmontage BEAB AB åtar sig totalentreprenader inom mark- och grundarbeten i Kungälv, Göteborg och övriga Västra Götaland.",
+      "Som totalentreprenör tar vi helhetsansvaret för projektet – från schaktning och dränering till grundläggning, VA-arbeten och färdigställande av mark – och samordnar de moment som krävs för att arbetet ska flyta på utan onödiga förseningar.",
       "Du får en kontaktperson genom hela projektet och en tydlig tidsplan, istället för att själv behöva samordna flera olika entreprenörer.",
       "Kontakta oss för en kostnadsfri offert, så berättar vi mer om hur en totalentreprenad kan se ut för just ditt projekt.",
     ],
