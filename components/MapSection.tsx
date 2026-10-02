@@ -19,7 +19,7 @@ export function MapSection() {
         </Reveal>
       </div>
 
-      <div className="h-[420px] w-full bg-olive/20 sm:h-[480px] lg:h-[300px]">
+      <div className="h-[350px] w-full bg-olive/20">
         <iframe
           src={mapEmbedSrc}
           title={`Karta: ${company.legalName}, ${company.address.full}`}
