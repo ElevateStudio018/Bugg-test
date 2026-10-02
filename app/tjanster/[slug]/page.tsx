@@ -135,7 +135,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                   {company.address.full}
                 </li>
               </ul>
-              <QuoteTrigger className={buttonClasses("olive", "mt-8 w-full")}>Få gratis offert</QuoteTrigger>
+              <QuoteTrigger className={buttonClasses("olive", "mt-8 w-full")}>Begär offert</QuoteTrigger>
             </div>
 
             <Link href="/#tjanster" className={buttonClasses("olive-outline", "w-full")}>
@@ -150,7 +150,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
           <Reveal>
             <h2 className="text-h2 text-ink lg:text-h2-lg">Fler tjänster</h2>
           </Reveal>
-          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-6 xl:grid-cols-3">
             {otherServices.map((item, index) => (
               <Reveal key={item.slug} delayMs={(index % 3) * 70}>
                 <ServiceCard service={item} />

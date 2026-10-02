@@ -76,7 +76,7 @@ export function Footer() {
                 </span>
               </li>
             </ul>
-            <QuoteTrigger className={buttonClasses("light-outline", "mt-6 lg:mt-7")}>Få gratis offert</QuoteTrigger>
+            <QuoteTrigger className={buttonClasses("light-outline", "mt-6 lg:mt-7")}>Begär offert</QuoteTrigger>
           </Reveal>
 
           <Reveal delayMs={160}>

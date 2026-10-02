@@ -150,7 +150,7 @@ export function NavOverlay({ onClose }: { onClose: () => void }) {
       >
         <div className="mx-auto flex max-w-content flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <button type="button" onClick={handleCtaClick} className={buttonClasses("light-outline", "w-full sm:w-auto")}>
-            Få gratis offert
+            Begär offert
           </button>
           <a href={toTelHref(company.phoneNational)} className="flex items-center gap-3 text-[18px] font-semibold text-white hover:text-white/70">
             <Icon name="Phone" className="h-5 w-5 text-white/60" />

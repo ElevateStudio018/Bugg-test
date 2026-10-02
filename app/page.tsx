@@ -40,7 +40,6 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Hero />
       <ServicesSection />
-      <MapSection />
       <UppdragSection />
       <StatsBand />
       <GroundworkFeature />
@@ -49,6 +48,7 @@ export default function HomePage() {
       <ProcessSection />
       <FaqSection />
       <ContactSection />
+      <MapSection />
     </>
   );
 }

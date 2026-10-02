@@ -106,7 +106,7 @@ export function QuoteModal() {
           </span>
         </button>
         <h2 id="quote-modal-heading" className="mb-6 animate-rise-fast pr-10 text-[26px] font-semibold leading-tight text-ink [animation-delay:40ms]">
-          Få en kostnadsfri offert
+          Begär offert
         </h2>
         <QuoteForm variant="modal" />
       </div>

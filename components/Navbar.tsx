@@ -4,8 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { BurgerIcon, burgerButtonClasses } from "./BurgerIcon";
+import { Icon } from "./Icon";
 import { NavOverlay } from "./NavOverlay";
 import { Wordmark } from "./Wordmark";
+import { company } from "@/lib/content";
+import { toTelHref } from "@/lib/format";
 
 // Shown in the bar on desktop; the menu (hamburger) keeps the full list, including every service.
 const barLinks = [
@@ -78,16 +81,28 @@ export function Navbar() {
               </ul>
             </nav>
 
-            <button
-              type="button"
-              onClick={() => setIsMenuOpen(true)}
-              aria-expanded={isMenuOpen}
-              aria-label="Öppna meny"
-              className={burgerButtonClasses}
-            >
-              {/* A cross while the menu is open, so once the menu closes it turns back into bars in view. */}
-              <BurgerIcon cross={isMenuOpen} />
-            </button>
+            <div className="flex items-center gap-1 sm:gap-3">
+              {/* The phone number, always a tap away: just the icon on smaller screens. */}
+              <a
+                href={toTelHref(company.phoneNational)}
+                aria-label={`Ring ${company.phoneNational}`}
+                className="flex h-12 w-12 items-center justify-center gap-2.5 rounded-xl text-white transition-colors hover:text-white/75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white xl:w-auto xl:px-2"
+              >
+                <Icon name="Phone" className="h-6 w-6 shrink-0" />
+                <span className="hidden text-[16px] font-semibold xl:inline">{company.phoneNational}</span>
+              </a>
+
+              <button
+                type="button"
+                onClick={() => setIsMenuOpen(true)}
+                aria-expanded={isMenuOpen}
+                aria-label="Öppna meny"
+                className={burgerButtonClasses}
+              >
+                {/* A cross while the menu is open, so once the menu closes it turns back into bars in view. */}
+                <BurgerIcon cross={isMenuOpen} />
+              </button>
+            </div>
           </div>
         </div>
       </header>

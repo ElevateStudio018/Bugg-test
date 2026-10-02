@@ -17,9 +17,9 @@ export function ServicesSection() {
         </Reveal>
 
         {/* The last card spans two columns so 7 services fill the 2- and 4-column grids without a gap. */}
-        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:mt-10 xl:grid-cols-4">
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:gap-6 lg:mt-10 xl:grid-cols-4">
           {services.map((service, index) => (
-            <Reveal key={service.slug} delayMs={(index % 4) * 70} className={index === lastIndex ? "md:col-span-2" : ""}>
+            <Reveal key={service.slug} delayMs={(index % 4) * 70} className={index === lastIndex ? "col-span-2" : ""}>
               <ServiceCard service={service} wide={index === lastIndex} />
             </Reveal>
           ))}

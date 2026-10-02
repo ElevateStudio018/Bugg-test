@@ -80,7 +80,7 @@ export default function OmOssPage() {
           <div className="max-w-3xl">
             <h2 className="text-h2 lg:text-h2-lg">{aboutPage.together.heading}</h2>
             <p className="mt-4 text-copy lg:mt-6 lg:text-lead">{aboutPage.together.text}</p>
-            <QuoteTrigger className={buttonClasses("light-outline", "mt-6 lg:mt-8")}>Få en kostnadsfri offert</QuoteTrigger>
+            <QuoteTrigger className={buttonClasses("light-outline", "mt-6 lg:mt-8")}>Begär offert</QuoteTrigger>
           </div>
         </div>
       </section>

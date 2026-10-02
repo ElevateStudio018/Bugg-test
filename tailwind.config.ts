@@ -15,7 +15,8 @@ const config: Config = {
         cream: "#F2F0E9",
         ink: "#222222",
         coal: "#333333",
-        ash: "#8C8A82",
+        // Secondary text: dark enough for 4.5:1 contrast on sand, cream and white.
+        ash: "#63625C",
         // Inactive carousel dot.
         pebble: "#B6B5AE",
       },

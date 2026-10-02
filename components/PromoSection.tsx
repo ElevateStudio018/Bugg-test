@@ -71,7 +71,7 @@ export function PromoSection() {
           heading="Ska du bygga nytt eller bygga till?"
           text="Vi tar hand om markarbetet inför bygget – schakt, grundläggning och VA – och samordnar vid behov arbetet med övriga entreprenörer i projektet."
         >
-          <QuoteTrigger className={promoPillClasses}>Få en kostnadsfri offert</QuoteTrigger>
+          <QuoteTrigger className={promoPillClasses}>Begär offert</QuoteTrigger>
         </PromoBox>
       </div>
     </section>

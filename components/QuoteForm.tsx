@@ -23,7 +23,8 @@ const initialValues: FormValues = {
   beskrivning: "",
 };
 
-type FormErrors = Partial<Record<keyof FormValues, string>>;
+// "kontakt" is the error when neither phone nor e-mail is given; one of them is enough.
+type FormErrors = Partial<Record<keyof FormValues | "kontakt", string>>;
 
 const arbetsTyper = [
   { value: "schaktning-markarbeten", label: "Schaktning & markarbeten" },
@@ -68,9 +69,10 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
 
   // Each time the form is sent with mistakes, the fields in question give a short, gentle shake. Web Animations
   // ignore the reduced-motion rule in globals.css, hence the check.
-  function shake(keys: (keyof FormValues)[]) {
+  function shake(keys: (keyof FormErrors)[]) {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    for (const key of keys) {
+    const fields = keys.flatMap((key) => (key === "kontakt" ? (["telefon", "epost"] as const) : [key]));
+    for (const key of fields) {
       document.getElementById(`${idPrefix}-${fieldIds[key]}`)?.parentElement?.animate(
         [
           { transform: "translateX(0)" },
@@ -86,24 +88,23 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
 
   function validate(): FormErrors {
     const next: FormErrors = {};
+    const telefon = values.telefon.trim();
+    const epost = values.epost.trim();
     if (!values.namn.trim()) next.namn = "Ange ditt namn.";
-    if (!values.telefon.trim()) {
-      next.telefon = "Ange ditt telefonnummer.";
-    } else if (!/^[\d\s()+-]{6,}$/.test(values.telefon.trim())) {
-      next.telefon = "Ange ett giltigt telefonnummer.";
-    }
-    if (!values.epost.trim()) {
-      next.epost = "Ange din e-postadress.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.epost.trim())) {
-      next.epost = "Ange en giltig e-postadress.";
-    }
+    if (!telefon && !epost) next.kontakt = "Ange telefonnummer eller e-postadress, så att vi kan nå dig.";
+    if (telefon && !/^[\d\s()+-]{6,}$/.test(telefon)) next.telefon = "Ange ett giltigt telefonnummer.";
+    if (epost && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(epost)) next.epost = "Ange en giltig e-postadress.";
     if (!values.typAvArbete) next.typAvArbete = "Välj typ av arbete.";
     return next;
   }
 
   function handleChange<K extends keyof FormValues>(key: K, value: FormValues[K]) {
     setValues((prev) => ({ ...prev, [key]: value }));
-    if (errors[key]) setErrors((prev) => ({ ...prev, [key]: undefined }));
+    // Typing in either contact field also clears the "phone or e-mail" error.
+    const cleared: (keyof FormErrors)[] = key === "telefon" || key === "epost" ? [key, "kontakt"] : [key];
+    if (cleared.some((k) => errors[k])) {
+      setErrors((prev) => ({ ...prev, ...Object.fromEntries(cleared.map((k) => [k, undefined])) }));
+    }
   }
 
   async function handleSubmit(event: FormEvent) {
@@ -111,7 +112,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
     const nextErrors = validate();
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) {
-      shake(Object.keys(nextErrors) as (keyof FormValues)[]);
+      shake(Object.keys(nextErrors) as (keyof FormErrors)[]);
       return;
     }
 
@@ -125,10 +126,10 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
           _subject: `Offertförfrågan från ${values.namn.trim()}`,
           _template: "table",
           _captcha: "false",
-          _replyto: values.epost.trim(),
+          ...(values.epost.trim() ? { _replyto: values.epost.trim() } : {}),
           Namn: values.namn.trim(),
-          Telefon: values.telefon.trim(),
-          "E-post": values.epost.trim(),
+          Telefon: values.telefon.trim() || "–",
+          "E-post": values.epost.trim() || "–",
           "Typ av arbete": arbetsTyper.find((typ) => typ.value === values.typAvArbete)?.label ?? values.typAvArbete,
           Beskrivning: values.beskrivning.trim() || "–",
         }),
@@ -184,8 +185,8 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
             value={values.telefon}
             onChange={(e) => handleChange("telefon", e.target.value)}
             className={fieldBaseClass}
-            aria-invalid={Boolean(errors.telefon)}
-            aria-describedby={errors.telefon ? `${idPrefix}-telefon-error` : undefined}
+            aria-invalid={Boolean(errors.telefon || errors.kontakt)}
+            aria-describedby={errors.telefon ? `${idPrefix}-telefon-error` : `${idPrefix}-kontakt`}
           />
         </div>
         {errors.telefon && (
@@ -208,8 +209,8 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
             value={values.epost}
             onChange={(e) => handleChange("epost", e.target.value)}
             className={fieldBaseClass}
-            aria-invalid={Boolean(errors.epost)}
-            aria-describedby={errors.epost ? `${idPrefix}-epost-error` : undefined}
+            aria-invalid={Boolean(errors.epost || errors.kontakt)}
+            aria-describedby={errors.epost ? `${idPrefix}-epost-error` : `${idPrefix}-kontakt`}
           />
         </div>
         {errors.epost && (
@@ -217,6 +218,12 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
             {errors.epost}
           </p>
         )}
+        <p
+          id={`${idPrefix}-kontakt`}
+          className={`mt-1.5 text-[14px] ${errors.kontakt ? "animate-error-in text-red-700" : "text-ash"}`}
+        >
+          {errors.kontakt ?? "Det räcker med telefon eller e-post."}
+        </p>
       </div>
 
       <div {...entrance(3)}>
