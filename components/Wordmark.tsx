@@ -1,24 +1,25 @@
-import type { CSSProperties } from "react";
-import iconMark from "@/assets/logo/logo-icon.png";
-import wordMark from "@/assets/logo/logo-wordmark.png";
-import beabMark from "@/assets/logo/logo-beab.png";
+import { logoBeab, logoIcon, logoName } from "./logoPaths";
 
-// The client's logo, split into its icon and lettering and laid out side by side for the header. Each part is
-// used as a mask over `currentColor`, so the logo takes the text colour of wherever it sits (white on the dark
-// green bars, dark green on light backgrounds).
-function maskStyle(image: { src: string; width: number; height: number }): CSSProperties {
-  const mask = `url(${image.src}) center / contain no-repeat`;
-  return { aspectRatio: `${image.width} / ${image.height}`, mask, WebkitMask: mask };
-}
-
+// The client's logo (BEAB Markmontage) as a horizontal lockup for the header, menu and footer: the mark on the
+// left, "BEAB" over "MARKMONTAGE" on the right, both sitting on the same baseline as in the original artwork.
+// It is drawn in the current text colour, so on the dark green bars the black ground turns white, the pit and the
+// sleeve become lighter tints of it, and the hand stays the background colour, just as it is white-on-white in
+// the original.
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
-    <span className={`flex items-center gap-2.5 text-white sm:gap-3 ${className}`}>
-      <span aria-hidden="true" className="block h-[34px] shrink-0 bg-current sm:h-10" style={maskStyle(iconMark)} />
-      <span aria-hidden="true" className="flex items-end gap-1.5 sm:gap-2">
-        <span className="block h-[15px] shrink-0 bg-current sm:h-[18px]" style={maskStyle(wordMark)} />
-        {/* BEAB a touch softer than the name, as in the original lettering's smaller weight. */}
-        <span className="mb-px block h-2 shrink-0 bg-current opacity-70 sm:h-[9.5px]" style={maskStyle(beabMark)} />
+    <span className={`flex items-end gap-2.5 text-white sm:gap-3 ${className}`}>
+      <svg aria-hidden="true" viewBox={logoIcon.viewBox} className="h-10 w-auto shrink-0 fill-current sm:h-12">
+        <path d={logoIcon.sleeve} fillRule="evenodd" opacity={0.7} />
+        <path d={logoIcon.ground} fillRule="evenodd" />
+        <path d={logoIcon.pit} fillRule="evenodd" opacity={0.42} />
+      </svg>
+      <span aria-hidden="true" className="flex flex-col items-start gap-[3px] sm:gap-1">
+        <svg viewBox={logoBeab.viewBox} className="h-[11px] w-auto fill-current sm:h-[13px]">
+          <path d={logoBeab.d} fillRule="evenodd" />
+        </svg>
+        <svg viewBox={logoName.viewBox} className="h-5 w-auto fill-current sm:h-6">
+          <path d={logoName.d} fillRule="evenodd" />
+        </svg>
       </span>
       <span className="sr-only">Markmontage BEAB</span>
     </span>
