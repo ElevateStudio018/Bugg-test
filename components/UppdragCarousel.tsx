@@ -60,12 +60,18 @@ export function UppdragCarousel({ items }: { items: UppdragItem[] }) {
   return (
     <div>
       <div className="relative">
-        <div ref={trackRef} className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto">
+        {/* Phones: the current card sits in the middle with its neighbours peeking in on both sides. The spacers
+            before the first and after the last card let those two centre as well. From sm up the cards line up
+            from the left edge instead. */}
+        <div
+          ref={trackRef}
+          className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto before:w-[calc(8%-16px)] before:shrink-0 after:w-[calc(8%-16px)] after:shrink-0 sm:before:hidden sm:after:hidden"
+        >
           {items.map((item) => (
             <div
               key={item.id}
               data-slide
-              className="w-[86%] shrink-0 snap-start sm:w-[calc((100%-16px)/2)] lg:w-[calc((100%-32px)/3)]"
+              className="w-[84%] shrink-0 snap-center sm:w-[calc((100%-16px)/2)] sm:snap-start lg:w-[calc((100%-32px)/3)]"
             >
               <UppdragCard item={item} />
             </div>

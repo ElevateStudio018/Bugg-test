@@ -20,7 +20,7 @@ export function UppdragSection() {
         </Reveal>
       </div>
 
-      {/* No side padding on mobile so the first card sits flush left and the next one peeks in. */}
+      {/* No side padding on mobile: the carousel centres the current card itself, with its neighbours peeking in. */}
       <div className="mx-auto mt-10 max-w-content sm:px-6 lg:px-8">
         <UppdragCarousel items={uppdragItems} />
       </div>
