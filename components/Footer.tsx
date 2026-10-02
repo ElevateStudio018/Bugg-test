@@ -23,7 +23,7 @@ const linkClass = "text-[18px] text-white transition-colors hover:text-white/70"
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-olive text-white">
-      {/* One continuous, seamlessly tiling contour map over the whole footer, very faint. */}
+      {/* Faint ring systems that merge into each other, tiling seamlessly over the whole footer. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-repeat opacity-[0.07]"
