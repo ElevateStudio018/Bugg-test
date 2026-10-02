@@ -108,7 +108,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   // The editor uses the whole width for its form and live preview side by side.
-  const wide = pathname.startsWith("/admin/hemsidan");
+  const wide = pathname.startsWith("/admin/hemsidan") || pathname.startsWith("/admin/ai");
 
   useEffect(() => setMenuOpen(false), [pathname]);
 

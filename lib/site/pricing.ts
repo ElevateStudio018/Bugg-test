@@ -17,6 +17,20 @@ export const PRICES = {
 
 export type PriceKey = keyof typeof PRICES;
 
+/** Each price as one line of a breakdown ("Ny avancerad sektion (20)"). */
+export const priceLabels: Record<PriceKey, string> = {
+  advice: "Råd utan ändring",
+  minorText: "Mindre textjustering",
+  theme: "Färger eller typsnitt",
+  rewriteSection: "Omskriven sektionstext",
+  element: "Element som läggs till eller tas bort",
+  layout: "Ombyggd layout i en sektion",
+  seo: "SEO-optimering av en sida",
+  standardSection: "Ny standardsektion",
+  advancedSection: "Ny avancerad sektion",
+  page: "Ny undersida",
+};
+
 /** The table exactly as the owner sees it. */
 export const priceTable: { action: string; credits: string }[] = [
   { action: "Manuella ändringar i adminpanelen", credits: "0 (alltid gratis)" },

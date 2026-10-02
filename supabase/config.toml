@@ -433,3 +433,6 @@ verify_jwt = false
 verify_jwt = false
 [functions.reset-decision]
 verify_jwt = false
+
+[functions.ai-assistant]
+verify_jwt = false
