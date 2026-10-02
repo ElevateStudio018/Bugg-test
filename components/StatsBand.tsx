@@ -1,11 +1,13 @@
+import { CountUp } from "./CountUp";
 import { Reveal } from "./Reveal";
 import { company } from "@/lib/content";
 
-// Registry figures only: founding year, company age and the latest reported headcount.
+// Founding year and company age from the registry, headcount from the company. The two amounts count up when the band
+// scrolls into view; the year stays as it is.
 const stats = [
-  { value: String(company.foundedYear), label: "Grundat" },
-  { value: String(new Date().getFullYear() - company.foundedYear), label: "År i branschen" },
-  { value: String(company.employeeCountValue), label: "Anställda" },
+  { value: company.foundedYear, label: "Grundat", countUp: false },
+  { value: new Date().getFullYear() - company.foundedYear, label: "År i branschen", countUp: true },
+  { value: company.employeeCountValue, label: "Anställda", countUp: true },
 ];
 
 export function StatsBand() {
@@ -21,7 +23,9 @@ export function StatsBand() {
               // Number first visually, but the label stays the <dt> so it is read before the value.
               <div key={stat.label} className="flex flex-col-reverse">
                 <dt className="text-[17px] leading-[1.35] lg:text-[19px]">{stat.label}</dt>
-                <dd className="text-stat text-white lg:text-[72px]">{stat.value}</dd>
+                <dd className="text-stat text-white lg:text-[72px]">
+                  {stat.countUp ? <CountUp value={stat.value} /> : stat.value}
+                </dd>
               </div>
             ))}
           </dl>

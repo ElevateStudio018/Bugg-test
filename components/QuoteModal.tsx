@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Icon } from "./Icon";
 import { QuoteForm } from "./QuoteForm";
 import { useQuoteModal } from "@/contexts/QuoteModalContext";
 
@@ -17,8 +16,15 @@ export function QuoteModal() {
   useEffect(() => {
     if (isOpen) {
       setIsMounted(true);
-      const raf = requestAnimationFrame(() => setIsVisible(true));
-      return () => cancelAnimationFrame(raf);
+      // Two frames later, so the hidden state has been drawn first and the fade, zoom and cross really animate.
+      let secondFrame = 0;
+      const firstFrame = requestAnimationFrame(() => {
+        secondFrame = requestAnimationFrame(() => setIsVisible(true));
+      });
+      return () => {
+        cancelAnimationFrame(firstFrame);
+        cancelAnimationFrame(secondFrame);
+      };
     }
 
     setIsVisible(false);
@@ -87,7 +93,17 @@ export function QuoteModal() {
           aria-label="Stäng"
           className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center text-ink transition-colors hover:bg-ink/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-olive"
         >
-          <Icon name="X" strokeWidth={1.5} className="h-7 w-7" />
+          {/* Two thin bars that swing into a cross as the panel opens, drawn like the menu's close button. */}
+          <span aria-hidden="true" className="relative h-6 w-6">
+            {["rotate-45", "-rotate-45"].map((turn) => (
+              <span
+                key={turn}
+                className={`absolute inset-x-0 top-1/2 h-[2px] -translate-y-1/2 rounded-full bg-current transition-transform duration-300 ease-out ${
+                  isVisible ? turn : ""
+                }`}
+              />
+            ))}
+          </span>
         </button>
         <h2 id="quote-modal-heading" className="mb-6 pr-10 text-[26px] font-semibold leading-tight text-ink">
           Få en kostnadsfri offert

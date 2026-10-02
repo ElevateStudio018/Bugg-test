@@ -53,8 +53,9 @@ export function UppdragCarousel({ items }: { items: UppdragItem[] }) {
     trackRef.current?.scrollTo({ left: page * stepWidth(), behavior: reducedMotion ? "auto" : "smooth" });
   }
 
+  // The arrows fade out at either end instead of disappearing, and their chevron nudges the way it points on hover.
   const arrowClass =
-    "absolute top-1/2 z-10 flex h-16 w-12 -translate-y-1/2 items-center justify-center bg-olive text-white transition-colors duration-200 hover:bg-olive-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-olive";
+    "group/nav absolute top-1/2 z-10 flex h-16 w-12 -translate-y-1/2 items-center justify-center bg-olive text-white transition duration-200 hover:bg-olive-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-olive disabled:pointer-events-none disabled:opacity-0";
 
   return (
     <div>
@@ -71,16 +72,34 @@ export function UppdragCarousel({ items }: { items: UppdragItem[] }) {
           ))}
         </div>
 
-        {canPrev && (
-          <button type="button" onClick={() => step(-1)} aria-label="Föregående uppdrag" className={`${arrowClass} left-0`}>
-            <Icon name="ChevronLeft" strokeWidth={1.5} className="h-8 w-8" />
-          </button>
-        )}
-        {canNext && (
-          <button type="button" onClick={() => step(1)} aria-label="Nästa uppdrag" className={`${arrowClass} right-0`}>
-            <Icon name="ChevronRight" strokeWidth={1.5} className="h-8 w-8" />
-          </button>
-        )}
+        <button
+          type="button"
+          onClick={() => step(-1)}
+          disabled={!canPrev}
+          aria-hidden={!canPrev}
+          aria-label="Föregående uppdrag"
+          className={`${arrowClass} left-0`}
+        >
+          <Icon
+            name="ChevronLeft"
+            strokeWidth={1.5}
+            className="h-8 w-8 transition-transform duration-200 group-hover/nav:-translate-x-1"
+          />
+        </button>
+        <button
+          type="button"
+          onClick={() => step(1)}
+          disabled={!canNext}
+          aria-hidden={!canNext}
+          aria-label="Nästa uppdrag"
+          className={`${arrowClass} right-0`}
+        >
+          <Icon
+            name="ChevronRight"
+            strokeWidth={1.5}
+            className="h-8 w-8 transition-transform duration-200 group-hover/nav:translate-x-1"
+          />
+        </button>
       </div>
 
       {pageCount > 1 && (
@@ -94,9 +113,10 @@ export function UppdragCarousel({ items }: { items: UppdragItem[] }) {
               aria-current={page === activePage ? "true" : undefined}
               className="group/dot p-[7.5px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-olive"
             >
+              {/* The current position stretches from a dot into a short bar. */}
               <span
-                className={`block h-[11px] w-[11px] rounded-full transition-colors duration-200 ${
-                  page === activePage ? "bg-olive" : "bg-pebble group-hover/dot:bg-ash"
+                className={`block h-[11px] rounded-full transition-all duration-300 ease-out ${
+                  page === activePage ? "w-7 bg-olive" : "w-[11px] bg-pebble group-hover/dot:bg-ash"
                 }`}
               />
             </button>

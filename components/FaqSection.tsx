@@ -1,7 +1,6 @@
 "use client";
 
 import { useId, useState } from "react";
-import { Icon } from "./Icon";
 import { Reveal } from "./Reveal";
 import { company } from "@/lib/content";
 import { faqItems } from "@/lib/faq";
@@ -47,11 +46,15 @@ export function FaqSection() {
                     className="flex w-full items-center justify-between gap-6 py-4 text-left text-[18px] font-bold leading-[1.25] text-ink transition-colors duration-200 hover:text-olive focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-olive lg:py-5 lg:text-[20px]"
                   >
                     {item.question}
-                    <Icon
-                      name="ChevronDown"
-                      strokeWidth={1.75}
-                      className={`h-6 w-6 shrink-0 text-ink transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-                    />
+                    {/* A plus drawn with two thin bars; the upright one turns down flat into a minus while open. */}
+                    <span aria-hidden="true" className="relative h-5 w-5 shrink-0">
+                      <span className="absolute inset-x-0 top-1/2 h-[2px] -translate-y-1/2 rounded-full bg-current" />
+                      <span
+                        className={`absolute inset-y-0 left-1/2 w-[2px] -translate-x-1/2 rounded-full bg-current transition-transform duration-300 ease-out ${
+                          isOpen ? "rotate-90" : ""
+                        }`}
+                      />
+                    </span>
                   </button>
                 </h3>
                 <div
