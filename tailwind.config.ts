@@ -11,6 +11,8 @@ const config: Config = {
     extend: {
       colors: {
         olive: { DEFAULT: "#1C2817", dark: "#131C10" },
+        // Logo greens, for the logo on the dark olive bars only.
+        sage: { DEFAULT: "#C3D3A8", mid: "#95B26A", deep: "#71865A" },
         sand: "#E3E1D8",
         cream: "#F2F0E9",
         ink: "#222222",
