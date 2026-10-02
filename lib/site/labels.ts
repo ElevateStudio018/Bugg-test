@@ -1,0 +1,421 @@
+// The admin's words for the parts of the content: what each section type is called, which fields it has and what
+// they are called, with length hints. The editor builds its forms from this; change summaries name changes with it.
+import type { ColorRole, SectionType } from "./schema.ts";
+
+export type FieldKind =
+  | "text"
+  | "textarea"
+  | "paragraphs"
+  | "link"
+  | "image"
+  | "optionalImage"
+  | "number"
+  | "year"
+  | "icon"
+  | "select"
+  | "toggle"
+  | "collection"
+  | "optionalLink";
+
+export interface FieldSpec {
+  key: string;
+  label: string;
+  kind: FieldKind;
+  /** Shown under the field. */
+  hint?: string;
+  /** Characters that fit well; the editor counts down towards it. */
+  recommended?: number;
+  options?: { value: string; label: string }[];
+  /** For collections: the fields of each item, what one item is called and the field naming it in lists. */
+  item?: { label: string; fields: FieldSpec[]; titleKey: string; max?: number };
+  /** What the image is cropped for. */
+  imageUsage?: "hero" | "card" | "photo" | "square" | "portrait" | "logo" | "favicon";
+}
+
+const link = (key: string, label: string, hint?: string): FieldSpec => ({ key, label, kind: "link", hint });
+const heading = (recommended = 60): FieldSpec => ({ key: "heading", label: "Rubrik", kind: "text", recommended });
+const intro = (key = "text", label = "Text", recommended = 220): FieldSpec => ({ key, label, kind: "textarea", recommended });
+
+export const sectionTypeLabels: Record<SectionType, { label: string; description: string }> = {
+  hero: { label: "Toppen", description: "Den stora bilden med rubrik och knapp högst upp" },
+  services: { label: "Tjänster", description: "Korten med alla tjänster" },
+  uppdragCarousel: { label: "Uppdrag", description: "Bildspelet med typer av uppdrag" },
+  stats: { label: "Siffror", description: "Några siffror om företaget" },
+  feature: { label: "Bildband med kort", description: "Ett bildband med rubrik och två kort under" },
+  promo: { label: "Erbjudanden", description: "Stora bilder med en färgad textruta" },
+  about: { label: "Om oss", description: "Kort om företaget med en bild" },
+  process: { label: "Så går det till", description: "Stegen från kontakt till färdigt arbete" },
+  faq: { label: "Vanliga frågor", description: "Frågor och svar" },
+  contact: { label: "Kontakt", description: "Kontaktuppgifter och offertformulär" },
+  map: { label: "Karta", description: "Karta med adressen" },
+  pageHero: { label: "Bild överst", description: "En bred bild högst upp på sidan" },
+  aboutIntro: { label: "Inledning", description: "Rubrik, text och faktaruta" },
+  photoPair: { label: "Två bilder", description: "Två bilder bredvid varandra" },
+  band: { label: "Färgat band", description: "Text, en bred bild och mer text på färgad bakgrund" },
+  certificates: { label: "Certifikat", description: "Företagets certifikat och behörigheter" },
+  uppdragGrid: { label: "Alla uppdrag", description: "Alla uppdrag med filter" },
+  cta: { label: "Uppmaning", description: "En rubrik och knapp som leder till offertformuläret" },
+  team: { label: "Teamet", description: "Personerna i företaget" },
+  gallery: { label: "Bildgalleri", description: "Bilder i ett rutnät" },
+  pricelist: { label: "Prislista", description: "Tjänster och priser" },
+  testimonials: { label: "Omdömen", description: "Vad kunderna säger" },
+  text: { label: "Text", description: "Fri text, med bild och knapp om du vill" },
+};
+
+const iconHint = "En liten symbol som visas bredvid rubriken.";
+
+export const sectionFields: Record<SectionType, FieldSpec[]> = {
+  hero: [
+    { key: "eyebrow", label: "Liten text ovanför rubriken", kind: "text", recommended: 50 },
+    { key: "heading", label: "Rubrik", kind: "text", recommended: 50, hint: "Syns stort över bilden – håll den kort." },
+    link("button", "Knapp"),
+    { key: "image", label: "Bild", kind: "image", imageUsage: "hero" },
+  ],
+  services: [heading(), link("link", "Länk under rubriken"), { key: "cardLinkPrefix", label: "Text före tjänstens namn på korten", kind: "text", recommended: 20 }],
+  uppdragCarousel: [heading(), intro(), link("link", "Länk")],
+  stats: [
+    heading(),
+    {
+      key: "items",
+      label: "Siffror",
+      kind: "collection",
+      item: {
+        label: "Siffra",
+        titleKey: "label",
+        max: 4,
+        fields: [
+          { key: "label", label: "Text under siffran", kind: "text", recommended: 24 },
+          {
+            key: "valueType",
+            label: "Typ",
+            kind: "select",
+            options: [
+              { value: "number", label: "Ett tal" },
+              { value: "yearsSince", label: "År sedan ett årtal (räknas upp av sig själv)" },
+            ],
+          },
+          { key: "value", label: "Tal eller årtal", kind: "number" },
+          { key: "countUp", label: "Räkna upp när den syns", kind: "toggle" },
+        ],
+      },
+    },
+  ],
+  feature: [
+    heading(),
+    intro(),
+    { key: "image", label: "Bild i bandet", kind: "image", imageUsage: "hero" },
+    {
+      key: "cards",
+      label: "Kort",
+      kind: "collection",
+      item: {
+        label: "Kort",
+        titleKey: "heading",
+        max: 4,
+        fields: [
+          heading(40),
+          intro("text", "Text", 200),
+          { key: "icon", label: "Symbol", kind: "icon", hint: iconHint },
+          link("link", "Knapp"),
+          { key: "image", label: "Bild", kind: "image", imageUsage: "portrait" },
+        ],
+      },
+    },
+  ],
+  promo: [
+    {
+      key: "boxes",
+      label: "Erbjudanden",
+      kind: "collection",
+      item: {
+        label: "Erbjudande",
+        titleKey: "heading",
+        max: 6,
+        fields: [
+          heading(50),
+          intro("text", "Text", 220),
+          link("link", "Knapp"),
+          { key: "image", label: "Bild", kind: "image", imageUsage: "hero" },
+          {
+            key: "side",
+            label: "Textrutans plats på stor skärm",
+            kind: "select",
+            options: [
+              { value: "left", label: "Till vänster" },
+              { value: "right", label: "Till höger" },
+            ],
+          },
+        ],
+      },
+    },
+  ],
+  about: [
+    heading(),
+    link("link", "Länk under rubriken"),
+    { key: "subheading", label: "Ingress", kind: "textarea", recommended: 160 },
+    intro("text", "Text", 400),
+    { key: "image", label: "Bild", kind: "image", imageUsage: "portrait" },
+  ],
+  process: [
+    heading(),
+    intro(),
+    {
+      key: "steps",
+      label: "Steg",
+      kind: "collection",
+      item: {
+        label: "Steg",
+        titleKey: "title",
+        max: 8,
+        fields: [
+          { key: "title", label: "Rubrik", kind: "text", recommended: 30 },
+          { key: "description", label: "Text", kind: "textarea", recommended: 160 },
+          { key: "icon", label: "Symbol", kind: "icon", hint: iconHint },
+        ],
+      },
+    },
+  ],
+  faq: [
+    heading(),
+    { key: "phonePrompt", label: "Text före telefonnumret", kind: "text", recommended: 50, hint: "Lämna tomt för att inte visa telefonnumret här." },
+    {
+      key: "items",
+      label: "Frågor",
+      kind: "collection",
+      item: {
+        label: "Fråga",
+        titleKey: "question",
+        max: 40,
+        fields: [
+          { key: "question", label: "Fråga", kind: "text", recommended: 90 },
+          { key: "answer", label: "Svar", kind: "textarea", recommended: 400 },
+        ],
+      },
+    },
+  ],
+  contact: [
+    heading(),
+    intro(),
+    { key: "formHeading", label: "Rubrik över formuläret", kind: "text", recommended: 30 },
+    { key: "phoneLabel", label: "Etikett för telefon", kind: "text" },
+    { key: "emailLabel", label: "Etikett för e-post", kind: "text" },
+    { key: "addressLabel", label: "Etikett för adress", kind: "text" },
+    { key: "openingHoursLabel", label: "Etikett för öppettider", kind: "text" },
+    { key: "orgLabel", label: "Etikett för organisationsnummer", kind: "text" },
+  ],
+  map: [
+    heading(),
+    { key: "addressPrefix", label: "Text före adressen", kind: "text" },
+    { key: "linkLabel", label: "Länktext till Google Maps", kind: "text" },
+    { key: "zoom", label: "Zoomnivå (3–20)", kind: "number" },
+  ],
+  pageHero: [
+    { key: "image", label: "Bild", kind: "image", imageUsage: "hero" },
+    {
+      key: "size",
+      label: "Höjd",
+      kind: "select",
+      options: [
+        { value: "tall", label: "Hög" },
+        { value: "medium", label: "Medel" },
+      ],
+    },
+  ],
+  aboutIntro: [
+    heading(),
+    { key: "subheading", label: "Ingress", kind: "textarea", recommended: 160 },
+    { key: "paragraphs", label: "Text", kind: "paragraphs", hint: "Tom rad mellan stycken." },
+    { key: "factsTitle", label: "Faktarutans rubrik", kind: "text" },
+    {
+      key: "facts",
+      label: "Fakta",
+      kind: "collection",
+      item: {
+        label: "Fakta",
+        titleKey: "label",
+        max: 12,
+        fields: [
+          { key: "label", label: "Etikett", kind: "text", recommended: 20 },
+          { key: "value", label: "Värde", kind: "text", recommended: 40 },
+        ],
+      },
+    },
+  ],
+  photoPair: [
+    {
+      key: "photos",
+      label: "Bilder",
+      kind: "collection",
+      item: { label: "Bild", titleKey: "", max: 2, fields: [{ key: "image", label: "Bild", kind: "image", imageUsage: "photo" }] },
+    },
+  ],
+  band: [
+    heading(),
+    intro(),
+    link("link", "Knapp"),
+    { key: "image", label: "Bild", kind: "image", imageUsage: "hero" },
+    { key: "secondHeading", label: "Andra rubriken", kind: "text", recommended: 60 },
+    { key: "secondText", label: "Andra texten", kind: "textarea", recommended: 220 },
+    link("secondLink", "Andra knappen"),
+  ],
+  certificates: [
+    heading(),
+    intro(),
+    { key: "issuerPrefix", label: "Text före utfärdaren", kind: "text" },
+    { key: "validUntilPrefix", label: "Text före giltighetsdatum", kind: "text" },
+    { key: "emptyHeading", label: "Rubrik när listan är tom", kind: "text" },
+    { key: "emptyText", label: "Text när listan är tom (följs av telefonnumret)", kind: "textarea" },
+  ],
+  uppdragGrid: [heading(), intro(), { key: "filterAllLabel", label: "Filterknapp för alla", kind: "text" }],
+  cta: [heading(), intro(), link("button", "Knapp")],
+  team: [
+    heading(),
+    intro(),
+    {
+      key: "members",
+      label: "Personer",
+      kind: "collection",
+      item: {
+        label: "Person",
+        titleKey: "name",
+        max: 40,
+        fields: [
+          { key: "name", label: "Namn", kind: "text", recommended: 40 },
+          { key: "role", label: "Roll", kind: "text", recommended: 40 },
+          { key: "phone", label: "Telefon", kind: "text" },
+          { key: "email", label: "E-post", kind: "text" },
+          { key: "image", label: "Bild", kind: "optionalImage", imageUsage: "portrait" },
+        ],
+      },
+    },
+  ],
+  gallery: [
+    heading(),
+    intro(),
+    {
+      key: "images",
+      label: "Bilder",
+      kind: "collection",
+      item: {
+        label: "Bild",
+        titleKey: "caption",
+        max: 60,
+        fields: [
+          { key: "image", label: "Bild", kind: "image", imageUsage: "photo" },
+          { key: "caption", label: "Bildtext", kind: "text", recommended: 80 },
+        ],
+      },
+    },
+  ],
+  pricelist: [
+    heading(),
+    intro(),
+    {
+      key: "rows",
+      label: "Priser",
+      kind: "collection",
+      item: {
+        label: "Rad",
+        titleKey: "name",
+        max: 60,
+        fields: [
+          { key: "name", label: "Tjänst", kind: "text", recommended: 50 },
+          { key: "description", label: "Beskrivning", kind: "textarea", recommended: 140 },
+          { key: "price", label: "Pris", kind: "text", recommended: 20, hint: "Till exempel ”från 12 000 kr”." },
+        ],
+      },
+    },
+    { key: "note", label: "Not under listan", kind: "textarea", recommended: 200 },
+  ],
+  testimonials: [
+    heading(),
+    intro(),
+    {
+      key: "items",
+      label: "Omdömen",
+      kind: "collection",
+      item: {
+        label: "Omdöme",
+        titleKey: "name",
+        max: 40,
+        fields: [
+          { key: "quote", label: "Omdöme", kind: "textarea", recommended: 300 },
+          { key: "name", label: "Namn", kind: "text", recommended: 40 },
+          { key: "detail", label: "Ort eller uppdrag", kind: "text", recommended: 40 },
+          { key: "rating", label: "Stjärnor (0 = inga)", kind: "number" },
+          { key: "image", label: "Bild", kind: "optionalImage", imageUsage: "square" },
+        ],
+      },
+    },
+  ],
+  text: [
+    heading(),
+    { key: "paragraphs", label: "Text", kind: "paragraphs", hint: "Tom rad mellan stycken." },
+    { key: "image", label: "Bild", kind: "optionalImage", imageUsage: "photo" },
+    {
+      key: "imageSide",
+      label: "Bildens plats",
+      kind: "select",
+      options: [
+        { value: "right", label: "Till höger" },
+        { value: "left", label: "Till vänster" },
+      ],
+    },
+    { key: "button", label: "Knapp", kind: "optionalLink" },
+    {
+      key: "tone",
+      label: "Bakgrund",
+      kind: "select",
+      options: [
+        { value: "light", label: "Ljus" },
+        { value: "card", label: "Ljus ruta" },
+        { value: "primary", label: "Primärfärg" },
+      ],
+    },
+  ],
+};
+
+export const colorRoleLabels: Record<ColorRole, { label: string; group: string; hint?: string }> = {
+  primary: { label: "Primärfärg", group: "Grundfärger", hint: "Färgade band, faktarutor och erbjudanden." },
+  secondary: { label: "Sekundärfärg", group: "Grundfärger", hint: "Mörkare nyans bakom bilder och vid hovring." },
+  accent: { label: "Accentfärg", group: "Grundfärger", hint: "Symboler, etiketter och små detaljer." },
+  background: { label: "Bakgrund", group: "Grundfärger" },
+  surface: { label: "Kort och rutor", group: "Ytor", hint: "Tjänstekort, formulärrutan och andra ljusa rutor." },
+  input: { label: "Formulärfält och ljusa ytor", group: "Ytor" },
+  border: { label: "Linjer och ramar", group: "Ytor", hint: "Visas tunt (genomskinligt) mot bakgrunden." },
+  text: { label: "Brödtext", group: "Text" },
+  heading: { label: "Rubriker", group: "Text" },
+  muted: { label: "Diskret text", group: "Text", hint: "Etiketter och små texter." },
+  subtle: { label: "Inaktiva detaljer", group: "Text", hint: "Till exempel prickarna under bildspelet." },
+  link: { label: "Länkar", group: "Text" },
+  onPrimary: { label: "Text på primärfärg", group: "Text" },
+  button: { label: "Knappar", group: "Knappar" },
+  buttonHover: { label: "Knappar vid hovring", group: "Knappar" },
+  buttonText: { label: "Knapptext", group: "Knappar" },
+  navigation: { label: "Navigering", group: "Navigering och sidfot" },
+  navigationText: { label: "Navigeringstext", group: "Navigering och sidfot" },
+  footer: { label: "Sidfot", group: "Navigering och sidfot" },
+  footerText: { label: "Sidfotstext", group: "Navigering och sidfot" },
+  success: { label: "Bekräftelse", group: "Meddelanden" },
+  warning: { label: "Varning", group: "Meddelanden" },
+  error: { label: "Fel", group: "Meddelanden" },
+};
+
+export const fontRoleLabels = { heading: "Rubriker", body: "Brödtext", button: "Knappar" } as const;
+
+/** The names of the content's top-level parts, for summaries and the editor's navigation. */
+export const rootLabels: Record<string, string> = {
+  theme: "Färger och typsnitt",
+  settings: "Hemsideinställningar",
+  company: "Företagsuppgifter",
+  navigation: "Meny",
+  footer: "Sidfot",
+  form: "Offertformulär",
+  ui: "Övriga texter",
+  servicePage: "Tjänstesidor",
+  notFound: "Sidan som inte finns",
+  services: "Tjänster",
+  uppdrag: "Uppdrag",
+  certificates: "Certifikat",
+  pages: "Sidor",
+};
