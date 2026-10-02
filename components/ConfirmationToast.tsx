@@ -8,7 +8,7 @@ export function ConfirmationToast() {
   return (
     <div
       aria-live="polite"
-      className={`fixed left-1/2 top-24 z-[200] -translate-x-1/2 px-4 transition-all duration-400 ease-out ${
+      className={`fixed left-1/2 top-24 z-[200] w-max max-w-full -translate-x-1/2 px-4 transition-all duration-400 ease-out ${
         confirmationVisible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0"
       }`}
     >
@@ -22,10 +22,10 @@ export function ConfirmationToast() {
           strokeLinecap="round"
           strokeLinejoin="round"
           aria-hidden="true"
-          className="h-6 w-6 shrink-0 text-white"
+          className="h-7 w-7 shrink-0 text-white"
         >
           <path
-            d="m7 12 3 3 7-7"
+            d="m4 12.5 5 5L20 6.5"
             pathLength={1}
             strokeDasharray={1}
             className={`transition-[stroke-dashoffset] duration-500 ease-out ${

@@ -12,18 +12,27 @@ interface QuoteModalContextValue {
 
 const QuoteModalContext = createContext<QuoteModalContextValue | null>(null);
 
+// How long the quote window stays after the thank-you appears: the tick takes about 0.7 s to draw, and then it can be read.
+const AUTO_CLOSE_MS = 1500;
+
 export function QuoteModalProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [confirmationVisible, setConfirmationVisible] = useState(false);
   const triggerRef = useRef<HTMLElement | null>(null);
   const confirmationTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const autoCloseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isOpenRef = useRef(false);
 
   const open = useCallback(() => {
+    if (autoCloseTimeoutRef.current) clearTimeout(autoCloseTimeoutRef.current);
     triggerRef.current = document.activeElement as HTMLElement;
+    isOpenRef.current = true;
     setIsOpen(true);
   }, []);
 
   const close = useCallback(() => {
+    if (autoCloseTimeoutRef.current) clearTimeout(autoCloseTimeoutRef.current);
+    isOpenRef.current = false;
     setIsOpen(false);
     triggerRef.current?.focus();
   }, []);
@@ -32,11 +41,16 @@ export function QuoteModalProvider({ children }: { children: ReactNode }) {
     setConfirmationVisible(true);
     if (confirmationTimeoutRef.current) clearTimeout(confirmationTimeoutRef.current);
     confirmationTimeoutRef.current = setTimeout(() => setConfirmationVisible(false), 4500);
-  }, []);
+
+    // A quote window that is open when the thank-you appears closes by itself a moment later.
+    if (autoCloseTimeoutRef.current) clearTimeout(autoCloseTimeoutRef.current);
+    if (isOpenRef.current) autoCloseTimeoutRef.current = setTimeout(close, AUTO_CLOSE_MS);
+  }, [close]);
 
   useEffect(() => {
     return () => {
       if (confirmationTimeoutRef.current) clearTimeout(confirmationTimeoutRef.current);
+      if (autoCloseTimeoutRef.current) clearTimeout(autoCloseTimeoutRef.current);
     };
   }, []);
 

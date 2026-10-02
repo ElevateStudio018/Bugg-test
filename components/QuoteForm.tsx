@@ -78,9 +78,6 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
       setIsSubmitting(false);
       setValues(initialValues);
       showConfirmation();
-      if (variant === "inline") {
-        // No modal to keep open behind the toast — nothing further to do.
-      }
     }, 1000);
   }
 

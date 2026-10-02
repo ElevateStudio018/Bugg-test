@@ -28,7 +28,7 @@ export function QuoteModal() {
     }
 
     setIsVisible(false);
-    const timeout = setTimeout(() => setIsMounted(false), 200);
+    const timeout = setTimeout(() => setIsMounted(false), 300);
     return () => clearTimeout(timeout);
   }, [isOpen]);
 
@@ -68,8 +68,8 @@ export function QuoteModal() {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex flex-col overflow-y-auto p-4 transition-opacity duration-200 ${
-        isVisible ? "opacity-100" : "opacity-0"
+      className={`fixed inset-0 z-[100] flex flex-col overflow-y-auto p-4 transition-opacity ${
+        isVisible ? "opacity-100 duration-200" : "opacity-0 duration-300"
       }`}
       role="presentation"
       onMouseDown={(e) => {
@@ -83,8 +83,8 @@ export function QuoteModal() {
         aria-modal="true"
         aria-labelledby="quote-modal-heading"
         tabIndex={-1}
-        className={`relative m-auto w-full max-w-md bg-cream p-6 shadow-2xl transition-all duration-200 sm:p-8 ${
-          isVisible ? "scale-100 opacity-100" : "scale-95 opacity-0"
+        className={`relative m-auto w-full max-w-md bg-cream p-6 shadow-2xl transition-all sm:p-8 ${
+          isVisible ? "scale-100 opacity-100 duration-200" : "scale-95 opacity-0 duration-300"
         }`}
       >
         <button
