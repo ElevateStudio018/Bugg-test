@@ -17,8 +17,8 @@ const companyLinks = [
   { label: "Kontakt", href: "/#kontakt" },
 ];
 
-const headingClass = "text-[26px] font-semibold leading-tight";
-const linkClass = "text-[18px] text-white transition-colors hover:text-white/70";
+const headingClass = "text-[19px] font-semibold leading-tight lg:text-[22px]";
+const linkClass = "text-[15px] leading-snug text-white transition-colors hover:text-white/70 lg:text-[16px]";
 
 export function Footer() {
   return (
@@ -34,8 +34,8 @@ export function Footer() {
         }}
       />
 
-      <div className="relative mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-        <div className="mb-12 border-b border-white/15 pb-10 lg:mb-14">
+      <div className="relative mx-auto max-w-content px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+        <div className="mb-8 border-b border-white/15 pb-7 lg:mb-10 lg:pb-8">
           <Link
             href="/"
             aria-label="Markmontage BEAB AB – startsida"
@@ -45,26 +45,27 @@ export function Footer() {
           </Link>
         </div>
 
-        <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr] lg:gap-10">
-          <div>
+        {/* Phones: contact on top, then the two link lists side by side, to keep the footer short. */}
+        <div className="grid grid-cols-2 gap-x-6 gap-y-9 lg:grid-cols-[1.3fr_1fr_1fr] lg:gap-10">
+          <div className="col-span-2 lg:col-span-1">
             <h2 className={headingClass}>Kontakt</h2>
-            <ul className="mt-6 space-y-5 text-[20px] leading-snug">
+            <ul className="mt-4 space-y-3 text-[17px] leading-snug lg:mt-5 lg:text-[18px]">
               <li>
-                <a href={toTelHref(company.phoneNational)} className="flex items-center gap-5 transition-colors hover:text-white/70">
-                  <Icon name="Phone" strokeWidth={2.25} className="h-7 w-7 shrink-0 text-white/60" />
+                <a href={toTelHref(company.phoneNational)} className="flex items-center gap-3 transition-colors hover:text-white/70">
+                  <Icon name="Phone" strokeWidth={2.25} className="h-5 w-5 shrink-0 text-white/60" />
                   {company.phoneNational}
                 </a>
               </li>
               {company.email && (
                 <li>
-                  <a href={`mailto:${company.email}`} className="flex items-center gap-5 transition-colors hover:text-white/70">
-                    <Icon name="Mail" strokeWidth={2.25} className="h-7 w-7 shrink-0 text-white/60" />
+                  <a href={`mailto:${company.email}`} className="flex items-center gap-3 transition-colors hover:text-white/70">
+                    <Icon name="Mail" strokeWidth={2.25} className="h-5 w-5 shrink-0 text-white/60" />
                     <span className="break-all">{company.email}</span>
                   </a>
                 </li>
               )}
-              <li className="flex items-start gap-5">
-                <Icon name="MapPin" strokeWidth={2.25} className="mt-0.5 h-7 w-7 shrink-0 text-white/60" />
+              <li className="flex items-start gap-3">
+                <Icon name="MapPin" strokeWidth={2.25} className="mt-0.5 h-5 w-5 shrink-0 text-white/60" />
                 <span>
                   {company.address.street}
                   <br />
@@ -72,12 +73,12 @@ export function Footer() {
                 </span>
               </li>
             </ul>
-            <QuoteTrigger className={buttonClasses("light-outline", "mt-9")}>Få gratis offert</QuoteTrigger>
+            <QuoteTrigger className={buttonClasses("light-outline", "mt-6 lg:mt-7")}>Få gratis offert</QuoteTrigger>
           </div>
 
           <div>
             <h2 className={headingClass}>Tjänster</h2>
-            <ul className="mt-6 space-y-3">
+            <ul className="mt-4 space-y-2 lg:mt-5 lg:space-y-2.5">
               {services.map((service) => (
                 <li key={service.slug}>
                   <Link href={`/tjanster/${service.slug}`} className={linkClass}>
@@ -90,7 +91,7 @@ export function Footer() {
 
           <div>
             <h2 className={headingClass}>Markmontage</h2>
-            <ul className="mt-6 space-y-3">
+            <ul className="mt-4 space-y-2 lg:mt-5 lg:space-y-2.5">
               {companyLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={linkClass}>
@@ -102,7 +103,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-2 border-t border-white/15 pt-6 text-[14px] text-white/70 sm:flex-row sm:justify-between">
+        <div className="mt-9 flex flex-col gap-1 border-t border-white/15 pt-5 text-[13px] text-white/70 sm:flex-row sm:justify-between lg:mt-12 lg:text-[14px]">
           <p>{footerCopyright}</p>
           <p>
             Org.nr {company.orgNumber} · VAT {company.vatNumber}
