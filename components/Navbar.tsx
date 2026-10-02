@@ -82,14 +82,13 @@ export function Navbar() {
             </nav>
 
             <div className="flex items-center gap-1 sm:gap-3">
-              {/* The phone number, always a tap away: just the icon on smaller screens. */}
+              {/* Calling is always one tap away. */}
               <a
                 href={toTelHref(company.phoneNational)}
                 aria-label={`Ring ${company.phoneNational}`}
-                className="flex h-12 w-12 items-center justify-center gap-2.5 rounded-xl text-white transition-colors hover:text-white/75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white xl:w-auto xl:px-2"
+                className="flex h-12 w-12 items-center justify-center rounded-xl text-white transition-colors hover:text-white/75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
               >
-                <Icon name="Phone" className="h-6 w-6 shrink-0" />
-                <span className="hidden text-[16px] font-semibold xl:inline">{company.phoneNational}</span>
+                <Icon name="Phone" className="h-6 w-6" />
               </a>
 
               <button
