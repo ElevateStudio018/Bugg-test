@@ -5,7 +5,6 @@ import { useInView, usePrefersReducedMotion } from "@/hooks/useInView";
 
 interface RevealProps {
   children: ReactNode;
-  /** Or leave it out and pass delay-* classes in className, e.g. to vary it per breakpoint. */
   delayMs?: number;
   className?: string;
   as?: "div" | "li";
@@ -31,7 +30,7 @@ export function Reveal({ children, delayMs = 0, className = "", as = "div" }: Re
       className={`transition-all duration-500 ease-out ${
         isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
       } ${className}`}
-      style={delayMs ? { transitionDelay: isInView ? `${delayMs}ms` : "0ms" } : undefined}
+      style={{ transitionDelay: isInView ? `${delayMs}ms` : "0ms" }}
     >
       {children}
     </Tag>

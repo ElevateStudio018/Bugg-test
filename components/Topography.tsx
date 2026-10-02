@@ -1,7 +1,3 @@
-"use client";
-
-import { useInView } from "@/hooks/useInView";
-
 // Terrain contour rings, innermost first.
 const rings = [
   "M444 420C444 423 444 426 443 429C441 432 439 434 436 437C433 439 430 440 427 442C425 444 422 445 419 447C416 448 413 450 410 451C407 451 403 452 400 452C397 451 393 450 390 449C387 448 384 447 382 445C379 444 376 443 374 441C372 439 369 437 368 435C366 433 365 430 364 428C363 425 363 423 363 420C362 417 362 415 362 412C362 409 361 406 362 403C363 400 365 396 368 394C370 392 374 390 378 390C382 389 386 389 390 390C393 390 397 391 400 391C403 392 406 392 409 393C412 394 415 395 417 396C420 397 422 399 425 400C427 402 429 404 432 405C434 407 437 409 439 412C441 414 443 417 444 420Z",
@@ -16,16 +12,10 @@ const rings = [
   "M894 420C887 452 858 486 832 513C806 539 767 557 740 577C713 597 691 614 667 634C643 653 626 678 599 695C572 712 539 729 506 736C473 742 434 738 400 733C366 728 335 715 304 707C272 698 242 692 211 682C180 672 145 663 117 646C89 630 63 608 43 585C24 561 13 533 0 506C-13 478 -25 451 -35 420C-45 389 -62 354 -61 321C-61 288 -55 247 -33 220C-11 192 31 169 71 157C111 145 165 149 205 150C245 151 281 161 314 163C346 164 370 161 400 159C430 156 459 149 491 149C522 149 556 152 588 159C621 166 652 178 686 192C719 205 756 220 788 241C819 262 857 288 875 318C892 348 901 388 894 420Z",
 ];
 
-/**
- * Decorative terrain contour lines for dark sections — purely ornamental. The first time they come into view the
- * rings draw themselves one after another from the innermost outwards, like a survey map being plotted.
- */
+/** Decorative terrain contour lines for dark sections — purely ornamental. */
 export function Topography({ className = "" }: { className?: string }) {
-  const { ref, isInView } = useInView<SVGSVGElement>(0.1);
-
   return (
     <svg
-      ref={ref}
       viewBox="0 0 800 800"
       fill="none"
       stroke="currentColor"
@@ -34,17 +24,8 @@ export function Topography({ className = "" }: { className?: string }) {
       focusable="false"
       className={className}
     >
-      {rings.map((d, index) => (
-        <path
-          key={d}
-          d={d}
-          pathLength={1}
-          strokeDasharray={1}
-          className={`transition-[stroke-dashoffset] duration-[600ms] ease-[cubic-bezier(0.33,1,0.68,1)] ${
-            isInView ? "[stroke-dashoffset:0]" : "[stroke-dashoffset:1]"
-          }`}
-          style={{ transitionDelay: `${150 + index * 30}ms` }}
-        />
+      {rings.map((d) => (
+        <path key={d} d={d} />
       ))}
     </svg>
   );
