@@ -70,6 +70,11 @@ export const aboutFacts: { label: string; value: string }[] = [
 export const aboutPage = {
   heroImage: companyPhotos.teamet,
   middleImage: companyPhotos.gravmaskinRor,
+  // Side by side under the intro text; focus is the part of each photo to keep (CSS object-position).
+  photos: [
+    { src: companyPhotos.konferens, focus: "50% 50%" },
+    { src: companyPhotos.minigravareSlap, focus: "50% 40%" },
+  ],
   foundation: {
     heading: "Vi lägger grunden för ditt bygge",
     text: `Vi utför bland annat schaktning, dränering, grundläggning och VA-arbeten i ${company.serviceArea} – och tar helhetsansvar som totalentreprenör på större projekt. Oavsett uppdrag lägger vi stor vikt vid fackmannamässigt utförande i varje moment.`,

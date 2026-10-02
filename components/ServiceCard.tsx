@@ -15,6 +15,7 @@ export function ServiceCard({ service, wide = false }: { service: Service; wide?
           alt=""
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          style={{ objectPosition: service.imageFocus }}
         />
       </div>
       <div className="flex flex-1 flex-col justify-between gap-6 px-6 py-6 sm:px-8 sm:py-8">

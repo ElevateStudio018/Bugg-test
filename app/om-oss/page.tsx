@@ -40,6 +40,21 @@ export default function OmOssPage() {
             <FaktaBox title="Fakta om oss" rows={aboutFacts} />
           </aside>
         </div>
+
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-6 lg:mt-16">
+          {aboutPage.photos.map((photo) => (
+            <div key={photo.src} className="relative aspect-[4/5] overflow-hidden bg-olive/20 sm:aspect-[4/3]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={photo.src}
+                alt=""
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover"
+                style={{ objectPosition: photo.focus }}
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Olive text block, full-width photo, olive text block — one continuous band. */}

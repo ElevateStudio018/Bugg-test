@@ -10,6 +10,8 @@ export interface Service {
   description: string[];
   icon: ServiceIconKey;
   image: string;
+  /** Part of the photo to keep when a card crops it square (CSS object-position); centred if left out. */
+  imageFocus?: string;
 }
 
 // Markmontage BEAB AB is registered under SNI 43120 (mark- och
@@ -53,7 +55,7 @@ export const services: Service[] = [
     shortDescription:
       "Grundläggning för nybyggnation och tillbyggnad, anpassad efter markens bärighet.",
     icon: "Layers",
-    image: pexelsPhoto(2469),
+    image: companyPhotos.stalstomme,
     description: [
       "Grunden bär hela byggnaden, och felaktigt utförd grundläggning är svår och kostsam att åtgärda i efterhand. Markmontage BEAB AB utför grundläggning i Kungälv, Göteborg och övriga Västra Götaland, vid såväl nybyggnation som tillbyggnad.",
       "Vi utför bland annat gjutning av platta på mark, grundsulor och källargrunder, alltid anpassat efter markens bärighet och grundvattenförhållandena på platsen. Markisolering och fuktskydd ingår som en naturlig del av arbetet.",
@@ -109,7 +111,8 @@ export const services: Service[] = [
     shortDescription:
       "Totalentreprenad där vi tar helhetsansvar för mark- och grundarbetet från start till avslut.",
     icon: "HardHat",
-    image: pexelsPhoto(10202865),
+    image: companyPhotos.vagarbete,
+    imageFocus: "28% 50%",
     description: [
       "På större projekt är det ofta en fördel att samla mark- och grundarbetet hos en och samma entreprenör. Markmontage BEAB AB åtar oss totalentreprenader inom mark- och grundarbeten i Kungälv, Göteborg och övriga Västra Götaland.",
       "Som totalentreprenör tar vi helhetsansvaret för projektet — från schaktning och dränering till grundläggning, VA-arbeten och färdigställande av mark — och samordnar de moment som krävs för att arbetet ska flyta på utan onödiga förseningar.",
