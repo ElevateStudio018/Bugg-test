@@ -8,11 +8,12 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaktaBox } from "@/components/FaktaBox";
 import { ServiceCard } from "@/components/ServiceCard";
 import { QuoteTrigger } from "@/components/QuoteTrigger";
-import { buttonClasses } from "@/components/Button";
+import { buttonClasses, tapTarget } from "@/components/Button";
 import { ZoomImage } from "@/components/ZoomImage";
 import { services, getServiceBySlug } from "@/lib/services";
 import { company } from "@/lib/content";
 import { toTelHref } from "@/lib/format";
+import { responsiveImage } from "@/lib/photos";
 
 const siteUrl = "https://www.markmontagebeab.se";
 
@@ -66,7 +67,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <div className="relative aspect-[16/9] w-full overflow-hidden bg-olive/20 lg:aspect-auto lg:h-[min(56vh,600px)]">
-        <ZoomImage src={service.image} parallax="top" className="absolute inset-0 h-full w-full object-cover" />
+        <ZoomImage {...responsiveImage(service.image, "100vw")} priority parallax="top" className="absolute inset-0 h-full w-full object-cover" />
       </div>
 
       <div className="mx-auto max-w-content px-4 pb-16 pt-8 sm:px-6 sm:pb-20 lg:px-8 lg:pb-28 lg:pt-10">
@@ -97,6 +98,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
               <p className="mt-4 text-copy text-coal">
                 Kontakta oss för ett kostnadsfritt hembesök, så går vi igenom förutsättningarna tillsammans.
               </p>
+              <QuoteTrigger className={buttonClasses("olive", "mt-7")}>Begär offert</QuoteTrigger>
             </AccentBlock>
           </article>
 
@@ -115,16 +117,16 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
             <div className="bg-cream px-6 py-7 sm:px-8 sm:py-8">
               <p className="text-[22px] font-semibold leading-tight text-ink">{company.legalName}</p>
               <p className="mt-1 text-[17px] text-coal">Mark- och grundarbeten sedan {company.foundedYear}</p>
-              <ul className="mt-6 space-y-4 text-[18px] text-ink">
+              <ul className="mt-6 space-y-6 text-[18px] text-ink">
                 <li>
-                  <a href={toTelHref(company.phoneNational)} className="flex items-center gap-4 transition-colors hover:text-olive">
+                  <a href={toTelHref(company.phoneNational)} className={`${tapTarget} flex items-center gap-4 transition-colors hover:text-olive`}>
                     <Icon name="Phone" strokeWidth={2.25} className="h-6 w-6 shrink-0 text-olive" />
                     {company.phoneNational}
                   </a>
                 </li>
                 {company.email && (
                   <li>
-                    <a href={`mailto:${company.email}`} className="flex items-center gap-4 transition-colors hover:text-olive">
+                    <a href={`mailto:${company.email}`} className={`${tapTarget} flex items-center gap-4 transition-colors hover:text-olive`}>
                       <Icon name="Mail" strokeWidth={2.25} className="h-6 w-6 shrink-0 text-olive" />
                       <span className="break-all">{company.email}</span>
                     </a>

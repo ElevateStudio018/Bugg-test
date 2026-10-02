@@ -3,6 +3,7 @@ import { Reveal } from "./Reveal";
 import { ArrowLabel, arrowLinkClasses } from "./Button";
 import { ZoomImage } from "./ZoomImage";
 import { about } from "@/lib/content";
+import { responsiveImage } from "@/lib/photos";
 
 export function About() {
   return (
@@ -19,7 +20,9 @@ export function About() {
 
         <Reveal delayMs={120} className="lg:pt-2">
           <div className="relative aspect-[4/3] overflow-hidden bg-olive/20 lg:aspect-[4/5]">
-            <ZoomImage src={about.image} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+            <ZoomImage
+              {...responsiveImage(about.image, "(min-width: 1280px) 480px, (min-width: 1024px) 40vw, 100vw")}
+              loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
           </div>
         </Reveal>
       </div>

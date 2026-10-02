@@ -2,9 +2,9 @@
 
 import { FormEvent, useId, useState, type CSSProperties } from "react";
 import { Icon } from "./Icon";
-import { buttonClasses } from "./Button";
+import { buttonClasses, tapTarget } from "./Button";
 import { useQuoteModal } from "@/contexts/QuoteModalContext";
-import { company } from "@/lib/content";
+import { company } from "@/lib/company";
 import { toTelHref } from "@/lib/format";
 
 interface FormValues {
@@ -290,7 +290,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
         {sendFailed && (
           <p role="alert" className="mt-3 animate-error-in text-[14px] text-red-700">
             Förfrågan kunde inte skickas. Försök igen eller ring oss på{" "}
-            <a href={toTelHref(company.phoneNational)} className="whitespace-nowrap font-semibold underline underline-offset-2">
+            <a href={toTelHref(company.phoneNational)} className={`${tapTarget} whitespace-nowrap font-semibold underline underline-offset-2`}>
               {company.phoneNational}
             </a>
             .
@@ -301,7 +301,7 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
       {variant === "modal" && (
         <p className={`text-center text-[14px] text-ash ${entrance(6).className}`} style={entrance(6).style}>
           Du kan stänga rutan när som helst genom att klicka utanför eller på{" "}
-          <button type="button" onClick={close} className="underline underline-offset-2">
+          <button type="button" onClick={close} className={`${tapTarget} underline underline-offset-2`}>
             X
           </button>
           .

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLabel } from "./Button";
 import { Photo } from "./Photo";
+import { responsiveImage } from "@/lib/photos";
 import type { Service } from "@/lib/services";
 
 export function ServiceCard({ service, wide = false }: { service: Service; wide?: boolean }) {
@@ -12,7 +13,7 @@ export function ServiceCard({ service, wide = false }: { service: Service; wide?
     >
       <div className={`relative overflow-hidden bg-olive/20 ${wide ? "aspect-[2/1]" : "aspect-[4/3] sm:aspect-square"}`}>
         <Photo
-          src={service.image}
+          {...responsiveImage(service.image, wide ? "(min-width: 1280px) 50vw, 100vw" : "(min-width: 1280px) 33vw, 50vw")}
           className="absolute inset-0 h-full w-full object-cover group-hover:scale-[1.04]"
           transition="transform 700ms ease-out"
           style={{ objectPosition: service.imageFocus }}

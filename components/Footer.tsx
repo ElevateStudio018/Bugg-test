@@ -3,7 +3,7 @@ import { Icon } from "./Icon";
 import { Wordmark } from "./Wordmark";
 import { QuoteTrigger } from "./QuoteTrigger";
 import { Reveal } from "./Reveal";
-import { buttonClasses } from "./Button";
+import { buttonClasses, tapTarget } from "./Button";
 import { company, footerCopyright } from "@/lib/content";
 import { services } from "@/lib/services";
 import { toTelHref } from "@/lib/format";
@@ -19,9 +19,10 @@ const companyLinks = [
 ];
 
 const headingClass = "text-[19px] font-semibold leading-tight lg:text-[22px]";
-// A thin line slides in from the left under a link on hover, like the links in the top bar.
+// A thin line slides in from the left under a link on hover, like the links in the top bar. On phones the padding makes
+// each link a full-size tap target.
 const linkClass =
-  "relative inline-block text-[15px] leading-snug text-white transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-out hover:text-white/70 hover:after:scale-x-100 lg:text-[16px]";
+  "relative inline-block py-3 text-[15px] leading-snug text-white transition-colors after:absolute after:inset-x-0 after:bottom-2.5 after:h-px after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-out hover:text-white/70 hover:after:scale-x-100 lg:py-1 lg:text-[16px] lg:after:bottom-0.5";
 
 export function Footer() {
   return (
@@ -42,7 +43,7 @@ export function Footer() {
           <Link
             href="/"
             aria-label="Markmontage BEAB AB – startsida"
-            className="inline-block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            className={`${tapTarget} inline-block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white`}
           >
             <Wordmark />
           </Link>
@@ -52,22 +53,22 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-x-6 gap-y-9 lg:grid-cols-[1.3fr_1fr_1fr] lg:gap-10">
           <Reveal delayMs={80} className="col-span-2 lg:col-span-1">
             <h2 className={headingClass}>Kontakt</h2>
-            <ul className="mt-4 space-y-3 text-[17px] leading-snug lg:mt-5 lg:text-[18px]">
+            <ul className="mt-1.5 text-[17px] leading-snug lg:mt-2.5 lg:text-[18px]">
               <li>
-                <a href={toTelHref(company.phoneNational)} className="flex items-center gap-3 transition-colors hover:text-white/70">
+                <a href={toTelHref(company.phoneNational)} className="flex min-h-11 items-center gap-3 transition-colors hover:text-white/70">
                   <Icon name="Phone" strokeWidth={2.25} className="h-5 w-5 shrink-0 text-white/60" />
                   {company.phoneNational}
                 </a>
               </li>
               {company.email && (
                 <li>
-                  <a href={`mailto:${company.email}`} className="flex items-center gap-3 transition-colors hover:text-white/70">
+                  <a href={`mailto:${company.email}`} className="flex min-h-11 items-center gap-3 transition-colors hover:text-white/70">
                     <Icon name="Mail" strokeWidth={2.25} className="h-5 w-5 shrink-0 text-white/60" />
                     <span className="break-all">{company.email}</span>
                   </a>
                 </li>
               )}
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-3 py-2.5">
                 <Icon name="MapPin" strokeWidth={2.25} className="mt-0.5 h-5 w-5 shrink-0 text-white/60" />
                 <span>
                   {company.address.street}
@@ -81,7 +82,7 @@ export function Footer() {
 
           <Reveal delayMs={160}>
             <h2 className={headingClass}>Tjänster</h2>
-            <ul className="mt-4 space-y-2 lg:mt-5 lg:space-y-2.5">
+            <ul className="mt-1 lg:mt-4 lg:space-y-0.5">
               {services.map((service) => (
                 <li key={service.slug}>
                   <Link href={`/tjanster/${service.slug}`} className={linkClass}>
@@ -94,7 +95,7 @@ export function Footer() {
 
           <Reveal delayMs={240}>
             <h2 className={headingClass}>Markmontage</h2>
-            <ul className="mt-4 space-y-2 lg:mt-5 lg:space-y-2.5">
+            <ul className="mt-1 lg:mt-4 lg:space-y-0.5">
               {companyLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={linkClass}>

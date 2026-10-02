@@ -1,5 +1,3 @@
-import { rotAvdrag } from "./content";
-
 export interface FaqItem {
   question: string;
   answer: string;
@@ -7,7 +5,7 @@ export interface FaqItem {
 
 // No FAQ data was supplied for this rebrand, so per the FAQ rules this list
 // is AI-generated to address common mark- och grundarbeten concerns —
-// except the ROT-avdrag entry, whose answer reflects the real Skatteverket
+// except the rotavdrag entry, whose answer reflects the real Skatteverket
 // rule rather than a company-specific claim.
 export const faqItems: FaqItem[] = [
   {
@@ -30,9 +28,12 @@ export const faqItems: FaqItem[] = [
     answer:
       "Tjäle påverkar när och hur vissa markarbeten kan utföras. Vid hembesöket bedömer vi förutsättningarna för just din tomt och planerar arbetet efter årstid och väderlek, så att du får en realistisk tidsplan redan från start.",
   },
+  // General Swedish tax rule (Skatteverket), scoped to the work types it actually covers — not a claim that all of
+  // the company's work qualifies.
   {
-    question: rotAvdrag.question,
-    answer: rotAvdrag.answer,
+    question: "Kan jag få rotavdrag på mark- och grundarbete?",
+    answer:
+      "Som privatperson kan du få rotavdrag på arbetskostnaden för vissa mark- och grundarbeten vid din bostad, till exempel dränering och grundförstärkning i samband med renovering eller tillbyggnad. Avdraget är 30 procent av arbetskostnaden, upp till 50 000 kronor per person och år. Vi drar av beloppet direkt på fakturan och sköter ansökan till Skatteverket.",
   },
   {
     question: "Ger ni fast pris på era projekt?",

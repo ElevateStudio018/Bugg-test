@@ -1,5 +1,6 @@
 import { Icon, type IconKey } from "./Icon";
 import { QuoteForm } from "./QuoteForm";
+import { tapTarget } from "./Button";
 import { company } from "@/lib/content";
 import { toTelHref } from "@/lib/format";
 
@@ -33,7 +34,7 @@ export function ContactSection() {
                 <div>
                   <p className="text-[15px] font-semibold text-ash">{row.label}</p>
                   {row.href ? (
-                    <a href={row.href} className="text-[20px] font-semibold text-ink transition-colors hover:text-olive">
+                    <a href={row.href} className={`${tapTarget} text-[20px] font-semibold text-ink transition-colors hover:text-olive`}>
                       {row.value}
                     </a>
                   ) : (

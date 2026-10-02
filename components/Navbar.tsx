@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { BurgerIcon, burgerButtonClasses } from "./BurgerIcon";
 import { Icon } from "./Icon";
-import { NavOverlay } from "./NavOverlay";
+import { NavOverlay, type MenuService } from "./NavOverlay";
 import { Wordmark } from "./Wordmark";
-import { company } from "@/lib/content";
+import { company } from "@/lib/company";
 import { toTelHref } from "@/lib/format";
 
 // Shown in the bar on desktop; the menu (hamburger) keeps the full list, including every service.
@@ -19,7 +19,7 @@ const barLinks = [
   { label: "Kontakt", href: "/#kontakt" },
 ];
 
-export function Navbar() {
+export function Navbar({ services }: { services: MenuService[] }) {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -52,7 +52,7 @@ export function Navbar() {
     <>
       <header className="header-shadow fixed inset-x-0 top-0 z-40 bg-olive">
         <div className="mx-auto flex h-16 max-w-content items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
-          <Link href="/" aria-label="Markmontage BEAB AB – startsida">
+          <Link href="/" aria-label="Markmontage BEAB AB – startsida" className="flex min-h-12 items-center">
             <Wordmark />
           </Link>
 
@@ -106,7 +106,7 @@ export function Navbar() {
         </div>
       </header>
 
-      {isMenuOpen && <NavOverlay onClose={() => setIsMenuOpen(false)} />}
+      {isMenuOpen && <NavOverlay services={services} onClose={() => setIsMenuOpen(false)} />}
     </>
   );
 }

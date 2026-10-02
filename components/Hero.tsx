@@ -2,6 +2,7 @@ import { QuoteTrigger } from "./QuoteTrigger";
 import { ArrowLabel, buttonClasses } from "./Button";
 import { ZoomImage } from "./ZoomImage";
 import { hero } from "@/lib/content";
+import { responsiveImage } from "@/lib/photos";
 
 export function Hero() {
   return (
@@ -9,7 +10,8 @@ export function Hero() {
     // bottom on phones and tablets, and just below the middle on the left on desktop.
     <section className="relative isolate flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden bg-olive-dark sm:min-h-[calc(100svh-5rem)]">
       <ZoomImage
-        src={hero.image}
+        {...responsiveImage(hero.image, "100vw")}
+        priority
         parallax="top"
         className="absolute inset-0 -z-10 h-full w-full object-cover object-[74%_center] lg:object-[75%_55%]"
       />

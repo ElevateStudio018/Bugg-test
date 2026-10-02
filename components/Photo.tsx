@@ -9,11 +9,15 @@ import { useImageLoaded } from "@/hooks/useImageLoaded";
  */
 export function Photo({
   src,
+  srcSet,
+  sizes,
   className = "",
   style,
   transition,
 }: {
   src: string;
+  srcSet?: string;
+  sizes?: string;
   className?: string;
   style?: CSSProperties;
   transition?: string;
@@ -26,6 +30,8 @@ export function Photo({
     <img
       ref={ref}
       src={src}
+      srcSet={srcSet}
+      sizes={sizes}
       alt=""
       loading="lazy"
       // Hidden at once while loading; only the way in is animated.

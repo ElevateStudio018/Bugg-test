@@ -122,7 +122,7 @@ export function UppdragCarousel({ items }: { items: UppdragItem[] }) {
       </div>
 
       {pageCount > 1 && (
-        <div className="mt-6 flex justify-center">
+        <div className="mt-[15px] flex justify-center">
           {Array.from({ length: pageCount }, (_, page) => (
             <button
               key={page}
@@ -130,7 +130,7 @@ export function UppdragCarousel({ items }: { items: UppdragItem[] }) {
               onClick={() => goTo(page)}
               aria-label={`Gå till position ${page + 1} av ${pageCount}`}
               aria-current={page === activePage ? "true" : undefined}
-              className="group/dot p-[7.5px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-olive"
+              className="group/dot px-[12.5px] py-[16.5px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-olive"
             >
               {/* The current position stretches from a dot into a short bar. */}
               <span

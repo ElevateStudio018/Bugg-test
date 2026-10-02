@@ -2,7 +2,8 @@
 
 import { useId, useState } from "react";
 import { Reveal } from "./Reveal";
-import { company } from "@/lib/content";
+import { tapTarget } from "./Button";
+import { company } from "@/lib/company";
 import { faqItems } from "@/lib/faq";
 import { toTelHref } from "@/lib/format";
 
@@ -19,7 +20,7 @@ export function FaqSection() {
             Hittar du inte svaret? Ring oss på{" "}
             <a
               href={toTelHref(company.phoneNational)}
-              className="whitespace-nowrap font-semibold text-ink transition-colors duration-200 hover:text-olive"
+              className={`${tapTarget} whitespace-nowrap font-semibold text-ink transition-colors duration-200 hover:text-olive`}
             >
               {company.phoneNational}
             </a>

@@ -6,6 +6,7 @@ import { QuoteTrigger } from "@/components/QuoteTrigger";
 import { buttonClasses } from "@/components/Button";
 import { ZoomImage } from "@/components/ZoomImage";
 import { about, aboutFacts, aboutPage, company } from "@/lib/content";
+import { responsiveImage } from "@/lib/photos";
 
 export const metadata: Metadata = {
   title: "Om oss",
@@ -17,7 +18,7 @@ export default function OmOssPage() {
   return (
     <>
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-olive/20 sm:aspect-[2/1] lg:aspect-auto lg:h-[min(66vh,700px)]">
-        <ZoomImage src={aboutPage.heroImage} parallax="top" className="absolute inset-0 h-full w-full object-cover object-[center_35%]" />
+        <ZoomImage {...responsiveImage(aboutPage.heroImage, "100vw")} priority parallax="top" className="absolute inset-0 h-full w-full object-cover object-[center_35%]" />
       </div>
 
       <div className="mx-auto max-w-content px-4 pb-14 pt-8 sm:px-6 sm:pb-20 lg:px-8 lg:pb-24 lg:pt-10">
@@ -50,7 +51,7 @@ export default function OmOssPage() {
           {aboutPage.photos.map((photo) => (
             <div key={photo.src} className="relative aspect-[4/5] overflow-hidden bg-olive/20 sm:aspect-[4/3]">
               <ZoomImage
-                src={photo.src}
+                {...responsiveImage(photo.src, "(min-width: 1280px) 600px, 50vw")}
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover"
                 style={{ objectPosition: photo.focus }}
@@ -73,7 +74,7 @@ export default function OmOssPage() {
         </div>
 
         <div className="relative aspect-[3/2] w-full overflow-clip bg-olive-dark sm:aspect-[2/1] lg:aspect-auto lg:h-[min(60vh,620px)]">
-          <ZoomImage src={aboutPage.middleImage} loading="lazy" parallax="band" className="absolute inset-0 h-full w-full object-cover" />
+          <ZoomImage {...responsiveImage(aboutPage.middleImage, "100vw")} loading="lazy" parallax="band" className="absolute inset-0 h-full w-full object-cover" />
         </div>
 
         <div className="mx-auto max-w-content px-6 pb-16 pt-6 lg:px-8 lg:pb-24 lg:pt-16">

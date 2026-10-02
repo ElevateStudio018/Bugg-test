@@ -1,5 +1,5 @@
 import { pexelsPhoto } from "./pexels";
-import { companyPhotos } from "./photos";
+import { companyPhotos, srcSetFor } from "./photos";
 
 export interface UppdragItem {
   id: string;
@@ -7,6 +7,8 @@ export interface UppdragItem {
   title: string;
   serviceSlug: string;
   image: string;
+  /** Smaller copies of the image for the browser to choose from (see lib/photos.ts). */
+  imageSrcSet?: string;
 }
 
 // The company has no published reference projects, so these are the kinds of
@@ -20,6 +22,6 @@ export const uppdragItems: UppdragItem[] = [
   { id: "vagar", tag: "Markarbeten", title: "Vägar, planer och uppfarter", serviceSlug: "anlaggning-vagar-planer", image: pexelsPhoto(1188532) },
   { id: "marksten", tag: "Markarbeten", title: "Marksten och kantsten", serviceSlug: "stenlaggning", image: pexelsPhoto(214045) },
   { id: "helhet", tag: "Totalentreprenad", title: "Helhetsansvar för markprojektet", serviceSlug: "totalentreprenad", image: pexelsPhoto(30223853) },
-];
+].map((item) => ({ ...item, imageSrcSet: srcSetFor(item.image) }));
 
 export const uppdragTags = Array.from(new Set(uppdragItems.map((item) => item.tag)));

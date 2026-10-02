@@ -4,7 +4,7 @@ import type { IconKey } from "./Icon";
 import { Photo } from "./Photo";
 import { ArrowLabel, buttonClasses } from "./Button";
 import { ZoomImage } from "./ZoomImage";
-import { companyPhotos } from "@/lib/photos";
+import { companyPhotos, responsiveImage } from "@/lib/photos";
 
 interface Block {
   heading: string;
@@ -42,7 +42,7 @@ export function GroundworkFeature() {
       {/* Photo band: heading on the darker left side, the work itself on the right. */}
       <div className="relative isolate overflow-clip bg-olive-dark text-white">
         <ZoomImage
-          src={companyPhotos.gravmaskinRor}
+          {...responsiveImage(companyPhotos.gravmaskinRor, "100vw")}
           loading="lazy"
           parallax="band"
           className="absolute inset-0 -z-10 h-full w-full object-cover object-[72%_35%] lg:object-[60%_75%]"
@@ -92,7 +92,7 @@ export function GroundworkFeature() {
                 {/* Beside the text, cut on the diagonal along its left edge. Left out on phones, where the cards follow straight on. */}
                 <div className="relative hidden sm:block sm:w-[40%] sm:shrink-0 sm:[clip-path:polygon(18%_0,100%_0,100%_100%,0_100%)]">
                   <Photo
-                    src={block.photo}
+                    {...responsiveImage(block.photo, "(min-width: 1280px) 260px, 40vw")}
                     className="absolute inset-0 h-full w-full object-cover"
                     style={{ objectPosition: block.focus }}
                   />

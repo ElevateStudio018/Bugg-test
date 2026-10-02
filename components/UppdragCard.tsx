@@ -10,6 +10,8 @@ export function UppdragCard({ item }: { item: UppdragItem }) {
     >
       <Photo
         src={item.image}
+        srcSet={item.imageSrcSet}
+        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 85vw"
         className="absolute inset-0 h-full w-full object-cover group-hover:scale-[1.04]"
         transition="transform 700ms ease-out"
       />

@@ -11,6 +11,7 @@ import { QuoteModal } from "@/components/QuoteModal";
 import { ConfirmationToast } from "@/components/ConfirmationToast";
 import { QuoteModalProvider } from "@/contexts/QuoteModalContext";
 import { company, intro } from "@/lib/content";
+import { services } from "@/lib/services";
 
 const siteUrl = "https://www.markmontagebeab.se";
 
@@ -38,9 +39,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="sv">
       <body className="bg-sand font-sans text-coal antialiased">
+        {/* For keyboard and screen reader users: straight past the header to the page's own content. */}
+        <a
+          href="#innehall"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-3 focus:z-[300] focus:rounded-full focus:bg-white focus:px-6 focus:py-3 focus:text-label focus:uppercase focus:text-olive focus:shadow-lg focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-white"
+        >
+          Hoppa till innehållet
+        </a>
         <QuoteModalProvider>
-          <Navbar />
-          <main className="pt-16 sm:pt-20">{children}</main>
+          <Navbar services={services.map(({ slug, name }) => ({ slug, name }))} />
+          <main id="innehall" tabIndex={-1} className="pt-16 outline-none sm:pt-20">
+            {children}
+          </main>
           <Footer />
           <QuoteModal />
           <ConfirmationToast />

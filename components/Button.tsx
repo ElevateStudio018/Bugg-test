@@ -16,10 +16,13 @@ export function buttonClasses(variant: ButtonVariant = "olive", className = ""):
   return `${pillBase} ${pillVariants[variant]} ${className}`;
 }
 
+/** An invisible margin around a small link, making it a full-size tap target without moving anything. */
+export const tapTarget = "relative before:absolute before:-inset-x-2 before:-inset-y-3";
+
 /** Uppercase, letter-spaced text link with a chevron — the site's secondary call to action. */
 export function arrowLinkClasses(tone: "ink" | "white" = "ink", className = ""): string {
   const color = tone === "white" ? "text-white hover:text-white/70" : "text-ink hover:text-olive";
-  return `group/arrow inline-block text-left text-label uppercase transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current ${color} ${className}`;
+  return `${tapTarget} group/arrow inline-block text-left text-label uppercase transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current ${color} ${className}`;
 }
 
 /**

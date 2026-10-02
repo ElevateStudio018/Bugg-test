@@ -3,11 +3,11 @@ import { AccentBlock } from "@/components/AccentBlock";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Icon } from "@/components/Icon";
 import { QuoteTrigger } from "@/components/QuoteTrigger";
-import { buttonClasses } from "@/components/Button";
+import { buttonClasses, tapTarget } from "@/components/Button";
 import { ZoomImage } from "@/components/ZoomImage";
 import { company } from "@/lib/content";
 import { certificates } from "@/lib/certificates";
-import { companyPhotos } from "@/lib/photos";
+import { companyPhotos, responsiveImage } from "@/lib/photos";
 import { toTelHref } from "@/lib/format";
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function CertifikatPage() {
   return (
     <>
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-olive/20 sm:aspect-[2/1] lg:aspect-auto lg:h-[min(56vh,600px)]">
-        <ZoomImage src={companyPhotos.arbete} parallax="top" className="absolute inset-0 h-full w-full object-cover" />
+        <ZoomImage {...responsiveImage(companyPhotos.arbete, "100vw")} priority parallax="top" className="absolute inset-0 h-full w-full object-cover" />
       </div>
 
       <div className="mx-auto max-w-content px-4 pb-16 pt-8 sm:px-6 sm:pb-20 lg:px-8 lg:pb-28 lg:pt-10">
@@ -57,7 +57,7 @@ export default function CertifikatPage() {
             <h2 className="text-h3 text-ink">Certifikaten läggs upp inom kort</h2>
             <p className="mt-3 text-copy leading-[1.35] text-coal">
               Har du frågor om våra certifikat och behörigheter är du välkommen att ringa oss på{" "}
-              <a href={toTelHref(company.phoneNational)} className="font-semibold text-ink underline underline-offset-4 hover:text-olive">
+              <a href={toTelHref(company.phoneNational)} className={`${tapTarget} font-semibold text-ink underline underline-offset-4 hover:text-olive`}>
                 {company.phoneNational}
               </a>
               .
