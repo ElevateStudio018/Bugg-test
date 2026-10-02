@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { BurgerIcon, burgerButtonClasses } from "./BurgerIcon";
 import { NavOverlay } from "./NavOverlay";
 import { Wordmark } from "./Wordmark";
 
@@ -26,6 +27,10 @@ export function Navbar() {
   useEffect(() => {
     if (!isMenuOpen) return;
 
+    // Hiding the overflow takes away a space-taking scrollbar (as on Windows). The menu pads its right side by that
+    // width, so its close button lands exactly on the menu button instead of jumping sideways.
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty("--scrollbar-width", `${scrollbarWidth}px`);
     document.body.style.overflow = "hidden";
 
     function handleEscape(event: KeyboardEvent) {
@@ -35,6 +40,7 @@ export function Navbar() {
     document.addEventListener("keydown", handleEscape);
     return () => {
       document.body.style.overflow = "";
+      document.documentElement.style.removeProperty("--scrollbar-width");
       document.removeEventListener("keydown", handleEscape);
     };
   }, [isMenuOpen]);
@@ -77,12 +83,10 @@ export function Navbar() {
               onClick={() => setIsMenuOpen(true)}
               aria-expanded={isMenuOpen}
               aria-label="Öppna meny"
-              className="group -mr-1.5 flex h-12 w-12 flex-col items-end justify-center gap-[8px] rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+              className={burgerButtonClasses}
             >
-              {/* Three equal, thin bars with rounded ends. */}
-              <span className="block h-[2px] w-8 rounded-full bg-white" />
-              <span className="block h-[2px] w-8 rounded-full bg-white" />
-              <span className="block h-[2px] w-8 rounded-full bg-white" />
+              {/* A cross while the menu is open, so once the menu closes it turns back into bars in view. */}
+              <BurgerIcon cross={isMenuOpen} />
             </button>
           </div>
         </div>

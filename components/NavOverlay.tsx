@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { BurgerIcon, burgerButtonClasses } from "./BurgerIcon";
 import { Icon } from "./Icon";
 import { Wordmark } from "./Wordmark";
 import { buttonClasses } from "./Button";
@@ -42,6 +43,19 @@ function RowLink({ row, onClose }: { row: NavRow; onClose: () => void }) {
 export function NavOverlay({ onClose }: { onClose: () => void }) {
   const { open: openQuoteModal } = useQuoteModal();
   const overlayRef = useRef<HTMLDivElement>(null);
+  // The close button sits exactly where the menu button was and starts as the same bars, then turns into a cross.
+  const [isCross, setIsCross] = useState(false);
+
+  useEffect(() => {
+    let secondFrame = 0;
+    const firstFrame = requestAnimationFrame(() => {
+      secondFrame = requestAnimationFrame(() => setIsCross(true));
+    });
+    return () => {
+      cancelAnimationFrame(firstFrame);
+      cancelAnimationFrame(secondFrame);
+    };
+  }, []);
 
   useEffect(() => {
     const overlay = overlayRef.current;
@@ -74,18 +88,13 @@ export function NavOverlay({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <div ref={overlayRef} role="dialog" aria-modal="true" aria-label="Meny" className="fixed inset-0 z-[60] flex flex-col bg-olive">
+    <div ref={overlayRef} role="dialog" aria-modal="true" aria-label="Meny" className="fixed inset-0 z-[60] flex flex-col bg-olive pr-[var(--scrollbar-width,0px)]">
       <div className="mx-auto flex h-16 w-full max-w-content items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
         <Link href="/" onClick={onClose} aria-label="Markmontage BEAB AB – startsida">
           <Wordmark />
         </Link>
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Stäng meny"
-          className="-mr-1 flex h-12 w-12 items-center justify-center text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
-        >
-          <Icon name="X" strokeWidth={1.75} className="h-8 w-8" />
+        <button type="button" onClick={onClose} aria-label="Stäng meny" className={burgerButtonClasses}>
+          <BurgerIcon cross={isCross} />
         </button>
       </div>
 
