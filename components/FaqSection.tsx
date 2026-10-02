@@ -46,12 +46,22 @@ export function FaqSection() {
                     className="flex w-full items-center justify-between gap-6 py-4 text-left text-[18px] font-bold leading-[1.25] text-ink transition-colors duration-200 hover:text-olive focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-olive lg:py-5 lg:text-[20px]"
                   >
                     {item.question}
-                    {/* A plus drawn with two thin bars; the upright one turns down flat into a minus while open. */}
-                    <span aria-hidden="true" className="relative h-5 w-5 shrink-0">
-                      <span className="absolute inset-x-0 top-1/2 h-[2px] -translate-y-1/2 rounded-full bg-current" />
+                    {/* A downward chevron of two thin bars that pivot on its tip. Opening the answer turns both arms
+                        flat into a minus, which rises to the middle; closing folds it back into the chevron. */}
+                    <span
+                      aria-hidden="true"
+                      className={`relative h-6 w-6 shrink-0 transition-transform duration-300 ease-out ${
+                        isOpen ? "-translate-y-[3px]" : ""
+                      }`}
+                    >
                       <span
-                        className={`absolute inset-y-0 left-1/2 w-[2px] -translate-x-1/2 rounded-full bg-current transition-transform duration-300 ease-out ${
-                          isOpen ? "rotate-90" : ""
+                        className={`absolute right-[calc(50%-1px)] top-[14px] h-[2px] w-2 origin-[calc(100%-1px)_50%] rounded-full bg-current transition-transform duration-300 ease-out ${
+                          isOpen ? "" : "rotate-45"
+                        }`}
+                      />
+                      <span
+                        className={`absolute left-[calc(50%-1px)] top-[14px] h-[2px] w-2 origin-[1px_50%] rounded-full bg-current transition-transform duration-300 ease-out ${
+                          isOpen ? "" : "-rotate-45"
                         }`}
                       />
                     </span>
