@@ -8,9 +8,19 @@ import { themeCss } from "@/lib/site/theme.ts";
 import type { SiteData } from "@/lib/site/schema.ts";
 import { navContent } from "./navContent";
 import { quoteFormContent } from "./quoteFormContent";
+import { MaintenanceView } from "./MaintenanceView";
 
 /** Everything around a public page: the theme, the header and menu, the footer and the quote window. */
 export function SiteShell({ site, children }: { site: SiteData; children: ReactNode }) {
+  // While the owner has the site in maintenance mode, every address shows the same short notice.
+  if (site.settings.maintenance.enabled) {
+    return (
+      <>
+        <style dangerouslySetInnerHTML={{ __html: themeCss(site.theme) }} />
+        <MaintenanceView site={site} />
+      </>
+    );
+  }
   return (
     <>
       {/* The theme's colours and fonts, in place before anything is drawn. */}

@@ -26,12 +26,14 @@ export function generateMetadata(): Metadata {
     },
     alternates: { canonical: "/" },
     icons: { icon: withBasePath(site.settings.favicon.src) },
+    // The maintenance notice is not something search engines should keep.
+    ...(site.settings.maintenance.enabled ? { robots: { index: false, follow: false } } : {}),
   };
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang={getSite().settings.language}>
+    <html lang={getSite().settings.language} suppressHydrationWarning>
       <body className="font-sans antialiased">{children}</body>
     </html>
   );

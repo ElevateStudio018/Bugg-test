@@ -32,6 +32,15 @@ const config: Config = {
         success: role("success"),
         warning: role("warning"),
         error: role("error"),
+        // The admin panel's own colours: its prime colour (chosen on the colour page) and a few warm neutrals.
+        admin: {
+          DEFAULT: "rgb(var(--admin-primary) / <alpha-value>)",
+          contrast: "rgb(var(--admin-primary-contrast) / <alpha-value>)",
+          canvas: "#F4F3EF",
+          ink: "#1E1E1C",
+          muted: "#6A6963",
+          line: "#E6E4DE",
+        },
       },
       fontFamily: {
         sans: ["var(--font-body)"],

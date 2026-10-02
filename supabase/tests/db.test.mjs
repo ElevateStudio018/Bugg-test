@@ -109,6 +109,19 @@ await test("a change to a part inside a changed part is a conflict for the other
   assert.equal(res.json.status, "saved");
 });
 
+await test("setting a field back to what is published leaves nothing to publish", async () => {
+  const path = ["pages", "items", "hem", "sections", "items", "faq", "heading"];
+  const published = (await call("/rest/v1/site_snapshot?select=data&id=eq.1")).json[0].data.pages.items.hem.sections.items.faq.heading;
+  const before = (await rpc("content_draft", {}, { token: admin })).json.changes;
+  await rpc("save_content_patch", { p_path: path, p_value: "Tillfällig rubrik", p_client_id: "tab-a" }, { token: admin });
+  assert.equal((await rpc("content_draft", {}, { token: admin })).json.changes, before + 1);
+  const back = await rpc("save_content_patch", { p_path: path, p_value: published, p_client_id: "tab-a" }, { token: admin });
+  assert.equal(back.json.status, "saved", JSON.stringify(back.json));
+  const after = (await rpc("content_draft", {}, { token: admin })).json;
+  assert.equal(after.changes, before);
+  assert.equal(after.draft.pages.items.hem.sections.items.faq.heading, published);
+});
+
 await test("the theme cannot be written through content saves", async () => {
   const res = await rpc("save_content_patch", { p_path: ["theme", "colors", "primary"], p_value: "#000000", p_client_id: "tab-a" }, { token: admin });
   assert.notEqual(res.status, 200);

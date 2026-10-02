@@ -15,7 +15,16 @@ export type FieldKind =
   | "select"
   | "toggle"
   | "collection"
-  | "optionalLink";
+  | "optionalLink"
+  /** A nested object, its own fields under one heading. */
+  | "group"
+  /** Where a link goes, without a text of its own. */
+  | "href"
+  | "decimal"
+  /** The last part of a page's address. */
+  | "slug"
+  /** Title and description for search engines, with a preview of the search result. */
+  | "seo";
 
 export interface FieldSpec {
   key: string;
@@ -30,6 +39,14 @@ export interface FieldSpec {
   item?: { label: string; fields: FieldSpec[]; titleKey: string; max?: number };
   /** What the image is cropped for. */
   imageUsage?: "hero" | "card" | "photo" | "square" | "portrait" | "logo" | "favicon";
+  /** For groups: the nested object's fields. */
+  fields?: FieldSpec[];
+  /** What kind of text a text field holds (the right keyboard on phones, checked as such). */
+  input?: "email" | "url" | "tel";
+  placeholder?: string;
+  /** For numbers: the smallest and largest allowed. */
+  min?: number;
+  max?: number;
 }
 
 const link = (key: string, label: string, hint?: string): FieldSpec => ({ key, label, kind: "link", hint });
@@ -94,7 +111,7 @@ export const sectionFields: Record<SectionType, FieldSpec[]> = {
               { value: "yearsSince", label: "År sedan ett årtal (räknas upp av sig själv)" },
             ],
           },
-          { key: "value", label: "Tal eller årtal", kind: "number" },
+          { key: "value", label: "Tal eller årtal", kind: "number", min: 0 },
           { key: "countUp", label: "Räkna upp när den syns", kind: "toggle" },
         ],
       },
@@ -207,7 +224,7 @@ export const sectionFields: Record<SectionType, FieldSpec[]> = {
     heading(),
     { key: "addressPrefix", label: "Text före adressen", kind: "text" },
     { key: "linkLabel", label: "Länktext till Google Maps", kind: "text" },
-    { key: "zoom", label: "Zoomnivå (3–20)", kind: "number" },
+    { key: "zoom", label: "Zoomnivå", kind: "number", min: 3, max: 20, hint: "Ett lägre tal visar ett större område, ett högre fler detaljer." },
   ],
   pageHero: [
     { key: "image", label: "Bild", kind: "image", imageUsage: "hero" },
@@ -342,7 +359,7 @@ export const sectionFields: Record<SectionType, FieldSpec[]> = {
           { key: "quote", label: "Omdöme", kind: "textarea", recommended: 300 },
           { key: "name", label: "Namn", kind: "text", recommended: 40 },
           { key: "detail", label: "Ort eller uppdrag", kind: "text", recommended: 40 },
-          { key: "rating", label: "Stjärnor (0 = inga)", kind: "number" },
+          { key: "rating", label: "Stjärnor", kind: "number", min: 0, max: 5, hint: "1–5, eller 0 för inga stjärnor." },
           { key: "image", label: "Bild", kind: "optionalImage", imageUsage: "square" },
         ],
       },
@@ -418,4 +435,239 @@ export const rootLabels: Record<string, string> = {
   uppdrag: "Uppdrag",
   certificates: "Certifikat",
   pages: "Sidor",
+};
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Everything outside the pages' sections
+
+const text = (key: string, label: string, recommended?: number, hint?: string): FieldSpec => ({ key, label, kind: "text", recommended, hint });
+const area = (key: string, label: string, recommended?: number, hint?: string): FieldSpec => ({ key, label, kind: "textarea", recommended, hint });
+const group = (key: string, label: string, fields: FieldSpec[], hint?: string): FieldSpec => ({ key, label, kind: "group", fields, hint });
+const forScreenReaders = "Läses upp för personer som använder skärmläsare; syns inte.";
+
+export const seoFields: FieldSpec[] = [
+  text("title", "Titel i sökresultatet", 60, "Det blåa, klickbara i Googles resultat."),
+  area("description", "Beskrivning i sökresultatet", 155, "Texten under titeln i Googles resultat."),
+];
+
+export const pageFields: FieldSpec[] = [
+  text("title", "Sidans namn", 40, "Visas i sökvägen överst på sidan och här i adminpanelen."),
+  { key: "seo", label: "Så visas sidan på Google", kind: "seo", fields: seoFields },
+];
+
+const linkItem = (label: string, max: number): FieldSpec["item"] => ({
+  label,
+  titleKey: "label",
+  max,
+  fields: [text("label", "Text", 30), { key: "href", label: "Leder till", kind: "href" }],
+});
+
+/** The site-wide lists, each item edited like a section. */
+export const rootCollections = {
+  services: {
+    label: "Tjänst",
+    titleKey: "name",
+    max: 40,
+    fields: [
+      text("name", "Namn", 40),
+      { key: "slug", label: "Sidans adress", kind: "slug", hint: "Ändra helst inte – länkar till sidan slutar fungera." },
+      area("shortDescription", "Kort beskrivning", 160, "Visas på tjänstekorten och överst på tjänstens sida."),
+      { key: "description", label: "Text på tjänstens sida", kind: "paragraphs", hint: "Tom rad mellan stycken." },
+      { key: "icon", label: "Symbol", kind: "icon", hint: "Visas i menyn och på korten." },
+      { key: "image", label: "Bild", kind: "image", imageUsage: "hero" },
+      { key: "seo", label: "Så visas sidan på Google", kind: "seo", fields: seoFields },
+    ],
+  },
+  uppdrag: {
+    label: "Uppdrag",
+    titleKey: "title",
+    max: 60,
+    fields: [
+      text("title", "Rubrik", 60),
+      text("tag", "Kategori", 24, "Uppdrag med samma kategori går att filtrera fram på uppdragssidan."),
+      { key: "href", label: "Leder till", kind: "href" },
+      { key: "image", label: "Bild", kind: "image", imageUsage: "photo" },
+    ],
+  },
+  certificates: {
+    label: "Certifikat",
+    titleKey: "name",
+    max: 60,
+    fields: [
+      text("name", "Namn", 80),
+      text("issuer", "Utfärdat av", 60),
+      text("validUntil", "Giltigt till", 30, "Till exempel ”2027-06-30” eller ”Tills vidare”. Lämna tomt om det inte behövs."),
+      area("description", "Beskrivning", 300),
+    ],
+  },
+} satisfies Record<string, NonNullable<FieldSpec["item"]>>;
+
+export const rootFields: Record<"navigation" | "footer" | "form" | "servicePage" | "notFound" | "ui" | "company" | "settings", FieldSpec[]> = {
+  navigation: [
+    text("menuButton", "Knappen i menyraden", 16),
+    { key: "barLinks", label: "Länkar i menyraden (stora skärmar)", kind: "collection", item: linkItem("Länk", 8) },
+    {
+      key: "menu",
+      label: "Rader i menyn",
+      kind: "collection",
+      item: {
+        label: "Rad",
+        titleKey: "label",
+        max: 12,
+        fields: [
+          text("label", "Text", 24),
+          { key: "href", label: "Leder till", kind: "href" },
+          {
+            key: "kind",
+            label: "Under raden",
+            kind: "select",
+            options: [
+              { value: "link", label: "Ingenting" },
+              { value: "services", label: "Alla tjänster" },
+            ],
+          },
+        ],
+      },
+    },
+  ],
+  footer: [
+    text("contactHeading", "Rubrik över kontaktuppgifterna", 24),
+    text("servicesHeading", "Rubrik över tjänsterna", 24),
+    text("companyHeading", "Rubrik över länkarna", 24),
+    { key: "companyLinks", label: "Länkar", kind: "collection", item: linkItem("Länk", 12) },
+    link("button", "Knapp"),
+    text("copyrightName", "Namn efter ©", 60, "Årtalet sätts automatiskt."),
+    text("orgLabel", "Etikett för organisationsnummer", 20),
+    text("vatLabel", "Etikett för momsregistreringsnummer", 20),
+  ],
+  form: [
+    text("modalHeading", "Rubrik", 30),
+    group("labels", "Fältens namn", [
+      text("name", "Namn"),
+      text("phone", "Telefon"),
+      text("email", "E-post"),
+      text("workType", "Typ av arbete"),
+      text("description", "Beskrivning"),
+    ]),
+    text("workTypePlaceholder", "Text i listan innan något är valt", 40),
+    { key: "workTypes", label: "Typer av arbete att välja mellan", kind: "collection", item: { label: "Typ", titleKey: "label", max: 20, fields: [text("label", "Namn", 40)] } },
+    text("descriptionPlaceholder", "Exempeltext i beskrivningsfältet", 60),
+    text("contactHint", "Hjälptext om telefon och e-post", 60),
+    group("errors", "Felmeddelanden", [
+      text("name", "Namn saknas"),
+      text("contact", "Telefon och e-post saknas"),
+      text("phone", "Ogiltigt telefonnummer"),
+      text("email", "Ogiltig e-postadress"),
+      text("workType", "Typ av arbete saknas"),
+    ]),
+    text("submit", "Skicka-knappen", 30),
+    text("sending", "Medan förfrågan skickas", 30),
+    text("confirmation", "Tack-meddelande", 50),
+    text("sendFailed", "När något gick fel", 120, "Följs av telefonnumret."),
+    text("closeHint", "Tips om att stänga rutan", 120, "Följs av stängknappens text."),
+    text("closeHintButton", "Stängknappens text i tipset", 10),
+    text("emailSubject", "Ämnesrad i mejlet till er", 60, "{namn} byts mot avsändarens namn."),
+  ],
+  servicePage: [
+    text("badge", "Etikett över tjänstens namn", 20),
+    group("cta", "Rutan under texten", [text("heading", "Rubrik", 60), area("text", "Text", 200), link("button", "Knapp")]),
+    text("factsTitle", "Faktarutans rubrik", 30),
+    group("factLabels", "Faktarutans etiketter", [
+      text("service", "Tjänst"),
+      text("performedBy", "Utförs av"),
+      text("seat", "Säte"),
+      text("area", "Område"),
+      text("org", "Organisationsnummer"),
+    ]),
+    text("contactTagline", "Rad under företagsnamnet", 60),
+    link("contactButton", "Knapp i kontaktrutan"),
+    link("backLink", "Tillbaka-knappen"),
+    text("moreHeading", "Rubrik över andra tjänster", 30),
+    text("breadcrumbLabel", "Sökvägens mellansteg", 20),
+    { key: "breadcrumbHref", label: "Mellansteget leder till", kind: "href" },
+  ],
+  notFound: [
+    text("eyebrow", "Liten text ovanför rubriken", 30),
+    text("heading", "Rubrik", 50),
+    area("text", "Text", 200),
+    link("button", "Knapp"),
+    text("seoTitle", "Titel i webbläsarfliken", 50),
+  ],
+  ui: [
+    text("breadcrumbHome", "Första steget i sökvägen", 16),
+    text("stepPrefix", "Ord före stegens nummer", 12),
+    text("closeLabel", "Stängknappar", 16),
+    text("ratingLabel", "Betyg", 30, "{n} byts mot antalet stjärnor."),
+    area("cookieText", "Frågan om kakor", 200, "Visas bara om Google Analytics är kopplat (Inställningar)."),
+    text("cookieAccept", "Godkänn kakor", 16),
+    text("cookieDecline", "Neka kakor", 16),
+    text("skipLink", "Hoppa till innehållet", 40, forScreenReaders),
+    text("openMenu", "Öppna menyn", 30, forScreenReaders),
+    text("closeMenu", "Stäng menyn", 30, forScreenReaders),
+    text("menuLabel", "Menyns namn", 30, forScreenReaders),
+    text("mainMenuLabel", "Huvudmenyns namn", 30, forScreenReaders),
+    text("quickLinksLabel", "Snabblänkarnas namn", 30, forScreenReaders),
+    text("callPrefix", "Före telefonnumret på ringknappen", 16, forScreenReaders),
+    text("homeLinkLabel", "Loggans länk till startsidan", 60, forScreenReaders),
+    text("breadcrumbsLabel", "Sökvägens namn", 30, forScreenReaders),
+    text("carouselPrevious", "Bildspel: föregående", 30, forScreenReaders),
+    text("carouselNext", "Bildspel: nästa", 30, forScreenReaders),
+    text("carouselGoTo", "Bildspel: gå till en bild", 40, `${forScreenReaders} {n} och {total} byts mot siffror.`),
+    text("uppdragFilterLabel", "Filtret på uppdragssidan", 30, forScreenReaders),
+    text("mapTitlePrefix", "Före kartans namn", 20, forScreenReaders),
+  ],
+  company: [
+    text("legalName", "Företagets namn", 60, "Som det är registrerat, t.ex. i sidfoten och på tjänstesidorna."),
+    text("shortName", "Kort namn", 30, "Används i loggan och där det fulla namnet blir för långt."),
+    { key: "phone", label: "Telefon", kind: "text", input: "tel" },
+    { key: "email", label: "E-post", kind: "text", input: "email", hint: "Offertförfrågningar skickas hit." },
+    group("address", "Adress", [
+      text("street", "Gatuadress"),
+      text("postalCode", "Postnummer"),
+      text("city", "Ort"),
+      {
+        key: "country",
+        label: "Land",
+        kind: "select",
+        options: [
+          { value: "SE", label: "Sverige" },
+          { value: "NO", label: "Norge" },
+          { value: "DK", label: "Danmark" },
+          { value: "FI", label: "Finland" },
+        ],
+      },
+      group(
+        "geo",
+        "Plats på kartan",
+        [
+          { key: "lat", label: "Latitud", kind: "decimal", min: -90, max: 90 },
+          { key: "lng", label: "Longitud", kind: "decimal", min: -180, max: 180 },
+        ],
+        "Högerklicka på platsen i Google Maps så visas siffrorna överst; den första är latitud."
+      ),
+    ]),
+    text("openingHours", "Öppettider", 80, "Lämna tomt för att inte visa några öppettider."),
+    text("city", "Hemkommun", 30, "Visas som säte, t.ex. ”Säte i Kungälv”."),
+    text("serviceArea", "Område ni arbetar i", 80),
+    { key: "foundedYear", label: "Grundat år", kind: "year", min: 1800, max: 2100 },
+    { key: "employees", label: "Antal anställda", kind: "number", min: 0, max: 100000 },
+    text("orgNumber", "Organisationsnummer"),
+    text("vatNumber", "Momsregistreringsnummer"),
+    group("social", "Sociala medier", [
+      { key: "facebook", label: "Facebook", kind: "text", input: "url", placeholder: "https://facebook.com/…" },
+      { key: "instagram", label: "Instagram", kind: "text", input: "url", placeholder: "https://instagram.com/…" },
+      { key: "linkedin", label: "LinkedIn", kind: "text", input: "url", placeholder: "https://linkedin.com/company/…" },
+    ]),
+  ],
+  settings: [
+    text("siteName", "Hemsidans namn", 60, "Avslutar titeln i webbläsarfliken och i sökresultat, t.ex. ”Om oss | …”."),
+    { key: "siteUrl", label: "Hemsidans adress", kind: "text", input: "url", hint: "Används för länkar i sökmotorer och sociala medier." },
+    { key: "favicon", label: "Ikon i webbläsarfliken (favicon)", kind: "image", imageUsage: "favicon" },
+    { key: "analyticsId", label: "Google Analytics-ID", kind: "text", placeholder: "G-XXXXXXXXXX", hint: "Lämna tomt för ingen statistik. När det är ifyllt frågar hemsidan besökarna om kakor först." },
+    group("maintenance", "Underhållsläge", [
+      { key: "enabled", label: "Visa underhållssidan i stället för hemsidan", kind: "toggle" },
+      text("heading", "Rubrik", 50),
+      area("text", "Text", 200),
+    ]),
+  ],
 };
