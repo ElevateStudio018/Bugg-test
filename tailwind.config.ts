@@ -53,12 +53,37 @@ const config: Config = {
           "0%": { opacity: "0", transform: "translateY(16px)" },
           "100%": { opacity: "1", transform: "none" },
         },
+        // A short bright stretch running down a thin line, then a pause before the next.
+        "scroll-cue": {
+          "0%": { transform: "translateY(-100%)" },
+          "65%, 100%": { transform: "translateY(200%)" },
+        },
+        "pin-drop": {
+          "0%": { opacity: "0", transform: "translateY(-18px)" },
+          "55%": { opacity: "1", transform: "translateY(0)" },
+          "75%": { transform: "translateY(-5px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "error-in": {
+          "0%": { opacity: "0", transform: "translateY(-4px)" },
+          "100%": { opacity: "1", transform: "none" },
+        },
+        "toast-timer": {
+          "0%": { transform: "scaleX(1)" },
+          "100%": { transform: "scaleX(0)" },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.5s ease-out forwards",
         "modal-in": "modal-in 0.2s ease-out forwards",
         // Held hidden through its delay ("both"), so staggered lines appear in turn.
         rise: "rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both",
+        "rise-fast": "rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both",
+        "scroll-cue": "scroll-cue 2.4s cubic-bezier(0.65, 0, 0.35, 1) 1.6s infinite both",
+        "pin-drop": "pin-drop 0.8s cubic-bezier(0.33, 1, 0.68, 1) both",
+        "error-in": "error-in 0.25s ease-out both",
+        // Its duration is set where it is used, to match how long the thank-you stays.
+        "toast-timer": "toast-timer linear both",
       },
     },
   },

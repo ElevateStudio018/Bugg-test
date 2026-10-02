@@ -12,6 +12,9 @@ interface QuoteModalContextValue {
 
 const QuoteModalContext = createContext<QuoteModalContextValue | null>(null);
 
+/** How long the thank-you message stays. */
+export const CONFIRMATION_MS = 4500;
+
 // How long the quote window stays after the thank-you appears: the tick takes about 0.7 s to draw, and then it can be read.
 const AUTO_CLOSE_MS = 1500;
 
@@ -40,7 +43,7 @@ export function QuoteModalProvider({ children }: { children: ReactNode }) {
   const showConfirmation = useCallback(() => {
     setConfirmationVisible(true);
     if (confirmationTimeoutRef.current) clearTimeout(confirmationTimeoutRef.current);
-    confirmationTimeoutRef.current = setTimeout(() => setConfirmationVisible(false), 4500);
+    confirmationTimeoutRef.current = setTimeout(() => setConfirmationVisible(false), CONFIRMATION_MS);
 
     // A quote window that is open when the thank-you appears closes by itself a moment later.
     if (autoCloseTimeoutRef.current) clearTimeout(autoCloseTimeoutRef.current);

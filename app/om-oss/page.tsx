@@ -17,17 +17,22 @@ export default function OmOssPage() {
   return (
     <>
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-olive/20 sm:aspect-[2/1] lg:aspect-auto lg:h-[min(66vh,700px)]">
-        <ZoomImage src={aboutPage.heroImage} className="absolute inset-0 h-full w-full object-cover object-[center_35%]" />
+        <ZoomImage src={aboutPage.heroImage} parallax="top" className="absolute inset-0 h-full w-full object-cover object-[center_35%]" />
       </div>
 
       <div className="mx-auto max-w-content px-4 pb-14 pt-8 sm:px-6 sm:pb-20 lg:px-8 lg:pb-24 lg:pt-10">
-        <Breadcrumbs items={[{ label: "Hem", href: "/" }, { label: "Om oss" }]} />
+        {/* The text rises into place one part after another as the page loads, as on the homepage. */}
+        <div className="animate-rise [animation-delay:150ms]">
+          <Breadcrumbs items={[{ label: "Hem", href: "/" }, { label: "Om oss" }]} />
+        </div>
 
         <div className="mt-4 grid grid-cols-1 gap-12 lg:mt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
           <article>
-            <h1 className="text-display text-ink lg:text-[56px] lg:leading-[1.08]">{about.heading}</h1>
-            <p className="mt-3 text-copy font-semibold text-ink lg:mt-6 lg:text-[21px]">{about.subheading}</p>
-            <div className="mt-4 space-y-4">
+            <h1 className="animate-rise text-display text-ink [animation-delay:250ms] lg:text-[56px] lg:leading-[1.08]">{about.heading}</h1>
+            <p className="mt-3 animate-rise text-copy font-semibold text-ink [animation-delay:350ms] lg:mt-6 lg:text-[21px]">
+              {about.subheading}
+            </p>
+            <div className="mt-4 animate-rise space-y-4 [animation-delay:450ms]">
               {about.paragraphs.map((paragraph) => (
                 <p key={paragraph} className="text-copy text-coal lg:text-[18px]">
                   {paragraph}
@@ -36,7 +41,7 @@ export default function OmOssPage() {
             </div>
           </article>
 
-          <aside className="lg:pt-3">
+          <aside className="animate-rise [animation-delay:550ms] lg:pt-3">
             <FaktaBox title="Fakta om oss" rows={aboutFacts} />
           </aside>
         </div>
@@ -67,8 +72,8 @@ export default function OmOssPage() {
           </div>
         </div>
 
-        <div className="relative aspect-[3/2] w-full overflow-hidden bg-olive-dark sm:aspect-[2/1] lg:aspect-auto lg:h-[min(60vh,620px)]">
-          <ZoomImage src={aboutPage.middleImage} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="relative aspect-[3/2] w-full overflow-clip bg-olive-dark sm:aspect-[2/1] lg:aspect-auto lg:h-[min(60vh,620px)]">
+          <ZoomImage src={aboutPage.middleImage} loading="lazy" parallax="band" className="absolute inset-0 h-full w-full object-cover" />
         </div>
 
         <div className="mx-auto max-w-content px-6 pb-16 pt-6 lg:px-8 lg:pb-24 lg:pt-16">

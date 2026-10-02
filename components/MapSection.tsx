@@ -1,4 +1,4 @@
-import { Icon } from "./Icon";
+import { DropPin } from "./DropPin";
 import { Reveal } from "./Reveal";
 import { ArrowLabel, arrowLinkClasses } from "./Button";
 import { company } from "@/lib/content";
@@ -31,7 +31,7 @@ export function MapSection() {
       <div className="bg-white">
         <div className="mx-auto flex max-w-content flex-col gap-4 px-4 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <p className="flex items-center gap-3 text-[18px] text-ink">
-            <Icon name="MapPin" strokeWidth={2.25} className="h-6 w-6 shrink-0 text-olive" />
+            <DropPin className="flex shrink-0" />
             Kontor: {company.address.full}
           </p>
           <a href={mapLinkHref} target="_blank" rel="noopener noreferrer" className={arrowLinkClasses("ink")}>

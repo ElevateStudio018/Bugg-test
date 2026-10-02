@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Icon } from "./Icon";
 import { UppdragCard } from "./UppdragCard";
-import { usePrefersReducedMotion } from "@/hooks/useInView";
+import { useInView, usePrefersReducedMotion } from "@/hooks/useInView";
 import type { UppdragItem } from "@/lib/uppdrag";
 
 const GAP_PX = 16;
@@ -11,6 +11,7 @@ const GAP_PX = 16;
 export function UppdragCarousel({ items }: { items: UppdragItem[] }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const reducedMotion = usePrefersReducedMotion();
+  const { ref: entranceRef, isInView } = useInView<HTMLDivElement>(0.15);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
   // One dot per scroll position: every slide on mobile, fewer when 2–3 slides fit side by side.
@@ -59,7 +60,7 @@ export function UppdragCarousel({ items }: { items: UppdragItem[] }) {
 
   return (
     <div>
-      <div className="relative">
+      <div ref={entranceRef} className="relative">
         {/* Phones: the current card sits in the middle with its neighbours peeking in on both sides. The spacers
             before the first and after the last card let those two centre as well. From sm up the cards line up
             from the left edge instead. */}
@@ -79,7 +80,13 @@ export function UppdragCarousel({ items }: { items: UppdragItem[] }) {
                   : `max-sm:scale-[0.94] max-sm:opacity-60 ${index < activePage ? "max-sm:origin-right" : "max-sm:origin-left"}`
               }`}
             >
-              <UppdragCard item={item} />
+              {/* As the carousel comes into view the cards slide in from the right, one after another. */}
+              <div
+                className={`transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${isInView ? "" : "translate-x-12 opacity-0"}`}
+                style={{ transitionDelay: isInView ? `${Math.min(index, 4) * 90}ms` : "0ms" }}
+              >
+                <UppdragCard item={item} />
+              </div>
             </div>
           ))}
         </div>

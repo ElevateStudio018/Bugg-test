@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
  * Fires once when the element first scrolls into view, then disconnects.
  * Used to drive scroll-reveal and count-up animations across the site.
  */
-export function useInView<T extends HTMLElement>(threshold = 0.2) {
+export function useInView<T extends Element>(threshold = 0.2) {
   const ref = useRef<T | null>(null);
   const [isInView, setIsInView] = useState(false);
 

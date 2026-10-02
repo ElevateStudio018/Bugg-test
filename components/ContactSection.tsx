@@ -1,4 +1,5 @@
-import { Icon, type IconKey } from "./Icon";
+import { DrawIcon } from "./DrawIcon";
+import type { IconKey } from "./Icon";
 import { Reveal } from "./Reveal";
 import { QuoteForm } from "./QuoteForm";
 import { company } from "@/lib/content";
@@ -28,9 +29,15 @@ export function ContactSection() {
           </p>
 
           <ul className="mt-9 space-y-6">
-            {rows.map((row) => (
+            {rows.map((row, index) => (
               <li key={row.label} className="flex items-start gap-5">
-                <Icon name={row.icon} strokeWidth={2.25} className="mt-1 h-7 w-7 shrink-0 text-olive" />
+                <DrawIcon
+                  name={row.icon}
+                  strokeWidth={2.25}
+                  delayMs={250 + index * 150}
+                  className="mt-1 flex shrink-0"
+                  iconClassName="h-7 w-7 text-olive"
+                />
                 <div>
                   <p className="text-[15px] font-semibold text-ash">{row.label}</p>
                   {row.href ? (

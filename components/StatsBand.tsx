@@ -18,18 +18,19 @@ export function StatsBand() {
           <h2 id="siffror-rubrik" className="text-h2 lg:text-h2-lg">
             Markmontage i siffror
           </h2>
-          <dl className="mt-[26px] grid grid-cols-1 gap-y-5 sm:grid-cols-3 sm:gap-x-8 lg:mt-14">
-            {stats.map((stat) => (
-              // Number first visually, but the label stays the <dt> so it is read before the value.
-              <div key={stat.label} className="flex flex-col-reverse">
-                <dt className="text-[17px] leading-[1.35] lg:text-[19px]">{stat.label}</dt>
-                <dd className="text-stat text-white lg:text-[72px]">
-                  {stat.countUp ? <CountUp value={stat.value} /> : stat.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
         </Reveal>
+        <dl className="mt-[26px] grid grid-cols-1 gap-y-5 sm:grid-cols-3 sm:gap-x-8 lg:mt-14">
+          {stats.map((stat, index) => (
+            // The figures rise into place one after another. Number first visually, but the label stays the <dt> so
+            // it is read before the value.
+            <Reveal key={stat.label} delayMs={120 + index * 120} className="flex flex-col-reverse">
+              <dt className="text-[17px] leading-[1.35] lg:text-[19px]">{stat.label}</dt>
+              <dd className="text-stat text-white lg:text-[72px]">
+                {stat.countUp ? <CountUp value={stat.value} /> : stat.value}
+              </dd>
+            </Reveal>
+          ))}
+        </dl>
       </div>
     </section>
   );

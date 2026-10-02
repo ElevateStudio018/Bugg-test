@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Icon } from "@/components/Icon";
 import { Reveal } from "@/components/Reveal";
+import { AccentBlock } from "@/components/AccentBlock";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaktaBox } from "@/components/FaktaBox";
 import { ServiceCard } from "@/components/ServiceCard";
@@ -65,20 +66,25 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <div className="relative aspect-[16/9] w-full overflow-hidden bg-olive/20 lg:aspect-auto lg:h-[min(56vh,600px)]">
-        <ZoomImage src={service.image} className="absolute inset-0 h-full w-full object-cover" />
+        <ZoomImage src={service.image} parallax="top" className="absolute inset-0 h-full w-full object-cover" />
       </div>
 
       <div className="mx-auto max-w-content px-4 pb-16 pt-8 sm:px-6 sm:pb-20 lg:px-8 lg:pb-28 lg:pt-10">
-        <Breadcrumbs items={[{ label: "Hem", href: "/" }, { label: "Tjänster", href: "/#tjanster" }, { label: service.name }]} />
+        {/* The text rises into place one part after another as the page loads, as on the homepage. */}
+        <div className="animate-rise [animation-delay:150ms]">
+          <Breadcrumbs items={[{ label: "Hem", href: "/" }, { label: "Tjänster", href: "/#tjanster" }, { label: service.name }]} />
+        </div>
 
         <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
           <article>
-            <span className="inline-block bg-olive px-4 py-[11px] text-tag uppercase text-white">Tjänst</span>
-            <h1 className="mt-4 text-[38px] font-semibold leading-[1.1] tracking-[-0.01em] text-ink lg:text-[56px]">
+            <span className="inline-block animate-rise bg-olive px-4 py-[11px] text-tag uppercase text-white [animation-delay:250ms]">
+              Tjänst
+            </span>
+            <h1 className="mt-4 animate-rise text-[38px] font-semibold leading-[1.1] tracking-[-0.01em] text-ink [animation-delay:330ms] lg:text-[56px]">
               {service.name}
             </h1>
-            <p className="mt-6 text-copy text-coal lg:text-[21px]">{service.shortDescription}</p>
-            <div className="mt-6 space-y-5">
+            <p className="mt-6 animate-rise text-copy text-coal [animation-delay:410ms] lg:text-[21px]">{service.shortDescription}</p>
+            <div className="mt-6 animate-rise space-y-5 [animation-delay:490ms]">
               {service.description.map((paragraph) => (
                 <p key={paragraph} className="text-copy text-coal lg:text-[18px]">
                   {paragraph}
@@ -86,15 +92,15 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
               ))}
             </div>
 
-            <div className="mt-12 border-l-[6px] border-olive pl-6">
+            <AccentBlock className="mt-12">
               <h2 className="text-h2 text-ink lg:text-[38px]">Har du ett markprojekt på gång?</h2>
               <p className="mt-4 text-copy text-coal">
                 Kontakta oss för ett kostnadsfritt hembesök, så går vi igenom förutsättningarna tillsammans.
               </p>
-            </div>
+            </AccentBlock>
           </article>
 
-          <aside className="space-y-6 lg:pt-14">
+          <aside className="animate-rise space-y-6 [animation-delay:550ms] lg:pt-14">
             <FaktaBox
               title="Fakta om tjänsten"
               rows={[

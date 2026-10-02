@@ -38,8 +38,8 @@ function RowLink({ row, onClose, entrance }: { row: NavRow; onClose: () => void;
   return (
     <li className={`border-b border-white/15 py-4 ${entrance.className}`} style={entrance.style}>
       <Link href={row.href} onClick={onClose} className="group flex items-baseline gap-4">
-        <span className="text-sm font-bold text-white/50">{row.number}</span>
-        <span className="text-3xl font-semibold text-white transition-colors group-hover:text-white/70 sm:text-4xl lg:text-5xl">
+        <span className="text-sm font-bold text-white/50 transition-colors duration-300 group-hover:text-white">{row.number}</span>
+        <span className="text-3xl font-semibold text-white transition duration-300 ease-out group-hover:translate-x-2 group-hover:text-white/70 sm:text-4xl lg:text-5xl">
           {row.label}
         </span>
       </Link>
@@ -129,7 +129,7 @@ export function NavOverlay({ onClose }: { onClose: () => void }) {
                   <Link
                     href={`/tjanster/${service.slug}`}
                     onClick={onClose}
-                    className="block py-1.5 text-[17px] text-white/75 transition-colors hover:text-white"
+                    className="block py-1.5 text-[17px] text-white/75 transition duration-300 ease-out hover:translate-x-1.5 hover:text-white"
                   >
                     {service.name}
                   </Link>

@@ -9,8 +9,11 @@ export function BurgerIcon({ cross }: { cross: boolean }) {
       <span className={`${slide} ${cross ? "translate-y-[10px]" : ""}`}>
         <span className={`${turn} ${cross ? "rotate-45" : ""}`} />
       </span>
+      {/* Hovering the button (with a mouse) shortens the middle bar a little. */}
       <span
-        className={`block h-[2px] w-8 rounded-full bg-white transition-opacity duration-150 ${cross ? "opacity-0 delay-0" : "delay-150"}`}
+        className={`block h-[2px] w-8 self-end rounded-full bg-white [@media(hover:hover)]:group-hover/burger:w-5 ${
+          cross ? "opacity-0 [transition:opacity_150ms_ease,width_200ms_ease-out]" : "[transition:opacity_150ms_ease_150ms,width_200ms_ease-out]"
+        }`}
       />
       <span className={`${slide} ${cross ? "-translate-y-[10px]" : ""}`}>
         <span className={`${turn} ${cross ? "-rotate-45" : ""}`} />
@@ -21,4 +24,4 @@ export function BurgerIcon({ cross }: { cross: boolean }) {
 
 /** Used by both the bar's menu button and the menu's close button, so the icon sits in exactly the same spot. */
 export const burgerButtonClasses =
-  "-mr-1.5 flex h-12 w-12 items-center justify-end rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-white";
+  "group/burger -mr-1.5 flex h-12 w-12 items-center justify-end rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-white";

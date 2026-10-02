@@ -2,6 +2,9 @@
 
 import type { CSSProperties } from "react";
 import { useInView } from "@/hooks/useInView";
+import { useImageLoaded } from "@/hooks/useImageLoaded";
+
+const parallaxClasses = { top: "parallax-top", band: "parallax-band" } as const;
 
 interface ZoomImageProps {
   src: string;
@@ -9,14 +12,20 @@ interface ZoomImageProps {
   className?: string;
   style?: CSSProperties;
   loading?: "lazy" | "eager";
+  /**
+   * Move a little slower than the page while scrolling: "top" for a photo at the top of a page, "band" for one further
+   * down, whose frame must then clip with overflow-clip rather than overflow-hidden.
+   */
+  parallax?: keyof typeof parallaxClasses;
 }
 
 /**
  * A photo that slowly eases from a slight zoom to its normal size the first time it comes into view; one at the top
- * of a page does so as the page loads. Its frame must clip overflow.
+ * of a page does so as the page loads. One still loading fades in when it arrives. Its frame must clip overflow.
  */
-export function ZoomImage({ src, alt = "", className = "", style, loading }: ZoomImageProps) {
+export function ZoomImage({ src, alt = "", className = "", style, loading, parallax }: ZoomImageProps) {
   const { ref, isInView } = useInView<HTMLImageElement>();
+  const isLoaded = useImageLoaded(ref);
 
   return (
     // eslint-disable-next-line @next/next/no-img-element
@@ -26,9 +35,11 @@ export function ZoomImage({ src, alt = "", className = "", style, loading }: Zoo
       alt={alt}
       loading={loading}
       style={style}
-      className={`transition-transform duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-        isInView ? "scale-100" : "scale-[1.08]"
-      } ${className}`}
+      className={`${
+        isLoaded
+          ? "opacity-100 [transition:transform_1800ms_cubic-bezier(0.22,1,0.36,1),opacity_700ms_ease-out]"
+          : "opacity-0 [transition:transform_1800ms_cubic-bezier(0.22,1,0.36,1)]"
+      } ${isInView ? "scale-100" : "scale-[1.08]"} ${parallax ? parallaxClasses[parallax] : ""} ${className}`}
     />
   );
 }

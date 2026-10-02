@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useId, useState } from "react";
+import { FormEvent, useId, useState, type CSSProperties } from "react";
 import { Icon } from "./Icon";
 import { buttonClasses } from "./Button";
 import { useQuoteModal } from "@/contexts/QuoteModalContext";
@@ -38,12 +38,44 @@ const fieldBaseClass =
 
 const labelClass = "mb-2 block text-[15px] font-semibold text-ink";
 
+const fieldIds: Record<keyof FormValues, string> = {
+  namn: "namn",
+  telefon: "telefon",
+  epost: "epost",
+  typAvArbete: "typ",
+  beskrivning: "beskrivning",
+};
+
 export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal" }) {
   const [values, setValues] = useState<FormValues>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const idPrefix = useId();
   const { showConfirmation, close } = useQuoteModal();
+
+  // In the quote window the fields rise into place one after another as it opens, like the rows of the menu.
+  function entrance(order: number): { className?: string; style?: CSSProperties } {
+    if (variant !== "modal") return {};
+    return { className: "animate-rise-fast", style: { animationDelay: `${80 + order * 45}ms` } };
+  }
+
+  // Each time the form is sent with mistakes, the fields in question give a short, gentle shake. Web Animations
+  // ignore the reduced-motion rule in globals.css, hence the check.
+  function shake(keys: (keyof FormValues)[]) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    for (const key of keys) {
+      document.getElementById(`${idPrefix}-${fieldIds[key]}`)?.parentElement?.animate(
+        [
+          { transform: "translateX(0)" },
+          { transform: "translateX(-5px)" },
+          { transform: "translateX(4px)" },
+          { transform: "translateX(-2px)" },
+          { transform: "translateX(0)" },
+        ],
+        { duration: 340, easing: "ease-out" }
+      );
+    }
+  }
 
   function validate(): FormErrors {
     const next: FormErrors = {};
@@ -71,7 +103,10 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
     event.preventDefault();
     const nextErrors = validate();
     setErrors(nextErrors);
-    if (Object.keys(nextErrors).length > 0) return;
+    if (Object.keys(nextErrors).length > 0) {
+      shake(Object.keys(nextErrors) as (keyof FormValues)[]);
+      return;
+    }
 
     setIsSubmitting(true);
     setTimeout(() => {
@@ -83,12 +118,12 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
-      <div>
+      <div {...entrance(0)}>
         <label htmlFor={`${idPrefix}-namn`} className={labelClass}>
           Namn
         </label>
-        <div className="relative">
-          <Icon name="User" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash" />
+        <div className="group/field relative">
+          <Icon name="User" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash transition-colors duration-200 group-focus-within/field:text-olive" />
           <input
             id={`${idPrefix}-namn`}
             type="text"
@@ -101,18 +136,18 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
           />
         </div>
         {errors.namn && (
-          <p id={`${idPrefix}-namn-error`} className="mt-1.5 text-[14px] text-red-700">
+          <p id={`${idPrefix}-namn-error`} className="mt-1.5 animate-error-in text-[14px] text-red-700">
             {errors.namn}
           </p>
         )}
       </div>
 
-      <div>
+      <div {...entrance(1)}>
         <label htmlFor={`${idPrefix}-telefon`} className={labelClass}>
           Telefon
         </label>
-        <div className="relative">
-          <Icon name="Phone" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash" />
+        <div className="group/field relative">
+          <Icon name="Phone" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash transition-colors duration-200 group-focus-within/field:text-olive" />
           <input
             id={`${idPrefix}-telefon`}
             type="tel"
@@ -125,18 +160,18 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
           />
         </div>
         {errors.telefon && (
-          <p id={`${idPrefix}-telefon-error`} className="mt-1.5 text-[14px] text-red-700">
+          <p id={`${idPrefix}-telefon-error`} className="mt-1.5 animate-error-in text-[14px] text-red-700">
             {errors.telefon}
           </p>
         )}
       </div>
 
-      <div>
+      <div {...entrance(2)}>
         <label htmlFor={`${idPrefix}-epost`} className={labelClass}>
           E-post
         </label>
-        <div className="relative">
-          <Icon name="Mail" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash" />
+        <div className="group/field relative">
+          <Icon name="Mail" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash transition-colors duration-200 group-focus-within/field:text-olive" />
           <input
             id={`${idPrefix}-epost`}
             type="email"
@@ -149,18 +184,18 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
           />
         </div>
         {errors.epost && (
-          <p id={`${idPrefix}-epost-error`} className="mt-1.5 text-[14px] text-red-700">
+          <p id={`${idPrefix}-epost-error`} className="mt-1.5 animate-error-in text-[14px] text-red-700">
             {errors.epost}
           </p>
         )}
       </div>
 
-      <div>
+      <div {...entrance(3)}>
         <label htmlFor={`${idPrefix}-typ`} className={labelClass}>
           Typ av arbete
         </label>
-        <div className="relative">
-          <Icon name="Wrench" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash" />
+        <div className="group/field relative">
+          <Icon name="Wrench" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash transition-colors duration-200 group-focus-within/field:text-olive" />
           <select
             id={`${idPrefix}-typ`}
             value={values.typAvArbete}
@@ -178,21 +213,21 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
               </option>
             ))}
           </select>
-          <Icon name="ChevronDown" className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash" />
+          <Icon name="ChevronDown" className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ash transition-colors duration-200 group-focus-within/field:text-olive" />
         </div>
         {errors.typAvArbete && (
-          <p id={`${idPrefix}-typ-error`} className="mt-1.5 text-[14px] text-red-700">
+          <p id={`${idPrefix}-typ-error`} className="mt-1.5 animate-error-in text-[14px] text-red-700">
             {errors.typAvArbete}
           </p>
         )}
       </div>
 
-      <div>
+      <div {...entrance(4)}>
         <label htmlFor={`${idPrefix}-beskrivning`} className={labelClass}>
           Kort beskrivning
         </label>
-        <div className="relative">
-          <Icon name="MessageSquare" className="pointer-events-none absolute left-4 top-4 h-5 w-5 text-ash" />
+        <div className="group/field relative">
+          <Icon name="MessageSquare" className="pointer-events-none absolute left-4 top-4 h-5 w-5 text-ash transition-colors duration-200 group-focus-within/field:text-olive" />
           <textarea
             id={`${idPrefix}-beskrivning`}
             rows={3}
@@ -204,19 +239,22 @@ export function QuoteForm({ variant = "inline" }: { variant?: "inline" | "modal"
         </div>
       </div>
 
-      <button type="submit" disabled={isSubmitting} className={buttonClasses("olive", "w-full disabled:opacity-70")}>
-        {isSubmitting ? (
-          <>
-            <Icon name="Loader2" className="mr-2 h-5 w-5 animate-spin" />
-            Skickar...
-          </>
-        ) : (
-          "Skicka förfrågan"
-        )}
-      </button>
+      {/* Wrapped, so the entrance doesn't hold the button's own press-in transform. */}
+      <div {...entrance(5)}>
+        <button type="submit" disabled={isSubmitting} className={buttonClasses("olive", "w-full disabled:opacity-70")}>
+          {isSubmitting ? (
+            <>
+              <Icon name="Loader2" className="mr-2 h-5 w-5 animate-spin" />
+              Skickar...
+            </>
+          ) : (
+            "Skicka förfrågan"
+          )}
+        </button>
+      </div>
 
       {variant === "modal" && (
-        <p className="text-center text-[14px] text-ash">
+        <p className={`text-center text-[14px] text-ash ${entrance(6).className}`} style={entrance(6).style}>
           Du kan stänga rutan när som helst genom att klicka utanför eller på{" "}
           <button type="button" onClick={close} className="underline underline-offset-2">
             X

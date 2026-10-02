@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Icon } from "./Icon";
 import { Wordmark } from "./Wordmark";
 import { QuoteTrigger } from "./QuoteTrigger";
+import { Reveal } from "./Reveal";
 import { buttonClasses } from "./Button";
 import { company, footerCopyright } from "@/lib/content";
 import { services } from "@/lib/services";
@@ -37,7 +38,7 @@ export function Footer() {
       />
 
       <div className="relative mx-auto max-w-content px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-        <div className="mb-8 border-b border-white/15 pb-7 lg:mb-10 lg:pb-8">
+        <Reveal className="mb-8 border-b border-white/15 pb-7 lg:mb-10 lg:pb-8">
           <Link
             href="/"
             aria-label="Markmontage BEAB AB – startsida"
@@ -45,11 +46,11 @@ export function Footer() {
           >
             <Wordmark />
           </Link>
-        </div>
+        </Reveal>
 
         {/* Phones: contact on top, then the two link lists side by side, to keep the footer short. */}
         <div className="grid grid-cols-2 gap-x-6 gap-y-9 lg:grid-cols-[1.3fr_1fr_1fr] lg:gap-10">
-          <div className="col-span-2 lg:col-span-1">
+          <Reveal delayMs={80} className="col-span-2 lg:col-span-1">
             <h2 className={headingClass}>Kontakt</h2>
             <ul className="mt-4 space-y-3 text-[17px] leading-snug lg:mt-5 lg:text-[18px]">
               <li>
@@ -76,9 +77,9 @@ export function Footer() {
               </li>
             </ul>
             <QuoteTrigger className={buttonClasses("light-outline", "mt-6 lg:mt-7")}>Få gratis offert</QuoteTrigger>
-          </div>
+          </Reveal>
 
-          <div>
+          <Reveal delayMs={160}>
             <h2 className={headingClass}>Tjänster</h2>
             <ul className="mt-4 space-y-2 lg:mt-5 lg:space-y-2.5">
               {services.map((service) => (
@@ -89,9 +90,9 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
 
-          <div>
+          <Reveal delayMs={240}>
             <h2 className={headingClass}>Markmontage</h2>
             <ul className="mt-4 space-y-2 lg:mt-5 lg:space-y-2.5">
               {companyLinks.map((link) => (
@@ -102,15 +103,18 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
         </div>
 
-        <div className="mt-9 flex flex-col gap-1 border-t border-white/15 pt-5 text-[13px] text-white/70 sm:flex-row sm:justify-between lg:mt-12 lg:text-[14px]">
+        <Reveal
+          delayMs={300}
+          className="mt-9 flex flex-col gap-1 border-t border-white/15 pt-5 text-[13px] text-white/70 sm:flex-row sm:justify-between lg:mt-12 lg:text-[14px]"
+        >
           <p>{footerCopyright}</p>
           <p>
             Org.nr {company.orgNumber} · VAT {company.vatNumber}
           </p>
-        </div>
+        </Reveal>
       </div>
     </footer>
   );

@@ -1,20 +1,20 @@
 import Link from "next/link";
 import { ArrowLabel } from "./Button";
+import { Photo } from "./Photo";
 import type { Service } from "@/lib/services";
 
 export function ServiceCard({ service, wide = false }: { service: Service; wide?: boolean }) {
   return (
+    // On hover a thin olive line also slides in along the bottom of the card, like the line under the links.
     <Link
       href={`/tjanster/${service.slug}`}
-      className="group group/arrow flex h-full flex-col bg-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive"
+      className="group group/arrow relative flex h-full flex-col bg-cream after:absolute after:inset-x-0 after:bottom-0 after:h-[3px] after:origin-left after:scale-x-0 after:bg-olive after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive"
     >
       <div className={`relative overflow-hidden bg-olive/20 ${wide ? "aspect-square md:aspect-[2/1]" : "aspect-square"}`}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Photo
           src={service.image}
-          alt=""
-          loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          className="absolute inset-0 h-full w-full object-cover group-hover:scale-[1.04]"
+          transition="transform 700ms ease-out"
           style={{ objectPosition: service.imageFocus }}
         />
       </div>

@@ -28,6 +28,77 @@
   }
 }
 
+/* DrawIcon: hidden until it scrolls into view, then each stroke draws itself (every stroke has pathLength 1). */
+.icon-draw svg {
+  opacity: 0;
+}
+
+.icon-draw svg * {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.icon-draw.is-drawn svg {
+  opacity: 1;
+  /* Shown only as drawing starts: until then each stroke's round end would sit there as a dot. */
+  transition: opacity 0s linear var(--draw-delay, 0ms);
+}
+
+.icon-draw.is-drawn svg * {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.9s cubic-bezier(0.65, 0, 0.35, 1) var(--draw-delay, 0ms);
+}
+
+/* Scroll-linked motion, left out with reduced motion and where the browser can't tie animations to scrolling. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /* A photo at the top of a page sinks as the first screenful scrolls by, so it moves slower than the text. */
+    .parallax-top {
+      animation: parallax-top linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0px 100vh;
+    }
+
+    /* A photo further down drifts through its frame while the frame passes. The frame must clip with
+       overflow: clip, as overflow: hidden would make the frame itself the scroll container view() follows. */
+    .parallax-band {
+      scale: 1.1;
+      animation: parallax-band linear both;
+      animation-timeline: view();
+    }
+
+    .header-shadow {
+      animation: header-shadow linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0px 48px;
+    }
+  }
+}
+
+@keyframes parallax-top {
+  to {
+    translate: 0 30vh;
+  }
+}
+
+@keyframes parallax-band {
+  from {
+    translate: 0 -4.5%;
+  }
+  to {
+    translate: 0 4.5%;
+  }
+}
+
+@keyframes header-shadow {
+  from {
+    box-shadow: 0 6px 24px -8px rgb(0 0 0 / 0);
+  }
+  to {
+    box-shadow: 0 6px 24px -8px rgb(0 0 0 / 0.45);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

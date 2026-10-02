@@ -10,6 +10,7 @@ export function Hero() {
     <section className="relative isolate flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden bg-olive-dark sm:min-h-[calc(100svh-5rem)]">
       <ZoomImage
         src={hero.image}
+        parallax="top"
         className="absolute inset-0 -z-10 h-full w-full object-cover object-[74%_center] lg:object-[75%_55%]"
       />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-black/45" />
@@ -26,6 +27,15 @@ export function Hero() {
               <ArrowLabel spaced>Begär offert</ArrowLabel>
             </span>
           </QuoteTrigger>
+        </div>
+      </div>
+
+      {/* Desktop: a thin line at the bottom with a light running down it, a hint that the page goes on. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-8 hidden justify-center lg:flex">
+        <div className="animate-rise [animation-delay:900ms]">
+          <div className="relative h-14 w-px overflow-hidden bg-white/25">
+            <span className="absolute inset-x-0 top-0 h-1/2 animate-scroll-cue bg-white" />
+          </div>
         </div>
       </div>
     </section>

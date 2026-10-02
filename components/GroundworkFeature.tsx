@@ -1,5 +1,7 @@
 import { Reveal } from "./Reveal";
-import { Icon, type IconKey } from "./Icon";
+import { DrawIcon } from "./DrawIcon";
+import type { IconKey } from "./Icon";
+import { Photo } from "./Photo";
 import { ArrowLabel, buttonClasses } from "./Button";
 import { ZoomImage } from "./ZoomImage";
 import { companyPhotos } from "@/lib/photos";
@@ -38,10 +40,11 @@ export function GroundworkFeature() {
   return (
     <section>
       {/* Photo band: heading on the darker left side, the work itself on the right. */}
-      <div className="relative isolate overflow-hidden bg-olive-dark text-white">
+      <div className="relative isolate overflow-clip bg-olive-dark text-white">
         <ZoomImage
           src={companyPhotos.gravmaskinRor}
           loading="lazy"
+          parallax="band"
           className="absolute inset-0 -z-10 h-full w-full object-cover object-[72%_35%] lg:object-[60%_75%]"
         />
         <div
@@ -68,9 +71,12 @@ export function GroundworkFeature() {
               <article className="flex h-full flex-col bg-cream sm:flex-row">
                 <div className="flex flex-1 flex-col p-6 sm:p-8 lg:p-10">
                   <div className="flex items-center gap-4">
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center bg-olive text-white">
-                      <Icon name={block.icon} className="h-6 w-6" />
-                    </span>
+                    <DrawIcon
+                      name={block.icon}
+                      delayMs={350 + index * 120}
+                      className="flex h-12 w-12 shrink-0 items-center justify-center bg-olive text-white"
+                      iconClassName="h-6 w-6"
+                    />
                     <h3 className="text-h3 text-ink">{block.heading}</h3>
                   </div>
                   <p className="mt-5 text-copy leading-[1.4] text-coal">{block.text}</p>
@@ -85,11 +91,8 @@ export function GroundworkFeature() {
 
                 {/* Beside the text, cut on the diagonal along its left edge. Left out on phones, where the cards follow straight on. */}
                 <div className="relative hidden sm:block sm:w-[40%] sm:shrink-0 sm:[clip-path:polygon(18%_0,100%_0,100%_100%,0_100%)]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Photo
                     src={block.photo}
-                    alt=""
-                    loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover"
                     style={{ objectPosition: block.focus }}
                   />

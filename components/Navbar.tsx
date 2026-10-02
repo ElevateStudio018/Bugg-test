@@ -47,7 +47,7 @@ export function Navbar() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-40 bg-olive">
+      <header className="header-shadow fixed inset-x-0 top-0 z-40 bg-olive">
         <div className="mx-auto flex h-16 max-w-content items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
           <Link href="/" aria-label="Markmontage BEAB AB – startsida">
             <Wordmark />
