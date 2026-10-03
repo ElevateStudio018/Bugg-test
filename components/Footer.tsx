@@ -4,6 +4,7 @@ import { Wordmark } from "./Wordmark";
 import { SiteLink } from "./SiteLink";
 import { Reveal } from "./Reveal";
 import { buttonClasses, tapTarget } from "./Button";
+import { CookieSettingsButton } from "./CookieSettingsButton";
 import { list } from "@/lib/site/collection.ts";
 import { toTelHref } from "@/lib/site/format.ts";
 import type { SiteData } from "@/lib/site/schema.ts";
@@ -147,6 +148,12 @@ export function Footer({ site }: { site: SiteData }) {
             {company.orgNumber}
             {` · ${footer.vatLabel} `}
             {company.vatNumber}
+            {site.settings.analyticsId && site.ui.cookieSettings && (
+              <>
+                {" · "}
+                <CookieSettingsButton label={site.ui.cookieSettings} />
+              </>
+            )}
           </p>
         </Reveal>
       </div>

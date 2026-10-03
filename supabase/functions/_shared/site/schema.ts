@@ -495,6 +495,8 @@ export const uiSchema = z.object({
   cookieText: longText,
   cookieAccept: lineText,
   cookieDecline: lineText,
+  /** The footer's button for changing one's answer; the button is left out while this is unset. */
+  cookieSettings: lineText.optional(),
 });
 
 export const notFoundSchema = z.object({ eyebrow: lineText, heading: lineText, text: longText, button: linkSchema, seoTitle: lineText });

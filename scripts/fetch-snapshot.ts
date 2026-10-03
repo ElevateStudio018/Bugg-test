@@ -3,11 +3,18 @@
 // the original content (content/baseline.json). A connected build that cannot fetch or validate the snapshot fails
 // rather than publishing anything else, so the live site keeps its last good version.
 import { readFileSync, writeFileSync } from "node:fs";
-import { siteDataSchema } from "../lib/site/schema.ts";
+import { siteDataSchema, type SiteData } from "../lib/site/schema.ts";
+import { downloadFonts } from "./fonts.ts";
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const out = "content/snapshot.json";
+const fontsOut = "content/fonts.json";
+
+/** The theme's own fonts, downloaded for the site to serve itself (see scripts/fonts.ts). */
+async function writeFonts(site: SiteData) {
+  writeFileSync(fontsOut, JSON.stringify(await downloadFonts(site)));
+}
 
 async function fetchPublished(): Promise<{ version: number; data: unknown }> {
   let lastError: unknown;
@@ -32,6 +39,7 @@ async function main() {
   if (!url || !key) {
     const baseline = siteDataSchema.parse(JSON.parse(readFileSync("content/baseline.json", "utf8")));
     writeFileSync(out, JSON.stringify(baseline));
+    await writeFonts(baseline);
     console.log("snapshot: not connected to Supabase, using content/baseline.json");
     return;
   }
@@ -43,6 +51,7 @@ async function main() {
     process.exit(1);
   }
   writeFileSync(out, JSON.stringify(parsed.data));
+  await writeFonts(parsed.data);
   // The admin compares this with the published version to tell when the new site is live.
   writeFileSync("public/site-version.json", JSON.stringify({ version }));
   console.log(`snapshot: published version ${version} from Supabase`);

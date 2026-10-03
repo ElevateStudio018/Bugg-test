@@ -5,6 +5,7 @@ import { Icon } from "./Icon";
 import { buttonClasses, tapTarget } from "./Button";
 import { useQuoteModal } from "@/contexts/QuoteModalContext";
 import { fill, toTelHref } from "@/lib/site/format.ts";
+import { isConnected, supabaseAnonKey, supabaseUrl } from "@/lib/connection";
 import type { SiteData } from "@/lib/site/schema.ts";
 
 interface FormValues {
@@ -39,8 +40,9 @@ const fieldBaseClass =
 
 const labelClass = "mb-2 block text-[15px] font-semibold text-heading";
 
-// Requests go by e-mail through FormSubmit (formsubmit.co), as the site has no server of its own. The first request to a
-// new address only sends an activation e-mail there; nothing is forwarded until its link has been clicked.
+// With the site connected to its backend, requests are stored for the admin's list and e-mailed to the company by the
+// submit-quote function. Without it they go by e-mail through FormSubmit (formsubmit.co); the first request to a new
+// address there only sends an activation e-mail, and nothing is forwarded until its link has been clicked.
 const submitUrl = (email: string) => `https://formsubmit.co/ajax/${email}`;
 
 const fieldIds: Record<keyof FormValues, string> = {
@@ -57,6 +59,8 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [sendFailed, setSendFailed] = useState(false);
+  // Left empty by people; bots that fill in every field give themselves away.
+  const [website, setWebsite] = useState("");
   const idPrefix = useId();
   const { showConfirmation, close } = useQuoteModal();
 
@@ -118,23 +122,41 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
     setIsSubmitting(true);
     setSendFailed(false);
     try {
-      const response = await fetch(submitUrl(email), {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          _subject: fill(texts.emailSubject, { namn: values.namn.trim() }),
-          _template: "table",
-          _captcha: "false",
-          ...(values.epost.trim() ? { _replyto: values.epost.trim() } : {}),
-          Namn: values.namn.trim(),
-          Telefon: values.telefon.trim() || "–",
-          "E-post": values.epost.trim() || "–",
-          "Typ av arbete": workTypes.find((typ) => typ.id === values.typAvArbete)?.label ?? values.typAvArbete,
-          Beskrivning: values.beskrivning.trim() || "–",
-        }),
-      });
-      const result: { success?: string | boolean } | null = await response.json().catch(() => null);
-      if (!response.ok || String(result?.success) !== "true") throw new Error("Not sent");
+      const workType = workTypes.find((typ) => typ.id === values.typAvArbete)?.label ?? values.typAvArbete;
+      if (isConnected) {
+        const response = await fetch(`${supabaseUrl}/functions/v1/submit-quote`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", apikey: supabaseAnonKey, Authorization: `Bearer ${supabaseAnonKey}` },
+          body: JSON.stringify({
+            name: values.namn.trim(),
+            phone: values.telefon.trim(),
+            email: values.epost.trim(),
+            workType,
+            message: values.beskrivning.trim(),
+            website,
+          }),
+        });
+        if (!response.ok) throw new Error("Not sent");
+      } else {
+        const response = await fetch(submitUrl(email), {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            _subject: fill(texts.emailSubject, { namn: values.namn.trim() }),
+            _template: "table",
+            _captcha: "false",
+            _honey: website,
+            ...(values.epost.trim() ? { _replyto: values.epost.trim() } : {}),
+            Namn: values.namn.trim(),
+            Telefon: values.telefon.trim() || "–",
+            "E-post": values.epost.trim() || "–",
+            "Typ av arbete": workType,
+            Beskrivning: values.beskrivning.trim() || "–",
+          }),
+        });
+        const result: { success?: string | boolean } | null = await response.json().catch(() => null);
+        if (!response.ok || String(result?.success) !== "true") throw new Error("Not sent");
+      }
       setValues(initialValues);
       showConfirmation();
     } catch {
@@ -306,6 +328,11 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
           .
         </p>
       )}
+
+      {/* The trap for bots: out of sight, out of the tab order and named so that autofill leaves it alone; people never fill it in. */}
+      <div aria-hidden="true" className="absolute -left-[10000px] h-px w-px overflow-hidden">
+        <input type="text" name="kontrollfalt" tabIndex={-1} autoComplete="off" value={website} onChange={(event) => setWebsite(event.target.value)} />
+      </div>
     </form>
   );
 }

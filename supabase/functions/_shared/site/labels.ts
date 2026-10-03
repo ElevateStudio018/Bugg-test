@@ -602,6 +602,7 @@ export const rootFields: Record<"navigation" | "footer" | "form" | "servicePage"
     area("cookieText", "Frågan om kakor", 200, "Visas bara om Google Analytics är kopplat (Inställningar)."),
     text("cookieAccept", "Godkänn kakor", 16),
     text("cookieDecline", "Neka kakor", 16),
+    text("cookieSettings", "Ändra kakvalet (knapp i sidfoten)", 20, "Visas bara när Google Analytics är kopplat."),
     text("skipLink", "Hoppa till innehållet", 40, forScreenReaders),
     text("openMenu", "Öppna menyn", 30, forScreenReaders),
     text("closeMenu", "Stäng menyn", 30, forScreenReaders),

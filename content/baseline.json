@@ -294,7 +294,8 @@
     "ratingLabel": "{n} av 5 stjärnor",
     "cookieText": "Vi vill använda kakor för att se hur besökare använder sidan, så att vi kan göra den bättre. Godkänner du det?",
     "cookieAccept": "Godkänn",
-    "cookieDecline": "Nej tack"
+    "cookieDecline": "Nej tack",
+    "cookieSettings": "Kakinställningar"
   },
   "servicePage": {
     "badge": "Tjänst",

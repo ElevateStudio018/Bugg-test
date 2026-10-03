@@ -1,8 +1,5 @@
-// Where the admin finds its Supabase project. Both values are public by design (row level security protects the data);
-// they are set at build time, so a site built without them shows the admin as not yet connected.
-export const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
-export const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "";
-export const isConnected = Boolean(supabaseUrl && supabaseAnonKey);
+// Where the admin finds its Supabase project (see lib/connection.ts) and where the admin itself lives.
+export { isConnected, supabaseAnonKey, supabaseUrl } from "@/lib/connection";
 
 /** The base path the site is served under (on the GitHub Pages preview: /Bugg-test). */
 export const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
