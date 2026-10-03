@@ -60,7 +60,7 @@ await test("anyone reads the published snapshot", async () => {
 });
 
 await test("non-admins see none of the admin tables", async () => {
-  for (const table of ["website_content", "quote_requests", "content_revisions", "credit_balance", "audit_log", "settings", "profiles"]) {
+  for (const table of ["website_content", "quote_requests", "site_suggestions", "content_revisions", "credit_balance", "audit_log", "settings", "profiles"]) {
     const { json } = await call(`/rest/v1/${table}?select=*`, { token: outsider });
     assert.deepEqual(json, [], table);
   }
@@ -180,6 +180,7 @@ await test("service-role-only functions are closed to signed-in users", async ()
   for (const [fn, args] of [
     ["credits_topup", { p_pack: 50, p_credits: 50, p_price: 0, p_actor: null }],
     ["insert_quote_request", { p_name: "a", p_phone: "", p_email: "", p_work_type: "", p_message: "", p_sender_hash: "x" }],
+    ["insert_site_suggestion", { p_name: "a", p_area: "", p_message: "abc", p_sender_hash: "x" }],
     ["record_login", { p_email_hash: "x", p_ip_hash: "y", p_success: true }],
   ]) {
     const res = await rpc(fn, args, { token: admin });
@@ -199,6 +200,30 @@ await test("quote requests: service role inserts with a rate limit, admins mark 
   assert.equal(upd.status, 204);
   const tamper = await call(`/rest/v1/quote_requests?id=eq.${rows[0].id}`, { method: "PATCH", token: admin, body: { message: "ändrad" } });
   assert.notEqual(tamper.status, 204);
+});
+
+await test("staff suggestions: service role inserts with a rate limit, admins mark and delete, nobody rewrites", async () => {
+  for (let i = 0; i < 3; i++) {
+    const res = await rpc("insert_site_suggestion", { p_name: `Medarbetare ${i}`, p_area: "Startsidan", p_message: "Bättre bilder", p_sender_hash: `g-${suffix}`, p_max_per_hour: 3 }, { key: SERVICE });
+    assert.equal(res.json.status, "saved", JSON.stringify(res.json));
+  }
+  const limited = await rpc("insert_site_suggestion", { p_name: "Medarbetare 4", p_area: "", p_message: "En till", p_sender_hash: `g-${suffix}`, p_max_per_hour: 3 }, { key: SERVICE });
+  assert.equal(limited.json.status, "rate_limited");
+  const anonymous = await call("/rest/v1/site_suggestions?select=*");
+  assert.deepEqual(anonymous.json, []);
+  const insert = await call("/rest/v1/site_suggestions", { method: "POST", token: admin, body: { name: "x", message: "direkt" } });
+  assert.notEqual(insert.status, 201);
+  const rows = (await call(`/rest/v1/site_suggestions?select=id,status&name=eq.Medarbetare%200`, { token: admin })).json;
+  assert.equal(rows.length, 1);
+  assert.equal(rows[0].status, "new");
+  const done = await call(`/rest/v1/site_suggestions?id=eq.${rows[0].id}`, { method: "PATCH", token: admin, body: { status: "done" } });
+  assert.equal(done.status, 204);
+  const tamper = await call(`/rest/v1/site_suggestions?id=eq.${rows[0].id}`, { method: "PATCH", token: admin, body: { message: "ändrad" } });
+  assert.notEqual(tamper.status, 204);
+  const outsiderDelete = await call(`/rest/v1/site_suggestions?id=eq.${rows[0].id}`, { method: "DELETE", token: outsider, headers: { Prefer: "return=representation" } });
+  assert.deepEqual(outsiderDelete.json, []);
+  const removed = await call(`/rest/v1/site_suggestions?id=eq.${rows[0].id}`, { method: "DELETE", token: admin, headers: { Prefer: "return=representation" } });
+  assert.equal(removed.json.length, 1);
 });
 
 await test("credits: top-ups add, the fourth in a day waits for approval", async () => {

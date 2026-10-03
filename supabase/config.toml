@@ -436,3 +436,6 @@ verify_jwt = false
 
 [functions.ai-assistant]
 verify_jwt = false
+
+[functions.submit-suggestion]
+verify_jwt = false

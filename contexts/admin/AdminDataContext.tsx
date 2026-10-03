@@ -4,6 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { DraftStore, type DraftState } from "@/lib/admin/draftStore";
 import { supabase } from "@/lib/admin/supabase";
 import { applyPrime } from "@/lib/admin/prime";
+import { countNewSuggestions } from "@/lib/admin/suggestions";
 
 export interface PendingReset {
   id: string;
@@ -18,6 +19,9 @@ interface AdminData {
   refreshCredits: () => Promise<void>;
   newQuotes: number;
   refreshQuotes: () => Promise<void>;
+  /** Employees' suggestions for the website not yet seen (Hemsidan → Förslag). */
+  newSuggestions: number;
+  refreshSuggestions: () => Promise<void>;
   /** A "Rensa alla ändringar" request waiting for Elevate Studio, if any. */
   pendingReset: PendingReset | null;
   refreshReset: () => Promise<void>;
@@ -25,13 +29,14 @@ interface AdminData {
 
 const AdminDataContext = createContext<AdminData | null>(null);
 
-/** One draft store, credit balance and quote counter for the whole panel, kept while moving between its pages. */
+/** One draft store, credit balance and inbox counters for the whole panel, kept while moving between its pages. */
 export function AdminDataProvider({ children }: { children: ReactNode }) {
   const storeRef = useRef<DraftStore | null>(null);
   storeRef.current ??= new DraftStore();
   const store = storeRef.current;
   const [credits, setCredits] = useState<number | null>(null);
   const [newQuotes, setNewQuotes] = useState(0);
+  const [newSuggestions, setNewSuggestions] = useState(0);
   const [pendingReset, setPendingReset] = useState<PendingReset | null>(null);
 
   const refreshReset = useCallback(async () => {
@@ -54,22 +59,31 @@ export function AdminDataProvider({ children }: { children: ReactNode }) {
     setNewQuotes(count ?? 0);
   }, []);
 
+  const refreshSuggestions = useCallback(async () => {
+    setNewSuggestions(await countNewSuggestions());
+  }, []);
+
   useEffect(() => {
     void store.start();
     void refreshCredits();
     void refreshQuotes();
+    void refreshSuggestions();
     void refreshReset();
     const channel = supabase()
-      .channel("quote-requests")
+      .channel("admin-inbox")
       .on("postgres_changes", { event: "*", schema: "public", table: "quote_requests" }, () => void refreshQuotes())
+      .on("postgres_changes", { event: "*", schema: "public", table: "site_suggestions" }, () => void refreshSuggestions())
       .subscribe();
-    // Without Realtime, a gentle poll keeps the counter fresh.
-    const poll = setInterval(() => void refreshQuotes(), 60_000);
+    // Without Realtime, a gentle poll keeps the counters fresh.
+    const poll = setInterval(() => {
+      void refreshQuotes();
+      void refreshSuggestions();
+    }, 60_000);
     return () => {
       clearInterval(poll);
       void supabase().removeChannel(channel);
     };
-  }, [store, refreshCredits, refreshQuotes, refreshReset]);
+  }, [store, refreshCredits, refreshQuotes, refreshSuggestions, refreshReset]);
 
   // The prime colour follows the saved setting.
   const adminPrime = useSyncExternalStore(store.subscribe, () => store.getState().adminColors.primary, () => undefined);
@@ -79,8 +93,8 @@ export function AdminDataProvider({ children }: { children: ReactNode }) {
   }, [adminPrime]);
 
   const value = useMemo(
-    () => ({ store, credits, refreshCredits, newQuotes, refreshQuotes, pendingReset, refreshReset }),
-    [store, credits, refreshCredits, newQuotes, refreshQuotes, pendingReset, refreshReset]
+    () => ({ store, credits, refreshCredits, newQuotes, refreshQuotes, newSuggestions, refreshSuggestions, pendingReset, refreshReset }),
+    [store, credits, refreshCredits, newQuotes, refreshQuotes, newSuggestions, refreshSuggestions, pendingReset, refreshReset]
   );
   return <AdminDataContext.Provider value={value}>{children}</AdminDataContext.Provider>;
 }

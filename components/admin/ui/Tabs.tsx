@@ -5,6 +5,8 @@ import { useRef } from "react";
 export interface TabItem {
   id: string;
   label: string;
+  /** A count shown beside the label, such as new items waiting; read out with its meaning. */
+  badge?: { count: number; label: string };
 }
 
 /** A row of tabs; arrow keys move between them, as screen readers expect. */
@@ -40,6 +42,12 @@ export function Tabs({ items, active, onChange, label }: { items: TabItem[]; act
             }`}
           >
             {item.label}
+            {item.badge && item.badge.count > 0 && (
+              <span className="ml-1.5 rounded-full bg-admin px-1.5 py-0.5 text-[11px] font-bold text-admin-contrast">
+                <span aria-hidden="true">{item.badge.count}</span>
+                <span className="sr-only">, {item.badge.label}</span>
+              </span>
+            )}
           </button>
         );
       })}

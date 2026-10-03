@@ -53,7 +53,8 @@ function Assistant() {
   const [messages, setMessages] = useState<AiMessage[] | null>(conversationId ? null : []);
   const [activity, setActivity] = useState<Activity | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
-  const [text, setText] = useState("");
+  // A suggestion from the staff (Hemsidan → Förslag) arrives as ?fraga=…, ready to send in a new conversation.
+  const [text, setText] = useState(() => params.get("fraga")?.slice(0, 4000) ?? "");
   const [attachments, setAttachments] = useState<SiteImage[]>([]);
   const [picking, setPicking] = useState(false);
   const [listOpen, setListOpen] = useState(false);
@@ -75,6 +76,19 @@ function Assistant() {
   useEffect(() => {
     void refreshConversations();
   }, [refreshConversations]);
+
+  useEffect(() => {
+    if (!params.get("fraga")) return;
+    router.replace(pathname, { scroll: false });
+    const input = inputRef.current;
+    if (!input) return;
+    input.style.height = "auto";
+    input.style.height = `${Math.min(input.scrollHeight, 160)}px`;
+    input.focus();
+    input.setSelectionRange(input.value.length, input.value.length);
+    // Only on arrival.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // The open conversation's messages; the newest proposal with a preview is shown beside them.
   useEffect(() => {

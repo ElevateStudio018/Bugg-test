@@ -28,7 +28,12 @@ const nav: NavItem[] = [
 
 function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname().replace(/\/$/, "");
-  const { newQuotes } = useAdminData();
+  const { newQuotes, newSuggestions } = useAdminData();
+  // What is waiting behind a page: new quote requests, and new suggestions from the staff under Hemsidan → Förslag.
+  const counts: Record<string, { count: number; label: string }> = {
+    "/admin/hemsidan": { count: newSuggestions, label: newSuggestions === 1 ? "1 nytt förslag" : `${newSuggestions} nya förslag` },
+    "/admin/offertforfragningar": { count: newQuotes, label: `${newQuotes} nya` },
+  };
   return (
     <ul className="space-y-1">
       {nav.map((item) => {
@@ -46,12 +51,10 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
             >
               <Icon aria-hidden="true" className="h-[19px] w-[19px] shrink-0" strokeWidth={2} />
               <span className="flex-1">{item.label}</span>
-              {item.href === "/admin/offertforfragningar" && newQuotes > 0 && (
-                <span
-                  className={`rounded-full px-2 py-0.5 text-[12px] font-bold ${active ? "bg-admin-contrast/20 text-admin-contrast" : "bg-admin text-admin-contrast"}`}
-                  aria-label={`${newQuotes} nya`}
-                >
-                  {newQuotes}
+              {(counts[item.href]?.count ?? 0) > 0 && (
+                <span className={`rounded-full px-2 py-0.5 text-[12px] font-bold ${active ? "bg-admin-contrast/20 text-admin-contrast" : "bg-admin text-admin-contrast"}`}>
+                  <span aria-hidden="true">{counts[item.href].count}</span>
+                  <span className="sr-only">{counts[item.href].label}</span>
                 </span>
               )}
             </Link>

@@ -15,7 +15,8 @@ import { PartEditor, partTarget, parts } from "@/components/admin/editor/PartEdi
 import { PreviewPane } from "@/components/admin/editor/PreviewPane";
 import { ColorEditor } from "@/components/admin/editor/ColorEditor";
 import { FontEditor } from "@/components/admin/editor/FontEditor";
-import { useDraft } from "@/contexts/admin/AdminDataContext";
+import { SuggestionsTab } from "@/components/admin/suggestions/SuggestionsTab";
+import { useAdminData, useDraft } from "@/contexts/admin/AdminDataContext";
 import { list } from "@/lib/site/collection.ts";
 import type { PreviewTarget } from "@/lib/admin/preview";
 
@@ -23,6 +24,7 @@ const tabs = [
   { id: "innehall", label: "Innehåll" },
   { id: "farger", label: "Färger" },
   { id: "typsnitt", label: "Typsnitt" },
+  { id: "forslag", label: "Förslag" },
 ];
 
 function EditorSkeleton() {
@@ -48,7 +50,11 @@ function WebsiteEditor() {
   const router = useRouter();
   const pathname = usePathname();
   const { status, loadError, draft, canUndo, store } = useDraft();
+  const { newSuggestions } = useAdminData();
   const tab = tabs.some((item) => item.id === params.get("flik")) ? (params.get("flik") as string) : "innehall";
+  const tabItems = tabs.map((item) =>
+    item.id === "forslag" ? { ...item, badge: { count: newSuggestions, label: newSuggestions === 1 ? "1 nytt" : `${newSuggestions} nya` } } : item
+  );
   const pageParam = params.get("sida");
   const partParam = params.get("del");
   const sectionParam = params.get("sektion");
@@ -88,6 +94,36 @@ function WebsiteEditor() {
     return null;
   }, [draft, home, tab, part, page, activeItem, activeSection]);
 
+  const header = (
+    <>
+      <PageHeader
+        title="Hemsidan"
+        description="Allt sparas automatiskt medan du skriver. Ändringarna syns på hemsidan när du publicerar."
+        actions={
+          tab !== "forslag" && (
+            <AdminButton icon={Undo2} onClick={() => store.undo()} disabled={!canUndo} title="Ångrar din senaste ändring (upp till 20 steg)">
+              Ångra
+            </AdminButton>
+          )
+        }
+      />
+      <PublishBar />
+      <Tabs label="Vad du vill ändra" items={tabItems} active={tab} onChange={(id) => navigate({ flik: id === "innehall" ? null : id })} />
+    </>
+  );
+
+  // The staff's suggestions need no editor or preview, so they show without waiting for the content.
+  if (tab === "forslag") {
+    return (
+      <>
+        {header}
+        <div role="tabpanel" id="panel-forslag" aria-labelledby="tab-forslag" className="mt-5">
+          <SuggestionsTab />
+        </div>
+      </>
+    );
+  }
+
   if (status === "loading") return <EditorSkeleton />;
   if (status === "error" || !draft || !home) {
     return (
@@ -106,18 +142,7 @@ function WebsiteEditor() {
 
   return (
     <>
-      <PageHeader
-        title="Hemsidan"
-        description="Allt sparas automatiskt medan du skriver. Ändringarna syns på hemsidan när du publicerar."
-        actions={
-          <AdminButton icon={Undo2} onClick={() => store.undo()} disabled={!canUndo} title="Ångrar din senaste ändring (upp till 20 steg)">
-            Ångra
-          </AdminButton>
-        }
-      />
-      <PublishBar />
-
-      <Tabs label="Vad du vill ändra" items={tabs} active={tab} onChange={(id) => navigate({ flik: id === "innehall" ? null : id })} />
+      {header}
 
       <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-start">
         <div role="tabpanel" id={`panel-${tab}`} aria-labelledby={`tab-${tab}`} className="order-2 min-w-0 lg:order-1">

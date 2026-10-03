@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { ArrowUpRight, Coins, Globe, Inbox, PanelsTopLeft, Settings, Sparkles, TrendingDown, TrendingUp } from "lucide-react";
+import { ArrowUpRight, Coins, Globe, Inbox, Lightbulb, PanelsTopLeft, Settings, Sparkles, TrendingDown, TrendingUp } from "lucide-react";
 import { PageHeader } from "@/components/admin/PageHeader";
 import { PublishBar } from "@/components/admin/PublishBar";
 import { Onboarding } from "@/components/admin/dashboard/Onboarding";
@@ -45,7 +45,7 @@ function greeting(): string {
 export default function DashboardPage() {
   const { profile } = useAuth();
   const { status, publishedAt, pendingChanges, themeChanged } = useDraft();
-  const { credits } = useAdminData();
+  const { credits, newSuggestions } = useAdminData();
   const [quotes, setQuotes] = useState<QuoteRow[] | null>(null);
   const [total, setTotal] = useState<number | null>(null);
   const [lastAi, setLastAi] = useState<Revision | null | undefined>(undefined);
@@ -139,6 +139,23 @@ export default function DashboardPage() {
 
       <PublishBar />
       <Onboarding />
+
+      {newSuggestions > 0 && (
+        <Link
+          href="/admin/hemsidan?flik=forslag"
+          className="admin-rise mb-6 flex min-h-14 items-center gap-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-admin/25 transition hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin sm:px-5"
+        >
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-admin/10 text-admin">
+            <Lightbulb aria-hidden="true" className="h-[18px] w-[18px]" />
+          </span>
+          <span className="min-w-0 flex-1 text-[15px] text-admin-ink">
+            <strong className="font-semibold">{newSuggestions === 1 ? "Ett nytt förslag" : `${newSuggestions} nya förslag`}</strong> från medarbetarna på hur hemsidan kan bli bättre
+          </span>
+          <span className="flex shrink-0 items-center gap-1 text-[14px] font-semibold text-admin">
+            Läs <ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5" />
+          </span>
+        </Link>
+      )}
 
       <div className="grid gap-6 lg:grid-cols-3">
         <Card>

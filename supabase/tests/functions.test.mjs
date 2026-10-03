@@ -166,6 +166,38 @@ await test("submit-quote: a bot filling the hidden field is thanked and ignored;
   assert.equal(none.status, 400);
 });
 
+await test("submit-suggestion stores the suggestion, e-mails the company and limits one sender", async () => {
+  await clearMocks();
+  // Each test sender gets its own address, so the limit is counted for it alone.
+  const sender = { "X-Forwarded-For": "10.20.30.40" };
+  const res = await fn("submit-suggestion", { headers: sender, body: { name: "Erik Lund", area: "Offertformuläret", message: "Lägg till ett fält för adress." } });
+  assert.equal(res.status, 200, JSON.stringify(res.json));
+  const mail = (await mocked()).find((r) => r.url === "/emails");
+  assert.deepEqual(mail.body.to, ["info@markmontage.se"]);
+  assert.equal(mail.body.subject, "Förbättringsförslag från Erik Lund");
+  assert.match(mail.body.html, /\/hemsidan\/\?flik=forslag/);
+  const rows = (await call("/rest/v1/site_suggestions?select=name,area,status", { method: "GET", token: adminToken })).json;
+  assert.deepEqual(rows.find((r) => r.name === "Erik Lund"), { name: "Erik Lund", area: "Offertformuläret", status: "new" });
+  for (let i = 0; i < 9; i++) {
+    const more = await fn("submit-suggestion", { headers: sender, body: { name: "Erik Lund", message: `Förslag ${i}` } });
+    assert.equal(more.status, 200, JSON.stringify(more.json));
+  }
+  const limited = await fn("submit-suggestion", { headers: sender, body: { name: "Erik Lund", message: "Ett till" } });
+  assert.equal(limited.status, 429);
+  assert.match(limited.json.message, /Vänta en stund/);
+  const other = await fn("submit-suggestion", { headers: { "X-Forwarded-For": "10.20.30.41" }, body: { name: "Maria Holm", message: "Från någon annan" } });
+  assert.equal(other.status, 200);
+});
+
+await test("submit-suggestion: a bot is thanked and ignored; an empty suggestion is refused", async () => {
+  const bot = await fn("submit-suggestion", { body: { name: "Bot", message: "Köp nu", website: "spam" } });
+  assert.equal(bot.status, 200);
+  const rows = (await call("/rest/v1/site_suggestions?select=name&name=eq.Bot", { method: "GET", token: adminToken })).json;
+  assert.equal(rows.length, 0);
+  const empty = await fn("submit-suggestion", { body: { name: "", message: "" } });
+  assert.equal(empty.status, 400);
+});
+
 await test("credits-topup adds a pack, mails customer and agency; the fourth order in a day waits", async () => {
   await clearMocks();
   const balance = async () => (await call("/rest/v1/credit_balance?select=balance", { method: "GET", token: adminToken })).json[0].balance;
