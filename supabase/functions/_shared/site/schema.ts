@@ -220,6 +220,8 @@ export const certificateSchema = z.object({
   issuer: text(160),
   description: longText,
   validUntil: text(40),
+  /** The certificate's badge or logo, shown whole. */
+  image: imageSchema.nullable(),
 });
 export type Certificate = z.infer<typeof certificateSchema>;
 

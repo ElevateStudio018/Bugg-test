@@ -1,8 +1,10 @@
 import { Breadcrumbs } from "../Breadcrumbs";
 import { Icon } from "../Icon";
+import { Photo } from "../Photo";
 import { tapTarget } from "../Button";
 import { list } from "@/lib/site/collection.ts";
 import { toTelHref } from "@/lib/site/format.ts";
+import { imageProps } from "@/lib/site/images.ts";
 import type { SectionProps } from "./types";
 
 export function CertificatesSection({ section, ctx }: SectionProps<"certificates">) {
@@ -30,10 +32,19 @@ export function CertificatesSection({ section, ctx }: SectionProps<"certificates
       )}
 
       {certificates.length > 0 ? (
-        <ul className="mt-10 grid animate-rise gap-4 [animation-delay:450ms] sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
+        <ul className="mt-10 grid animate-rise gap-4 [animation-delay:450ms] sm:grid-cols-2 lg:mt-14">
           {certificates.map((certificate) => (
             <li key={certificate.id} className="flex flex-col bg-card p-6 lg:p-8">
-              <Icon name="BadgeCheck" className="h-9 w-9 text-accent" />
+              {certificate.image ? (
+                // The badge whole, at the same height for every certificate.
+                <Photo
+                  {...imageProps(certificate.image, "200px")}
+                  alt={certificate.image.alt}
+                  className="h-24 w-auto max-w-full self-start object-contain lg:h-32"
+                />
+              ) : (
+                <Icon name="BadgeCheck" className="h-9 w-9 text-accent" />
+              )}
               <h2 className="mt-5 text-h3 text-heading">{certificate.name}</h2>
               {certificate.issuer && (
                 <p className="mt-2 text-[15px] text-muted">

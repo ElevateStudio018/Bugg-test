@@ -777,8 +777,94 @@
     }
   },
   "certificates": {
-    "order": [],
-    "items": {}
+    "order": [
+      "iso-9001",
+      "iso-14001",
+      "iso-45001",
+      "aa-kreditvardighet"
+    ],
+    "items": {
+      "iso-9001": {
+        "name": "ISO 9001 – Kvalitet",
+        "issuer": "Svensk Certifiering",
+        "description": "Den internationella standarden för kvalitetsledning. Vi har ett ledningssystem för hur vi planerar, genomför och följer upp våra uppdrag, och vi arbetar hela tiden med att bli bättre. För dig som beställare betyder det tydliga rutiner från offert till färdigt jobb.",
+        "validUntil": "",
+        "image": {
+          "src": "/photos/certifikat-iso9001.webp",
+          "variants": [
+            {
+              "width": 240,
+              "src": "/photos/certifikat-iso9001-240.webp"
+            },
+            {
+              "width": 480,
+              "src": "/photos/certifikat-iso9001.webp"
+            }
+          ],
+          "alt": "Märket Certifierat ISO 9001 från Svensk Certifiering"
+        }
+      },
+      "iso-14001": {
+        "name": "ISO 14001 – Miljö",
+        "issuer": "Svensk Certifiering",
+        "description": "Den internationella standarden för miljöledning. Vi kartlägger hur vårt arbete påverkar miljön, till exempel genom maskiner, transporter och massor, och arbetar med mål och åtgärder för att minska påverkan.",
+        "validUntil": "",
+        "image": {
+          "src": "/photos/certifikat-iso14001.webp",
+          "variants": [
+            {
+              "width": 240,
+              "src": "/photos/certifikat-iso14001-240.webp"
+            },
+            {
+              "width": 480,
+              "src": "/photos/certifikat-iso14001.webp"
+            }
+          ],
+          "alt": "Märket Certifierat ISO 14001 från Svensk Certifiering"
+        }
+      },
+      "iso-45001": {
+        "name": "ISO 45001 – Arbetsmiljö",
+        "issuer": "Svensk Certifiering",
+        "description": "Den internationella standarden för arbetsmiljö. Vi arbetar förebyggande med risker och säkerhet, så att alla som jobbar på eller passerar våra arbetsplatser ska kunna känna sig trygga.",
+        "validUntil": "",
+        "image": {
+          "src": "/photos/certifikat-iso45001.webp",
+          "variants": [
+            {
+              "width": 240,
+              "src": "/photos/certifikat-iso45001-240.webp"
+            },
+            {
+              "width": 480,
+              "src": "/photos/certifikat-iso45001.webp"
+            }
+          ],
+          "alt": "Märket Certifierat ISO 45001 från Svensk Certifiering"
+        }
+      },
+      "aa-kreditvardighet": {
+        "name": "AA – God kreditvärdighet",
+        "issuer": "Dun & Bradstreet",
+        "description": "Markmontage har kreditbetyget AA, God kreditvärdighet, enligt Dun & Bradstreets bedömning i februari 2025. Betyget bygger på företagets ekonomi och betalningsförmåga och visar att vi är en stabil partner att anlita.",
+        "validUntil": "",
+        "image": {
+          "src": "/photos/certifikat-aa.webp",
+          "variants": [
+            {
+              "width": 320,
+              "src": "/photos/certifikat-aa-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/photos/certifikat-aa.webp"
+            }
+          ],
+          "alt": "Dun & Bradstreets märke för kreditbetyget AA, God kreditvärdighet, för Markmontage Beab AB"
+        }
+      }
+    }
   },
   "pages": {
     "order": [
@@ -1457,7 +1543,7 @@
         "title": "Certifikat",
         "seo": {
           "title": "Certifikat",
-          "description": "Certifikat och behörigheter för Markmontage BEAB AB."
+          "description": "Markmontage BEAB AB är certifierat enligt ISO 9001, ISO 14001 och ISO 45001 och har kreditbetyget AA, God kreditvärdighet, från Dun & Bradstreet."
         },
         "sections": {
           "order": [
@@ -1501,7 +1587,7 @@
               "anchor": "",
               "label": "",
               "heading": "Certifikat",
-              "text": "Här samlar vi de certifikat och behörigheter som Markmontage BEAB AB har.",
+              "text": "Markmontage är certifierat enligt ISO 9001, ISO 14001 och ISO 45001 – de internationella standarderna för kvalitet, miljö och arbetsmiljö. Certifieringarna är utfärdade av Svensk Certifiering, och dessutom har vi kreditbetyget AA från Dun & Bradstreet.",
               "issuerPrefix": "Utfärdat av",
               "validUntilPrefix": "Giltigt till",
               "emptyHeading": "Certifikaten läggs upp inom kort",

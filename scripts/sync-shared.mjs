@@ -1,5 +1,6 @@
 // Copies the content schema and its helpers (lib/site) to the Edge Functions (supabase/functions/_shared/site), which
-// cannot import from outside their folder once deployed. Run after changing lib/site; `--check` fails if they differ.
+// cannot import from outside their folder once deployed, and the site's original content (content/baseline.json) into
+// the migration that starts the database from it. Run after changing either; `--check` fails if they differ.
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 
 const files = ["schema.ts", "collection.ts", "format.ts", "links.ts", "pages.ts", "paths.ts", "labels.ts", "changes.ts", "pricing.ts", "fonts.ts", "changeset.ts", "theme.ts", "assistant.ts"];
@@ -18,8 +19,19 @@ for (const file of files) {
   if (check) stale.push(path);
   else writeFileSync(path, content);
 }
+// The database's first published version and reset target. Once a database has been made from this migration, a
+// change to the baseline needs a new migration of its own as well.
+const migration = "supabase/migrations/20261002120400_baseline.sql";
+const sql = readFileSync(migration, "utf8");
+const baseline = JSON.stringify(JSON.parse(readFileSync("content/baseline.json", "utf8")));
+const synced = sql.replace(/\$baseline\$[\s\S]*?\$baseline\$/, () => `$baseline$${baseline}$baseline$`);
+if (synced !== sql) {
+  if (check) stale.push(migration);
+  else writeFileSync(migration, synced);
+}
+
 if (check && stale.length) {
   console.error("Out of date (run node scripts/sync-shared.mjs):", stale.join(", "));
   process.exit(1);
 }
-console.log(check ? "shared site code is up to date" : "shared site code synced");
+console.log(check ? "shared site code and baseline are up to date" : "shared site code and baseline synced");

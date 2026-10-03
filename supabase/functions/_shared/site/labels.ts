@@ -499,6 +499,7 @@ export const rootCollections = {
       text("issuer", "Utfärdat av", 60),
       text("validUntil", "Giltigt till", 30, "Till exempel ”2027-06-30” eller ”Tills vidare”. Lämna tomt om det inte behövs."),
       area("description", "Beskrivning", 300),
+      { key: "image", label: "Märke eller logga", kind: "optionalImage", imageUsage: "logo" },
     ],
   },
 } satisfies Record<string, NonNullable<FieldSpec["item"]>>;
