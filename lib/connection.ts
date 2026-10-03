@@ -4,3 +4,7 @@
 export const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
 export const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "";
 export const isConnected = Boolean(supabaseUrl && supabaseAnonKey);
+
+/** Where the forms e-mail to through FormSubmit while the site has no backend: Elevate Studio, who looks after the site,
+ * so nothing reaches the customer's inbox during the preview. */
+export const fallbackFormEmail = "elevate.studio018@gmail.com";

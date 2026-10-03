@@ -8,6 +8,5 @@ export function quoteFormContent(site: SiteData): QuoteFormContent {
     texts: site.form,
     workTypes: list(site.form.workTypes).map(({ id, label }) => ({ id, label })),
     phone: site.company.phone,
-    email: site.company.email,
   };
 }

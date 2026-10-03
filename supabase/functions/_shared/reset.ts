@@ -6,7 +6,7 @@ import { block, sendMail } from "./email.ts";
 
 export type ResetAction = "approve" | "deny";
 
-const signingSecret = () => env("RESET_SIGNING_SECRET");
+const signingSecret = () => config.secret("RESET_SIGNING_SECRET", "reset-links");
 /** The functions' public address, for links in e-mails (inside the platform SUPABASE_URL may be an internal one). */
 export const functionsUrl = () => env("FUNCTIONS_PUBLIC_URL", `${env("SUPABASE_URL")}/functions/v1`);
 

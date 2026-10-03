@@ -5,7 +5,7 @@ import { clientIp, handle, json, readJson, UserError } from "../_shared/http.ts"
 import { serviceClient } from "../_shared/supabase.ts";
 import { sha256 } from "../_shared/crypto.ts";
 import { block, sendMail } from "../_shared/email.ts";
-import { config, optionalEnv } from "../_shared/env.ts";
+import { config } from "../_shared/env.ts";
 
 const schema = z.object({ email: z.string().trim().toLowerCase().email().max(200) });
 
@@ -18,7 +18,7 @@ Deno.serve(
     const service = serviceClient();
 
     // At most three links per address and hour.
-    const emailHash = await sha256(email, optionalEnv("IP_HASH_SALT") ?? "reset");
+    const emailHash = await sha256(email, config.secret("IP_HASH_SALT", "reset"));
     const since = new Date(Date.now() - 60 * 60 * 1000).toISOString();
     const { count } = await service.from("audit_log").select("id", { count: "exact", head: true })
       .eq("action", "auth.reset_link").eq("entity", emailHash).gte("created_at", since);

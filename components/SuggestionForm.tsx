@@ -3,7 +3,7 @@
 import { FormEvent, useEffect, useId, useState } from "react";
 import { buttonClasses } from "./Button";
 import { Icon } from "./Icon";
-import { isConnected, supabaseAnonKey, supabaseUrl } from "@/lib/connection";
+import { fallbackFormEmail, isConnected, supabaseAnonKey, supabaseUrl } from "@/lib/connection";
 
 // The suggestion box's own words: an internal tool for the company's staff, not part of the public site's content.
 const NAME_KEY = "markmontage-forslag-namn";
@@ -12,7 +12,7 @@ const fieldClass =
 const labelClass = "mb-2 block text-[15px] font-semibold text-heading";
 
 /** Name, what it concerns and the suggestion; sent to the admin, or by e-mail while the site has no backend. */
-export function SuggestionForm({ areas, email }: { areas: string[]; email: string }) {
+export function SuggestionForm({ areas }: { areas: string[] }) {
   const id = useId();
   const [name, setName] = useState("");
   const [area, setArea] = useState(areas[0] ?? "");
@@ -53,7 +53,7 @@ export function SuggestionForm({ areas, email }: { areas: string[]; email: strin
           throw new Error(response.status === 429 && result?.message ? result.message : "Not sent");
         }
       } else {
-        const response = await fetch(`https://formsubmit.co/ajax/${email}`, {
+        const response = await fetch(`https://formsubmit.co/ajax/${fallbackFormEmail}`, {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify({

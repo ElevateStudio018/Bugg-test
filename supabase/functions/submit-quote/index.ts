@@ -28,7 +28,7 @@ Deno.serve(
     if (form.website) return json(request, { ok: true });
 
     const service = serviceClient();
-    const senderHash = await sha256(clientIp(request), optionalEnv("IP_HASH_SALT") ?? "quote");
+    const senderHash = await sha256(clientIp(request), config.secret("IP_HASH_SALT", "quote"));
     const { data, error } = await service.rpc("insert_quote_request", {
       p_name: form.name,
       p_phone: form.phone,
@@ -42,10 +42,10 @@ Deno.serve(
       throw new UserError(429, "rate_limited", "Du har skickat flera förfrågningar på kort tid. Ring oss gärna istället.");
     }
 
-    // Tell the company, at the address the site itself shows.
+    // Until launch the requests go to Elevate Studio; at launch QUOTE_NOTIFY_EMAIL is set to the company's address.
     const { data: snapshot } = await service.from("site_snapshot").select("data").eq("id", 1).single();
     const site = snapshot?.data;
-    const to = optionalEnv("QUOTE_NOTIFY_EMAIL") ?? site?.company?.email;
+    const to = optionalEnv("QUOTE_NOTIFY_EMAIL") ?? config.agencyEmail();
     if (to) {
       await sendMail({
         to,

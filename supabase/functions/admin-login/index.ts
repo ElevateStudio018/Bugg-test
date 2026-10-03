@@ -5,7 +5,7 @@ import { createClient } from "@supabase/supabase-js";
 import { clientIp, handle, json, readJson, UserError } from "../_shared/http.ts";
 import { serviceClient } from "../_shared/supabase.ts";
 import { sha256 } from "../_shared/crypto.ts";
-import { config, optionalEnv } from "../_shared/env.ts";
+import { config } from "../_shared/env.ts";
 
 const credentials = z.object({ email: z.string().trim().toLowerCase().email().max(200), password: z.string().min(1).max(200) });
 
@@ -16,7 +16,7 @@ Deno.serve(
     if (!parsed.success) throw new UserError(400, "invalid", "Ange e-postadress och lösenord.");
     const { email, password } = parsed.data;
 
-    const salt = optionalEnv("IP_HASH_SALT") ?? "login";
+    const salt = config.secret("IP_HASH_SALT", "login");
     const emailHash = await sha256(email, salt);
     const ipHash = await sha256(clientIp(request), salt);
     const service = serviceClient();

@@ -34,7 +34,7 @@ export default function SuggestionsPage() {
             ditt förslag, så går det direkt till den som sköter hemsidan.
           </p>
           <div className="mt-9 bg-card p-6 sm:p-8">
-            <SuggestionForm areas={areas} email={site.company.email} />
+            <SuggestionForm areas={areas} />
           </div>
         </main>
       </div>

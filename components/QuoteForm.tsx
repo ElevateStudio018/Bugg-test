@@ -5,7 +5,7 @@ import { Icon } from "./Icon";
 import { buttonClasses, tapTarget } from "./Button";
 import { useQuoteModal } from "@/contexts/QuoteModalContext";
 import { fill, toTelHref } from "@/lib/site/format.ts";
-import { isConnected, supabaseAnonKey, supabaseUrl } from "@/lib/connection";
+import { fallbackFormEmail, isConnected, supabaseAnonKey, supabaseUrl } from "@/lib/connection";
 import type { SiteData } from "@/lib/site/schema.ts";
 
 interface FormValues {
@@ -27,12 +27,11 @@ const initialValues: FormValues = {
 // "kontakt" is the error when neither phone nor e-mail is given; one of them is enough.
 type FormErrors = Partial<Record<keyof FormValues | "kontakt", string>>;
 
-/** What the form needs from the content: its texts, the kinds of work to choose from and how to reach the company. */
+/** What the form needs from the content: its texts, the kinds of work to choose from and the company's phone number. */
 export interface QuoteFormContent {
   texts: SiteData["form"];
   workTypes: { id: string; label: string }[];
   phone: string;
-  email: string;
 }
 
 const fieldBaseClass =
@@ -40,10 +39,10 @@ const fieldBaseClass =
 
 const labelClass = "mb-2 block text-[15px] font-semibold text-heading";
 
-// With the site connected to its backend, requests are stored for the admin's list and e-mailed to the company by the
-// submit-quote function. Without it they go by e-mail through FormSubmit (formsubmit.co); the first request to a new
-// address there only sends an activation e-mail, and nothing is forwarded until its link has been clicked.
-const submitUrl = (email: string) => `https://formsubmit.co/ajax/${email}`;
+// With the site connected to its backend, requests are stored for the admin's list and e-mailed by the submit-quote
+// function. Without it they go by e-mail through FormSubmit (formsubmit.co) to fallbackFormEmail; the first request to a
+// new address there only sends an activation e-mail, and nothing is forwarded until its link has been clicked.
+const submitUrl = `https://formsubmit.co/ajax/${fallbackFormEmail}`;
 
 const fieldIds: Record<keyof FormValues, string> = {
   namn: "namn",
@@ -54,7 +53,7 @@ const fieldIds: Record<keyof FormValues, string> = {
 };
 
 export function QuoteForm({ variant = "inline", content }: { variant?: "inline" | "modal"; content: QuoteFormContent }) {
-  const { texts, workTypes, phone, email } = content;
+  const { texts, workTypes, phone } = content;
   const [values, setValues] = useState<FormValues>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -138,7 +137,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
         });
         if (!response.ok) throw new Error("Not sent");
       } else {
-        const response = await fetch(submitUrl(email), {
+        const response = await fetch(submitUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify({

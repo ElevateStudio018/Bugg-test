@@ -9,6 +9,9 @@ const SERVICE = process.env.SERVICE_ROLE_KEY;
 if (!ANON || !SERVICE) throw new Error("Run with the local keys: eval \"$(supabase status -o env)\" first");
 const MOCK = process.env.MOCK_URL ?? "http://127.0.0.1:54399";
 const ORIGIN = "http://localhost:3130";
+// During the preview Elevate Studio is both the admin (see the preview_admin migration) and the agency.
+const ADMIN = "elevate.studio018@gmail.com";
+const AGENCY = "elevate.studio018@gmail.com";
 
 async function call(path, { method = "POST", token, key = ANON, body, headers = {} } = {}) {
   const response = await fetch(`${API}${path}`, {
@@ -62,10 +65,10 @@ await test("admin-invite is closed without the service key, and invites the allo
   assert.equal(denied.status, 403);
   const res = await fn("admin-invite", { body: {}, headers: { Authorization: `Bearer ${SERVICE}` } });
   assert.equal(res.status, 200, JSON.stringify(res.json));
-  assert.deepEqual(res.json.invited, ["info@markmontage.se"]);
+  assert.deepEqual(res.json.invited, [ADMIN]);
   const mail = (await mocked()).find((r) => r.url === "/emails");
   assert.ok(mail, "an e-mail was sent");
-  assert.deepEqual(mail.body.to, ["info@markmontage.se"]);
+  assert.deepEqual(mail.body.to, [ADMIN]);
   inviteLink = mail.body.html.match(/href="([^"]+verify[^"]+)"/)[1].replace(/&amp;/g, "&");
   assert.match(inviteLink, /type=invite/);
 });
@@ -84,10 +87,10 @@ await test("the invitation link signs the admin in, and they choose a password",
 });
 
 await test("admin-login: wrong password is refused in Swedish, the right one gives a session", async () => {
-  const wrong = await fn("admin-login", { body: { email: "info@markmontage.se", password: "fel" } });
+  const wrong = await fn("admin-login", { body: { email: ADMIN, password: "fel" } });
   assert.equal(wrong.status, 401);
   assert.equal(wrong.json.message, "Fel e-postadress eller lösenord.");
-  const right = await fn("admin-login", { body: { email: "INFO@markmontage.se", password: "Starkt-Lösen0rd!" } });
+  const right = await fn("admin-login", { body: { email: ADMIN.toUpperCase(), password: "Starkt-Lösen0rd!" } });
   assert.equal(right.status, 200, JSON.stringify(right.json));
   adminToken = right.json.session.access_token;
   assert.ok(adminToken);
@@ -102,7 +105,7 @@ await test("admin-login locks an address after five failures", async () => {
 
 await test("password reset mails a link to admins only, and answers the same for anyone", async () => {
   await clearMocks();
-  const known = await fn("admin-password-reset", { body: { email: "info@markmontage.se" } });
+  const known = await fn("admin-password-reset", { body: { email: ADMIN } });
   const unknown = await fn("admin-password-reset", { body: { email: "nobody@example.com" } });
   assert.deepEqual([known.status, unknown.status], [200, 200]);
   const mails = (await mocked()).filter((r) => r.url === "/emails");
@@ -145,12 +148,12 @@ await test("publish is closed to people who are not signed in", async () => {
   assert.equal(res.status, 401);
 });
 
-await test("submit-quote stores the request and e-mails the company", async () => {
+await test("submit-quote stores the request and e-mails it (to Elevate Studio until launch)", async () => {
   await clearMocks();
   const res = await fn("submit-quote", { body: { name: "Anna Andersson", phone: "070-123 45 67", email: "anna@example.com", workType: "Dränering", message: "Hej!" } });
   assert.equal(res.status, 200, JSON.stringify(res.json));
   const mail = (await mocked()).find((r) => r.url === "/emails");
-  assert.deepEqual(mail.body.to, ["info@markmontage.se"]);
+  assert.deepEqual(mail.body.to, [AGENCY]);
   assert.equal(mail.body.subject, "Offertförfrågan från Anna Andersson");
   assert.equal(mail.body.reply_to, "anna@example.com");
   const rows = (await call("/rest/v1/quote_requests?select=name,work_type", { method: "GET", token: adminToken })).json;
@@ -166,14 +169,14 @@ await test("submit-quote: a bot filling the hidden field is thanked and ignored;
   assert.equal(none.status, 400);
 });
 
-await test("submit-suggestion stores the suggestion, e-mails the company and limits one sender", async () => {
+await test("submit-suggestion stores the suggestion, e-mails Elevate Studio and limits one sender", async () => {
   await clearMocks();
   // Each test sender gets its own address, so the limit is counted for it alone.
   const sender = { "X-Forwarded-For": "10.20.30.40" };
   const res = await fn("submit-suggestion", { headers: sender, body: { name: "Erik Lund", area: "Offertformuläret", message: "Lägg till ett fält för adress." } });
   assert.equal(res.status, 200, JSON.stringify(res.json));
   const mail = (await mocked()).find((r) => r.url === "/emails");
-  assert.deepEqual(mail.body.to, ["info@markmontage.se"]);
+  assert.deepEqual(mail.body.to, [AGENCY]);
   assert.equal(mail.body.subject, "Förbättringsförslag från Erik Lund");
   assert.match(mail.body.html, /\/hemsidan\/\?flik=forslag/);
   const rows = (await call("/rest/v1/site_suggestions?select=name,area,status", { method: "GET", token: adminToken })).json;
@@ -209,8 +212,10 @@ await test("credits-topup adds a pack, mails customer and agency; the fourth ord
   assert.equal(res.json.status, "completed");
   assert.equal(await balance(), before + 50);
   const mails = (await mocked()).filter((r) => r.url === "/emails");
-  assert.deepEqual(mails.map((m) => m.body.to[0]).sort(), ["elevate.studio018@gmail.com", "info@markmontage.se"]);
-  assert.match(mails.find((m) => m.body.to[0] === "info@markmontage.se").body.html, /årsfakturan/);
+  // The confirmation to the admin who ordered, and the order to the agency.
+  assert.deepEqual(mails.map((m) => m.body.to[0]), [ADMIN, AGENCY]);
+  assert.match(mails[0].body.html, /årsfakturan/);
+  assert.doesNotMatch(mails[1].body.html, /årsfakturan/);
   await fn("credits-topup", { token: adminToken, body: { credits: 50 } });
   await fn("credits-topup", { token: adminToken, body: { credits: 50 } });
   const fourth = await fn("credits-topup", { token: adminToken, body: { credits: 500 } });
@@ -233,12 +238,13 @@ await test("reset-request needs RENSA, changes nothing and mails signed links", 
   const versionAfter = (await call("/rest/v1/site_snapshot?select=version", { method: "GET" })).json[0].version;
   assert.equal(versionAfter, versionBefore);
   const mails = (await mocked()).filter((r) => r.url === "/emails");
-  const agency = mails.find((m) => m.body.to[0] === "elevate.studio018@gmail.com");
+  // The agency's e-mail is the one with the signed links; the admin who asked gets a confirmation without them.
+  const agency = mails.find((m) => m.body.to[0] === AGENCY && /reset-decision/.test(m.body.html));
   const links = [...agency.body.html.matchAll(/href="([^"]+reset-decision[^"]+)"/g)].map((m) => m[1].replace(/&amp;/g, "&"));
   approveLink = links.find((l) => l.includes("action=approve"));
   denyLink = links.find((l) => l.includes("action=deny"));
   assert.ok(approveLink && denyLink);
-  assert.ok(mails.some((m) => m.body.to[0] === "info@markmontage.se"));
+  assert.ok(mails.some((m) => m.body.to[0] === ADMIN && !/reset-decision/.test(m.body.html)));
 });
 
 await test("reset-decision refuses a tampered link", async () => {

@@ -19,8 +19,11 @@ export const config = {
   siteUrl: () => env("SITE_URL", "https://elevatestudio018.github.io/Bugg-test"),
   /** The admin panel, for links in e-mails. */
   adminUrl: () => env("ADMIN_URL", `${env("SITE_URL", "https://elevatestudio018.github.io/Bugg-test")}/admin`),
-  /** Elevate Studio, who approve resets and receive credit orders. */
+  /** Elevate Studio, who approve resets, receive credit orders and the staff's suggestions, and quote requests until launch. */
   agencyEmail: () => env("AGENCY_EMAIL", "elevate.studio018@gmail.com"),
+  /** A secret for one purpose: its own setting when there is one, otherwise derived from the service role key, so a new
+   * project needs no extra random strings made up for it. */
+  secret: (name: string, purpose: string) => optionalEnv(name) ?? `${purpose}:${env("SUPABASE_SERVICE_ROLE_KEY")}`,
   /** Browsers allowed to call the functions (the site and admin's origins), comma-separated. */
   allowedOrigins: () =>
     env("ALLOWED_ORIGINS", "https://elevatestudio018.github.io,http://localhost:3000,http://localhost:3130,http://localhost:3132,http://127.0.0.1:3000")
