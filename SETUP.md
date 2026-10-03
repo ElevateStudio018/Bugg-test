@@ -9,8 +9,8 @@ längst ner).
 
 ## Del 1 – det här gör du
 
-Det tar ungefär 20 minuter. Enklast är att göra det på en dator. Klistra aldrig in nycklar eller lösenord i chatten.
-De ska bara in på de ställen som står nedan.
+Bara steg 1–3 behövs för att komma igång, och de tar runt 10 minuter. Klistra aldrig in nycklar eller lösenord i
+chatten.
 
 ### Steg 1 – Skapa ett Supabase-projekt
 
@@ -26,18 +26,7 @@ De ska bara in på de ställen som står nedan.
 1. Öppna [claude.ai/customize/connectors](https://claude.ai/customize/connectors).
 2. Leta upp **Supabase** och tryck **Connect**. Logga in och godkänn.
 
-### Steg 3 – Skapa tre nycklar och lägg in dem i Supabase
-
-Nycklarna läggs in i Supabase under ditt projekt → **Edge Functions** → **Secrets** → **Add new secret**. Namnet ska
-skrivas exakt som nedan.
-
-| Namn | Var du skapar nyckeln |
-| --- | --- |
-| `ANTHROPIC_API_KEY` | [console.anthropic.com](https://console.anthropic.com) → **API keys** → **Create key**. AI-assistenten behöver det. Lägg också in ett betalkort och några dollar under **Billing**. |
-| `RESEND_API_KEY` | [resend.com](https://resend.com): registrera dig med **elevate.studio018@gmail.com** → **API Keys** → **Create API key**. Med den adressen behövs ingen egen domän under testperioden. |
-| `GITHUB_DISPATCH_TOKEN` | GitHub → din profilbild → **Settings** → **Developer settings** → **Personal access tokens** → **Fine-grained tokens** → **Generate new token**. Resource owner: `ElevateStudio018`. Repository access: **Only select repositories** → `Bugg-test`. Permissions → Repository → **Actions: Read and write**. Den gör att hemsidan byggs om när du publicerar. |
-
-### Steg 4 – Starta en ny session
+### Steg 3 – Starta en ny session
 
 Claude läser in kopplingar (connectors) när en session startar, så Supabase syns först i en ny session.
 
@@ -45,13 +34,21 @@ Claude läser in kopplingar (connectors) när en session startar, så Supabase s
    **claude/flottsunds-bygg-site-wptib7**.
 2. Skriv: **Koppla in Supabase enligt SETUP.md**
 
-Claude lägger in databasen och funktionerna, ställer in inloggningen och kopplar ihop hemsidan med adminpanelen.
-Claude säger till om något behöver göras på ditt håll.
+Claude lägger in databasen och funktionerna och kopplar ihop hemsidan med adminpanelen. Sedan visar Claude hur du
+skapar din inloggning direkt i Supabase, så att inget mejl behövs. Därefter loggar du in på
+[elevatestudio018.github.io/Bugg-test/admin](https://elevatestudio018.github.io/Bugg-test/admin/).
 
-### Steg 5 – Logga in
+### Steg 4 – Senare: tre nycklar, en i taget när du vill
 
-1. Du får ett mejl till elevate.studio018@gmail.com: "Välkommen till hemsidans adminpanel". Tryck **Välj lösenord**.
-2. Logga in på [elevatestudio018.github.io/Bugg-test/admin](https://elevatestudio018.github.io/Bugg-test/admin/).
+Adminpanelen fungerar utan dem, men de här tre sakerna fungerar inte förrän nyckeln finns. Varje nyckel tar ett par
+minuter. Lägg in dem i Supabase under ditt projekt → **Edge Functions** → **Secrets** → **Add new secret**. Namnet
+ska skrivas exakt som nedan.
+
+| Namn | Vad den gör | Var du skapar nyckeln |
+| --- | --- | --- |
+| `GITHUB_DISPATCH_TOKEN` | Hemsidan uppdateras när du trycker Publicera. | GitHub → din profilbild → **Settings** → **Developer settings** → **Personal access tokens** → **Fine-grained tokens** → **Generate new token**. Resource owner: `ElevateStudio018`. Repository access: **Only select repositories** → `Bugg-test`. Permissions → Repository → **Actions: Read and write**. |
+| `RESEND_API_KEY` | Mejl om offertförfrågningar och förslag. | [resend.com](https://resend.com): registrera dig med **elevate.studio018@gmail.com** → **API Keys** → **Create API key**. Med den adressen behövs ingen egen domän under testperioden. |
+| `ANTHROPIC_API_KEY` | AI-assistenten. | [console.anthropic.com](https://console.anthropic.com) → **API keys** → **Create key**. Lägg också in ett betalkort och några dollar under **Billing**. |
 
 ### Vid lansering (senare, när du säger till)
 
@@ -82,8 +79,9 @@ until the user says so. Never ask the user to paste a key, token or password int
    `supabase/functions/deno.json`. Deploy every function with `verify_jwt = false`, as in `supabase/config.toml`; the
    functions check the caller themselves. `supabase/functions/_shared/site` is a copy of `lib/site`, kept identical by
    `node scripts/sync-shared.mjs`.
-4. **Secrets.** The user adds `ANTHROPIC_API_KEY`, `RESEND_API_KEY` and `GITHUB_DISPATCH_TOKEN` (part 1, step 3). Every
-   other setting has a default for the preview (`supabase/functions/_shared/env.ts`, `.env.example`).
+4. **Secrets.** The user adds `GITHUB_DISPATCH_TOKEN`, `RESEND_API_KEY` and `ANTHROPIC_API_KEY` when they want
+   publishing, e-mail and the AI (part 1, step 4); the admin works without them. Every other setting has a default for
+   the preview (`supabase/functions/_shared/env.ts`, `.env.example`).
    `IP_HASH_SALT` and `RESET_SIGNING_SECRET` fall back to values derived from the service role key, and quote requests
    go to `AGENCY_EMAIL` until `QUOTE_NOTIFY_EMAIL` is set. Confirm the three secrets exist by name only, never by value.
 5. **Auth settings.** Change these through the connector or the Management API, or have the user change them in the
@@ -94,12 +92,15 @@ until the user says so. Never ask the user to paste a key, token or password int
    `NEXT_PUBLIC_SUPABASE_ANON_KEY`. Use the GitHub API if this session may, otherwise the user does it under Settings →
    Secrets and variables → Actions → Variables. Then run the `deploy-pages.yml` workflow (workflow_dispatch) on
    `claude/flottsunds-bygg-site-wptib7` and check that it succeeds.
-7. **Invite the admin.** `admin-invite` invites every allowlisted address without an account, and during the preview
-   that is only elevate.studio018@gmail.com. It runs with the service role key, or once with a setup token. To use a
-   token, make a random one, store its hash with
+7. **The admin's login.** No e-mail is needed. The user creates it in the dashboard: Authentication → Users → **Add
+   user** → **Create new user**, with elevate.studio018@gmail.com and a password they choose there, and **Auto Confirm
+   User** ticked. The allowlist makes the account an admin. Once Resend is set up, `admin-invite` can send invitations
+   instead. It invites every allowlisted address without an account, and runs with the service role key or once with a
+   setup token: store the token's hash with
    `insert into public.settings (key, value) values ('setup_token_hash', to_jsonb(encode(sha256('<token>'::bytea), 'hex')))`
-   and POST `{"token": "<token>"}` to `<project url>/functions/v1/admin-invite`. If this sandbox cannot reach
-   `*.supabase.co`, send the POST from the database with `pg_net` (`net.http_post`).
-8. **Check end to end with the user.** Log in, edit, publish (the site rebuilds), send a quote request and a suggestion
-   on `/forslag/` (both e-mail Elevate), and ask the AI a question. Read the functions' logs through the connector when
+   and POST `{"token": "<token>"}` to `<project url>/functions/v1/admin-invite`, from the database with `pg_net` if
+   this sandbox cannot reach `*.supabase.co`.
+8. **Check end to end with the user.** Log in, edit and publish, send a quote request and a suggestion on `/forslag/`,
+   and check that they show in the admin. With the keys in place: the site rebuilds on publishing, both forms e-mail
+   Elevate, and the AI answers. Read the functions' logs through the connector when
    something fails.
