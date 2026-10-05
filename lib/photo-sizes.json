@@ -1,0 +1,67 @@
+{
+  "hero-hamnen": [
+    480,
+    800,
+    1200,
+    1536
+  ],
+  "markmontage-arbete": [
+    480,
+    800,
+    1200,
+    1745
+  ],
+  "markmontage-gravmaskin-ror": [
+    480,
+    800,
+    1200,
+    1500
+  ],
+  "markmontage-kabeltrumma": [
+    480,
+    800,
+    1200,
+    1700
+  ],
+  "markmontage-konferens": [
+    480,
+    800,
+    960
+  ],
+  "markmontage-minigravare-grasmatta": [
+    480,
+    720
+  ],
+  "markmontage-minigravare-slap": [
+    480,
+    720
+  ],
+  "markmontage-minigravare": [
+    480,
+    800,
+    1200,
+    1500
+  ],
+  "markmontage-schakt-kabel": [
+    480,
+    800,
+    1200,
+    1805
+  ],
+  "markmontage-stalstomme": [
+    480,
+    800,
+    1125
+  ],
+  "markmontage-teamet": [
+    480,
+    800,
+    1200,
+    2000
+  ],
+  "markmontage-vagarbete": [
+    480,
+    800,
+    1170
+  ]
+}
