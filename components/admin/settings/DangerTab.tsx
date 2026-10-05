@@ -64,7 +64,7 @@ export function DangerTab() {
           </p>
 
           {pendingReset ? (
-            <div className="mt-5 rounded-xl bg-amber-50 p-4 ring-1 ring-amber-200">
+            <div className="mt-5 rounded-xl bg-amber-50 p-4">
               <p className="font-semibold text-amber-900">Begäran väntar på godkännande från Elevate Studio</p>
               <p className="mt-1 text-[14px] text-amber-900/80">
                 Skickad {formatDateTime(pendingReset.created_at)}. Den går ut {formatDateTime(pendingReset.expires_at)} om ingen tar ställning.

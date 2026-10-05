@@ -271,7 +271,7 @@ function Assistant() {
           {list}
         </aside>
 
-        <section aria-label="Chatt med AI-assistenten" className="flex min-h-[70svh] min-w-0 flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-admin-line lg:min-h-0">
+        <section aria-label="Chatt med AI-assistenten" className="flex min-h-[70svh] min-w-0 flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-admin-line lg:min-h-0">
           <header className="flex items-center justify-between gap-3 border-b border-admin-line px-4 py-3">
             <div className="flex min-w-0 items-center gap-2.5">
               <span aria-hidden="true" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-admin text-admin-contrast">
@@ -416,7 +416,7 @@ function Assistant() {
                   }
                 }}
                 placeholder="Beskriv vad du vill ändra…"
-                className="max-h-40 min-h-11 flex-1 resize-none bg-transparent px-1 py-2.5 text-[15px] leading-relaxed text-admin-ink placeholder:text-stone-400 focus:outline-none"
+                className="max-h-40 min-h-11 flex-1 resize-none bg-transparent px-1 py-2.5 text-[16px] sm:text-[15px] leading-relaxed text-admin-ink placeholder:text-stone-400 focus:outline-none"
               />
               {activity ? (
                 <button

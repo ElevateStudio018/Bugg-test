@@ -47,7 +47,7 @@ export function ColorInput({ label, hint, value, onChange, warning }: { label: s
 
   return (
     <div className="flex items-center gap-3 py-2.5">
-      <label className="relative h-11 w-11 shrink-0 cursor-pointer overflow-hidden rounded-xl shadow-sm ring-1 ring-black/10 focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-admin" style={{ background: value }}>
+      <label className="relative h-11 w-11 shrink-0 cursor-pointer overflow-hidden rounded-xl ring-1 ring-black/10 focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-admin" style={{ background: value }}>
         <span className="sr-only">Välj färg: {label}</span>
         <input type="color" value={value.toLowerCase()} onChange={(event) => onChange(event.target.value.toUpperCase())} className="absolute inset-0 h-full w-full cursor-pointer opacity-0" />
       </label>
@@ -79,7 +79,7 @@ export function ColorInput({ label, hint, value, onChange, warning }: { label: s
           const hex = parseHex(event.target.value);
           if (hex) onChange(hex);
         }}
-        className={`min-h-11 w-[104px] shrink-0 rounded-xl border-0 bg-white px-3 font-mono text-[14px] uppercase text-admin-ink shadow-sm ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-admin ${
+        className={`min-h-11 w-[104px] shrink-0 rounded-xl border-0 bg-white px-3 font-mono text-[16px] sm:text-[14px] uppercase text-admin-ink ring-1 ring-inset focus:outline-none focus:ring-2 focus:ring-admin ${
           invalid ? "ring-red-400" : "ring-admin-line"
         }`}
       />
@@ -115,7 +115,7 @@ export function ColorEditor() {
   return (
     <div className="space-y-6">
       {problems.length > 0 && (
-        <div role="status" className="rounded-2xl bg-amber-50 p-4 ring-1 ring-amber-200 sm:p-5">
+        <div role="status" className="rounded-2xl bg-amber-50 p-4 sm:p-5">
           <p className="flex items-center gap-2 font-semibold text-amber-900">
             <TriangleAlert aria-hidden="true" className="h-5 w-5" />
             {problems.length === 1 ? "En färgkombination är svår att läsa" : `${problems.length} färgkombinationer är svåra att läsa`}
@@ -164,8 +164,8 @@ export function ColorEditor() {
                     store.setColors("site", palette.colors);
                     toast.success(`Paletten ”${palette.name}” är vald.`);
                   }}
-                  className={`w-full overflow-hidden rounded-xl bg-white text-left ring-1 transition hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin ${
-                    active ? "ring-2 ring-admin" : "ring-admin-line"
+                  className={`w-full overflow-hidden rounded-xl bg-white text-left ring-1 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin ${
+                    active ? "ring-2 ring-admin" : "ring-admin-line hover:ring-stone-300"
                   }`}
                 >
                   <span aria-hidden="true" className="flex h-12">

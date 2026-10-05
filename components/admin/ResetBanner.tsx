@@ -9,7 +9,7 @@ export function ResetBanner() {
   const { pendingReset } = useAdminData();
   if (!pendingReset) return null;
   return (
-    <div role="status" className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-amber-50 px-4 py-3 ring-1 ring-amber-200 sm:px-5">
+    <div role="status" className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-amber-50 px-4 py-3 sm:px-5">
       <p className="flex items-center gap-2.5 text-[14px] text-amber-950">
         <Hourglass aria-hidden="true" className="h-4 w-4 shrink-0 text-amber-700" />
         Din begäran om att rensa ändringar väntar på godkännande från Elevate Studio.

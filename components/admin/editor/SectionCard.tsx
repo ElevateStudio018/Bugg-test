@@ -54,11 +54,11 @@ export function SectionCard({
   return (
     <div
       onFocusCapture={onActivate}
-      className={`rounded-2xl shadow-sm ring-1 transition-shadow ${open ? "bg-white ring-admin/35" : "bg-white ring-admin-line hover:shadow-md"} ${
+      className={`rounded-2xl ring-1 transition ${open ? "bg-white ring-admin/30" : "bg-white ring-admin-line hover:ring-stone-300"} ${
         section.hidden ? "bg-white/70" : ""
       }`}
     >
-      <div className="flex items-center gap-1 py-1.5 pl-1 pr-2">
+      <div className="flex items-center gap-1 py-1 pl-1 pr-2">
         {handle}
         <button
           type="button"
@@ -74,7 +74,7 @@ export function SectionCard({
             </span>
             <span className="block truncate text-[13px] text-admin-muted">{heading || meta.description}</span>
           </span>
-          <ChevronDown aria-hidden="true" className={`h-5 w-5 shrink-0 text-admin-muted transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+          <ChevronDown aria-hidden="true" className={`h-5 w-5 shrink-0 text-admin-subtle transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
         </button>
         <button
           type="button"
@@ -83,7 +83,10 @@ export function SectionCard({
           title={section.hidden ? "Dold – tryck för att visa den på hemsidan" : "Synlig – tryck för att dölja den"}
           onClick={() => store.edit([...base, "hidden"], !section.hidden)}
           className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin ${
-            section.hidden ? "text-amber-700 hover:bg-amber-50" : "text-admin-muted hover:bg-stone-100 hover:text-admin-ink"
+            section.hidden
+              ? "text-amber-700 hover:bg-amber-50"
+              : // In the row SortableList draws (group/sort): shown when pointed at or focused, always on touch screens.
+                "text-admin-muted hover:bg-stone-100 hover:text-admin-ink can-hover:opacity-0 can-hover:group-hover/sort:opacity-100 group-focus-within/sort:opacity-100"
           }`}
         >
           {section.hidden ? <EyeOff aria-hidden="true" className="h-5 w-5" /> : <Eye aria-hidden="true" className="h-5 w-5" />}
@@ -94,12 +97,12 @@ export function SectionCard({
         <div id={bodyId} className="admin-fade border-t border-admin-line px-4 pb-5 pt-5 sm:px-5">
           <FieldList fields={sectionFields[section.type]} base={base} object={section as unknown as Obj} draft={draft} />
 
-          <details className="group mt-6 rounded-xl bg-stone-50/80 ring-1 ring-admin-line">
-            <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 rounded-xl px-4 text-[14px] font-semibold text-admin-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin [&::-webkit-details-marker]:hidden">
+          <details className="group mt-6 border-t border-admin-line pt-2">
+            <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-lg text-[14px] font-medium text-admin-muted hover:text-admin-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin [&::-webkit-details-marker]:hidden">
               Fler inställningar
-              <ChevronDown aria-hidden="true" className="h-4 w-4 text-admin-muted transition-transform group-open:rotate-180" />
+              <ChevronDown aria-hidden="true" className="h-4 w-4 transition-transform group-open:rotate-180" />
             </summary>
-            <div className="space-y-4 px-4 pb-4 pt-1">
+            <div className="space-y-4 pb-1 pt-2">
               <TextField
                 label="Namn här i adminpanelen"
                 value={section.label}

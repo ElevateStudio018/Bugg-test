@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Check, Copy, ExternalLink, Lightbulb, RotateCcw, Share2, Sparkles, Trash2 } from "lucide-react";
-import { AdminButton } from "../ui/Button";
+import { AdminButton, buttonClasses } from "../ui/Button";
 import { Badge } from "../ui/Badge";
 import { Card, CardHeader } from "../ui/Card";
 import { Dialog } from "../ui/Dialog";
@@ -86,7 +86,7 @@ function ShareCard() {
         readOnly
         value={link}
         onFocus={(event) => event.target.select()}
-        className="min-h-11 w-full rounded-xl border-0 bg-stone-50 px-3.5 font-mono text-[14px] text-admin-ink ring-1 ring-inset ring-admin-line focus:outline-none focus:ring-2 focus:ring-admin"
+        className="min-h-11 w-full rounded-xl border-0 bg-stone-50 px-3.5 font-mono text-[16px] sm:text-[14px] text-admin-ink ring-1 ring-inset ring-admin-line focus:outline-none focus:ring-2 focus:ring-admin"
       />
       <div className="mt-2 grid gap-2">
         <AdminButton variant="primary" icon={copied ? Check : Copy} onClick={() => void copy()} disabled={!link}>
@@ -135,7 +135,7 @@ function SuggestionCard({
   return (
     <article
       aria-labelledby={`suggestion-${suggestion.id}`}
-      className={`rounded-2xl bg-white p-5 shadow-sm ring-1 transition sm:p-6 ${fresh ? "ring-admin/40" : "ring-admin-line"}`}
+      className={`rounded-2xl bg-white p-5 ring-1 transition sm:p-6 ${fresh ? "ring-admin/40" : "ring-admin-line"}`}
     >
       <header className="flex items-start gap-3">
         <span
@@ -167,10 +167,7 @@ function SuggestionCard({
 
       <div className="mt-5 flex flex-wrap gap-2 border-t border-admin-line pt-4">
         {!done && (
-          <Link
-            href={`/admin/ai?fraga=${encodeURIComponent(suggestionPrompt(suggestion))}`}
-            className="inline-flex min-h-10 items-center justify-center gap-2 rounded-xl bg-admin px-3.5 text-[14px] font-semibold text-admin-contrast shadow-sm transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-admin"
-          >
+          <Link href={`/admin/ai?fraga=${encodeURIComponent(suggestionPrompt(suggestion))}`} className={buttonClasses("primary", "sm")}>
             <Sparkles aria-hidden="true" className="h-4 w-4" />
             Be AI:n göra det
           </Link>
@@ -303,7 +300,7 @@ export function SuggestionsTab() {
         {rows === null ? (
           <div className="space-y-4" role="status" aria-label="Laddar förslag">
             {Array.from({ length: 3 }, (_, i) => (
-              <div key={i} className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-admin-line">
+              <div key={i} className="rounded-2xl bg-white p-6 ring-1 ring-admin-line">
                 <div className="flex items-center gap-3">
                   <Skeleton className="h-10 w-10 rounded-full" />
                   <div className="flex-1 space-y-2">
@@ -317,7 +314,7 @@ export function SuggestionsTab() {
             ))}
           </div>
         ) : rows.length === 0 ? (
-          <div className="rounded-2xl bg-white shadow-sm ring-1 ring-admin-line">
+          <div className="rounded-2xl bg-white ring-1 ring-admin-line">
             <EmptyState icon={Lightbulb} title={empty.title} text={empty.text} />
           </div>
         ) : (

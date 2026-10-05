@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CheckCircle2, CircleSlash, Eye, ImagePlus, RotateCcw, Sparkles, Undo2, UploadCloud } from "lucide-react";
+import { CheckCircle2, ChevronDown, CircleSlash, Eye, ImagePlus, RotateCcw, Sparkles, Undo2, UploadCloud } from "lucide-react";
 import { AdminButton } from "../ui/Button";
 import { RichText } from "./RichText";
 import type { AiMessage } from "@/lib/admin/ai";
@@ -25,7 +25,7 @@ function Credits({ value }: { value: number }) {
 /** The row of a plan or change set's price: "Ny sektion: Teamet (20) + Justerad text: Toppen (1) = 21 credits". */
 function Breakdown({ lines, total, cappedAt }: { lines: { label: string; credits: number }[]; total: number; cappedAt?: number }) {
   return (
-    <div className="rounded-xl bg-stone-50 px-4 py-3 ring-1 ring-admin-line">
+    <div className="rounded-xl bg-stone-50 px-4 py-3">
       <ul className="space-y-1 text-[14px] text-admin-ink">
         {lines.map((line, index) => (
           <li key={index} className="flex justify-between gap-4">
@@ -34,7 +34,7 @@ function Breakdown({ lines, total, cappedAt }: { lines: { label: string; credits
           </li>
         ))}
       </ul>
-      <p className="mt-2 flex justify-between gap-4 border-t border-admin-line pt-2 text-[14px] font-semibold text-admin-ink">
+      <p className="mt-2 flex justify-between gap-4 border-t border-stone-200 pt-2 text-[14px] font-semibold text-admin-ink">
         <span>Kostnad</span>
         <Credits value={cappedAt !== undefined ? Math.min(total, cappedAt) : total} />
       </p>
@@ -125,7 +125,7 @@ export function MessageView({
         <RichText text={changeSet && message.status !== "estimated" ? changeSet.summary : message.content} className="text-admin-ink" />
 
         {message.status === "estimated" && plan && !generating && (
-          <div className="space-y-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-admin/25">
+          <div className="space-y-3 rounded-2xl bg-white p-4 ring-1 ring-admin/20">
             <p className="text-[14px] font-semibold text-admin-ink">{plan.summary || "Föreslagen ändring"}</p>
             <Breakdown lines={plan.lines} total={plan.total} />
             {short && (
@@ -151,22 +151,26 @@ export function MessageView({
         {generating && activity && <Working text={activity.status || "Gör ändringen…"} chars={activity.chars} onStop={onStop} />}
 
         {message.status === "preview" && changeSet && (
-          <div className="space-y-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-admin/25">
+          <div className="space-y-3 rounded-2xl bg-white p-4 ring-1 ring-admin/20">
             {changeSet.changes.length > 0 && (
-              <div>
-                <p className="mb-1 text-[13px] font-semibold text-admin-muted">Det här ändras</p>
-                <ul className="space-y-0.5 text-[14px] text-admin-ink">
-                  {changeSet.changes.slice(0, 8).map((change) => (
+              // The exact fields are there for whoever wants them; the price lines and the preview say it plainer.
+              <details className="group">
+                <summary className="flex min-h-9 cursor-pointer list-none items-center gap-1.5 rounded-lg text-[13px] font-semibold text-admin-muted hover:text-admin-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin [&::-webkit-details-marker]:hidden">
+                  Exakt vad som ändras ({changeSet.changes.length})
+                  <ChevronDown aria-hidden="true" className="h-3.5 w-3.5 transition-transform group-open:rotate-180" />
+                </summary>
+                <ul className="mt-1 space-y-0.5 text-[13px] text-admin-ink">
+                  {changeSet.changes.slice(0, 12).map((change) => (
                     <li key={change} className="truncate">
                       • {change}
                     </li>
                   ))}
-                  {changeSet.changes.length > 8 && <li className="text-admin-muted">och {changeSet.changes.length - 8} till</li>}
+                  {changeSet.changes.length > 12 && <li className="text-admin-muted">och {changeSet.changes.length - 12} till</li>}
                 </ul>
-              </div>
+              </details>
             )}
             {changeSet.imagesNeeded.length > 0 && (
-              <div className="rounded-xl bg-amber-50 px-4 py-3 text-[14px] text-amber-950 ring-1 ring-amber-200">
+              <div className="rounded-xl bg-amber-50 px-4 py-3 text-[14px] text-amber-950">
                 <p className="flex items-center gap-2 font-semibold">
                   <ImagePlus aria-hidden="true" className="h-4 w-4" /> Bilder som skulle göra det bättre
                 </p>
@@ -184,14 +188,22 @@ export function MessageView({
             {hasDraftChanges && (
               <p className="text-[13px] text-admin-muted">Dina egna opublicerade ändringar publiceras samtidigt, precis som i förhandsvisningen.</p>
             )}
-            <div className="flex flex-wrap gap-2">
-              <AdminButton variant="primary" size="sm" icon={UploadCloud} onClick={onPublish} busy={busy === `publish:${message.id}`} busyLabel="Publicerar…" disabled={busy !== null}>
+            <div className="flex flex-wrap items-center gap-x-1 gap-y-2">
+              <AdminButton variant="primary" size="sm" icon={UploadCloud} onClick={onPublish} busy={busy === `publish:${message.id}`} busyLabel="Publicerar…" disabled={busy !== null} className="mr-1">
                 Publicera ({message.credit_cost} credits)
               </AdminButton>
-              <AdminButton variant="secondary" size="sm" icon={Eye} onClick={onPreview} aria-pressed={previewing}>
-                {previewing ? "Visas i förhandsvisningen" : "Förhandsvisa"}
+              <AdminButton
+                variant="ghost"
+                size="sm"
+                icon={Eye}
+                onClick={onPreview}
+                aria-pressed={previewing}
+                title={previewing ? "Visas i förhandsvisningen" : undefined}
+                className={previewing ? "bg-admin/[0.08] text-admin" : "text-admin-muted"}
+              >
+                Förhandsvisa
               </AdminButton>
-              <AdminButton variant="ghost" size="sm" icon={Undo2} onClick={onDiscard} disabled={busy !== null}>
+              <AdminButton variant="ghost" size="sm" icon={Undo2} onClick={onDiscard} disabled={busy !== null} className="text-admin-muted">
                 Ångra
               </AdminButton>
             </div>
@@ -199,7 +211,7 @@ export function MessageView({
         )}
 
         {message.status === "published" && (
-          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl bg-emerald-50 px-4 py-3 ring-1 ring-emerald-200">
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl bg-emerald-50 px-4 py-3">
             <p className="flex items-center gap-2 text-[14px] font-semibold text-emerald-900">
               <CheckCircle2 aria-hidden="true" className="h-4 w-4" />
               Publicerad · {message.credit_cost} credits

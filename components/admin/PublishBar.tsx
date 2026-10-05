@@ -60,7 +60,7 @@ export function PublishBar() {
   return (
     <div className="mb-6 space-y-3">
       {hasChanges && (
-        <div className="admin-rise flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-admin/25 sm:px-5">
+        <div className="admin-rise flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-white p-4 ring-1 ring-admin/25 sm:px-5">
           <p className="flex items-center gap-2.5 text-[15px] text-admin-ink">
             <CloudUpload aria-hidden="true" className="h-5 w-5 text-admin" />
             <span>
@@ -80,7 +80,7 @@ export function PublishBar() {
       )}
 
       {publishIssues.length > 0 && (
-        <div role="alert" className="rounded-2xl bg-red-50 p-4 ring-1 ring-red-200 sm:px-5">
+        <div role="alert" className="rounded-2xl bg-red-50 p-4 sm:px-5">
           <p className="font-semibold text-red-900">Rätta det här innan du publicerar:</p>
           <ul className="mt-2 space-y-1 text-[14px] text-red-900">
             {publishIssues.map((issue) => (

@@ -60,7 +60,7 @@ export function PasswordTab() {
         <TextField label="Nuvarande lösenord" type="password" autoComplete="current-password" value={current} onChange={setCurrent} />
         <PasswordFields password={password} confirm={confirm} onPassword={setPassword} onConfirm={setConfirm} showMismatch={tried} />
         {error && (
-          <p role="alert" className="rounded-xl bg-red-50 px-4 py-3 text-[14px] text-red-800 ring-1 ring-red-200">
+          <p role="alert" className="rounded-xl bg-red-50 px-4 py-3 text-[14px] text-red-800">
             {error}
           </p>
         )}

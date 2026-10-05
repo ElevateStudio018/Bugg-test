@@ -4,7 +4,7 @@ import Link from "next/link";
 import { AlertTriangle, Check, CloudUpload, Coins } from "lucide-react";
 import { useAdminData, useDraft } from "@/contexts/admin/AdminDataContext";
 
-/** Save state and credit balance, always in view: top right on desktop, in the sticky bar on phones. */
+/** Save state and credit balance, always in view at the top right on computers; on phones only the save state fits. */
 export function StatusBar({ compact = false }: { compact?: boolean }) {
   const { saveState } = useDraft();
   const { credits } = useAdminData();
@@ -20,20 +20,22 @@ export function StatusBar({ compact = false }: { compact?: boolean }) {
 
   return (
     <div className="flex items-center gap-2 sm:gap-3">
-      <p aria-live="polite" className={`flex items-center gap-1.5 text-[13px] font-semibold ${save.tone}`}>
+      <p aria-live="polite" className={`flex items-center gap-1.5 text-[13px] font-medium ${save.tone}`}>
         <SaveIcon aria-hidden="true" className="h-4 w-4" strokeWidth={2.2} />
         <span className={compact && saveState !== "error" ? "sr-only" : ""}>
           {save.text}
           {saveState === "idle" || saveState === "saved" ? " ✓" : ""}
         </span>
       </p>
-      <Link
-        href="/admin/installningar?flik=credits"
-        className="flex min-h-9 items-center gap-1.5 rounded-full bg-white px-3 text-[13px] font-semibold text-admin-ink shadow-sm ring-1 ring-admin-line transition hover:ring-admin/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin"
-      >
-        <Coins aria-hidden="true" className="h-4 w-4 text-admin" />
-        {credits === null ? <span className="inline-block h-3 w-10 animate-pulse rounded bg-stone-200" /> : `${credits} credits`}
-      </Link>
+      {!compact && (
+        <Link
+          href="/admin/installningar?flik=credits"
+          className="flex min-h-9 items-center gap-1.5 rounded-full px-3 text-[13px] font-semibold text-admin-ink transition hover:bg-stone-900/[0.05] focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin"
+        >
+          <Coins aria-hidden="true" className="h-4 w-4 text-admin" />
+          {credits === null ? <span className="inline-block h-3 w-10 animate-pulse rounded bg-stone-200" /> : `${credits} credits`}
+        </Link>
+      )}
     </div>
   );
 }

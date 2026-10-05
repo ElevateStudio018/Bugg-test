@@ -69,7 +69,7 @@ export function PreviewPane({ draft, target, className = "" }: { draft: SiteData
   const offset = Math.max(0, (box.width - virtualWidth * scale) / 2);
 
   return (
-    <div className={`flex min-h-0 flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-admin-line ${className}`}>
+    <div className={`flex min-h-0 flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-admin-line ${className}`}>
       <div className="flex items-center justify-between gap-3 border-b border-admin-line px-3 py-2">
         <p className="flex items-center gap-2 pl-1 text-[13px] font-semibold text-admin-muted">
           <span aria-hidden="true" className="h-2 w-2 rounded-full bg-emerald-500" />

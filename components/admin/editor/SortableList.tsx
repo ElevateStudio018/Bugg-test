@@ -73,7 +73,7 @@ export function SortableList<T extends { id: string }>({
 
   return (
     <>
-      <ul ref={listRef} aria-label={label} className="space-y-3">
+      <ul ref={listRef} aria-label={label} className="space-y-2">
         {shown.map((item, index) => {
           const handle = (
             <span className="flex shrink-0 items-center">
@@ -93,11 +93,11 @@ export function SortableList<T extends { id: string }>({
                     move(item.id, 1);
                   }
                 }}
-                className="flex h-11 w-9 cursor-grab touch-none items-center justify-center rounded-lg text-stone-400 hover:bg-stone-100 hover:text-admin-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin active:cursor-grabbing"
+                className="flex h-11 w-8 cursor-grab touch-none items-center justify-center rounded-lg text-stone-300 hover:bg-stone-100 hover:text-admin-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin active:cursor-grabbing"
               >
                 <GripVertical aria-hidden="true" className="h-5 w-5" />
               </button>
-              <span className="flex flex-col">
+              <span className="flex flex-col transition-opacity can-hover:opacity-0 can-hover:group-hover/sort:opacity-100 group-focus-within/sort:opacity-100">
                 <button
                   type="button"
                   aria-label="Flytta upp"
@@ -123,7 +123,7 @@ export function SortableList<T extends { id: string }>({
             <li
               key={item.id}
               data-sort-id={item.id}
-              className={`transition-[box-shadow,transform] ${draggingId === item.id ? "relative z-10 scale-[1.01] rounded-2xl shadow-xl" : ""}`}
+              className={`group/sort transition-[box-shadow,transform] ${draggingId === item.id ? "relative z-10 scale-[1.01] rounded-2xl shadow-xl" : ""}`}
             >
               {renderItem(item, handle, index)}
             </li>

@@ -18,7 +18,7 @@ export function AddSectionDialog({ open, onClose, onPick }: { open: boolean; onC
       <div className="space-y-6">
         {sectionChoices.map((group) => (
           <section key={group.group} aria-label={group.group}>
-            <h3 className="mb-2 text-[13px] font-semibold uppercase tracking-[0.08em] text-admin-muted">{group.group}</h3>
+            <h3 className="mb-2 text-[13px] font-semibold text-admin-muted">{group.group}</h3>
             <ul className="grid gap-2 sm:grid-cols-2">
               {group.types.map((type) => (
                 <li key={type}>

@@ -57,7 +57,7 @@ export function SiteTab() {
           </div>
         )}
         <div className="mt-4 rounded-xl px-5 py-4" style={{ background: draft.theme.colors.navigation, color: draft.theme.colors.navigationText }}>
-          <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.08em] opacity-70">Så här ser den ut i menyraden</p>
+          <p className="mb-2 text-[13px] font-semibold opacity-75">Så här ser den ut i menyraden</p>
           <Wordmark content={{ logo, name: draft.company.shortName }} />
         </div>
         <ImagePicker

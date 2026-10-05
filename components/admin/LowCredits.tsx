@@ -16,7 +16,7 @@ export function LowCredits() {
   return (
     <div
       role="status"
-      className={`mb-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl px-4 py-3 ring-1 sm:px-5 ${empty ? "bg-red-50 ring-red-200" : "bg-amber-50 ring-amber-200"}`}
+      className={`mb-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl px-4 py-3 sm:px-5 ${empty ? "bg-red-50" : "bg-amber-50"}`}
     >
       <p className={`flex items-center gap-2.5 text-[14px] ${empty ? "text-red-950" : "text-amber-950"}`}>
         <Coins aria-hidden="true" className={`h-4 w-4 shrink-0 ${empty ? "text-red-700" : "text-amber-700"}`} />

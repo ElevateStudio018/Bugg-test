@@ -35,7 +35,7 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
     "/admin/offertforfragningar": { count: newQuotes, label: `${newQuotes} nya` },
   };
   return (
-    <ul className="space-y-1">
+    <ul className="space-y-0.5">
       {nav.map((item) => {
         const active = item.href === "/admin" ? pathname === "/admin" : pathname.startsWith(item.href);
         const Icon = item.icon;
@@ -45,14 +45,14 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
               href={item.href}
               onClick={onNavigate}
               aria-current={active ? "page" : undefined}
-              className={`group flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin ${
-                active ? "bg-admin text-admin-contrast shadow-sm" : "text-admin-muted hover:bg-stone-900/5 hover:text-admin-ink"
+              className={`group flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin lg:min-h-10 lg:text-[14px] ${
+                active ? "bg-admin/[0.08] font-semibold text-admin-ink" : "font-medium text-admin-muted hover:bg-stone-900/[0.04] hover:text-admin-ink"
               }`}
             >
-              <Icon aria-hidden="true" className="h-[19px] w-[19px] shrink-0" strokeWidth={2} />
+              <Icon aria-hidden="true" className={`h-[18px] w-[18px] shrink-0 ${active ? "text-admin" : ""}`} strokeWidth={2} />
               <span className="flex-1">{item.label}</span>
               {(counts[item.href]?.count ?? 0) > 0 && (
-                <span className={`rounded-full px-2 py-0.5 text-[12px] font-bold ${active ? "bg-admin-contrast/20 text-admin-contrast" : "bg-admin text-admin-contrast"}`}>
+                <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-admin px-1.5 text-[11px] font-bold text-admin-contrast">
                   <span aria-hidden="true">{counts[item.href].count}</span>
                   <span className="sr-only">{counts[item.href].label}</span>
                 </span>
@@ -68,14 +68,14 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
 function AccountBlock() {
   const { profile, signOut } = useAuth();
   return (
-    <div className="space-y-1 border-t border-admin-line pt-4">
+    <div className="space-y-0.5 border-t border-admin-line pt-3">
       <a
         href="../"
         onClick={(event) => {
           event.preventDefault();
           window.open(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/`, "_blank", "noopener");
         }}
-        className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-[14px] font-semibold text-admin-muted hover:bg-stone-900/5 hover:text-admin-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin"
+        className="flex min-h-10 items-center gap-3 rounded-xl px-3 text-[14px] font-medium text-admin-muted hover:bg-stone-900/[0.04] hover:text-admin-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin"
       >
         <ExternalLink aria-hidden="true" className="h-[18px] w-[18px]" />
         Visa hemsidan
@@ -83,12 +83,12 @@ function AccountBlock() {
       <button
         type="button"
         onClick={() => void signOut()}
-        className="flex min-h-11 w-full items-center gap-3 rounded-xl px-3 text-left text-[14px] font-semibold text-admin-muted hover:bg-stone-900/5 hover:text-admin-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin"
+        className="flex min-h-10 w-full items-center gap-3 rounded-xl px-3 py-1.5 text-left text-[14px] font-medium text-admin-muted hover:bg-stone-900/[0.04] hover:text-admin-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin"
       >
         <LogOut aria-hidden="true" className="h-[18px] w-[18px]" />
         <span className="min-w-0 flex-1">
           Logga ut
-          {profile?.email && <span className="block truncate text-[12px] font-normal">{profile.email}</span>}
+          {profile?.email && <span className="block truncate text-[12px] font-normal text-admin-subtle">{profile.email}</span>}
         </span>
       </button>
     </div>
@@ -101,7 +101,7 @@ function Logo({ compact = false }: { compact?: boolean }) {
   const content = { logo: draft?.settings.logo ?? ({ kind: "wordmark" } as const), name: draft?.company.shortName ?? "Markmontage" };
   return (
     <Link href="/admin" className="flex min-h-12 items-center gap-3 rounded-xl text-admin focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin" aria-label="Adminpanelen – dashboard">
-      <Wordmark content={content} className={compact ? "origin-left scale-[0.8]" : ""} />
+      <Wordmark content={content} className={compact ? "origin-left scale-[0.72]" : "origin-left scale-[0.86]"} />
     </Link>
   );
 }
@@ -140,19 +140,19 @@ export function AdminShell({ children }: { children: ReactNode }) {
       </a>
 
       {/* Desktop sidebar */}
-      <aside className="fixed inset-y-0 left-0 z-40 hidden w-[264px] flex-col border-r border-admin-line bg-white/70 px-4 py-5 backdrop-blur lg:flex">
+      <aside className="fixed inset-y-0 left-0 z-40 hidden w-[264px] flex-col border-r border-admin-line bg-white px-4 py-5 lg:flex">
         <div className="px-2">
           <Logo />
-          <p className="mt-1 text-[12px] font-semibold uppercase tracking-[0.14em] text-admin-muted">Adminpanel</p>
+          <p className="text-[12px] font-medium text-admin-subtle">Adminpanel</p>
         </div>
-        <nav aria-label="Adminmeny" className="mt-8 flex-1">
+        <nav aria-label="Adminmeny" className="mt-7 flex-1">
           <NavLinks />
         </nav>
         <AccountBlock />
       </aside>
 
       {/* Phones and tablets: a bar that stays at the top while scrolling */}
-      <header className="fixed inset-x-0 top-0 z-40 flex h-16 items-center justify-between gap-3 border-b border-admin-line bg-white/90 px-3 backdrop-blur pr-[calc(0.75rem+var(--scrollbar-comp,0px))] lg:hidden">
+      <header className="fixed inset-x-0 top-0 z-40 flex h-16 items-center justify-between gap-2 border-b border-admin-line bg-white/95 px-2 backdrop-blur pr-[calc(1rem+var(--scrollbar-comp,0px))] lg:hidden">
         <button
           type="button"
           onClick={() => setMenuOpen(true)}
@@ -193,7 +193,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
       )}
 
       <div className="lg:pl-[264px]">
-        <div className="sticky top-0 z-30 hidden h-16 items-center justify-end border-b border-admin-line/70 bg-admin-canvas/85 px-8 backdrop-blur lg:flex">
+        <div className="sticky top-0 z-30 hidden h-16 items-center justify-end border-b border-admin-line bg-admin-canvas/90 px-8 backdrop-blur lg:flex">
           <StatusBar />
         </div>
         <main id="admin-innehall" tabIndex={-1} className={`mx-auto px-4 pb-16 pt-20 outline-none sm:px-6 lg:px-8 lg:pt-8 ${wide ? "max-w-[1760px]" : "max-w-[1280px]"}`}>

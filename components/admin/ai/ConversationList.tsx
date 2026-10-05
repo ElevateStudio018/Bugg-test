@@ -35,7 +35,7 @@ export function ConversationList({
       <AdminButton variant="primary" icon={Plus} onClick={onNew} disabled={disabled} className="w-full">
         Ny konversation
       </AdminButton>
-      <h2 className="mb-2 mt-5 px-1 text-[12px] font-semibold uppercase tracking-[0.1em] text-admin-muted">Tidigare</h2>
+      <h2 className="mb-1.5 mt-5 px-1 text-[13px] font-semibold text-admin-muted">Tidigare</h2>
       <div className="min-h-0 flex-1 overflow-y-auto">
         {conversations === null ? (
           <div className="space-y-2" role="status" aria-label="Laddar konversationer">
@@ -70,7 +70,7 @@ export function ConversationList({
                         onKeyDown={(event) => event.key === "Escape" && setEditing(null)}
                         maxLength={120}
                         autoFocus
-                        className="min-h-9 min-w-0 flex-1 rounded-lg px-2 text-[14px] text-admin-ink focus:outline-none"
+                        className="min-h-9 min-w-0 flex-1 rounded-lg px-2 text-[16px] sm:text-[14px] text-admin-ink focus:outline-none"
                       />
                       <button type="submit" aria-label="Spara namnet" className="flex h-9 w-9 items-center justify-center rounded-lg text-admin hover:bg-admin/10">
                         <Check aria-hidden="true" className="h-4 w-4" />
@@ -80,7 +80,7 @@ export function ConversationList({
                       </button>
                     </form>
                   ) : (
-                    <div className={`group flex items-center rounded-xl transition ${active ? "bg-white shadow-sm ring-1 ring-admin-line" : "hover:bg-stone-900/5"}`}>
+                    <div className={`group flex items-center rounded-xl transition ${active ? "bg-white ring-1 ring-admin-line" : "hover:bg-stone-900/5"}`}>
                       <button
                         type="button"
                         onClick={() => onOpen(conversation.id)}

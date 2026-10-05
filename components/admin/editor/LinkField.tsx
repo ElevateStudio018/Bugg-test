@@ -1,5 +1,6 @@
 "use client";
 
+import { FieldGroup } from "../ui/FieldGroup";
 import { useId, useMemo } from "react";
 import { TextField, controlClasses } from "../ui/Field";
 import { list } from "@/lib/site/collection.ts";
@@ -86,8 +87,7 @@ export function HrefField({ label, value, draft, onChange }: { label: string; va
 
 export function LinkField({ label, value, draft, onChange, allowEmpty = false }: { label: string; value: Link; draft: SiteData; onChange: (link: Link) => void; allowEmpty?: boolean }) {
   return (
-    <fieldset className="rounded-2xl bg-stone-50/80 p-4 ring-1 ring-admin-line">
-      <legend className="-ml-1 px-1 text-[14px] font-semibold text-admin-ink">{label}</legend>
+    <FieldGroup label={label}>
       <div className="grid gap-3 sm:grid-cols-2">
         <TextField
           label="Text"
@@ -98,6 +98,6 @@ export function LinkField({ label, value, draft, onChange, allowEmpty = false }:
         />
         <HrefField label="Leder till" value={value.href} draft={draft} onChange={(href) => onChange({ ...value, href })} />
       </div>
-    </fieldset>
+    </FieldGroup>
   );
 }

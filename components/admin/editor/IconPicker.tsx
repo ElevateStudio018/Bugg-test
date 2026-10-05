@@ -46,7 +46,7 @@ export function IconPicker({ label, value, onChange, hint }: { label: string; va
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="flex min-h-11 items-center gap-3 rounded-xl bg-white px-3 text-[14px] text-admin-ink shadow-sm ring-1 ring-inset ring-admin-line hover:bg-stone-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin"
+        className="flex min-h-11 items-center gap-3 rounded-xl bg-white px-3 text-[14px] text-admin-ink ring-1 ring-inset ring-admin-line hover:bg-stone-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin"
       >
         <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-admin text-admin-contrast">
           <Icon name={value} className="h-[18px] w-[18px]" />

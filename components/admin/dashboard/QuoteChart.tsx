@@ -107,7 +107,7 @@ export function QuoteChart({ days }: { days: Day[] }) {
       <div id={tableId} hidden={!showTable} className="mt-1 max-h-64 overflow-y-auto rounded-xl ring-1 ring-admin-line">
         <table className="w-full text-[14px]">
           <caption className="sr-only">Offertförfrågningar per dag</caption>
-          <thead className="sticky top-0 bg-stone-50 text-left text-[12px] uppercase tracking-wide text-admin-muted">
+          <thead className="sticky top-0 bg-stone-50 text-left text-[13px] font-semibold text-admin-muted">
             <tr>
               <th scope="col" className="px-3 py-2 font-semibold">
                 Dag

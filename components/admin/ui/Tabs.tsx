@@ -13,7 +13,7 @@ export interface TabItem {
 export function Tabs({ items, active, onChange, label }: { items: TabItem[]; active: string; onChange: (id: string) => void; label: string }) {
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   return (
-    <div role="tablist" aria-label={label} className="no-scrollbar -mx-1 flex gap-1 overflow-x-auto px-1 pb-1">
+    <div role="tablist" aria-label={label} className="no-scrollbar flex gap-1 overflow-x-auto border-b border-admin-line">
       {items.map((item, index) => {
         const selected = item.id === active;
         return (
@@ -37,13 +37,13 @@ export function Tabs({ items, active, onChange, label }: { items: TabItem[]; act
               refs.current[next]?.focus();
               onChange(items[next].id);
             }}
-            className={`min-h-11 shrink-0 whitespace-nowrap rounded-xl px-4 text-[14px] font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin ${
-              selected ? "bg-white text-admin-ink shadow-sm ring-1 ring-admin-line" : "text-admin-muted hover:bg-stone-900/5 hover:text-admin-ink"
+            className={`relative -mb-px flex min-h-11 shrink-0 items-center whitespace-nowrap border-b-2 px-3 text-[14px] font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-admin ${
+              selected ? "border-admin font-semibold text-admin-ink" : "border-transparent text-admin-muted hover:border-stone-300 hover:text-admin-ink"
             }`}
           >
             {item.label}
             {item.badge && item.badge.count > 0 && (
-              <span className="ml-1.5 rounded-full bg-admin px-1.5 py-0.5 text-[11px] font-bold text-admin-contrast">
+              <span className="ml-1.5 rounded-full bg-admin/10 px-1.5 py-0.5 text-[11px] font-bold text-admin">
                 <span aria-hidden="true">{item.badge.count}</span>
                 <span className="sr-only">, {item.badge.label}</span>
               </span>

@@ -153,7 +153,7 @@ function FontPicker({ role, current, site, onClose }: { role: Role; current: Fon
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Sök bland typsnitten"
-            className="min-h-11 w-full rounded-xl border-0 bg-white pl-10 pr-3 text-[15px] text-admin-ink shadow-sm ring-1 ring-inset ring-admin-line focus:outline-none focus:ring-2 focus:ring-admin"
+            className="min-h-11 w-full rounded-xl border-0 bg-white pl-10 pr-3 text-[16px] sm:text-[15px] text-admin-ink ring-1 ring-inset ring-admin-line focus:outline-none focus:ring-2 focus:ring-admin"
             data-autofocus
           />
         </label>
@@ -161,7 +161,7 @@ function FontPicker({ role, current, site, onClose }: { role: Role; current: Fon
           aria-label="Typ av typsnitt"
           value={category}
           onChange={(event) => setCategory(event.target.value as FontChoice["category"] | "all")}
-          className="min-h-11 rounded-xl border-0 bg-white px-3 text-[15px] text-admin-ink shadow-sm ring-1 ring-inset ring-admin-line focus:outline-none focus:ring-2 focus:ring-admin"
+          className="min-h-11 rounded-xl border-0 bg-white px-3 text-[16px] sm:text-[15px] text-admin-ink ring-1 ring-inset ring-admin-line focus:outline-none focus:ring-2 focus:ring-admin"
         >
           <option value="all">Alla sorter</option>
           {Object.entries(fontCategoryLabels).map(([id, label]) => (

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { Check, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Card } from "../ui/Card";
 import { useDraft } from "@/contexts/admin/AdminDataContext";
 import { doneFromContent, itemForSave, loadOnboarding, onboardingItems, saveOnboarding, type OnboardingState } from "@/lib/admin/onboarding";
@@ -52,48 +52,38 @@ export function Onboarding() {
   if (!state || state.completed || allDone) return null;
   const count = onboardingItems.filter((item) => done.has(item.id)).length;
 
+  const remaining = onboardingItems.filter((item) => !done.has(item.id));
+
   return (
     <Card className="mb-6">
-      <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+      <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
         <div>
-          <h2 className="text-[17px] font-semibold text-admin-ink">Kom igång</h2>
-          <p className="mt-1 text-[14px] text-admin-muted">Fem saker som gör hemsidan till er egen. Listan försvinner när allt är klart.</p>
+          <h2 className="text-[16px] font-semibold text-admin-ink">Kom igång</h2>
+          <p className="mt-0.5 text-[13px] text-admin-muted">
+            {count} av {onboardingItems.length} klara · listan försvinner när allt är gjort
+          </p>
         </div>
-        <p className="text-[13px] font-semibold text-admin-muted">
-          {count} av {onboardingItems.length} klara
-        </p>
+        <div className="h-1.5 w-full overflow-hidden rounded-full bg-admin/10 sm:w-48" aria-hidden="true">
+          <div className="h-full rounded-full bg-admin transition-[width] duration-500" style={{ width: `${(count / onboardingItems.length) * 100}%` }} />
+        </div>
       </div>
-      <div className="mb-4 h-1.5 overflow-hidden rounded-full bg-admin/10" aria-hidden="true">
-        <div className="h-full rounded-full bg-admin transition-[width] duration-500" style={{ width: `${(count / onboardingItems.length) * 100}%` }} />
-      </div>
-      <ul className="grid gap-2 md:grid-cols-2 xl:grid-cols-5">
-        {onboardingItems.map((item) => {
-          const isDone = done.has(item.id);
-          return (
-            <li key={item.id}>
-              <Link
-                href={item.href}
-                className={`group flex h-full min-h-[64px] items-start gap-3 rounded-xl p-3 ring-1 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin ${
-                  isDone ? "bg-stone-50 ring-transparent" : "bg-white ring-admin-line hover:ring-admin/40"
-                }`}
-              >
-                <span
-                  className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${isDone ? "bg-admin text-admin-contrast" : "ring-2 ring-inset ring-stone-300"}`}
-                >
-                  {isDone && <Check aria-hidden="true" className="h-3.5 w-3.5" strokeWidth={3} />}
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className={`block text-[14px] font-semibold ${isDone ? "text-admin-muted line-through decoration-stone-300" : "text-admin-ink"}`}>
-                    {item.label}
-                    <span className="sr-only">{isDone ? " – klart" : " – inte klart"}</span>
-                  </span>
-                  <span className="block text-[13px] text-admin-muted">{item.hint}</span>
-                </span>
-                {!isDone && <ChevronRight aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-admin-muted transition group-hover:translate-x-0.5" />}
-              </Link>
-            </li>
-          );
-        })}
+      {/* Only what is left; done items drop off the list. */}
+      <ul className="mt-4 grid gap-x-8 sm:grid-cols-2">
+        {remaining.map((item) => (
+          <li key={item.id} className="border-t border-admin-line">
+            <Link
+              href={item.href}
+              className="group flex min-h-12 items-center gap-3 rounded-lg py-2.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin"
+            >
+              <span aria-hidden="true" className="h-5 w-5 shrink-0 rounded-full ring-2 ring-inset ring-stone-300 transition group-hover:ring-admin/50" />
+              <span className="min-w-0 flex-1">
+                <span className="block text-[14px] font-semibold text-admin-ink">{item.label}</span>
+                <span className="block text-[13px] text-admin-muted">{item.hint}</span>
+              </span>
+              <ChevronRight aria-hidden="true" className="h-4 w-4 shrink-0 text-admin-subtle transition group-hover:translate-x-0.5 group-hover:text-admin-ink" />
+            </Link>
+          </li>
+        ))}
       </ul>
     </Card>
   );

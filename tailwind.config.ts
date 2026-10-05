@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const role = (name: string) => `rgb(var(--c-${name}) / <alpha-value>)`;
 
@@ -36,10 +37,11 @@ const config: Config = {
         admin: {
           DEFAULT: "rgb(var(--admin-primary) / <alpha-value>)",
           contrast: "rgb(var(--admin-primary-contrast) / <alpha-value>)",
-          canvas: "#F4F3EF",
+          canvas: "#F6F5F2",
           ink: "#1E1E1C",
           muted: "#6A6963",
-          line: "#E6E4DE",
+          subtle: "#9C9A93",
+          line: "#E8E6E1",
         },
       },
       fontFamily: {
@@ -112,7 +114,10 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // Devices with a real hover (a mouse): secondary controls can appear when a row is pointed at.
+    plugin(({ addVariant }) => addVariant("can-hover", "@media (hover: hover)")),
+  ],
 };
 
 export default config;

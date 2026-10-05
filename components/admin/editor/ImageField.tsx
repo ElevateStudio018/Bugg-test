@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { ImageOff, Replace, Trash2 } from "lucide-react";
 import { AdminButton } from "../ui/Button";
-import { TextArea } from "../ui/Field";
+import { TextField } from "../ui/Field";
+import { FieldGroup } from "../ui/FieldGroup";
 import { ImagePicker } from "../images/ImagePicker";
 import { thumbnail, parseFocus } from "@/lib/admin/images";
 import type { SiteImage } from "@/lib/site/schema.ts";
@@ -26,10 +27,9 @@ export function ImageField({
   const focus = parseFocus(value?.focus);
 
   return (
-    <fieldset className="rounded-2xl bg-stone-50/80 p-4 ring-1 ring-admin-line">
-      <legend className="-ml-1 px-1 text-[14px] font-semibold text-admin-ink">{label}</legend>
+    <FieldGroup label={label}>
       {value ? (
-        <div className="grid gap-4 sm:grid-cols-[180px_minmax(0,1fr)]">
+        <div className="grid gap-4 sm:grid-cols-[160px_minmax(0,1fr)]">
           <div>
             <button
               type="button"
@@ -52,18 +52,17 @@ export function ImageField({
                 />
               )}
             </button>
-            <p className="mt-1.5 text-[12px] text-admin-muted">Tryck i bilden för att välja vad som alltid ska synas.</p>
+            <p className="mt-1.5 text-[12px] leading-snug text-admin-subtle">Tryck i bilden för att välja vad som alltid ska synas.</p>
           </div>
           <div className="space-y-3">
             {/* A browser-tab icon is never read out, so it needs no description. */}
             {usage !== "favicon" && (
-              <TextArea
+              <TextField
                 label="Bildtext (alt-text)"
-                rows={2}
                 recommended={125}
                 value={value.alt}
                 onChange={(alt) => onChange({ ...value, alt })}
-                hint={value.alt ? undefined : "Saknas – beskriv kort vad bilden visar, för synskadade och för Google."}
+                hint={value.alt ? undefined : "Beskriv kort vad bilden visar – för synskadade och för Google."}
               />
             )}
             <div className="flex flex-wrap gap-2">
@@ -89,6 +88,6 @@ export function ImageField({
         </div>
       )}
       <ImagePicker open={picking} onClose={() => setPicking(false)} usage={usage} onSelect={(image) => onChange(image)} />
-    </fieldset>
+    </FieldGroup>
   );
 }

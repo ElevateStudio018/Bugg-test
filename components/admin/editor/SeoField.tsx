@@ -1,5 +1,6 @@
 "use client";
 
+import { FieldGroup } from "../ui/FieldGroup";
 import { TextArea, TextField } from "../ui/Field";
 
 const TITLE_FITS = 60;
@@ -39,8 +40,7 @@ export function SeoField({
   }
 
   return (
-    <fieldset className="rounded-2xl bg-stone-50/80 p-4 ring-1 ring-admin-line">
-      <legend className="-ml-1 px-1 text-[14px] font-semibold text-admin-ink">{label}</legend>
+    <FieldGroup label={label}>
       <div className="space-y-4">
         <TextField label="Titel i sökresultatet" value={value.title} onChange={onTitle} recommended={TITLE_FITS} hint="Det blåa, klickbara i Googles resultat." />
         <TextArea
@@ -60,6 +60,6 @@ export function SeoField({
           </div>
         </div>
       </div>
-    </fieldset>
+    </FieldGroup>
   );
 }

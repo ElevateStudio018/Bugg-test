@@ -85,7 +85,7 @@ function QuoteDetail({
       </header>
 
       {quote.deleted_at && (
-        <p className="rounded-xl bg-amber-50 px-4 py-3 text-[14px] text-amber-900 ring-1 ring-amber-200">
+        <p className="rounded-xl bg-amber-50 px-4 py-3 text-[14px] text-amber-900">
           I papperskorgen. Raderas för gott om {daysLeft(quote.deleted_at)} dagar.
         </p>
       )}
@@ -112,7 +112,7 @@ function QuoteDetail({
       </div>
 
       <div>
-        <h3 className="text-[13px] font-semibold uppercase tracking-[0.08em] text-admin-muted">Meddelande</h3>
+        <h3 className="text-[13px] font-semibold text-admin-muted">Meddelande</h3>
         <p className="mt-2 whitespace-pre-wrap break-words text-[15px] leading-relaxed text-admin-ink">
           {quote.message || <span className="text-admin-muted">Inget meddelande skrevs.</span>}
         </p>
@@ -293,14 +293,14 @@ function QuoteRequests() {
             value={search}
             onChange={(event) => setSearch(event.target.value)}
             placeholder="Sök på namn, e-post eller telefon"
-            className="min-h-11 w-full rounded-xl border-0 bg-white pl-10 pr-3 text-[15px] text-admin-ink shadow-sm ring-1 ring-inset ring-admin-line focus:outline-none focus:ring-2 focus:ring-admin"
+            className="min-h-11 w-full rounded-xl border-0 bg-white pl-10 pr-3 text-[16px] sm:text-[15px] text-admin-ink ring-1 ring-inset ring-admin-line focus:outline-none focus:ring-2 focus:ring-admin"
           />
         </label>
         <select
           aria-label="Sortering"
           value={sort}
           onChange={(event) => setSort(event.target.value as "newest" | "oldest")}
-          className="min-h-11 rounded-xl border-0 bg-white px-3 text-[15px] text-admin-ink shadow-sm ring-1 ring-inset ring-admin-line focus:outline-none focus:ring-2 focus:ring-admin"
+          className="min-h-11 rounded-xl border-0 bg-white px-3 text-[16px] sm:text-[15px] text-admin-ink ring-1 ring-inset ring-admin-line focus:outline-none focus:ring-2 focus:ring-admin"
         >
           <option value="newest">Nyast först</option>
           <option value="oldest">Äldst först</option>
@@ -308,7 +308,7 @@ function QuoteRequests() {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-start">
-        <div className="min-w-0 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-admin-line">
+        <div className="min-w-0 overflow-hidden rounded-2xl bg-white ring-1 ring-admin-line">
           {quotes === null ? (
             <ul className="divide-y divide-admin-line" role="status" aria-label="Laddar förfrågningar">
               {Array.from({ length: 6 }, (_, i) => (
@@ -375,7 +375,7 @@ function QuoteRequests() {
         {wide && (
           <aside aria-label="Förfrågan" className="lg:sticky lg:top-[88px]">
             {detail ? (
-              <div className="admin-fade rounded-2xl bg-white p-6 shadow-sm ring-1 ring-admin-line">{detail}</div>
+              <div className="admin-fade rounded-2xl bg-white p-6 ring-1 ring-admin-line">{detail}</div>
             ) : (
               quotes &&
               quotes.length > 0 && (

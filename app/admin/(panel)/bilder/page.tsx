@@ -55,27 +55,41 @@ function OnSiteDialog({ usage, onClose }: { usage: ImageUsage; onClose: () => vo
 
 function OnSite({ draft }: { draft: SiteData }) {
   const [editing, setEditing] = useState<ImageUsage | null>(null);
+  const [onlyMissing, setOnlyMissing] = useState(false);
   const usages = useMemo(() => findImages(draft), [draft]);
   // The browser-tab icon is never read out, so it is the one image without a description.
   const needsAlt = (usage: ImageUsage) => usage.path.join(".") !== "settings.favicon" && !usage.image.alt.trim();
   const missingAlt = usages.filter(needsAlt).length;
+  const shown = onlyMissing && missingAlt > 0 ? usages.filter(needsAlt) : usages;
 
   return (
     <>
       {missingAlt > 0 && (
-        <p className="mb-4 flex items-start gap-2 rounded-2xl bg-amber-50 px-4 py-3 text-[14px] text-amber-900 ring-1 ring-amber-200">
-          <TriangleAlert aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
-          {missingAlt === 1 ? "En bild saknar" : `${missingAlt} bilder saknar`} alt-text – en kort beskrivning som läses upp för synskadade och hjälper Google
-          att förstå bilden.
-        </p>
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 rounded-2xl bg-amber-50 px-4 py-3 text-[14px] text-amber-950">
+          <p className="flex items-start gap-2">
+            <TriangleAlert aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" />
+            <span>
+              <strong className="font-semibold">{missingAlt === 1 ? "En bild saknar" : `${missingAlt} bilder saknar`} bildtext.</strong> Den läses upp för
+              synskadade och hjälper Google att förstå bilden.
+            </span>
+          </p>
+          <button
+            type="button"
+            aria-pressed={onlyMissing}
+            onClick={() => setOnlyMissing(!onlyMissing)}
+            className="min-h-10 shrink-0 rounded-lg px-3 text-[13px] font-semibold text-amber-900 underline-offset-2 hover:bg-amber-100 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-700"
+          >
+            {onlyMissing ? "Visa alla bilder" : "Visa bara dessa"}
+          </button>
+        </div>
       )}
-      <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 xl:grid-cols-4">
-        {usages.map((usage) => (
+      <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 xl:grid-cols-4">
+        {shown.map((usage) => (
           <li key={usage.path.join(".")}>
             <button
               type="button"
               onClick={() => setEditing(usage)}
-              className="group block w-full overflow-hidden rounded-2xl bg-white text-left shadow-sm ring-1 ring-admin-line transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin"
+              className="group block w-full overflow-hidden rounded-2xl bg-white text-left ring-1 ring-admin-line transition hover:ring-stone-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin"
             >
               <span className="relative block aspect-[4/3] overflow-hidden bg-stone-200">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -86,17 +100,14 @@ function OnSite({ draft }: { draft: SiteData }) {
                   className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
                   style={{ objectPosition: usage.image.focus ?? "50% 50%" }}
                 />
+              </span>
+              <span className="block px-3 py-2.5">
+                <span className="line-clamp-2 text-[13px] font-medium leading-snug text-admin-ink">{usage.where}</span>
                 {needsAlt(usage) && (
-                  <span className="absolute left-2 top-2">
-                    <Badge tone="warning">Alt-text saknas</Badge>
+                  <span className="mt-1 flex items-center gap-1.5 text-[12px] font-medium text-amber-800">
+                    <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-amber-500" /> Saknar bildtext
                   </span>
                 )}
-              </span>
-              <span className="block px-3.5 py-3">
-                <span className="line-clamp-2 text-[13px] font-semibold leading-snug text-admin-ink">{usage.where}</span>
-                <span className="mt-1 flex items-center gap-1.5 text-[12px] text-admin-muted">
-                  <Pencil aria-hidden="true" className="h-3 w-3" /> Byt eller justera
-                </span>
               </span>
             </button>
           </li>
@@ -228,7 +239,7 @@ function Library({ draft }: { draft: SiteData }) {
           ))}
         </div>
       ) : rows.length === 0 ? (
-        <div className="rounded-2xl bg-white shadow-sm ring-1 ring-admin-line">
+        <div className="rounded-2xl bg-white ring-1 ring-admin-line">
           <EmptyState
             icon={Images}
             title="Inga uppladdade bilder än"
@@ -243,7 +254,7 @@ function Library({ draft }: { draft: SiteData }) {
             const small = [...row.variants].sort((a, b) => a.width - b.width)[0];
             const focus = parseFocus(`${row.focal_point.x}% ${row.focal_point.y}%`);
             return (
-              <li key={row.id} className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-admin-line">
+              <li key={row.id} className="overflow-hidden rounded-2xl bg-white ring-1 ring-admin-line">
                 <span className="relative block aspect-[4/3] bg-stone-200">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={publicUrl(small.path)} alt="" loading="lazy" className="h-full w-full object-cover" style={{ objectPosition: `${focus.x}% ${focus.y}%` }} />
@@ -328,7 +339,7 @@ function Library({ draft }: { draft: SiteData }) {
       >
         {removingUsage && inUse && (
           <div className="space-y-4">
-            <p className="flex items-start gap-2 rounded-xl bg-red-50 px-4 py-3 text-[14px] text-red-900 ring-1 ring-red-200">
+            <p className="flex items-start gap-2 rounded-xl bg-red-50 px-4 py-3 text-[14px] text-red-900">
               <TriangleAlert aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
               Bilden används på hemsidan. Tar du bort den försvinner den därifrån – byt hellre bild på de här ställena först.
             </p>

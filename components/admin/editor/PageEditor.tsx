@@ -74,7 +74,7 @@ export function PageEditor({
 
   return (
     <div className="space-y-4">
-      <div className="rounded-2xl bg-white shadow-sm ring-1 ring-admin-line">
+      <div className="rounded-2xl bg-white ring-1 ring-admin-line">
         <button
           type="button"
           aria-expanded={settingsOpen}
@@ -87,7 +87,7 @@ export function PageEditor({
               {page.seo.title || "Ingen titel för sökresultat än"} · {page.slug ? `/${page.slug}` : "/"}
             </span>
           </span>
-          <ChevronDown aria-hidden="true" className={`h-5 w-5 shrink-0 text-admin-muted transition-transform duration-200 ${settingsOpen ? "rotate-180" : ""}`} />
+          <ChevronDown aria-hidden="true" className={`h-5 w-5 shrink-0 text-admin-subtle transition-transform duration-200 ${settingsOpen ? "rotate-180" : ""}`} />
         </button>
         {settingsOpen && (
           <div className="admin-fade border-t border-admin-line px-4 pb-5 pt-5 sm:px-5">
@@ -96,9 +96,11 @@ export function PageEditor({
         )}
       </div>
 
-      <div className="flex items-baseline justify-between gap-3 px-1 pt-2">
-        <h2 className="text-[13px] font-semibold uppercase tracking-[0.08em] text-admin-muted">Sektioner i den ordning de visas</h2>
-        <span className="text-[13px] text-admin-muted">{sections.length} st</span>
+      <div className="flex items-baseline justify-between gap-3 px-1 pt-3">
+        <h2 className="text-[15px] font-semibold text-admin-ink">
+          Sektioner <span className="font-normal text-admin-muted">· i den ordning de visas</span>
+        </h2>
+        <span className="text-[13px] tabular-nums text-admin-muted">{sections.length} st</span>
       </div>
 
       <SortableList
@@ -123,7 +125,7 @@ export function PageEditor({
         )}
       />
 
-      <AdminButton icon={Plus} onClick={() => setAdding(true)} className="w-full border-2 border-dashed border-stone-300 bg-transparent ring-0 hover:border-admin/50 hover:bg-white">
+      <AdminButton variant="ghost" icon={Plus} onClick={() => setAdding(true)} className="w-full border border-dashed border-stone-300 hover:border-admin/40 hover:bg-white">
         Lägg till sektion
       </AdminButton>
 

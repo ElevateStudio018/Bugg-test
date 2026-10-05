@@ -1,5 +1,6 @@
 "use client";
 
+import { FieldGroup } from "../ui/FieldGroup";
 import { useState } from "react";
 import { ChevronDown, Plus, Trash2 } from "lucide-react";
 import { TextArea, TextField, controlClasses } from "../ui/Field";
@@ -156,11 +157,9 @@ export function FieldEditor({ spec, base, object, draft }: { spec: FieldSpec; ba
     }
     case "group":
       return (
-        <fieldset className="rounded-2xl bg-stone-50/80 p-4 ring-1 ring-admin-line">
-          <legend className="-ml-1 px-1 text-[14px] font-semibold text-admin-ink">{spec.label}</legend>
-          {spec.hint && <p className="-mt-1 mb-3 text-[13px] leading-snug text-admin-muted">{spec.hint}</p>}
+        <FieldGroup label={spec.label} hint={spec.hint}>
           <FieldList fields={spec.fields ?? []} base={path} object={(value as Obj) ?? {}} draft={draft} />
-        </fieldset>
+        </FieldGroup>
       );
     case "collection":
       return <CollectionEditor spec={spec} path={path} collection={value as Collection<Obj>} draft={draft} />;
