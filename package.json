@@ -9,6 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "build:inleed": "node scripts/build-inleed.mjs",
     "photos": "node scripts/photo-sizes.mjs",
     "snapshot": "tsx scripts/fetch-snapshot.ts"
   },

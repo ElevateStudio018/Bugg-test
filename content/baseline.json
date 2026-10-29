@@ -380,7 +380,7 @@
               "src": "/photos/markmontage-minigravare.webp"
             }
           ],
-          "alt": ""
+          "alt": "Gul minigrävare vid markarbete i en trädgård"
         },
         "seo": {
           "title": "Schaktning & markarbeten i Kungälv",
@@ -399,26 +399,22 @@
         ],
         "icon": "Droplets",
         "image": {
-          "src": "https://images.pexels.com/photos/9389356/pexels-photo-9389356.jpeg?auto=compress&cs=tinysrgb&w=1200",
+          "src": "/photos/markmontage-dranering-ror.webp",
           "variants": [
             {
               "width": 480,
-              "src": "https://images.pexels.com/photos/9389356/pexels-photo-9389356.jpeg?auto=compress&cs=tinysrgb&w=480"
+              "src": "/photos/markmontage-dranering-ror-480.webp"
             },
             {
               "width": 800,
-              "src": "https://images.pexels.com/photos/9389356/pexels-photo-9389356.jpeg?auto=compress&cs=tinysrgb&w=800"
+              "src": "/photos/markmontage-dranering-ror-800.webp"
             },
             {
               "width": 1200,
-              "src": "https://images.pexels.com/photos/9389356/pexels-photo-9389356.jpeg?auto=compress&cs=tinysrgb&w=1200"
-            },
-            {
-              "width": 1600,
-              "src": "https://images.pexels.com/photos/9389356/pexels-photo-9389356.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              "src": "/photos/markmontage-dranering-ror.webp"
             }
           ],
-          "alt": ""
+          "alt": "Orange dräneringsrör med grenrör i en öppen schakt"
         },
         "seo": {
           "title": "Dränering i Kungälv",
@@ -452,7 +448,7 @@
               "src": "/photos/markmontage-stalstomme.webp"
             }
           ],
-          "alt": ""
+          "alt": "Kranbil och medarbetare vid ett vägarbete"
         },
         "seo": {
           "title": "Grundläggning i Kungälv",
@@ -490,7 +486,7 @@
               "src": "/photos/markmontage-gravmaskin-ror.webp"
             }
           ],
-          "alt": ""
+          "alt": "Grävmaskin och medarbetare i varselkläder vid en schakt"
         },
         "seo": {
           "title": "VA-arbeten i Kungälv",
@@ -509,26 +505,26 @@
         ],
         "icon": "Route",
         "image": {
-          "src": "https://images.pexels.com/photos/19394246/pexels-photo-19394246.jpeg?auto=compress&cs=tinysrgb&w=1200",
+          "src": "/photos/markmontage-vagarbete-avstangning.webp",
           "variants": [
             {
               "width": 480,
-              "src": "https://images.pexels.com/photos/19394246/pexels-photo-19394246.jpeg?auto=compress&cs=tinysrgb&w=480"
+              "src": "/photos/markmontage-vagarbete-avstangning-480.webp"
             },
             {
               "width": 800,
-              "src": "https://images.pexels.com/photos/19394246/pexels-photo-19394246.jpeg?auto=compress&cs=tinysrgb&w=800"
+              "src": "/photos/markmontage-vagarbete-avstangning-800.webp"
             },
             {
               "width": 1200,
-              "src": "https://images.pexels.com/photos/19394246/pexels-photo-19394246.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              "src": "/photos/markmontage-vagarbete-avstangning-1200.webp"
             },
             {
-              "width": 1600,
-              "src": "https://images.pexels.com/photos/19394246/pexels-photo-19394246.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              "width": 1400,
+              "src": "/photos/markmontage-vagarbete-avstangning.webp"
             }
           ],
-          "alt": ""
+          "alt": "Avspärrat vägarbete längs en gata"
         },
         "seo": {
           "title": "Anläggning av vägar & planer i Kungälv",
@@ -547,26 +543,26 @@
         ],
         "icon": "LayoutGrid",
         "image": {
-          "src": "https://images.pexels.com/photos/6083/pexels-photo-6083.jpeg?auto=compress&cs=tinysrgb&w=1200",
+          "src": "/photos/markmontage-stenlaggning-pagar.webp",
           "variants": [
             {
               "width": 480,
-              "src": "https://images.pexels.com/photos/6083/pexels-photo-6083.jpeg?auto=compress&cs=tinysrgb&w=480"
+              "src": "/photos/markmontage-stenlaggning-pagar-480.webp"
             },
             {
               "width": 800,
-              "src": "https://images.pexels.com/photos/6083/pexels-photo-6083.jpeg?auto=compress&cs=tinysrgb&w=800"
+              "src": "/photos/markmontage-stenlaggning-pagar-800.webp"
             },
             {
               "width": 1200,
-              "src": "https://images.pexels.com/photos/6083/pexels-photo-6083.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              "src": "/photos/markmontage-stenlaggning-pagar-1200.webp"
             },
             {
               "width": 1600,
-              "src": "https://images.pexels.com/photos/6083/pexels-photo-6083.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              "src": "/photos/markmontage-stenlaggning-pagar.webp"
             }
           ],
-          "alt": ""
+          "alt": "Marksten läggs på en gårdsplan framför ett hus"
         },
         "seo": {
           "title": "Stenläggning & plattläggning i Kungälv",
@@ -600,7 +596,7 @@
               "src": "/photos/markmontage-vagarbete.webp"
             }
           ],
-          "alt": "",
+          "alt": "Vägarbete med avspärrning, grävmaskin på släp och kranbil",
           "focus": "28% 50%"
         },
         "seo": {
@@ -636,7 +632,7 @@
               "src": "/photos/markmontage-minigravare-grasmatta.webp"
             }
           ],
-          "alt": ""
+          "alt": "Minigrävare som schaktar i en gräsmatta"
         }
       },
       "grund": {
@@ -644,26 +640,26 @@
         "title": "Platta på mark och grundsulor",
         "href": "/tjanster/grundlaggning",
         "image": {
-          "src": "https://images.pexels.com/photos/17410739/pexels-photo-17410739.jpeg?auto=compress&cs=tinysrgb&w=1200",
+          "src": "/photos/markmontage-geotextil.webp",
           "variants": [
             {
               "width": 480,
-              "src": "https://images.pexels.com/photos/17410739/pexels-photo-17410739.jpeg?auto=compress&cs=tinysrgb&w=480"
+              "src": "/photos/markmontage-geotextil-480.webp"
             },
             {
               "width": 800,
-              "src": "https://images.pexels.com/photos/17410739/pexels-photo-17410739.jpeg?auto=compress&cs=tinysrgb&w=800"
+              "src": "/photos/markmontage-geotextil-800.webp"
             },
             {
               "width": 1200,
-              "src": "https://images.pexels.com/photos/17410739/pexels-photo-17410739.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              "src": "/photos/markmontage-geotextil-1200.webp"
             },
             {
               "width": 1600,
-              "src": "https://images.pexels.com/photos/17410739/pexels-photo-17410739.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              "src": "/photos/markmontage-geotextil.webp"
             }
           ],
-          "alt": ""
+          "alt": "Markduk utlagd på en avschaktad yta innan bärlagret läggs"
         }
       },
       "dagvatten": {
@@ -671,26 +667,22 @@
         "title": "Dagvatten och fuktskydd",
         "href": "/tjanster/dranering",
         "image": {
-          "src": "https://images.pexels.com/photos/3964564/pexels-photo-3964564.jpeg?auto=compress&cs=tinysrgb&w=1200",
+          "src": "/photos/markmontage-dagvatten-ror.webp",
           "variants": [
             {
               "width": 480,
-              "src": "https://images.pexels.com/photos/3964564/pexels-photo-3964564.jpeg?auto=compress&cs=tinysrgb&w=480"
+              "src": "/photos/markmontage-dagvatten-ror-480.webp"
             },
             {
               "width": 800,
-              "src": "https://images.pexels.com/photos/3964564/pexels-photo-3964564.jpeg?auto=compress&cs=tinysrgb&w=800"
+              "src": "/photos/markmontage-dagvatten-ror-800.webp"
             },
             {
               "width": 1200,
-              "src": "https://images.pexels.com/photos/3964564/pexels-photo-3964564.jpeg?auto=compress&cs=tinysrgb&w=1200"
-            },
-            {
-              "width": 1600,
-              "src": "https://images.pexels.com/photos/3964564/pexels-photo-3964564.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              "src": "/photos/markmontage-dagvatten-ror.webp"
             }
           ],
-          "alt": ""
+          "alt": "Orange dagvattenrör med rördelar i en schakt"
         }
       },
       "vagar": {
@@ -698,26 +690,26 @@
         "title": "Vägar, planer och uppfarter",
         "href": "/tjanster/anlaggning-vagar-planer",
         "image": {
-          "src": "https://images.pexels.com/photos/1188532/pexels-photo-1188532.jpeg?auto=compress&cs=tinysrgb&w=1200",
+          "src": "/photos/markmontage-stenlagd-gard.webp",
           "variants": [
             {
               "width": 480,
-              "src": "https://images.pexels.com/photos/1188532/pexels-photo-1188532.jpeg?auto=compress&cs=tinysrgb&w=480"
+              "src": "/photos/markmontage-stenlagd-gard-480.webp"
             },
             {
               "width": 800,
-              "src": "https://images.pexels.com/photos/1188532/pexels-photo-1188532.jpeg?auto=compress&cs=tinysrgb&w=800"
+              "src": "/photos/markmontage-stenlagd-gard-800.webp"
             },
             {
               "width": 1200,
-              "src": "https://images.pexels.com/photos/1188532/pexels-photo-1188532.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              "src": "/photos/markmontage-stenlagd-gard-1200.webp"
             },
             {
               "width": 1600,
-              "src": "https://images.pexels.com/photos/1188532/pexels-photo-1188532.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              "src": "/photos/markmontage-stenlagd-gard.webp"
             }
           ],
-          "alt": ""
+          "alt": "Färdig stenlagd gårdsplan framför ett hus"
         }
       },
       "marksten": {
@@ -725,26 +717,22 @@
         "title": "Marksten och kantsten",
         "href": "/tjanster/stenlaggning",
         "image": {
-          "src": "https://images.pexels.com/photos/214045/pexels-photo-214045.jpeg?auto=compress&cs=tinysrgb&w=1200",
+          "src": "/photos/markmontage-gatsten-stad.webp",
           "variants": [
             {
               "width": 480,
-              "src": "https://images.pexels.com/photos/214045/pexels-photo-214045.jpeg?auto=compress&cs=tinysrgb&w=480"
+              "src": "/photos/markmontage-gatsten-stad-480.webp"
             },
             {
               "width": 800,
-              "src": "https://images.pexels.com/photos/214045/pexels-photo-214045.jpeg?auto=compress&cs=tinysrgb&w=800"
+              "src": "/photos/markmontage-gatsten-stad-800.webp"
             },
             {
               "width": 1200,
-              "src": "https://images.pexels.com/photos/214045/pexels-photo-214045.jpeg?auto=compress&cs=tinysrgb&w=1200"
-            },
-            {
-              "width": 1600,
-              "src": "https://images.pexels.com/photos/214045/pexels-photo-214045.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              "src": "/photos/markmontage-gatsten-stad.webp"
             }
           ],
-          "alt": ""
+          "alt": "Medarbetare lägger gatsten på en avspärrad gata i stan"
         }
       },
       "helhet": {
@@ -752,26 +740,22 @@
         "title": "Helhetsansvar för markprojektet",
         "href": "/tjanster/totalentreprenad",
         "image": {
-          "src": "https://images.pexels.com/photos/30223853/pexels-photo-30223853.jpeg?auto=compress&cs=tinysrgb&w=1200",
+          "src": "/photos/markmontage-kranbil-stad.webp",
           "variants": [
             {
               "width": 480,
-              "src": "https://images.pexels.com/photos/30223853/pexels-photo-30223853.jpeg?auto=compress&cs=tinysrgb&w=480"
+              "src": "/photos/markmontage-kranbil-stad-480.webp"
             },
             {
               "width": 800,
-              "src": "https://images.pexels.com/photos/30223853/pexels-photo-30223853.jpeg?auto=compress&cs=tinysrgb&w=800"
+              "src": "/photos/markmontage-kranbil-stad-800.webp"
             },
             {
               "width": 1200,
-              "src": "https://images.pexels.com/photos/30223853/pexels-photo-30223853.jpeg?auto=compress&cs=tinysrgb&w=1200"
-            },
-            {
-              "width": 1600,
-              "src": "https://images.pexels.com/photos/30223853/pexels-photo-30223853.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              "src": "/photos/markmontage-kranbil-stad.webp"
             }
           ],
-          "alt": ""
+          "alt": "Kranbil lastar av vid en avspärrad arbetsplats i stan"
         }
       }
     }
@@ -788,7 +772,8 @@
         "name": "ISO 9001 – Kvalitet",
         "issuer": "Svensk Certifiering",
         "description": "Den internationella standarden för kvalitetsledning. Vi har ett ledningssystem för hur vi planerar, genomför och följer upp våra uppdrag, och vi arbetar hela tiden med att bli bättre. För dig som beställare betyder det tydliga rutiner från offert till färdigt jobb.",
-        "validUntil": "",
+        "validUntil": "9 februari 2028",
+        "document": "/dokument/markmontage-iso-9001.pdf",
         "image": {
           "src": "/photos/certifikat-iso9001.webp",
           "variants": [
@@ -808,7 +793,8 @@
         "name": "ISO 14001 – Miljö",
         "issuer": "Svensk Certifiering",
         "description": "Den internationella standarden för miljöledning. Vi kartlägger hur vårt arbete påverkar miljön, till exempel genom maskiner, transporter och massor, och arbetar med mål och åtgärder för att minska påverkan.",
-        "validUntil": "",
+        "validUntil": "9 februari 2028",
+        "document": "/dokument/markmontage-iso-14001.pdf",
         "image": {
           "src": "/photos/certifikat-iso14001.webp",
           "variants": [
@@ -828,7 +814,8 @@
         "name": "ISO 45001 – Arbetsmiljö",
         "issuer": "Svensk Certifiering",
         "description": "Den internationella standarden för arbetsmiljö. Vi arbetar förebyggande med risker och säkerhet, så att alla som jobbar på eller passerar våra arbetsplatser ska kunna känna sig trygga.",
-        "validUntil": "",
+        "validUntil": "11 december 2027",
+        "document": "/dokument/markmontage-iso-45001.pdf",
         "image": {
           "src": "/photos/certifikat-iso45001.webp",
           "variants": [
@@ -849,6 +836,7 @@
         "issuer": "Dun & Bradstreet",
         "description": "Markmontage har kreditbetyget AA, God kreditvärdighet, enligt Dun & Bradstreets bedömning i februari 2025. Betyget bygger på företagets ekonomi och betalningsförmåga och visar att vi är en stabil partner att anlita.",
         "validUntil": "",
+        "document": "",
         "image": {
           "src": "/photos/certifikat-aa.webp",
           "variants": [
@@ -878,7 +866,7 @@
         "slug": "",
         "title": "Hem",
         "seo": {
-          "title": "Markmontage BEAB AB | Mark- och grundarbeten i Kungälv & Göteborg",
+          "title": "Markarbeten i Kungälv & Göteborg | Markmontage BEAB AB",
           "description": "Markmontage BEAB AB utför mark- och grundarbeten i Kungälv, Göteborg och övriga Västra Götaland."
         },
         "sections": {
@@ -923,7 +911,7 @@
                     "src": "/photos/hero-hamnen.webp"
                   }
                 ],
-                "alt": ""
+                "alt": "Två medarbetare i varselkläder vid en byggarbetsplats i hamnen"
               },
               "button": {
                 "label": "Begär offert",
@@ -1015,7 +1003,7 @@
                     "src": "/photos/markmontage-gravmaskin-ror.webp"
                   }
                 ],
-                "alt": ""
+                "alt": "Grävmaskin och medarbetare i varselkläder vid en schakt"
               },
               "cards": {
                 "order": [
@@ -1051,7 +1039,7 @@
                           "src": "/photos/markmontage-arbete.webp"
                         }
                       ],
-                      "alt": "",
+                      "alt": "Medarbetare vid avspärrningen på en arbetsplats med servicebilar",
                       "focus": "20% 45%"
                     }
                   },
@@ -1083,7 +1071,7 @@
                           "src": "/photos/markmontage-minigravare.webp"
                         }
                       ],
-                      "alt": "",
+                      "alt": "Gul minigrävare vid markarbete i en trädgård",
                       "focus": "88% 70%"
                     }
                   }
@@ -1129,7 +1117,7 @@
                           "src": "/photos/markmontage-kabeltrumma.webp"
                         }
                       ],
-                      "alt": ""
+                      "alt": "Släp med kabeltrumma vid en avspärrad arbetsplats"
                     }
                   },
                   "bygga": {
@@ -1141,26 +1129,26 @@
                       "href": "#offert"
                     },
                     "image": {
-                      "src": "https://images.pexels.com/photos/29735767/pexels-photo-29735767.jpeg?auto=compress&cs=tinysrgb&w=1600",
+                      "src": "/photos/markmontage-minigravare-tradgard.webp",
                       "variants": [
                         {
                           "width": 480,
-                          "src": "https://images.pexels.com/photos/29735767/pexels-photo-29735767.jpeg?auto=compress&cs=tinysrgb&w=480"
+                          "src": "/photos/markmontage-minigravare-tradgard-480.webp"
                         },
                         {
                           "width": 800,
-                          "src": "https://images.pexels.com/photos/29735767/pexels-photo-29735767.jpeg?auto=compress&cs=tinysrgb&w=800"
+                          "src": "/photos/markmontage-minigravare-tradgard-800.webp"
                         },
                         {
                           "width": 1200,
-                          "src": "https://images.pexels.com/photos/29735767/pexels-photo-29735767.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                          "src": "/photos/markmontage-minigravare-tradgard-1200.webp"
                         },
                         {
-                          "width": 1600,
-                          "src": "https://images.pexels.com/photos/29735767/pexels-photo-29735767.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                          "width": 1400,
+                          "src": "/photos/markmontage-minigravare-tradgard.webp"
                         }
                       ],
-                      "alt": ""
+                      "alt": "Röd minigrävare schaktar i en trädgård intill ett hus"
                     }
                   }
                 }
@@ -1198,7 +1186,7 @@
                     "src": "/photos/markmontage-teamet.webp"
                   }
                 ],
-                "alt": ""
+                "alt": "Markmontages medarbetare samlade vid ett bord utomhus"
               }
             },
             "process": {
@@ -1355,7 +1343,7 @@
                     "src": "/photos/markmontage-teamet.webp"
                   }
                 ],
-                "alt": "",
+                "alt": "Markmontages medarbetare samlade vid ett bord utomhus",
                 "focus": "50% 35%"
               },
               "size": "tall"
@@ -1434,7 +1422,7 @@
                           "src": "/photos/markmontage-konferens.webp"
                         }
                       ],
-                      "alt": "",
+                      "alt": "Medarbetare på konferens i en lokal med storbildsskärm",
                       "focus": "50% 50%"
                     }
                   },
@@ -1451,7 +1439,7 @@
                           "src": "/photos/markmontage-minigravare-slap.webp"
                         }
                       ],
-                      "alt": "",
+                      "alt": "Gul minigrävare på släpvagn",
                       "focus": "50% 40%"
                     }
                   }
@@ -1489,7 +1477,7 @@
                     "src": "/photos/markmontage-gravmaskin-ror.webp"
                   }
                 ],
-                "alt": ""
+                "alt": "Grävmaskin och medarbetare i varselkläder vid en schakt"
               },
               "secondHeading": "Från första spadtaget till färdig yta",
               "secondText": "Du hör av dig, vi kommer ut på ett kostnadsfritt hembesök och du får en fast offert innan något arbete påbörjas. Därefter genomför vi arbetet enligt tidsplan, med löpande avstämning hela vägen.",
@@ -1577,7 +1565,7 @@
                     "src": "/photos/markmontage-arbete.webp"
                   }
                 ],
-                "alt": ""
+                "alt": "Medarbetare vid avspärrningen på en arbetsplats med servicebilar"
               },
               "size": "medium"
             },
@@ -1590,6 +1578,7 @@
               "text": "Markmontage är certifierat enligt ISO 9001, ISO 14001 och ISO 45001 – de internationella standarderna för kvalitet, miljö och arbetsmiljö. Certifieringarna är utfärdade av Svensk Certifiering, och dessutom har vi kreditbetyget AA från Dun & Bradstreet.",
               "issuerPrefix": "Utfärdat av",
               "validUntilPrefix": "Giltigt till",
+              "documentLabel": "Se hela certifikatet (PDF)",
               "emptyHeading": "Certifikaten läggs upp inom kort",
               "emptyText": "Har du frågor om våra certifikat och behörigheter är du välkommen att ringa oss på"
             },

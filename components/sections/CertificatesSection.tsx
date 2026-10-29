@@ -4,7 +4,7 @@ import { Photo } from "../Photo";
 import { tapTarget } from "../Button";
 import { list } from "@/lib/site/collection.ts";
 import { toTelHref } from "@/lib/site/format.ts";
-import { imageProps } from "@/lib/site/images.ts";
+import { imageProps, withBasePath } from "@/lib/site/images.ts";
 import type { SectionProps } from "./types";
 
 export function CertificatesSection({ section, ctx }: SectionProps<"certificates">) {
@@ -52,10 +52,26 @@ export function CertificatesSection({ section, ctx }: SectionProps<"certificates
                 </p>
               )}
               {certificate.description && <p className="mt-3 text-copy leading-[1.35] text-body">{certificate.description}</p>}
-              {certificate.validUntil && (
-                <p className="mt-auto pt-6 text-[15px] text-muted">
-                  {section.validUntilPrefix} {certificate.validUntil}
-                </p>
+              {(certificate.validUntil || certificate.document) && (
+                <div className="mt-auto pt-6">
+                  {certificate.validUntil && (
+                    <p className="text-[15px] text-muted">
+                      {section.validUntilPrefix} {certificate.validUntil}
+                    </p>
+                  )}
+                  {certificate.document && (
+                    // The whole certificate, opened in a new tab, under the dates it is valid between.
+                    <a
+                      href={withBasePath(certificate.document)}
+                      target="_blank"
+                      rel="noopener"
+                      className={`${tapTarget} mt-2 inline-flex items-center gap-2 font-semibold text-link underline underline-offset-4 hover:text-accent`}
+                    >
+                      <Icon name="FileText" className="h-5 w-5 shrink-0" />
+                      {section.documentLabel}
+                    </a>
+                  )}
+                </div>
               )}
             </li>
           ))}

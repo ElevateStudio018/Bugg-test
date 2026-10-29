@@ -11,6 +11,27 @@
     1200,
     1745
   ],
+  "markmontage-dagvatten-ror": [
+    480,
+    800,
+    1200
+  ],
+  "markmontage-dranering-ror": [
+    480,
+    800,
+    1200
+  ],
+  "markmontage-gatsten-stad": [
+    480,
+    800,
+    1200
+  ],
+  "markmontage-geotextil": [
+    480,
+    800,
+    1200,
+    1600
+  ],
   "markmontage-gravmaskin-ror": [
     480,
     800,
@@ -28,6 +49,11 @@
     800,
     960
   ],
+  "markmontage-kranbil-stad": [
+    480,
+    800,
+    1200
+  ],
   "markmontage-minigravare-grasmatta": [
     480,
     720
@@ -35,6 +61,12 @@
   "markmontage-minigravare-slap": [
     480,
     720
+  ],
+  "markmontage-minigravare-tradgard": [
+    480,
+    800,
+    1200,
+    1400
   ],
   "markmontage-minigravare": [
     480,
@@ -53,11 +85,29 @@
     800,
     1125
   ],
+  "markmontage-stenlagd-gard": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "markmontage-stenlaggning-pagar": [
+    480,
+    800,
+    1200,
+    1600
+  ],
   "markmontage-teamet": [
     480,
     800,
     1200,
     2000
+  ],
+  "markmontage-vagarbete-avstangning": [
+    480,
+    800,
+    1200,
+    1400
   ],
   "markmontage-vagarbete": [
     480,

@@ -25,7 +25,7 @@ export function generateMetadata(): Metadata {
       type: "website",
     },
     alternates: { canonical: "/" },
-    icons: { icon: withBasePath(site.settings.favicon.src) },
+    icons: { icon: withBasePath(site.settings.favicon.src), apple: withBasePath("/apple-touch-icon.png") },
     // The maintenance notice is not something search engines should keep.
     ...(site.settings.maintenance.enabled ? { robots: { index: false, follow: false } } : {}),
   };

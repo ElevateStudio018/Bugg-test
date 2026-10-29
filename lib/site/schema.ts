@@ -219,6 +219,8 @@ export const certificateSchema = z.object({
   issuer: text(160),
   description: longText,
   validUntil: text(40),
+  /** The whole certificate, usually a PDF in public/dokument, linked under the card. Empty for none. */
+  document: z.union([z.literal(""), hrefSchema]),
   /** The certificate's badge or logo, shown whole. */
   image: imageSchema.nullable(),
 });
@@ -327,6 +329,8 @@ const certificatesSection = z.object({
   text: longText,
   issuerPrefix: lineText,
   validUntilPrefix: lineText,
+  /** The link to a certificate's whole document. */
+  documentLabel: lineText,
   emptyHeading: lineText,
   /** Followed by the phone number as a link. */
   emptyText: longText,

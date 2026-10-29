@@ -30,3 +30,7 @@ yarn-error.log*
 /content/fonts.json
 /public/site-version.json
 /public/fonts/
+
+# the Inleed build (npm run build:inleed)
+/INLEED-UPLOAD/
+/inleed-hemsida.zip

@@ -9,6 +9,9 @@ const pageHints: Record<string, { changeFrequency: "monthly" | "yearly"; priorit
   certifikat: { changeFrequency: "yearly", priority: 0.6 },
 };
 
+// The static exports serve every page as a folder, so their addresses end in a slash, as in the canonical links.
+const slash = process.env.TRAILING_SLASH === "true" ? "/" : "";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const site = getSite();
   const siteUrl = site.settings.siteUrl;
@@ -16,13 +19,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const pages: MetadataRoute.Sitemap = [
     { url: `${siteUrl}/`, changeFrequency: "monthly", priority: 1 },
     ...subpages(site).map((page) => ({
-      url: `${siteUrl}/${page.slug}`,
+      url: `${siteUrl}/${page.slug}${slash}`,
       ...(pageHints[page.slug] ?? { changeFrequency: "monthly" as const, priority: 0.8 }),
     })),
   ];
 
   const services: MetadataRoute.Sitemap = list(site.services).map((service) => ({
-    url: `${siteUrl}/tjanster/${service.slug}`,
+    url: `${siteUrl}/tjanster/${service.slug}${slash}`,
     changeFrequency: "monthly",
     priority: 0.7,
   }));

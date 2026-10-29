@@ -1,0 +1,50 @@
+# Markmontage BEAB AB on Inleed (Apache or LiteSpeed). Copied to the root of public_html by scripts/build-inleed.mjs.
+
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+Options -Indexes
+
+# One address for the whole site: https://www.markmontagebeab.se, the same as the canonical links and the sitemap.
+# Only the real domain is redirected, so a preview or test address at Inleed is left alone.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # markmontagebeab.se, over http or https → https://www.markmontagebeab.se
+  RewriteCond %{HTTP_HOST} ^markmontagebeab\.se$ [NC]
+  RewriteRule ^ https://www.markmontagebeab.se%{REQUEST_URI} [R=301,L]
+
+  # http://www.markmontagebeab.se → https. X-Forwarded-Proto keeps it from looping behind a proxy that ends HTTPS.
+  RewriteCond %{HTTP_HOST} ^www\.markmontagebeab\.se$ [NC]
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://www.markmontagebeab.se%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# Pages are checked for changes on every visit; photos, fonts and documents are kept for a while.
+# _next/static has its own .htaccess: its file names change with their content, so they are kept for a year.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 week"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/json "access plus 0 seconds"
+  ExpiresByType application/xml "access plus 1 day"
+  ExpiresByType text/plain "access plus 1 day"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/pdf "access plus 1 week"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml application/javascript application/json image/svg+xml
+</IfModule>
+
+AddType font/woff2 .woff2
+AddType image/webp .webp
