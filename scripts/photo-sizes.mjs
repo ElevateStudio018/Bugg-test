@@ -1,4 +1,4 @@
-// Makes smaller copies of the photos in public/photos (480, 800 and 1200 px wide, where the photo is wider) and lists
+// Makes smaller copies of the photos in public/photos (480, 800, 1200 and 1600 px wide, where the photo is wider) and lists
 // every photo's widths in lib/photo-sizes.json, for lib/photos.ts to build each photo's srcset from.
 // Run after adding or replacing a photo: npm run photos
 import { readdir, writeFile } from "node:fs/promises";
@@ -6,11 +6,13 @@ import path from "node:path";
 import sharp from "sharp";
 
 const DIR = "public/photos";
-const WIDTHS = [480, 800, 1200];
+const WIDTHS = [480, 800, 1200, 1600];
 const isCopy = (file) => /-\d+\.webp$/.test(file);
+// The certificate badges are small graphics with their own copies, made by hand.
+const isBadge = (file) => file.startsWith("certifikat-");
 
 const widths = {};
-for (const file of (await readdir(DIR)).filter((f) => f.endsWith(".webp") && !isCopy(f)).sort()) {
+for (const file of (await readdir(DIR)).filter((f) => f.endsWith(".webp") && !isCopy(f) && !isBadge(f)).sort()) {
   const name = file.replace(/\.webp$/, "");
   const input = path.join(DIR, file);
   const { width } = await sharp(input).metadata();

@@ -376,7 +376,11 @@
               "src": "/photos/markmontage-minigravare-1200.webp"
             },
             {
-              "width": 1500,
+              "width": 1600,
+              "src": "/photos/markmontage-minigravare-1600.webp"
+            },
+            {
+              "width": 2400,
               "src": "/photos/markmontage-minigravare.webp"
             }
           ],
@@ -411,6 +415,14 @@
             },
             {
               "width": 1200,
+              "src": "/photos/markmontage-dranering-ror-1200.webp"
+            },
+            {
+              "width": 1600,
+              "src": "/photos/markmontage-dranering-ror-1600.webp"
+            },
+            {
+              "width": 1800,
               "src": "/photos/markmontage-dranering-ror.webp"
             }
           ],
@@ -444,7 +456,15 @@
               "src": "/photos/markmontage-stalstomme-800.webp"
             },
             {
-              "width": 1125,
+              "width": 1200,
+              "src": "/photos/markmontage-stalstomme-1200.webp"
+            },
+            {
+              "width": 1600,
+              "src": "/photos/markmontage-stalstomme-1600.webp"
+            },
+            {
+              "width": 2250,
               "src": "/photos/markmontage-stalstomme.webp"
             }
           ],
@@ -482,7 +502,11 @@
               "src": "/photos/markmontage-gravmaskin-ror-1200.webp"
             },
             {
-              "width": 1500,
+              "width": 1600,
+              "src": "/photos/markmontage-gravmaskin-ror-1600.webp"
+            },
+            {
+              "width": 2400,
               "src": "/photos/markmontage-gravmaskin-ror.webp"
             }
           ],
@@ -520,7 +544,11 @@
               "src": "/photos/markmontage-vagarbete-avstangning-1200.webp"
             },
             {
-              "width": 1400,
+              "width": 1600,
+              "src": "/photos/markmontage-vagarbete-avstangning-1600.webp"
+            },
+            {
+              "width": 1799,
               "src": "/photos/markmontage-vagarbete-avstangning.webp"
             }
           ],
@@ -559,6 +587,10 @@
             },
             {
               "width": 1600,
+              "src": "/photos/markmontage-stenlaggning-pagar-1600.webp"
+            },
+            {
+              "width": 1799,
               "src": "/photos/markmontage-stenlaggning-pagar.webp"
             }
           ],
@@ -592,7 +624,15 @@
               "src": "/photos/markmontage-vagarbete-800.webp"
             },
             {
-              "width": 1170,
+              "width": 1200,
+              "src": "/photos/markmontage-vagarbete-1200.webp"
+            },
+            {
+              "width": 1600,
+              "src": "/photos/markmontage-vagarbete-1600.webp"
+            },
+            {
+              "width": 2340,
               "src": "/photos/markmontage-vagarbete.webp"
             }
           ],
@@ -628,7 +668,19 @@
               "src": "/photos/markmontage-minigravare-grasmatta-480.webp"
             },
             {
-              "width": 720,
+              "width": 800,
+              "src": "/photos/markmontage-minigravare-grasmatta-800.webp"
+            },
+            {
+              "width": 1200,
+              "src": "/photos/markmontage-minigravare-grasmatta-1200.webp"
+            },
+            {
+              "width": 1600,
+              "src": "/photos/markmontage-minigravare-grasmatta-1600.webp"
+            },
+            {
+              "width": 1800,
               "src": "/photos/markmontage-minigravare-grasmatta.webp"
             }
           ],
@@ -656,6 +708,10 @@
             },
             {
               "width": 1600,
+              "src": "/photos/markmontage-geotextil-1600.webp"
+            },
+            {
+              "width": 1799,
               "src": "/photos/markmontage-geotextil.webp"
             }
           ],
@@ -679,6 +735,14 @@
             },
             {
               "width": 1200,
+              "src": "/photos/markmontage-dagvatten-ror-1200.webp"
+            },
+            {
+              "width": 1600,
+              "src": "/photos/markmontage-dagvatten-ror-1600.webp"
+            },
+            {
+              "width": 1800,
               "src": "/photos/markmontage-dagvatten-ror.webp"
             }
           ],
@@ -706,6 +770,10 @@
             },
             {
               "width": 1600,
+              "src": "/photos/markmontage-stenlagd-gard-1600.webp"
+            },
+            {
+              "width": 1799,
               "src": "/photos/markmontage-stenlagd-gard.webp"
             }
           ],
@@ -729,6 +797,14 @@
             },
             {
               "width": 1200,
+              "src": "/photos/markmontage-gatsten-stad-1200.webp"
+            },
+            {
+              "width": 1600,
+              "src": "/photos/markmontage-gatsten-stad-1600.webp"
+            },
+            {
+              "width": 1800,
               "src": "/photos/markmontage-gatsten-stad.webp"
             }
           ],
@@ -752,6 +828,14 @@
             },
             {
               "width": 1200,
+              "src": "/photos/markmontage-kranbil-stad-1200.webp"
+            },
+            {
+              "width": 1600,
+              "src": "/photos/markmontage-kranbil-stad-1600.webp"
+            },
+            {
+              "width": 1800,
               "src": "/photos/markmontage-kranbil-stad.webp"
             }
           ],
@@ -907,7 +991,11 @@
                     "src": "/photos/hero-hamnen-1200.webp"
                   },
                   {
-                    "width": 1536,
+                    "width": 1600,
+                    "src": "/photos/hero-hamnen-1600.webp"
+                  },
+                  {
+                    "width": 2400,
                     "src": "/photos/hero-hamnen.webp"
                   }
                 ],
@@ -999,7 +1087,11 @@
                     "src": "/photos/markmontage-gravmaskin-ror-1200.webp"
                   },
                   {
-                    "width": 1500,
+                    "width": 1600,
+                    "src": "/photos/markmontage-gravmaskin-ror-1600.webp"
+                  },
+                  {
+                    "width": 2400,
                     "src": "/photos/markmontage-gravmaskin-ror.webp"
                   }
                 ],
@@ -1035,7 +1127,11 @@
                           "src": "/photos/markmontage-arbete-1200.webp"
                         },
                         {
-                          "width": 1745,
+                          "width": 1600,
+                          "src": "/photos/markmontage-arbete-1600.webp"
+                        },
+                        {
+                          "width": 2400,
                           "src": "/photos/markmontage-arbete.webp"
                         }
                       ],
@@ -1067,7 +1163,11 @@
                           "src": "/photos/markmontage-minigravare-1200.webp"
                         },
                         {
-                          "width": 1500,
+                          "width": 1600,
+                          "src": "/photos/markmontage-minigravare-1600.webp"
+                        },
+                        {
+                          "width": 2400,
                           "src": "/photos/markmontage-minigravare.webp"
                         }
                       ],
@@ -1113,7 +1213,11 @@
                           "src": "/photos/markmontage-kabeltrumma-1200.webp"
                         },
                         {
-                          "width": 1700,
+                          "width": 1600,
+                          "src": "/photos/markmontage-kabeltrumma-1600.webp"
+                        },
+                        {
+                          "width": 2400,
                           "src": "/photos/markmontage-kabeltrumma.webp"
                         }
                       ],
@@ -1144,7 +1248,11 @@
                           "src": "/photos/markmontage-minigravare-tradgard-1200.webp"
                         },
                         {
-                          "width": 1400,
+                          "width": 1600,
+                          "src": "/photos/markmontage-minigravare-tradgard-1600.webp"
+                        },
+                        {
+                          "width": 1799,
                           "src": "/photos/markmontage-minigravare-tradgard.webp"
                         }
                       ],
@@ -1182,7 +1290,11 @@
                     "src": "/photos/markmontage-teamet-1200.webp"
                   },
                   {
-                    "width": 2000,
+                    "width": 1600,
+                    "src": "/photos/markmontage-teamet-1600.webp"
+                  },
+                  {
+                    "width": 2400,
                     "src": "/photos/markmontage-teamet.webp"
                   }
                 ],
@@ -1339,7 +1451,11 @@
                     "src": "/photos/markmontage-teamet-1200.webp"
                   },
                   {
-                    "width": 2000,
+                    "width": 1600,
+                    "src": "/photos/markmontage-teamet-1600.webp"
+                  },
+                  {
+                    "width": 2400,
                     "src": "/photos/markmontage-teamet.webp"
                   }
                 ],
@@ -1418,7 +1534,15 @@
                           "src": "/photos/markmontage-konferens-800.webp"
                         },
                         {
-                          "width": 960,
+                          "width": 1200,
+                          "src": "/photos/markmontage-konferens-1200.webp"
+                        },
+                        {
+                          "width": 1600,
+                          "src": "/photos/markmontage-konferens-1600.webp"
+                        },
+                        {
+                          "width": 2400,
                           "src": "/photos/markmontage-konferens.webp"
                         }
                       ],
@@ -1435,7 +1559,19 @@
                           "src": "/photos/markmontage-minigravare-slap-480.webp"
                         },
                         {
-                          "width": 720,
+                          "width": 800,
+                          "src": "/photos/markmontage-minigravare-slap-800.webp"
+                        },
+                        {
+                          "width": 1200,
+                          "src": "/photos/markmontage-minigravare-slap-1200.webp"
+                        },
+                        {
+                          "width": 1600,
+                          "src": "/photos/markmontage-minigravare-slap-1600.webp"
+                        },
+                        {
+                          "width": 1800,
                           "src": "/photos/markmontage-minigravare-slap.webp"
                         }
                       ],
@@ -1473,7 +1609,11 @@
                     "src": "/photos/markmontage-gravmaskin-ror-1200.webp"
                   },
                   {
-                    "width": 1500,
+                    "width": 1600,
+                    "src": "/photos/markmontage-gravmaskin-ror-1600.webp"
+                  },
+                  {
+                    "width": 2400,
                     "src": "/photos/markmontage-gravmaskin-ror.webp"
                   }
                 ],
@@ -1561,7 +1701,11 @@
                     "src": "/photos/markmontage-arbete-1200.webp"
                   },
                   {
-                    "width": 1745,
+                    "width": 1600,
+                    "src": "/photos/markmontage-arbete-1600.webp"
+                  },
+                  {
+                    "width": 2400,
                     "src": "/photos/markmontage-arbete.webp"
                   }
                 ],
