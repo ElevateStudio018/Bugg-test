@@ -1,0 +1,33 @@
+name: Build for Inleed
+
+# Builds the site for the web host Inleed on every push to the branch, or by hand (Actions → Build for Inleed → Run
+# workflow). The run's artifact "inleed-hemsida" is the zip to unpack in public_html; see INLEED.md.
+on:
+  push:
+    branches: [claude/flottsunds-bygg-site-wptib7]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build:inleed
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+      # The artifact is zipped with the folder's contents at its root, as public_html wants them.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: inleed-hemsida
+          path: INLEED-UPLOAD/
+          include-hidden-files: true
+          retention-days: 30

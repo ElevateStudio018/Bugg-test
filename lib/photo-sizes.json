@@ -1,0 +1,149 @@
+{
+  "hero-hamnen": [
+    480,
+    800,
+    1200,
+    1600,
+    2400
+  ],
+  "markmontage-arbete": [
+    480,
+    800,
+    1200,
+    1600,
+    2400
+  ],
+  "markmontage-dagvatten-ror": [
+    480,
+    800,
+    1200,
+    1600,
+    1800
+  ],
+  "markmontage-dranering-ror": [
+    480,
+    800,
+    1200,
+    1600,
+    1800
+  ],
+  "markmontage-gatsten-stad": [
+    480,
+    800,
+    1200,
+    1600,
+    1800
+  ],
+  "markmontage-geotextil": [
+    480,
+    800,
+    1200,
+    1600,
+    1799
+  ],
+  "markmontage-gravmaskin-ror": [
+    480,
+    800,
+    1200,
+    1600,
+    2400
+  ],
+  "markmontage-kabeltrumma": [
+    480,
+    800,
+    1200,
+    1600,
+    2400
+  ],
+  "markmontage-konferens": [
+    480,
+    800,
+    1200,
+    1600,
+    2400
+  ],
+  "markmontage-kranbil-stad": [
+    480,
+    800,
+    1200,
+    1600,
+    1800
+  ],
+  "markmontage-minigravare-grasmatta": [
+    480,
+    800,
+    1200,
+    1600,
+    1800
+  ],
+  "markmontage-minigravare-slap": [
+    480,
+    800,
+    1200,
+    1600,
+    1800
+  ],
+  "markmontage-minigravare-tradgard": [
+    480,
+    800,
+    1200,
+    1600,
+    1799
+  ],
+  "markmontage-minigravare": [
+    480,
+    800,
+    1200,
+    1600,
+    2400
+  ],
+  "markmontage-schakt-kabel": [
+    480,
+    800,
+    1200,
+    1600,
+    2400
+  ],
+  "markmontage-stalstomme": [
+    480,
+    800,
+    1200,
+    1600,
+    2250
+  ],
+  "markmontage-stenlagd-gard": [
+    480,
+    800,
+    1200,
+    1600,
+    1799
+  ],
+  "markmontage-stenlaggning-pagar": [
+    480,
+    800,
+    1200,
+    1600,
+    1799
+  ],
+  "markmontage-teamet": [
+    480,
+    800,
+    1200,
+    1600,
+    2400
+  ],
+  "markmontage-vagarbete-avstangning": [
+    480,
+    800,
+    1200,
+    1600,
+    1799
+  ],
+  "markmontage-vagarbete": [
+    480,
+    800,
+    1200,
+    1600,
+    2340
+  ]
+}
