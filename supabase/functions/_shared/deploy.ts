@@ -20,7 +20,7 @@ export async function triggerDeploy(version: number): Promise<DeployResult> {
 
   const repository = env("GITHUB_REPOSITORY", "ElevateStudio018/Bugg-test");
   const workflow = env("GITHUB_WORKFLOW", "deploy-pages.yml");
-  const ref = env("GITHUB_REF", "claude/flottsunds-bygg-site-wptib7");
+  const ref = env("GITHUB_REF", "claude/markmontage-hemsida");
   const api = env("GITHUB_API_URL", "https://api.github.com");
 
   for (let attempt = 1; attempt <= 3; attempt++) {

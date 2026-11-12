@@ -4,7 +4,7 @@ name: Build for Inleed
 # workflow). The run's artifact "inleed-hemsida" is the zip to unpack in public_html; see INLEED.md.
 on:
   push:
-    branches: [claude/flottsunds-bygg-site-wptib7]
+    branches: [claude/markmontage-hemsida]
   workflow_dispatch:
 
 permissions:

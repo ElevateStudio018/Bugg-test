@@ -2,7 +2,7 @@ name: Deploy preview to GitHub Pages
 
 on:
   push:
-    branches: [claude/flottsunds-bygg-site-wptib7]
+    branches: [claude/markmontage-hemsida]
   workflow_dispatch:
 
 permissions:

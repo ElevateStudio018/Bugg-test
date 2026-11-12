@@ -31,7 +31,7 @@ chatten.
 Claude läser in kopplingar (connectors) när en session startar, så Supabase syns först i en ny session.
 
 1. Starta en ny Claude Code-session på repot **ElevateStudio018/Bugg-test**, grenen
-   **claude/flottsunds-bygg-site-wptib7**.
+   **claude/markmontage-hemsida**.
 2. Skriv: **Koppla in Supabase enligt SETUP.md**
 
 Claude lägger in databasen och funktionerna och kopplar ihop hemsidan med adminpanelen. Sedan visar Claude hur du
@@ -91,7 +91,7 @@ until the user says so. Never ask the user to paste a key, token or password int
 6. **Connect the site.** Set the GitHub repository variables `NEXT_PUBLIC_SUPABASE_URL` and
    `NEXT_PUBLIC_SUPABASE_ANON_KEY`. Use the GitHub API if this session may, otherwise the user does it under Settings →
    Secrets and variables → Actions → Variables. Then run the `deploy-pages.yml` workflow (workflow_dispatch) on
-   `claude/flottsunds-bygg-site-wptib7` and check that it succeeds.
+   `claude/markmontage-hemsida` and check that it succeeds.
 7. **The admin's login.** No e-mail is needed. The user creates it in the dashboard: Authentication → Users → **Add
    user** → **Create new user**, with elevate.studio018@gmail.com and a password they choose there, and **Auto Confirm
    User** ticked. The allowlist makes the account an admin. Once Resend is set up, `admin-invite` can send invitations

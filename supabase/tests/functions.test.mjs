@@ -129,7 +129,7 @@ await test("publish: refuses with nothing to publish, publishes a change and sta
   assert.equal(res.json.deploy.started, true);
   const dispatch = (await mocked()).find((r) => r.url.endsWith("/dispatches"));
   assert.ok(dispatch);
-  assert.equal(dispatch.body.ref, "claude/flottsunds-bygg-site-wptib7");
+  assert.equal(dispatch.body.ref, "claude/markmontage-hemsida");
 });
 
 await test("publish refuses content that breaks the schema, naming the field", async () => {
