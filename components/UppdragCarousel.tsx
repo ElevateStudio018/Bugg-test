@@ -130,7 +130,8 @@ export function UppdragCarousel({ items, labels }: { items: (Uppdrag & { id: str
       </div>
 
       {pageCount > 1 && (
-        <div className="mt-[15px] flex justify-center">
+        // Closer together on phones, so a dozen positions still fit across the screen.
+        <div className="mt-[15px] flex flex-wrap justify-center">
           {Array.from({ length: pageCount }, (_, page) => (
             <button
               key={page}
@@ -138,7 +139,7 @@ export function UppdragCarousel({ items, labels }: { items: (Uppdrag & { id: str
               onClick={() => goTo(page)}
               aria-label={fill(labels.goTo, { n: page + 1, total: pageCount })}
               aria-current={page === activePage ? "true" : undefined}
-              className="group/dot px-[12.5px] py-[16.5px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+              className="group/dot px-[5px] py-[16.5px] sm:px-[12.5px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
             >
               {/* The current position stretches from a dot into a short bar. */}
               <span

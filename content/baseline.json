@@ -678,23 +678,23 @@
         ],
         "icon": "Cable",
         "image": {
-          "src": "/photos/markmontage-fiber-kabeltrumma.webp",
+          "src": "/photos/markmontage-fiber-bat.webp",
           "variants": [
             {
               "width": 480,
-              "src": "/photos/markmontage-fiber-kabeltrumma-480.webp"
+              "src": "/photos/markmontage-fiber-bat-480.webp"
             },
             {
               "width": 800,
-              "src": "/photos/markmontage-fiber-kabeltrumma-800.webp"
+              "src": "/photos/markmontage-fiber-bat-800.webp"
             },
             {
               "width": 1125,
-              "src": "/photos/markmontage-fiber-kabeltrumma.webp"
+              "src": "/photos/markmontage-fiber-bat.webp"
             }
           ],
-          "alt": "Kabeltrumma på pråm vid kabelförläggning över vatten",
-          "focus": "50% 40%"
+          "alt": "Båt bogserar pråmen med kabeltrumman vid kabelförläggning i sjö",
+          "focus": "50% 45%"
         },
         "seo": {
           "title": "Fiberblåsning och fiberinstallation i Kungälv",
@@ -952,23 +952,23 @@
         "title": "Kabelförläggning över vatten",
         "href": "/tjanster/fiber",
         "image": {
-          "src": "/photos/markmontage-fiber-bat.webp",
+          "src": "/photos/markmontage-fiber-kabeltrumma.webp",
           "variants": [
             {
               "width": 480,
-              "src": "/photos/markmontage-fiber-bat-480.webp"
+              "src": "/photos/markmontage-fiber-kabeltrumma-480.webp"
             },
             {
               "width": 800,
-              "src": "/photos/markmontage-fiber-bat-800.webp"
+              "src": "/photos/markmontage-fiber-kabeltrumma-800.webp"
             },
             {
               "width": 1125,
-              "src": "/photos/markmontage-fiber-bat.webp"
+              "src": "/photos/markmontage-fiber-kabeltrumma.webp"
             }
           ],
-          "alt": "Båt bogserar pråmen vid kabelförläggning i sjö",
-          "focus": "50% 50%"
+          "alt": "Kabeltrumma på pråm vid kabelförläggning i sjö",
+          "focus": "50% 45%"
         }
       },
       "kranlyft": {
@@ -1548,27 +1548,31 @@
               "subheading": "Markmontage BEAB AB har sin bas i Romelanda utanför Kungälv och grundades 2002.",
               "text": "Markmontage BEAB AB är ett entreprenadföretag inom mark- och grundarbeten, verksamt i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd. Vi utför bland annat schaktning, dränering, grundläggning, VA-arbeten och fiberinstallation, har egna kranlastbilar för transporter och lyft, och tar även helhetsansvar som totalentreprenör på större projekt.",
               "image": {
-                "src": "/photos/markmontage-bil-solnedgang.webp",
+                "src": "/photos/markmontage-teamet.webp",
                 "variants": [
                   {
                     "width": 480,
-                    "src": "/photos/markmontage-bil-solnedgang-480.webp"
+                    "src": "/photos/markmontage-teamet-480.webp"
                   },
                   {
                     "width": 800,
-                    "src": "/photos/markmontage-bil-solnedgang-800.webp"
+                    "src": "/photos/markmontage-teamet-800.webp"
                   },
                   {
                     "width": 1200,
-                    "src": "/photos/markmontage-bil-solnedgang-1200.webp"
+                    "src": "/photos/markmontage-teamet-1200.webp"
                   },
                   {
-                    "width": 1240,
-                    "src": "/photos/markmontage-bil-solnedgang.webp"
+                    "width": 1600,
+                    "src": "/photos/markmontage-teamet-1600.webp"
+                  },
+                  {
+                    "width": 2400,
+                    "src": "/photos/markmontage-teamet.webp"
                   }
                 ],
-                "alt": "Markmontages servicebil i solnedgången",
-                "focus": "60% 60%"
+                "alt": "Markmontages medarbetare i overaller samlade vid ett bord utomhus",
+                "focus": "50% 40%"
               }
             },
             "process": {
@@ -1966,6 +1970,7 @@
               "images": {
                 "order": [
                   "palfinger",
+                  "servicebil",
                   "vaxthus",
                   "vakuumlyft",
                   "truckshow",
@@ -2364,6 +2369,32 @@
                       "focus": "60% 50%"
                     },
                     "caption": "Vår kranlastbil"
+                  },
+                  "servicebil": {
+                    "image": {
+                      "src": "/photos/markmontage-bil-solnedgang.webp",
+                      "variants": [
+                        {
+                          "width": 480,
+                          "src": "/photos/markmontage-bil-solnedgang-480.webp"
+                        },
+                        {
+                          "width": 800,
+                          "src": "/photos/markmontage-bil-solnedgang-800.webp"
+                        },
+                        {
+                          "width": 1200,
+                          "src": "/photos/markmontage-bil-solnedgang-1200.webp"
+                        },
+                        {
+                          "width": 1240,
+                          "src": "/photos/markmontage-bil-solnedgang.webp"
+                        }
+                      ],
+                      "alt": "Markmontages servicebil i solnedgången",
+                      "focus": "60% 60%"
+                    },
+                    "caption": "Vår servicebil"
                   }
                 }
               }
