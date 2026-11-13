@@ -394,6 +394,8 @@ const textSection = z.object({
 
 /** The certificates' badges in a row, from the certificates list, with a link to where they are shown in full. */
 const certificateStripSection = z.object({ type: z.literal("certificateStrip"), ...sectionBase, heading: lineText, link: linkSchema });
+/** An invitation to review the company on Google: a card with stars, a heading, a text and the button. */
+const reviewInviteSection = z.object({ type: z.literal("reviewInvite"), ...sectionBase, badge: lineText, heading: lineText, text: longText, button: linkSchema });
 const policyGoalSchema = z.object({ goal: longText, measure: longText });
 const policySchema = z.object({
   name: lineText,
@@ -440,6 +442,7 @@ export const sectionSchema = z.discriminatedUnion("type", [
   textSection,
   policiesSection,
   certificateStripSection,
+  reviewInviteSection,
 ]);
 export type Section = z.infer<typeof sectionSchema>;
 export type SectionType = Section["type"];

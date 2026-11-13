@@ -22,7 +22,8 @@ export function PromoSection({ section }: SectionProps<"promo">) {
           const classes = sideClasses[box.side];
           return (
             <div key={box.id}>
-              <div className="aspect-[2/1] w-full overflow-hidden bg-primary/20 lg:aspect-[21/9]">
+              {/* Large: square on phones, nearly the screen's height on desktop. */}
+              <div className="aspect-square w-full overflow-hidden bg-primary/20 sm:aspect-[4/3] lg:aspect-auto lg:h-[min(85vh,860px)]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   {...imageProps(box.image, "(min-width: 1280px) 1216px, 100vw")}
@@ -33,14 +34,14 @@ export function PromoSection({ section }: SectionProps<"promo">) {
                 />
               </div>
               <div
-                className={`relative mx-2 -mt-12 overflow-hidden bg-primary px-8 pb-8 pt-7 text-on-primary sm:mx-6 lg:-mt-48 lg:w-[46%] lg:p-12 ${classes.box}`}
+                className={`relative mx-2 -mt-12 overflow-hidden bg-primary px-8 pb-8 pt-7 text-on-primary sm:mx-6 lg:-mt-64 lg:w-[56%] lg:p-16 ${classes.box}`}
               >
                 <Topography
                   className={`pointer-events-none absolute h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 text-on-primary/[0.09] ${classes.pattern}`}
                 />
                 <div className="relative">
-                  <h2 className="text-h2 lg:text-[38px] lg:leading-[1.12]">{box.heading}</h2>
-                  {box.text && <p className="mt-3 text-copy lg:mt-4 lg:text-lead">{box.text}</p>}
+                  <h2 className="text-h2 sm:text-[38px] sm:leading-[1.12] lg:text-[52px] lg:leading-[1.06]">{box.heading}</h2>
+                  {box.text && <p className="mt-3 text-copy sm:text-lead lg:mt-5 lg:text-[22px] lg:leading-[1.4]">{box.text}</p>}
                   {box.link.label && (
                     <SiteLink href={box.link.href} className={promoPillClasses}>
                       {box.link.label}

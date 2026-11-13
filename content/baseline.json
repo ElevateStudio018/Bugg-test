@@ -1738,22 +1738,17 @@
               "zoom": 11
             },
             "omdomen": {
-              "type": "text",
+              "type": "reviewInvite",
               "hidden": false,
               "anchor": "omdomen",
               "label": "",
-              "heading": "Lämna ett omdöme",
-              "paragraphs": [
-                "Har vi gjort ett jobb åt dig? Berätta gärna hur du upplevde det. Ditt omdöme hjälper andra att välja rätt entreprenör och oss att bli ännu bättre.",
-                "Omdömena samlas på Google, där du också kan läsa vad andra kunder tycker."
-              ],
-              "image": null,
-              "imageSide": "right",
+              "badge": "Google-omdöme",
+              "heading": "Hur nöjd var du med jobbet?",
+              "text": "Har vi gjort ett jobb åt dig? Ditt omdöme hjälper andra att välja rätt entreprenör – och oss att bli ännu bättre.",
               "button": {
                 "label": "Skriv ett omdöme på Google",
                 "href": "https://www.google.com/maps/search/?api=1&query=Markmontage%20BEAB%20AB%20Romelanda"
-              },
-              "tone": "primary"
+              }
             },
             "kundomdomen": {
               "type": "testimonials",
