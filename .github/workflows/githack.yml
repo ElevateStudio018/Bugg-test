@@ -1,23 +1,26 @@
 name: Githack preview
 
-# Builds the site for raw.githack.com and puts the built files on the branch "githack", so the preview is at
+# Builds the site for raw.githack.com and puts the built files on a branch of their own, so the preview is at
 # https://raw.githack.com/ElevateStudio018/Bugg-test/githack/index.html on every push, or by hand
-# (Actions → Githack preview → Run workflow).
+# (Actions → Githack preview → Run workflow). The additions branch gets its own preview on "githack-tillagg":
+# https://raw.githack.com/ElevateStudio018/Bugg-test/githack-tillagg/index.html
 on:
   push:
-    branches: [claude/markmontage-hemsida]
+    branches: [claude/markmontage-hemsida, claude/markmontage-tillagg]
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: githack
+  group: githack-${{ github.ref_name }}
   cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      OUT_BRANCH: ${{ github.ref_name == 'claude/markmontage-tillagg' && 'githack-tillagg' || 'githack' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -28,23 +31,23 @@ jobs:
       - run: npm run build
         env:
           # Githack serves the branch's files under /<owner>/<repo>/<branch>/.
-          STATIC_BASE_PATH: /ElevateStudio018/Bugg-test/githack
+          STATIC_BASE_PATH: /ElevateStudio018/Bugg-test/${{ env.OUT_BRANCH }}
           NEXT_PUBLIC_SUPABASE_URL: ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
       # A new commit on top of the branch with the built files only; the branch is created the first time.
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          if git ls-remote --exit-code --heads origin githack >/dev/null; then
-            git fetch --depth 1 origin githack
+          if git ls-remote --exit-code --heads origin "$OUT_BRANCH" >/dev/null; then
+            git fetch --depth 1 origin "$OUT_BRANCH"
             git worktree add --detach ../githack FETCH_HEAD
           else
             git worktree add --detach ../githack
-            (cd ../githack && git checkout -q --orphan githack-new)
+            (cd ../githack && git checkout -q --orphan "$OUT_BRANCH-new")
           fi
           cd ../githack
           git rm -rfq --ignore-unmatch .
           cp -r "$GITHUB_WORKSPACE/out/." .
           git add -A
           git commit -qm "Githack preview of $GITHUB_SHA" || exit 0
-          git push origin HEAD:refs/heads/githack
+          git push origin "HEAD:refs/heads/$OUT_BRANCH"

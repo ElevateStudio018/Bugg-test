@@ -3,6 +3,7 @@ import type { SectionType } from "@/lib/site/schema.ts";
 import type { SectionProps } from "./types";
 import { AboutIntroSection } from "./AboutIntroSection";
 import { AboutSection } from "./AboutSection";
+import { CertificateStripSection } from "./CertificateStripSection";
 import { BandSection } from "./BandSection";
 import { CertificatesSection } from "./CertificatesSection";
 import { ContactSection } from "./ContactSection";
@@ -51,6 +52,7 @@ export const sectionComponents: { [T in SectionType]: ComponentType<SectionProps
   testimonials: TestimonialsSection,
   text: TextSection,
   policies: PoliciesSection,
+  certificateStrip: CertificateStripSection,
 };
 
 /** Sections that end without bottom space of their own, so the section after them can carry straight on. */

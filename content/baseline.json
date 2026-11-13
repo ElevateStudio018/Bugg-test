@@ -187,6 +187,7 @@
         "process",
         "faq",
         "omdomen",
+        "jobba",
         "kontakt"
       ],
       "items": {
@@ -217,6 +218,10 @@
         "omdomen": {
           "label": "Omdömen",
           "href": "/#omdomen"
+        },
+        "jobba": {
+          "label": "Jobba hos oss",
+          "href": "/om-oss#jobba"
         }
       }
     },
@@ -363,6 +368,7 @@
       "fiber",
       "anlaggning-vagar-planer",
       "stenlaggning",
+      "pooler",
       "transporter-kranbil",
       "totalentreprenad"
     ],
@@ -416,7 +422,7 @@
         "description": [
           "Bristfällig dränering är en av de vanligaste orsakerna till fukt- och sättningsskador i äldre hus. Markmontage BEAB AB utför dränering i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd, både vid nybyggnation och som åtgärd vid befintliga fuktproblem.",
           "Arbetet omfattar schaktning runt grunden, ny dränering och fuktskydd, samt återfyllning och iordningställande av marken efteråt. Vi lägger stor vikt vid att dräneringen leder bort vatten på rätt sätt, anpassat efter husets grundläggning och markens lutning.",
-          "Dränering vid en befintlig bostad ger i många fall rätt till rotavdrag för arbetskostnaden – vi berättar gärna vad som gäller för just ditt hus.",
+          "Dränering vid en befintlig bostad ger i många fall rätt till rotavdrag på arbetskostnaden. Avdraget är 30 procent av arbetskostnaden, högst 50 000 kronor per person och år. Exempel: kostar arbetet 80 000 kronor blir rotavdraget 24 000 kronor, och du betalar 56 000 kronor för arbetet. Material och maskiner ger inget avdrag. Äger ni huset tillsammans kan ni dela på avdraget. Vi drar av beloppet direkt på fakturan och sköter ansökan till Skatteverket.",
           "Kontakta oss för ett kostnadsfritt hembesök, så gör vi en bedömning av dräneringen vid din fastighet."
         ],
         "icon": "Droplets",
@@ -742,6 +748,49 @@
           "title": "Transporter och kranbil i Kungälv",
           "description": "Transporter och kranlyft med egna kranlastbilar i Kungälv, Stenungsund, Ale, Trestad och Göteborg."
         }
+      },
+      "pooler": {
+        "slug": "pooler",
+        "name": "Pooler",
+        "shortDescription": "Schakt, grund och montering av pooler – både glasfiberpooler och gjutna betongpooler.",
+        "description": [
+          "Markmontage BEAB AB bygger pooler i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd. Vi tar hand om allt arbete i marken, från schakt till färdig pool.",
+          "För en glasfiberpool schaktar vi gropen, lägger en bädd av makadam, lyfter poolen på plats med kran och kopplar in rören. För en betongpool lägger vi isolering, gjuter bottenplattan, bygger väggarna av formblock och gjuter dem.",
+          "Med egna kranbilar kan vi både frakta poolen och lyfta den på plats, även där det är trångt.",
+          "Kontakta oss för ett kostnadsfritt hembesök, så går vi igenom förutsättningarna på din tomt."
+        ],
+        "icon": "Waves",
+        "image": {
+          "src": "/photos/markmontage-pool-glasfiber.webp",
+          "variants": [
+            {
+              "width": 480,
+              "src": "/photos/markmontage-pool-glasfiber-480.webp"
+            },
+            {
+              "width": 800,
+              "src": "/photos/markmontage-pool-glasfiber-800.webp"
+            },
+            {
+              "width": 1200,
+              "src": "/photos/markmontage-pool-glasfiber-1200.webp"
+            },
+            {
+              "width": 1600,
+              "src": "/photos/markmontage-pool-glasfiber-1600.webp"
+            },
+            {
+              "width": 1800,
+              "src": "/photos/markmontage-pool-glasfiber.webp"
+            }
+          ],
+          "alt": "En glasfiberpool på plats i en schaktad grop i en trädgård",
+          "focus": "50% 45%"
+        },
+        "seo": {
+          "title": "Pooler i Kungälv",
+          "description": "Schakt, grund och montering av glasfiberpooler och betongpooler i Kungälv, Stenungsund, Ale, Trestad och Göteborg."
+        }
       }
     }
   },
@@ -1001,7 +1050,7 @@
       "pool": {
         "tag": "Markarbeten",
         "title": "Schakt och grund för pool",
-        "href": "/tjanster/schaktning-markarbeten",
+        "href": "/tjanster/pooler",
         "image": {
           "src": "/photos/markmontage-pool-glasfiber.webp",
           "variants": [
@@ -1032,7 +1081,7 @@
       "betongpool": {
         "tag": "Grund & dränering",
         "title": "Bottenplatta för betongpool",
-        "href": "/tjanster/grundlaggning",
+        "href": "/tjanster/pooler",
         "image": {
           "src": "/photos/markmontage-pool-bottenplatta.webp",
           "variants": [
@@ -1221,6 +1270,7 @@
         "sections": {
           "order": [
             "hero",
+            "certifikat",
             "tjanster",
             "uppdrag",
             "siffror",
@@ -1228,6 +1278,7 @@
             "erbjudanden",
             "om-oss",
             "process",
+            "kundomdomen",
             "omdomen",
             "faq",
             "kontakt",
@@ -1691,7 +1742,7 @@
               "hidden": false,
               "anchor": "omdomen",
               "label": "",
-              "heading": "Omdömen",
+              "heading": "Lämna ett omdöme",
               "paragraphs": [
                 "Har vi gjort ett jobb åt dig? Berätta gärna hur du upplevde det. Ditt omdöme hjälper andra att välja rätt entreprenör och oss att bli ännu bättre.",
                 "Omdömena samlas på Google, där du också kan läsa vad andra kunder tycker."
@@ -1703,6 +1754,55 @@
                 "href": "https://www.google.com/maps/search/?api=1&query=Markmontage%20BEAB%20AB%20Romelanda"
               },
               "tone": "primary"
+            },
+            "kundomdomen": {
+              "type": "testimonials",
+              "hidden": false,
+              "label": "",
+              "anchor": "kundomdomen",
+              "heading": "Vad våra kunder säger",
+              "text": "Omdömen från våra kunder på Google.",
+              "items": {
+                "order": [
+                  "omdome-1",
+                  "omdome-2",
+                  "omdome-3"
+                ],
+                "items": {
+                  "omdome-1": {
+                    "quote": "Här visas ett omdöme från en kund på Google. Vi lägger in de riktiga omdömena när vi har dem.",
+                    "name": "Kundens namn",
+                    "detail": "Omdöme på Google",
+                    "rating": 0,
+                    "image": null
+                  },
+                  "omdome-2": {
+                    "quote": "Här visas ett omdöme från en kund på Google. Vi lägger in de riktiga omdömena när vi har dem.",
+                    "name": "Kundens namn",
+                    "detail": "Omdöme på Google",
+                    "rating": 0,
+                    "image": null
+                  },
+                  "omdome-3": {
+                    "quote": "Här visas ett omdöme från en kund på Google. Vi lägger in de riktiga omdömena när vi har dem.",
+                    "name": "Kundens namn",
+                    "detail": "Omdöme på Google",
+                    "rating": 0,
+                    "image": null
+                  }
+                }
+              }
+            },
+            "certifikat": {
+              "type": "certificateStrip",
+              "hidden": false,
+              "label": "",
+              "anchor": "",
+              "heading": "Certifierade enligt ISO 9001, 14001 och 45001",
+              "link": {
+                "label": "Läs om vår hållbarhet",
+                "href": "/hallbarhet"
+              }
             }
           }
         }
@@ -1718,8 +1818,11 @@
           "order": [
             "bild",
             "intro",
+            "kontakt",
             "bilder",
-            "grunden"
+            "kranbilar",
+            "grunden",
+            "jobba"
           ],
           "items": {
             "bild": {
@@ -1921,6 +2024,107 @@
                 "label": "Begär offert",
                 "href": "#offert"
               }
+            },
+            "kontakt": {
+              "type": "team",
+              "hidden": false,
+              "label": "",
+              "anchor": "kontaktpersoner",
+              "heading": "Kontakta oss direkt",
+              "text": "",
+              "members": {
+                "order": [
+                  "jens",
+                  "alice"
+                ],
+                "items": {
+                  "jens": {
+                    "name": "Jens Svensson",
+                    "role": "VD",
+                    "phone": "070-434 40 56",
+                    "email": "jens@markmontage.se",
+                    "image": null
+                  },
+                  "alice": {
+                    "name": "Alice",
+                    "role": "",
+                    "phone": "",
+                    "email": "alice@markmontage.se",
+                    "image": null
+                  }
+                }
+              }
+            },
+            "kranbilar": {
+              "type": "pricelist",
+              "hidden": false,
+              "label": "",
+              "anchor": "kranbilar",
+              "heading": "Våra kranbilar",
+              "text": "Med egna kranlastbilar kan vi både frakta och lyfta på plats.",
+              "rows": {
+                "order": [
+                  "scania",
+                  "volvo"
+                ],
+                "items": {
+                  "scania": {
+                    "name": "Scania med Palfinger-kran",
+                    "description": "Vår orange kranlastbil med lång kran för lyft på stort avstånd, till exempel maskiner, pooler och byggmaterial.",
+                    "price": "Uppgift kommer"
+                  },
+                  "volvo": {
+                    "name": "Volvo FMX med Palfinger PK 27002-SH",
+                    "description": "Kranbil med personkorg för arbete på höjd, till exempel vid fasader, stolpar och ledningar.",
+                    "price": "Uppgift kommer"
+                  }
+                }
+              },
+              "note": "Lyftkapacitet och räckvidd fyller vi i inom kort."
+            },
+            "jobba": {
+              "type": "text",
+              "hidden": false,
+              "label": "",
+              "anchor": "jobba",
+              "heading": "Jobba hos oss",
+              "paragraphs": [
+                "Vi är ett 18-tal medarbetare som arbetar med mark, kabel och fundament runt Kungälv och Göteborg. Hos oss jobbar du med maskiner och kranbilar i varierande uppdrag, i ett team där vi hjälps åt.",
+                "Är du intresserad av att jobba hos oss? Skicka några rader om dig själv, så hör vi av oss när vi söker folk."
+              ],
+              "image": {
+                "src": "/photos/markmontage-teamet.webp",
+                "variants": [
+                  {
+                    "width": 480,
+                    "src": "/photos/markmontage-teamet-480.webp"
+                  },
+                  {
+                    "width": 800,
+                    "src": "/photos/markmontage-teamet-800.webp"
+                  },
+                  {
+                    "width": 1200,
+                    "src": "/photos/markmontage-teamet-1200.webp"
+                  },
+                  {
+                    "width": 1600,
+                    "src": "/photos/markmontage-teamet-1600.webp"
+                  },
+                  {
+                    "width": 2400,
+                    "src": "/photos/markmontage-teamet.webp"
+                  }
+                ],
+                "alt": "Markmontages medarbetare i overaller samlade vid ett bord utomhus",
+                "focus": "50% 40%"
+              },
+              "imageSide": "right",
+              "button": {
+                "label": "Skicka en intresseanmälan",
+                "href": "mailto:info@markmontage.se?subject=Intresseanm%C3%A4lan"
+              },
+              "tone": "card"
             }
           }
         }
@@ -1935,6 +2139,9 @@
         "sections": {
           "order": [
             "uppdrag",
+            "referens-betongpool",
+            "referens-glasfiberpool",
+            "referens-fiber",
             "bilder",
             "offert"
           ],
@@ -1965,7 +2172,7 @@
               "hidden": false,
               "anchor": "bilder",
               "label": "",
-              "heading": "Bilder från våra jobb",
+              "heading": "Fler bilder från våra jobb",
               "text": "Ett urval av bilder från uppdrag vi har utfört – markarbeten, pooler, kranlyft och transporter.",
               "images": {
                 "order": [
@@ -1978,11 +2185,6 @@
                   "grip",
                   "korg",
                   "betong",
-                  "pool-lyft",
-                  "pool-makadam",
-                  "pool-isolering",
-                  "pool-vaggar",
-                  "pool-gjutning",
                   "minigravare-slap"
                 ],
                 "items": {
@@ -2089,148 +2291,6 @@
                       "focus": "50% 45%"
                     },
                     "caption": "Arbetskorg en frostig morgon"
-                  },
-                  "pool-lyft": {
-                    "image": {
-                      "src": "/photos/markmontage-pool-lyft.webp",
-                      "variants": [
-                        {
-                          "width": 480,
-                          "src": "/photos/markmontage-pool-lyft-480.webp"
-                        },
-                        {
-                          "width": 800,
-                          "src": "/photos/markmontage-pool-lyft-800.webp"
-                        },
-                        {
-                          "width": 960,
-                          "src": "/photos/markmontage-pool-lyft.webp"
-                        }
-                      ],
-                      "alt": "En pool lyfts med kran ner i en trädgård",
-                      "focus": "50% 55%"
-                    },
-                    "caption": "Lyft av pool"
-                  },
-                  "pool-makadam": {
-                    "image": {
-                      "src": "/photos/markmontage-pool-makadam.webp",
-                      "variants": [
-                        {
-                          "width": 480,
-                          "src": "/photos/markmontage-pool-makadam-480.webp"
-                        },
-                        {
-                          "width": 800,
-                          "src": "/photos/markmontage-pool-makadam-800.webp"
-                        },
-                        {
-                          "width": 1200,
-                          "src": "/photos/markmontage-pool-makadam-1200.webp"
-                        },
-                        {
-                          "width": 1600,
-                          "src": "/photos/markmontage-pool-makadam-1600.webp"
-                        },
-                        {
-                          "width": 1800,
-                          "src": "/photos/markmontage-pool-makadam.webp"
-                        }
-                      ],
-                      "alt": "Schaktad grop med makadambädd inför en pool",
-                      "focus": "50% 50%"
-                    },
-                    "caption": "Makadambädd inför pool"
-                  },
-                  "pool-isolering": {
-                    "image": {
-                      "src": "/photos/markmontage-pool-isolering.webp",
-                      "variants": [
-                        {
-                          "width": 480,
-                          "src": "/photos/markmontage-pool-isolering-480.webp"
-                        },
-                        {
-                          "width": 800,
-                          "src": "/photos/markmontage-pool-isolering-800.webp"
-                        },
-                        {
-                          "width": 1200,
-                          "src": "/photos/markmontage-pool-isolering-1200.webp"
-                        },
-                        {
-                          "width": 1600,
-                          "src": "/photos/markmontage-pool-isolering-1600.webp"
-                        },
-                        {
-                          "width": 1800,
-                          "src": "/photos/markmontage-pool-isolering.webp"
-                        }
-                      ],
-                      "alt": "Isolerskivor utlagda i en schaktad grop",
-                      "focus": "50% 50%"
-                    },
-                    "caption": "Isolering under bottenplattan"
-                  },
-                  "pool-vaggar": {
-                    "image": {
-                      "src": "/photos/markmontage-pool-vaggar.webp",
-                      "variants": [
-                        {
-                          "width": 480,
-                          "src": "/photos/markmontage-pool-vaggar-480.webp"
-                        },
-                        {
-                          "width": 800,
-                          "src": "/photos/markmontage-pool-vaggar-800.webp"
-                        },
-                        {
-                          "width": 1200,
-                          "src": "/photos/markmontage-pool-vaggar-1200.webp"
-                        },
-                        {
-                          "width": 1600,
-                          "src": "/photos/markmontage-pool-vaggar-1600.webp"
-                        },
-                        {
-                          "width": 2016,
-                          "src": "/photos/markmontage-pool-vaggar.webp"
-                        }
-                      ],
-                      "alt": "Poolväggar av formblock i kvällsljus",
-                      "focus": "50% 55%"
-                    },
-                    "caption": "Poolväggar av formblock"
-                  },
-                  "pool-gjutning": {
-                    "image": {
-                      "src": "/photos/markmontage-pool-gjutning.webp",
-                      "variants": [
-                        {
-                          "width": 480,
-                          "src": "/photos/markmontage-pool-gjutning-480.webp"
-                        },
-                        {
-                          "width": 800,
-                          "src": "/photos/markmontage-pool-gjutning-800.webp"
-                        },
-                        {
-                          "width": 1200,
-                          "src": "/photos/markmontage-pool-gjutning-1200.webp"
-                        },
-                        {
-                          "width": 1600,
-                          "src": "/photos/markmontage-pool-gjutning-1600.webp"
-                        },
-                        {
-                          "width": 2016,
-                          "src": "/photos/markmontage-pool-gjutning.webp"
-                        }
-                      ],
-                      "alt": "Betongbil gjuter en pool i en villaträdgård",
-                      "focus": "50% 50%"
-                    },
-                    "caption": "Gjutning av betongpool"
                   },
                   "minigravare-slap": {
                     "image": {
@@ -2395,6 +2455,303 @@
                       "focus": "60% 60%"
                     },
                     "caption": "Vår servicebil"
+                  }
+                }
+              }
+            },
+            "referens-betongpool": {
+              "type": "gallery",
+              "hidden": false,
+              "label": "",
+              "anchor": "betongpool",
+              "heading": "Referens: betongpool i villaträdgård",
+              "text": "Från schaktad grop till gjuten pool. Vi schaktade, lade isolering och gjöt bottenplattan, byggde poolens väggar av formblock och gjöt dem.",
+              "images": {
+                "order": [
+                  "isolering",
+                  "bottenplatta",
+                  "vaggar",
+                  "gjutning"
+                ],
+                "items": {
+                  "isolering": {
+                    "image": {
+                      "src": "/photos/markmontage-pool-isolering.webp",
+                      "variants": [
+                        {
+                          "width": 480,
+                          "src": "/photos/markmontage-pool-isolering-480.webp"
+                        },
+                        {
+                          "width": 800,
+                          "src": "/photos/markmontage-pool-isolering-800.webp"
+                        },
+                        {
+                          "width": 1200,
+                          "src": "/photos/markmontage-pool-isolering-1200.webp"
+                        },
+                        {
+                          "width": 1600,
+                          "src": "/photos/markmontage-pool-isolering-1600.webp"
+                        },
+                        {
+                          "width": 1800,
+                          "src": "/photos/markmontage-pool-isolering.webp"
+                        }
+                      ],
+                      "alt": "Isolerskivor utlagda i en schaktad grop",
+                      "focus": "50% 50%"
+                    },
+                    "caption": "1. Isolering under bottenplattan"
+                  },
+                  "bottenplatta": {
+                    "image": {
+                      "src": "/photos/markmontage-pool-bottenplatta.webp",
+                      "variants": [
+                        {
+                          "width": 480,
+                          "src": "/photos/markmontage-pool-bottenplatta-480.webp"
+                        },
+                        {
+                          "width": 800,
+                          "src": "/photos/markmontage-pool-bottenplatta-800.webp"
+                        },
+                        {
+                          "width": 1200,
+                          "src": "/photos/markmontage-pool-bottenplatta-1200.webp"
+                        },
+                        {
+                          "width": 1600,
+                          "src": "/photos/markmontage-pool-bottenplatta-1600.webp"
+                        },
+                        {
+                          "width": 2016,
+                          "src": "/photos/markmontage-pool-bottenplatta.webp"
+                        }
+                      ],
+                      "alt": "Gjuten bottenplatta med armering för en pool",
+                      "focus": "50% 50%"
+                    },
+                    "caption": "2. Gjuten bottenplatta med armering"
+                  },
+                  "vaggar": {
+                    "image": {
+                      "src": "/photos/markmontage-pool-vaggar.webp",
+                      "variants": [
+                        {
+                          "width": 480,
+                          "src": "/photos/markmontage-pool-vaggar-480.webp"
+                        },
+                        {
+                          "width": 800,
+                          "src": "/photos/markmontage-pool-vaggar-800.webp"
+                        },
+                        {
+                          "width": 1200,
+                          "src": "/photos/markmontage-pool-vaggar-1200.webp"
+                        },
+                        {
+                          "width": 1600,
+                          "src": "/photos/markmontage-pool-vaggar-1600.webp"
+                        },
+                        {
+                          "width": 2016,
+                          "src": "/photos/markmontage-pool-vaggar.webp"
+                        }
+                      ],
+                      "alt": "Poolväggar av formblock i kvällsljus",
+                      "focus": "50% 55%"
+                    },
+                    "caption": "3. Väggar av formblock"
+                  },
+                  "gjutning": {
+                    "image": {
+                      "src": "/photos/markmontage-pool-gjutning.webp",
+                      "variants": [
+                        {
+                          "width": 480,
+                          "src": "/photos/markmontage-pool-gjutning-480.webp"
+                        },
+                        {
+                          "width": 800,
+                          "src": "/photos/markmontage-pool-gjutning-800.webp"
+                        },
+                        {
+                          "width": 1200,
+                          "src": "/photos/markmontage-pool-gjutning-1200.webp"
+                        },
+                        {
+                          "width": 1600,
+                          "src": "/photos/markmontage-pool-gjutning-1600.webp"
+                        },
+                        {
+                          "width": 2016,
+                          "src": "/photos/markmontage-pool-gjutning.webp"
+                        }
+                      ],
+                      "alt": "Betongbil gjuter en pool i en villaträdgård",
+                      "focus": "50% 50%"
+                    },
+                    "caption": "4. Gjutning av väggarna"
+                  }
+                }
+              }
+            },
+            "referens-glasfiberpool": {
+              "type": "gallery",
+              "hidden": false,
+              "label": "",
+              "anchor": "glasfiberpool",
+              "heading": "Referens: glasfiberpool",
+              "text": "Schakt, bädd och montering av en glasfiberpool. Vi schaktade gropen, lade en bädd av makadam, lyfte poolen på plats med kran och kopplade in rören.",
+              "images": {
+                "order": [
+                  "makadam",
+                  "lyft",
+                  "pa-plats"
+                ],
+                "items": {
+                  "makadam": {
+                    "image": {
+                      "src": "/photos/markmontage-pool-makadam.webp",
+                      "variants": [
+                        {
+                          "width": 480,
+                          "src": "/photos/markmontage-pool-makadam-480.webp"
+                        },
+                        {
+                          "width": 800,
+                          "src": "/photos/markmontage-pool-makadam-800.webp"
+                        },
+                        {
+                          "width": 1200,
+                          "src": "/photos/markmontage-pool-makadam-1200.webp"
+                        },
+                        {
+                          "width": 1600,
+                          "src": "/photos/markmontage-pool-makadam-1600.webp"
+                        },
+                        {
+                          "width": 1800,
+                          "src": "/photos/markmontage-pool-makadam.webp"
+                        }
+                      ],
+                      "alt": "Schaktad grop med makadambädd inför en pool",
+                      "focus": "50% 50%"
+                    },
+                    "caption": "1. Schaktad grop med makadambädd"
+                  },
+                  "lyft": {
+                    "image": {
+                      "src": "/photos/markmontage-pool-lyft.webp",
+                      "variants": [
+                        {
+                          "width": 480,
+                          "src": "/photos/markmontage-pool-lyft-480.webp"
+                        },
+                        {
+                          "width": 800,
+                          "src": "/photos/markmontage-pool-lyft-800.webp"
+                        },
+                        {
+                          "width": 960,
+                          "src": "/photos/markmontage-pool-lyft.webp"
+                        }
+                      ],
+                      "alt": "En pool lyfts med kran ner i en trädgård",
+                      "focus": "50% 55%"
+                    },
+                    "caption": "2. Poolen lyfts på plats"
+                  },
+                  "pa-plats": {
+                    "image": {
+                      "src": "/photos/markmontage-pool-glasfiber.webp",
+                      "variants": [
+                        {
+                          "width": 480,
+                          "src": "/photos/markmontage-pool-glasfiber-480.webp"
+                        },
+                        {
+                          "width": 800,
+                          "src": "/photos/markmontage-pool-glasfiber-800.webp"
+                        },
+                        {
+                          "width": 1200,
+                          "src": "/photos/markmontage-pool-glasfiber-1200.webp"
+                        },
+                        {
+                          "width": 1600,
+                          "src": "/photos/markmontage-pool-glasfiber-1600.webp"
+                        },
+                        {
+                          "width": 1800,
+                          "src": "/photos/markmontage-pool-glasfiber.webp"
+                        }
+                      ],
+                      "alt": "En glasfiberpool på plats i en schaktad grop i en trädgård",
+                      "focus": "50% 45%"
+                    },
+                    "caption": "3. Poolen på plats med rören dragna"
+                  }
+                }
+              }
+            },
+            "referens-fiber": {
+              "type": "gallery",
+              "hidden": false,
+              "label": "",
+              "anchor": "fiber-sjo",
+              "heading": "Referens: kabelförläggning i sjö",
+              "text": "Fiberkabel förlagd över vatten. Kabeltrumman står på en pråm som båten bogserar, och kabeln läggs ut längs sträckan.",
+              "images": {
+                "order": [
+                  "trumma",
+                  "bat"
+                ],
+                "items": {
+                  "trumma": {
+                    "image": {
+                      "src": "/photos/markmontage-fiber-kabeltrumma.webp",
+                      "variants": [
+                        {
+                          "width": 480,
+                          "src": "/photos/markmontage-fiber-kabeltrumma-480.webp"
+                        },
+                        {
+                          "width": 800,
+                          "src": "/photos/markmontage-fiber-kabeltrumma-800.webp"
+                        },
+                        {
+                          "width": 1125,
+                          "src": "/photos/markmontage-fiber-kabeltrumma.webp"
+                        }
+                      ],
+                      "alt": "Kabeltrumma på pråm vid kabelförläggning i sjö",
+                      "focus": "50% 45%"
+                    },
+                    "caption": "Kabeltrumman på pråmen"
+                  },
+                  "bat": {
+                    "image": {
+                      "src": "/photos/markmontage-fiber-bat.webp",
+                      "variants": [
+                        {
+                          "width": 480,
+                          "src": "/photos/markmontage-fiber-bat-480.webp"
+                        },
+                        {
+                          "width": 800,
+                          "src": "/photos/markmontage-fiber-bat-800.webp"
+                        },
+                        {
+                          "width": 1125,
+                          "src": "/photos/markmontage-fiber-bat.webp"
+                        }
+                      ],
+                      "alt": "Båt bogserar pråmen vid kabelförläggning i sjö",
+                      "focus": "50% 45%"
+                    },
+                    "caption": "Båten bogserar pråmen"
                   }
                 }
               }

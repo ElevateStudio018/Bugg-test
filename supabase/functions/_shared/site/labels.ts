@@ -72,6 +72,7 @@ export const sectionTypeLabels: Record<SectionType, { label: string; description
   band: { label: "Färgat band", description: "Text, en bred bild och mer text på färgad bakgrund" },
   certificates: { label: "Certifikat", description: "Företagets certifikat och behörigheter" },
   policies: { label: "Policyer", description: "Företagets policyer med mål och uppföljning" },
+  certificateStrip: { label: "Certifikatsrad", description: "Certifikatens märken på en rad" },
   uppdragGrid: { label: "Alla uppdrag", description: "Alla uppdrag med filter" },
   cta: { label: "Uppmaning", description: "En rubrik och knapp som leder till offertformuläret" },
   team: { label: "Teamet", description: "Personerna i företaget" },
@@ -288,6 +289,7 @@ export const sectionFields: Record<SectionType, FieldSpec[]> = {
     { key: "emptyHeading", label: "Rubrik när listan är tom", kind: "text" },
     { key: "emptyText", label: "Text när listan är tom (följs av telefonnumret)", kind: "textarea" },
   ],
+  certificateStrip: [heading(), link("link", "Länk")],
   policies: [
     heading(),
     intro(),

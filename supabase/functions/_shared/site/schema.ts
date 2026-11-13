@@ -393,6 +393,8 @@ const textSection = z.object({
   tone: z.enum(["light", "card", "primary"]),
 });
 
+/** The certificates' badges in a row, from the certificates list, with a link to where they are shown in full. */
+const certificateStripSection = z.object({ type: z.literal("certificateStrip"), ...sectionBase, heading: lineText, link: linkSchema });
 const policyGoalSchema = z.object({ goal: longText, measure: longText });
 const policySchema = z.object({
   name: lineText,
@@ -438,6 +440,7 @@ export const sectionSchema = z.discriminatedUnion("type", [
   testimonialsSection,
   textSection,
   policiesSection,
+  certificateStripSection,
 ]);
 export type Section = z.infer<typeof sectionSchema>;
 export type SectionType = Section["type"];
