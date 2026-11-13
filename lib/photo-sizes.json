@@ -36,6 +36,13 @@
     800,
     1125
   ],
+  "markmontage-fordonsparken": [
+    480,
+    800,
+    1200,
+    1600,
+    2016
+  ],
   "markmontage-gatsten-stad": [
     480,
     800,
@@ -71,11 +78,24 @@
     1600,
     2400
   ],
+  "markmontage-kran-flagga": [
+    480,
+    800,
+    1200,
+    1600,
+    1800
+  ],
   "markmontage-kranbil-betong": [
     480,
     800,
     1200,
     1242
+  ],
+  "markmontage-kranbil-fasad": [
+    480,
+    800,
+    1200,
+    1512
   ],
   "markmontage-kranbil-gravmaskin": [
     480,
@@ -92,6 +112,13 @@
     800,
     1200,
     1242
+  ],
+  "markmontage-kranbil-palfinger": [
+    480,
+    800,
+    1200,
+    1600,
+    2400
   ],
   "markmontage-kranbil-stad": [
     480,
@@ -140,10 +167,52 @@
     1600,
     2400
   ],
+  "markmontage-pool-bottenplatta": [
+    480,
+    800,
+    1200,
+    1600,
+    2016
+  ],
+  "markmontage-pool-gjutning": [
+    480,
+    800,
+    1200,
+    1600,
+    2016
+  ],
+  "markmontage-pool-glasfiber": [
+    480,
+    800,
+    1200,
+    1600,
+    1800
+  ],
+  "markmontage-pool-isolering": [
+    480,
+    800,
+    1200,
+    1600,
+    1800
+  ],
   "markmontage-pool-lyft": [
     480,
     800,
     960
+  ],
+  "markmontage-pool-makadam": [
+    480,
+    800,
+    1200,
+    1600,
+    1800
+  ],
+  "markmontage-pool-vaggar": [
+    480,
+    800,
+    1200,
+    1600,
+    2016
   ],
   "markmontage-schakt-kabel": [
     480,
