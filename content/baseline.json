@@ -738,7 +738,7 @@
       "fiber-sjo",
       "kranlyft",
       "maskintransport",
-      "betongelement"
+      "bod"
     ],
     "items": {
       "schakt": {
@@ -1059,31 +1059,32 @@
           "alt": "Kranlastbil med en grävmaskin på flaket"
         }
       },
-      "betongelement": {
+      "bod": {
         "tag": "Transporter",
-        "title": "Lastning av betongelement",
+        "title": "Lyft av byggbod",
         "href": "/tjanster/transporter-kranbil",
         "image": {
-          "src": "/photos/markmontage-kranbil-betong.webp",
+          "src": "/photos/markmontage-kranbil-bod.webp",
           "variants": [
             {
               "width": 480,
-              "src": "/photos/markmontage-kranbil-betong-480.webp"
+              "src": "/photos/markmontage-kranbil-bod-480.webp"
             },
             {
               "width": 800,
-              "src": "/photos/markmontage-kranbil-betong-800.webp"
+              "src": "/photos/markmontage-kranbil-bod-800.webp"
             },
             {
               "width": 1200,
-              "src": "/photos/markmontage-kranbil-betong-1200.webp"
+              "src": "/photos/markmontage-kranbil-bod-1200.webp"
             },
             {
               "width": 1242,
-              "src": "/photos/markmontage-kranbil-betong.webp"
+              "src": "/photos/markmontage-kranbil-bod.webp"
             }
           ],
-          "alt": "Kranlastbilar lastar betongelement"
+          "alt": "Kranbil lyfter en blå byggbod",
+          "focus": "40% 45%"
         }
       }
     }
@@ -1220,29 +1221,6 @@
               "eyebrow": "Markmontage BEAB AB · Sedan 2002",
               "heading": "Mark- och grundarbeten i Kungälv & Göteborg",
               "image": {
-                "src": "/photos/markmontage-bil-solnedgang.webp",
-                "variants": [
-                  {
-                    "width": 480,
-                    "src": "/photos/markmontage-bil-solnedgang-480.webp"
-                  },
-                  {
-                    "width": 800,
-                    "src": "/photos/markmontage-bil-solnedgang-800.webp"
-                  },
-                  {
-                    "width": 1200,
-                    "src": "/photos/markmontage-bil-solnedgang-1200.webp"
-                  },
-                  {
-                    "width": 1240,
-                    "src": "/photos/markmontage-bil-solnedgang.webp"
-                  }
-                ],
-                "alt": "Markmontages servicebil i solnedgången",
-                "focus": "40% 60%"
-              },
-              "secondImage": {
                 "src": "/photos/markmontage-kranbil-palfinger.webp",
                 "variants": [
                   {
@@ -1267,35 +1245,10 @@
                   }
                 ],
                 "alt": "Markmontages orange kranlastbil med kranen utfälld",
-                "focus": "62% 50%"
+                "focus": "82% 50%"
               },
-              "thirdImage": {
-                "src": "/photos/markmontage-gravmaskin-ror.webp",
-                "variants": [
-                  {
-                    "width": 480,
-                    "src": "/photos/markmontage-gravmaskin-ror-480.webp"
-                  },
-                  {
-                    "width": 800,
-                    "src": "/photos/markmontage-gravmaskin-ror-800.webp"
-                  },
-                  {
-                    "width": 1200,
-                    "src": "/photos/markmontage-gravmaskin-ror-1200.webp"
-                  },
-                  {
-                    "width": 1600,
-                    "src": "/photos/markmontage-gravmaskin-ror-1600.webp"
-                  },
-                  {
-                    "width": 2400,
-                    "src": "/photos/markmontage-gravmaskin-ror.webp"
-                  }
-                ],
-                "alt": "Grävmaskin och medarbetare i varselkläder vid en schakt",
-                "focus": "40% 50%"
-              },
+              "secondImage": null,
+              "thirdImage": null,
               "button": {
                 "label": "Begär offert",
                 "href": "#offert"
@@ -1570,30 +1523,27 @@
               "subheading": "Markmontage BEAB AB har sin bas i Romelanda utanför Kungälv och grundades 2002.",
               "text": "Markmontage BEAB AB är ett entreprenadföretag inom mark- och grundarbeten, verksamt i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd. Vi utför bland annat schaktning, dränering, grundläggning, VA-arbeten och fiberinstallation, har egna kranlastbilar för transporter och lyft, och tar även helhetsansvar som totalentreprenör på större projekt.",
               "image": {
-                "src": "/photos/markmontage-teamet.webp",
+                "src": "/photos/markmontage-bil-solnedgang.webp",
                 "variants": [
                   {
                     "width": 480,
-                    "src": "/photos/markmontage-teamet-480.webp"
+                    "src": "/photos/markmontage-bil-solnedgang-480.webp"
                   },
                   {
                     "width": 800,
-                    "src": "/photos/markmontage-teamet-800.webp"
+                    "src": "/photos/markmontage-bil-solnedgang-800.webp"
                   },
                   {
                     "width": 1200,
-                    "src": "/photos/markmontage-teamet-1200.webp"
+                    "src": "/photos/markmontage-bil-solnedgang-1200.webp"
                   },
                   {
-                    "width": 1600,
-                    "src": "/photos/markmontage-teamet-1600.webp"
-                  },
-                  {
-                    "width": 2400,
-                    "src": "/photos/markmontage-teamet.webp"
+                    "width": 1240,
+                    "src": "/photos/markmontage-bil-solnedgang.webp"
                   }
                 ],
-                "alt": "Markmontages medarbetare samlade vid ett bord utomhus"
+                "alt": "Markmontages servicebil i solnedgången",
+                "focus": "60% 60%"
               }
             },
             "process": {
@@ -1690,7 +1640,7 @@
               "label": "",
               "heading": "Kontakta oss",
               "text": "Hör av dig för en kostnadsfri offert, så återkommer vi så snart vi kan.",
-              "phoneLabel": "Telefon",
+              "phoneLabel": "Telefon, Jens",
               "emailLabel": "E-post",
               "addressLabel": "Adress",
               "openingHoursLabel": "Öppettider",
@@ -1969,9 +1919,12 @@
               "images": {
                 "order": [
                   "vaxthus",
+                  "vakuumlyft",
+                  "truckshow",
                   "stolpe",
                   "grip",
                   "korg",
+                  "betong",
                   "pool-lyft",
                   "pool-makadam",
                   "pool-isolering",
@@ -2286,6 +2239,84 @@
                       "focus": "50% 50%"
                     },
                     "caption": "Schakt längs en väg"
+                  },
+                  "vakuumlyft": {
+                    "image": {
+                      "src": "/photos/markmontage-kranbil-vakuumlyft.webp",
+                      "variants": [
+                        {
+                          "width": 480,
+                          "src": "/photos/markmontage-kranbil-vakuumlyft-480.webp"
+                        },
+                        {
+                          "width": 800,
+                          "src": "/photos/markmontage-kranbil-vakuumlyft-800.webp"
+                        },
+                        {
+                          "width": 1200,
+                          "src": "/photos/markmontage-kranbil-vakuumlyft-1200.webp"
+                        },
+                        {
+                          "width": 1242,
+                          "src": "/photos/markmontage-kranbil-vakuumlyft.webp"
+                        }
+                      ],
+                      "alt": "Kranbil lyfter väggpaneler med vakuumlyft",
+                      "focus": "50% 50%"
+                    },
+                    "caption": "Lyft av väggpaneler med vakuumlyft"
+                  },
+                  "truckshow": {
+                    "image": {
+                      "src": "/photos/markmontage-kranbil-truckshow.webp",
+                      "variants": [
+                        {
+                          "width": 480,
+                          "src": "/photos/markmontage-kranbil-truckshow-480.webp"
+                        },
+                        {
+                          "width": 800,
+                          "src": "/photos/markmontage-kranbil-truckshow-800.webp"
+                        },
+                        {
+                          "width": 1200,
+                          "src": "/photos/markmontage-kranbil-truckshow-1200.webp"
+                        },
+                        {
+                          "width": 1242,
+                          "src": "/photos/markmontage-kranbil-truckshow.webp"
+                        }
+                      ],
+                      "alt": "Kranbil monterar en välkomstportal till Göteborg Truckshow vid hamnen",
+                      "focus": "50% 40%"
+                    },
+                    "caption": "Portal till Göteborg Truckshow"
+                  },
+                  "betong": {
+                    "image": {
+                      "src": "/photos/markmontage-kranbil-betong.webp",
+                      "variants": [
+                        {
+                          "width": 480,
+                          "src": "/photos/markmontage-kranbil-betong-480.webp"
+                        },
+                        {
+                          "width": 800,
+                          "src": "/photos/markmontage-kranbil-betong-800.webp"
+                        },
+                        {
+                          "width": 1200,
+                          "src": "/photos/markmontage-kranbil-betong-1200.webp"
+                        },
+                        {
+                          "width": 1242,
+                          "src": "/photos/markmontage-kranbil-betong.webp"
+                        }
+                      ],
+                      "alt": "Kranlastbilar lastar betongelement",
+                      "focus": "40% 45%"
+                    },
+                    "caption": "Lastning av betongelement"
                   }
                 }
               }

@@ -91,6 +91,12 @@
     1200,
     1242
   ],
+  "markmontage-kranbil-bod": [
+    480,
+    800,
+    1200,
+    1242
+  ],
   "markmontage-kranbil-fasad": [
     480,
     800,
@@ -132,6 +138,18 @@
     800,
     1200,
     1512
+  ],
+  "markmontage-kranbil-truckshow": [
+    480,
+    800,
+    1200,
+    1242
+  ],
+  "markmontage-kranbil-vakuumlyft": [
+    480,
+    800,
+    1200,
+    1242
   ],
   "markmontage-kranbil-vaxthus": [
     480,
