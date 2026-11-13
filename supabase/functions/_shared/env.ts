@@ -26,7 +26,7 @@ export const config = {
   secret: (name: string, purpose: string) => optionalEnv(name) ?? `${purpose}:${env("SUPABASE_SERVICE_ROLE_KEY")}`,
   /** Browsers allowed to call the functions (the site and admin's origins), comma-separated. */
   allowedOrigins: () =>
-    env("ALLOWED_ORIGINS", "https://elevatestudio018.github.io,http://localhost:3000,http://localhost:3130,http://localhost:3132,http://127.0.0.1:3000")
+    env("ALLOWED_ORIGINS", "https://elevatestudio018.github.io,https://raw.githack.com,https://www.markmontagebeab.se,https://markmontagebeab.se,http://localhost:3000,http://localhost:3130,http://localhost:3132,http://127.0.0.1:3000")
       .split(",")
       .map((origin) => origin.trim()),
 };
