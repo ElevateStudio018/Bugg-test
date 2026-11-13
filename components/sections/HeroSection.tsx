@@ -20,8 +20,10 @@ function PhotoHero({ section }: { section: HeroProps["section"] }) {
       id={section.anchor || undefined}
       className="relative isolate flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden bg-secondary sm:min-h-[calc(100svh-5rem)]"
     >
+      {/* On a portrait screen the photo fills the height, so it is shown about one and a half times the screen's
+          height wide; the browser then fetches a copy large enough to stay sharp. */}
       <ZoomImage
-        {...imageProps(section.image, "100vw")}
+        {...imageProps(section.image, "(orientation: portrait) 150vh, 100vw")}
         alt={section.image.alt}
         priority
         parallax="top"
