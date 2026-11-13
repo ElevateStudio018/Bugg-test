@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /forslag/
+
+Sitemap: https://www.markmontagebeab.se/sitemap.xml
