@@ -73,6 +73,7 @@ export const sectionTypeLabels: Record<SectionType, { label: string; description
   certificates: { label: "Certifikat", description: "Företagets certifikat och behörigheter" },
   policies: { label: "Policyer", description: "Företagets policyer med mål och uppföljning" },
   certificateStrip: { label: "Certifikatsrad", description: "Certifikatens märken på en rad" },
+  reference: { label: "Referensprojekt", description: "Ett projekt i steg: utmaningen, lösningen och resultatet" },
   reviewInvite: { label: "Lämna omdöme", description: "Ett kort som ber kunderna om ett omdöme på Google" },
   uppdragGrid: { label: "Alla uppdrag", description: "Alla uppdrag med filter" },
   cta: { label: "Uppmaning", description: "En rubrik och knapp som leder till offertformuläret" },
@@ -291,6 +292,27 @@ export const sectionFields: Record<SectionType, FieldSpec[]> = {
     { key: "emptyText", label: "Text när listan är tom (följs av telefonnumret)", kind: "textarea" },
   ],
   certificateStrip: [heading(), link("link", "Länk")],
+  reference: [
+    { key: "badge", label: "Liten text överst", kind: "text", recommended: 24 },
+    heading(),
+    intro(),
+    {
+      key: "steps",
+      label: "Steg",
+      kind: "collection",
+      item: {
+        label: "Steg",
+        titleKey: "heading",
+        max: 6,
+        fields: [
+          { key: "label", label: "Etikett", kind: "text", recommended: 16, hint: "Till exempel ”Utmaningen”, ”Lösningen” eller ”Resultatet”." },
+          { key: "heading", label: "Rubrik", kind: "text", recommended: 40 },
+          { key: "text", label: "Text", kind: "textarea", recommended: 160 },
+          { key: "image", label: "Bild", kind: "image", imageUsage: "photo" },
+        ],
+      },
+    },
+  ],
   reviewInvite: [
     { key: "badge", label: "Liten text överst", kind: "text", recommended: 24 },
     heading(),

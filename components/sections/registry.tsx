@@ -18,6 +18,7 @@ import { PhotoPairSection } from "./PhotoPairSection";
 import { PoliciesSection } from "./PoliciesSection";
 import { PricelistSection } from "./PricelistSection";
 import { ProcessSection } from "./ProcessSection";
+import { ReferenceSection } from "./ReferenceSection";
 import { ReviewInviteSection } from "./ReviewInviteSection";
 import { PromoSection } from "./PromoSection";
 import { ServicesSection } from "./ServicesSection";
@@ -55,6 +56,7 @@ export const sectionComponents: { [T in SectionType]: ComponentType<SectionProps
   policies: PoliciesSection,
   certificateStrip: CertificateStripSection,
   reviewInvite: ReviewInviteSection,
+  reference: ReferenceSection,
 };
 
 /** Sections that end without bottom space of their own, so the section after them can carry straight on. */

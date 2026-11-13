@@ -2455,21 +2455,24 @@
               }
             },
             "referens-betongpool": {
-              "type": "gallery",
+              "type": "reference",
               "hidden": false,
-              "label": "",
               "anchor": "betongpool",
-              "heading": "Referens: betongpool i villaträdgård",
-              "text": "Från schaktad grop till gjuten pool. Vi schaktade, lade isolering och gjöt bottenplattan, byggde poolens väggar av formblock och gjöt dem.",
-              "images": {
+              "label": "",
+              "badge": "Referens",
+              "heading": "Betongpool i villaträdgård",
+              "text": "",
+              "steps": {
                 "order": [
-                  "isolering",
-                  "bottenplatta",
-                  "vaggar",
-                  "gjutning"
+                  "utmaning",
+                  "losning",
+                  "resultat"
                 ],
                 "items": {
-                  "isolering": {
+                  "utmaning": {
+                    "label": "Utmaningen",
+                    "heading": "En pool som ska hålla länge",
+                    "text": "En gjuten pool behöver en stabil och isolerad grund, så att den står stadigt och håller värmen.",
                     "image": {
                       "src": "/photos/markmontage-pool-isolering.webp",
                       "variants": [
@@ -2496,40 +2499,12 @@
                       ],
                       "alt": "Isolerskivor utlagda i en schaktad grop",
                       "focus": "50% 50%"
-                    },
-                    "caption": "1. Isolering under bottenplattan"
+                    }
                   },
-                  "bottenplatta": {
-                    "image": {
-                      "src": "/photos/markmontage-pool-bottenplatta.webp",
-                      "variants": [
-                        {
-                          "width": 480,
-                          "src": "/photos/markmontage-pool-bottenplatta-480.webp"
-                        },
-                        {
-                          "width": 800,
-                          "src": "/photos/markmontage-pool-bottenplatta-800.webp"
-                        },
-                        {
-                          "width": 1200,
-                          "src": "/photos/markmontage-pool-bottenplatta-1200.webp"
-                        },
-                        {
-                          "width": 1600,
-                          "src": "/photos/markmontage-pool-bottenplatta-1600.webp"
-                        },
-                        {
-                          "width": 2016,
-                          "src": "/photos/markmontage-pool-bottenplatta.webp"
-                        }
-                      ],
-                      "alt": "Gjuten bottenplatta med armering för en pool",
-                      "focus": "50% 50%"
-                    },
-                    "caption": "2. Gjuten bottenplatta med armering"
-                  },
-                  "vaggar": {
+                  "losning": {
+                    "label": "Lösningen",
+                    "heading": "Isolerad platta och formblock",
+                    "text": "Vi lade isolering, gjöt en armerad bottenplatta och byggde poolens väggar av formblock.",
                     "image": {
                       "src": "/photos/markmontage-pool-vaggar.webp",
                       "variants": [
@@ -2556,10 +2531,12 @@
                       ],
                       "alt": "Poolväggar av formblock i kvällsljus",
                       "focus": "50% 55%"
-                    },
-                    "caption": "3. Väggar av formblock"
+                    }
                   },
-                  "gjutning": {
+                  "resultat": {
+                    "label": "Resultatet",
+                    "heading": "Poolens stomme på plats",
+                    "text": "Väggarna gjöts med betongbil, och poolens stomme stod klar i trädgården.",
                     "image": {
                       "src": "/photos/markmontage-pool-gjutning.webp",
                       "variants": [
@@ -2586,27 +2563,30 @@
                       ],
                       "alt": "Betongbil gjuter en pool i en villaträdgård",
                       "focus": "50% 50%"
-                    },
-                    "caption": "4. Gjutning av väggarna"
+                    }
                   }
                 }
               }
             },
             "referens-glasfiberpool": {
-              "type": "gallery",
+              "type": "reference",
               "hidden": false,
-              "label": "",
               "anchor": "glasfiberpool",
-              "heading": "Referens: glasfiberpool",
-              "text": "Schakt, bädd och montering av en glasfiberpool. Vi schaktade gropen, lade en bädd av makadam, lyfte poolen på plats med kran och kopplade in rören.",
-              "images": {
+              "label": "",
+              "badge": "Referens",
+              "heading": "Glasfiberpool i trädgård",
+              "text": "",
+              "steps": {
                 "order": [
-                  "makadam",
-                  "lyft",
-                  "pa-plats"
+                  "utmaning",
+                  "losning",
+                  "resultat"
                 ],
                 "items": {
-                  "makadam": {
+                  "utmaning": {
+                    "label": "Utmaningen",
+                    "heading": "En färdig pool ner i trädgården",
+                    "text": "En glasfiberpool kommer i ett stycke. Den behöver en plan och stabil bädd, och ett lyft ner i gropen.",
                     "image": {
                       "src": "/photos/markmontage-pool-makadam.webp",
                       "variants": [
@@ -2633,10 +2613,12 @@
                       ],
                       "alt": "Schaktad grop med makadambädd inför en pool",
                       "focus": "50% 50%"
-                    },
-                    "caption": "1. Schaktad grop med makadambädd"
+                    }
                   },
-                  "lyft": {
+                  "losning": {
+                    "label": "Lösningen",
+                    "heading": "Makadambädd och kranlyft",
+                    "text": "Vi schaktade gropen, lade en bädd av makadam och lyfte poolen på plats med kran.",
                     "image": {
                       "src": "/photos/markmontage-pool-lyft.webp",
                       "variants": [
@@ -2655,10 +2637,12 @@
                       ],
                       "alt": "En pool lyfts med kran ner i en trädgård",
                       "focus": "50% 55%"
-                    },
-                    "caption": "2. Poolen lyfts på plats"
+                    }
                   },
-                  "pa-plats": {
+                  "resultat": {
+                    "label": "Resultatet",
+                    "heading": "Poolen på plats",
+                    "text": "Poolen står på plats med rören dragna, redo att fyllas runt om.",
                     "image": {
                       "src": "/photos/markmontage-pool-glasfiber.webp",
                       "variants": [
@@ -2685,48 +2669,29 @@
                       ],
                       "alt": "En glasfiberpool på plats i en schaktad grop i en trädgård",
                       "focus": "50% 45%"
-                    },
-                    "caption": "3. Poolen på plats med rören dragna"
+                    }
                   }
                 }
               }
             },
             "referens-fiber": {
-              "type": "gallery",
+              "type": "reference",
               "hidden": false,
-              "label": "",
               "anchor": "fiber-sjo",
-              "heading": "Referens: kabelförläggning i sjö",
-              "text": "Fiberkabel förlagd över vatten. Kabeltrumman står på en pråm som båten bogserar, och kabeln läggs ut längs sträckan.",
-              "images": {
+              "label": "",
+              "badge": "Referens",
+              "heading": "Kabelförläggning i sjö",
+              "text": "",
+              "steps": {
                 "order": [
-                  "trumma",
-                  "bat"
+                  "utmaning",
+                  "losning"
                 ],
                 "items": {
-                  "trumma": {
-                    "image": {
-                      "src": "/photos/markmontage-fiber-kabeltrumma.webp",
-                      "variants": [
-                        {
-                          "width": 480,
-                          "src": "/photos/markmontage-fiber-kabeltrumma-480.webp"
-                        },
-                        {
-                          "width": 800,
-                          "src": "/photos/markmontage-fiber-kabeltrumma-800.webp"
-                        },
-                        {
-                          "width": 1125,
-                          "src": "/photos/markmontage-fiber-kabeltrumma.webp"
-                        }
-                      ],
-                      "alt": "Kabeltrumma på pråm vid kabelförläggning i sjö",
-                      "focus": "50% 45%"
-                    },
-                    "caption": "Kabeltrumman på pråmen"
-                  },
-                  "bat": {
+                  "utmaning": {
+                    "label": "Utmaningen",
+                    "heading": "Fiber över vatten",
+                    "text": "Fiberkabeln skulle dras över en sjö, där det inte går att schakta som på land.",
                     "image": {
                       "src": "/photos/markmontage-fiber-bat.webp",
                       "variants": [
@@ -2745,8 +2710,31 @@
                       ],
                       "alt": "Båt bogserar pråmen vid kabelförläggning i sjö",
                       "focus": "50% 45%"
-                    },
-                    "caption": "Båten bogserar pråmen"
+                    }
+                  },
+                  "losning": {
+                    "label": "Lösningen",
+                    "heading": "Pråm, båt och kabeltrumma",
+                    "text": "Kabeltrumman stod på en pråm som båten bogserade, och kabeln lades ut längs hela sträckan.",
+                    "image": {
+                      "src": "/photos/markmontage-fiber-kabeltrumma.webp",
+                      "variants": [
+                        {
+                          "width": 480,
+                          "src": "/photos/markmontage-fiber-kabeltrumma-480.webp"
+                        },
+                        {
+                          "width": 800,
+                          "src": "/photos/markmontage-fiber-kabeltrumma-800.webp"
+                        },
+                        {
+                          "width": 1125,
+                          "src": "/photos/markmontage-fiber-kabeltrumma.webp"
+                        }
+                      ],
+                      "alt": "Kabeltrumma på pråm vid kabelförläggning i sjö",
+                      "focus": "50% 45%"
+                    }
                   }
                 }
               }
