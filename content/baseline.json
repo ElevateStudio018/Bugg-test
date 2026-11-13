@@ -1238,31 +1238,31 @@
               "eyebrow": "Markmontage BEAB AB · Sedan 2002",
               "heading": "Mark- och grundarbeten i Kungälv & Göteborg",
               "image": {
-                "src": "/photos/markmontage-kranbil-palfinger.webp",
+                "src": "/photos/markmontage-gravmaskin-ror.webp",
                 "variants": [
                   {
                     "width": 480,
-                    "src": "/photos/markmontage-kranbil-palfinger-480.webp"
+                    "src": "/photos/markmontage-gravmaskin-ror-480.webp"
                   },
                   {
                     "width": 800,
-                    "src": "/photos/markmontage-kranbil-palfinger-800.webp"
+                    "src": "/photos/markmontage-gravmaskin-ror-800.webp"
                   },
                   {
                     "width": 1200,
-                    "src": "/photos/markmontage-kranbil-palfinger-1200.webp"
+                    "src": "/photos/markmontage-gravmaskin-ror-1200.webp"
                   },
                   {
                     "width": 1600,
-                    "src": "/photos/markmontage-kranbil-palfinger-1600.webp"
+                    "src": "/photos/markmontage-gravmaskin-ror-1600.webp"
                   },
                   {
                     "width": 2400,
-                    "src": "/photos/markmontage-kranbil-palfinger.webp"
+                    "src": "/photos/markmontage-gravmaskin-ror.webp"
                   }
                 ],
-                "alt": "Markmontages orange kranlastbil med kranen utfälld",
-                "focus": "82% 50%"
+                "alt": "Grävmaskin och medarbetare i varselkläder vid en schakt",
+                "focus": "70% 45%"
               },
               "secondImage": null,
               "thirdImage": null,
@@ -1337,30 +1337,30 @@
               "heading": "Ett bygge är aldrig starkare än sin grund",
               "text": "Därför lägger vi stor vikt vid fackmannamässigt utförande i varje moment – från första spadtaget till färdig yta.",
               "image": {
-                "src": "/photos/markmontage-gravmaskin-ror.webp",
+                "src": "/photos/markmontage-schakt-kabel.webp",
                 "variants": [
                   {
                     "width": 480,
-                    "src": "/photos/markmontage-gravmaskin-ror-480.webp"
+                    "src": "/photos/markmontage-schakt-kabel-480.webp"
                   },
                   {
                     "width": 800,
-                    "src": "/photos/markmontage-gravmaskin-ror-800.webp"
+                    "src": "/photos/markmontage-schakt-kabel-800.webp"
                   },
                   {
                     "width": 1200,
-                    "src": "/photos/markmontage-gravmaskin-ror-1200.webp"
+                    "src": "/photos/markmontage-schakt-kabel-1200.webp"
                   },
                   {
                     "width": 1600,
-                    "src": "/photos/markmontage-gravmaskin-ror-1600.webp"
+                    "src": "/photos/markmontage-schakt-kabel-1600.webp"
                   },
                   {
                     "width": 2400,
-                    "src": "/photos/markmontage-gravmaskin-ror.webp"
+                    "src": "/photos/markmontage-schakt-kabel.webp"
                   }
                 ],
-                "alt": "Grävmaskin och medarbetare i varselkläder vid en schakt"
+                "alt": "Schakt med grävmaskin och servicebilar vid en väg"
               },
               "cards": {
                 "order": [
@@ -1953,6 +1953,7 @@
               "text": "Ett urval av bilder från uppdrag vi har utfört – markarbeten, pooler, kranlyft och transporter.",
               "images": {
                 "order": [
+                  "palfinger",
                   "vaxthus",
                   "vakuumlyft",
                   "truckshow",
@@ -1965,8 +1966,7 @@
                   "pool-isolering",
                   "pool-vaggar",
                   "pool-gjutning",
-                  "minigravare-slap",
-                  "schakt-kabel"
+                  "minigravare-slap"
                 ],
                 "items": {
                   "vaxthus": {
@@ -2245,36 +2245,6 @@
                     },
                     "caption": "Minigrävare på släp"
                   },
-                  "schakt-kabel": {
-                    "image": {
-                      "src": "/photos/markmontage-schakt-kabel.webp",
-                      "variants": [
-                        {
-                          "width": 480,
-                          "src": "/photos/markmontage-schakt-kabel-480.webp"
-                        },
-                        {
-                          "width": 800,
-                          "src": "/photos/markmontage-schakt-kabel-800.webp"
-                        },
-                        {
-                          "width": 1200,
-                          "src": "/photos/markmontage-schakt-kabel-1200.webp"
-                        },
-                        {
-                          "width": 1600,
-                          "src": "/photos/markmontage-schakt-kabel-1600.webp"
-                        },
-                        {
-                          "width": 2400,
-                          "src": "/photos/markmontage-schakt-kabel.webp"
-                        }
-                      ],
-                      "alt": "Schakt med grävmaskin och servicebilar vid en väg",
-                      "focus": "50% 50%"
-                    },
-                    "caption": "Schakt längs en väg"
-                  },
                   "vakuumlyft": {
                     "image": {
                       "src": "/photos/markmontage-kranbil-vakuumlyft.webp",
@@ -2352,6 +2322,36 @@
                       "focus": "40% 45%"
                     },
                     "caption": "Lastning av betongelement"
+                  },
+                  "palfinger": {
+                    "image": {
+                      "src": "/photos/markmontage-kranbil-palfinger.webp",
+                      "variants": [
+                        {
+                          "width": 480,
+                          "src": "/photos/markmontage-kranbil-palfinger-480.webp"
+                        },
+                        {
+                          "width": 800,
+                          "src": "/photos/markmontage-kranbil-palfinger-800.webp"
+                        },
+                        {
+                          "width": 1200,
+                          "src": "/photos/markmontage-kranbil-palfinger-1200.webp"
+                        },
+                        {
+                          "width": 1600,
+                          "src": "/photos/markmontage-kranbil-palfinger-1600.webp"
+                        },
+                        {
+                          "width": 2400,
+                          "src": "/photos/markmontage-kranbil-palfinger.webp"
+                        }
+                      ],
+                      "alt": "Markmontages orange kranlastbil med kranen utfälld",
+                      "focus": "60% 50%"
+                    },
+                    "caption": "Vår kranlastbil"
                   }
                 }
               }
