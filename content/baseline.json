@@ -95,6 +95,7 @@
         "uppdrag",
         "om-oss",
         "hallbarhet",
+        "omdomen",
         "kontakt"
       ],
       "items": {
@@ -117,6 +118,10 @@
         "hallbarhet": {
           "label": "Hållbarhet",
           "href": "/hallbarhet"
+        },
+        "omdomen": {
+          "label": "Omdömen",
+          "href": "/#omdomen"
         }
       }
     },
@@ -127,6 +132,7 @@
         "uppdrag",
         "om-oss",
         "hallbarhet",
+        "omdomen",
         "kontakt"
       ],
       "items": {
@@ -159,6 +165,11 @@
           "label": "Hållbarhet",
           "href": "/hallbarhet",
           "kind": "link"
+        },
+        "omdomen": {
+          "label": "Omdömen",
+          "href": "/#omdomen",
+          "kind": "link"
         }
       }
     },
@@ -175,6 +186,7 @@
         "uppdrag",
         "process",
         "faq",
+        "omdomen",
         "kontakt"
       ],
       "items": {
@@ -201,6 +213,10 @@
         "hallbarhet": {
           "label": "Hållbarhet",
           "href": "/hallbarhet"
+        },
+        "omdomen": {
+          "label": "Omdömen",
+          "href": "/#omdomen"
         }
       }
     },
@@ -1208,6 +1224,7 @@
             "erbjudanden",
             "om-oss",
             "process",
+            "omdomen",
             "faq",
             "kontakt",
             "karta"
@@ -1656,6 +1673,24 @@
               "addressPrefix": "Kontor:",
               "linkLabel": "Öppna i Google Maps",
               "zoom": 11
+            },
+            "omdomen": {
+              "type": "text",
+              "hidden": false,
+              "anchor": "omdomen",
+              "label": "",
+              "heading": "Omdömen",
+              "paragraphs": [
+                "Har vi gjort ett jobb åt dig? Berätta gärna hur du upplevde det. Ditt omdöme hjälper andra att välja rätt entreprenör och oss att bli ännu bättre.",
+                "Omdömena samlas på Google, där du också kan läsa vad andra kunder tycker."
+              ],
+              "image": null,
+              "imageSide": "right",
+              "button": {
+                "label": "Skriv ett omdöme på Google",
+                "href": "https://www.google.com/maps/search/?api=1&query=Markmontage%20BEAB%20AB%20Romelanda"
+              },
+              "tone": "primary"
             }
           }
         }
