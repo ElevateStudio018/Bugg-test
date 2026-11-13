@@ -1,0 +1,50 @@
+name: Githack preview
+
+# Builds the site for raw.githack.com and puts the built files on the branch "githack", so the preview is at
+# https://raw.githack.com/ElevateStudio018/Bugg-test/githack/index.html on every push, or by hand
+# (Actions → Githack preview → Run workflow).
+on:
+  push:
+    branches: [claude/markmontage-hemsida]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: githack
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+        env:
+          # Githack serves the branch's files under /<owner>/<repo>/<branch>/.
+          STATIC_BASE_PATH: /ElevateStudio018/Bugg-test/githack
+          NEXT_PUBLIC_SUPABASE_URL: ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+      # A new commit on top of the branch with the built files only; the branch is created the first time.
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin githack >/dev/null; then
+            git fetch --depth 1 origin githack
+            git worktree add --detach ../githack FETCH_HEAD
+          else
+            git worktree add --detach ../githack
+            (cd ../githack && git checkout -q --orphan githack-new)
+          fi
+          cd ../githack
+          git rm -rfq --ignore-unmatch .
+          cp -r "$GITHUB_WORKSPACE/out/." .
+          git add -A
+          git commit -qm "Githack preview of $GITHUB_SHA" || exit 0
+          git push origin HEAD:refs/heads/githack

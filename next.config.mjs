@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 const isGithubPages = process.env.GITHUB_PAGES === "true";
+// A static export under any other path, such as the Githack preview (.github/workflows/githack.yml).
+const customBasePath = process.env.STATIC_BASE_PATH;
 // A static export for an ordinary web host at the site's own domain, such as Inleed (npm run build:inleed).
-const isStaticExport = isGithubPages || process.env.STATIC_EXPORT === "true";
-const basePath = isGithubPages ? "/Bugg-test" : "";
+const isStaticExport = isGithubPages || customBasePath !== undefined || process.env.STATIC_EXPORT === "true";
+const basePath = customBasePath ?? (isGithubPages ? "/Bugg-test" : "");
 
 const nextConfig = {
   reactStrictMode: true,
