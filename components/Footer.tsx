@@ -47,7 +47,7 @@ export function Footer({ site }: { site: SiteData }) {
             aria-label={site.ui.homeLinkLabel}
             className={`${tapTarget} inline-block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-footer-text`}
           >
-            <Wordmark content={{ logo: site.settings.logo, name: company.shortName }} />
+            <Wordmark content={{ logo: site.settings.logo, name: company.shortName }} onDark />
           </Link>
         </Reveal>
 

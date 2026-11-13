@@ -82,6 +82,7 @@ export const contentIcons = [
   "Zap",
   "TreePine",
   "Fence",
+  "Cable",
 ] as const;
 export const contentIconSchema = z.enum(contentIcons);
 export type ContentIcon = z.infer<typeof contentIconSchema>;
@@ -238,7 +239,17 @@ const sectionBase = {
   label: text(80),
 };
 
-const heroSection = z.object({ type: z.literal("hero"), ...sectionBase, eyebrow: lineText, heading: lineText, image: imageSchema, button: linkSchema });
+const heroSection = z.object({
+  type: z.literal("hero"),
+  ...sectionBase,
+  eyebrow: lineText,
+  heading: lineText,
+  image: imageSchema,
+  /** With one or both, the top is a collage: `image` large behind the text, these two beside it. */
+  secondImage: imageSchema.nullable(),
+  thirdImage: imageSchema.nullable(),
+  button: linkSchema,
+});
 const servicesSection = z.object({ type: z.literal("services"), ...sectionBase, heading: lineText, link: linkSchema, cardLinkPrefix: lineText });
 const uppdragCarouselSection = z.object({ type: z.literal("uppdragCarousel"), ...sectionBase, heading: lineText, text: longText, link: linkSchema });
 const statItemSchema = z.object({
@@ -382,6 +393,26 @@ const textSection = z.object({
   tone: z.enum(["light", "card", "primary"]),
 });
 
+const policyGoalSchema = z.object({ goal: longText, measure: longText });
+const policySchema = z.object({
+  name: lineText,
+  icon: contentIconSchema,
+  paragraphs: z.array(longText).max(10),
+  goals: collectionSchema(policyGoalSchema, 10),
+  /** The whole policy, usually a PDF in public/dokument. Empty for none. */
+  document: z.union([z.literal(""), hrefSchema]),
+});
+const policiesSection = z.object({
+  type: z.literal("policies"),
+  ...sectionBase,
+  heading: lineText,
+  text: longText,
+  goalLabel: lineText,
+  measureLabel: lineText,
+  documentLabel: lineText,
+  items: collectionSchema(policySchema, 12),
+});
+
 export const sectionSchema = z.discriminatedUnion("type", [
   heroSection,
   servicesSection,
@@ -406,6 +437,7 @@ export const sectionSchema = z.discriminatedUnion("type", [
   pricelistSection,
   testimonialsSection,
   textSection,
+  policiesSection,
 ]);
 export type Section = z.infer<typeof sectionSchema>;
 export type SectionType = Section["type"];

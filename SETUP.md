@@ -57,7 +57,7 @@ ska skrivas exakt som nedan.
   Förslagen fortsätter till Elevate.
 - Egen domän: verifiera domänen i Resend och sätt `EMAIL_FROM`, `SITE_URL`, `ADMIN_URL` och `ALLOWED_ORIGINS`
   (se `supabase/functions/.env.example`).
-- Bestäm priserna på credit-paketen och vilket telefonnummer som stämmer (031-385 41 41 eller 031-385 40 50).
+- Bestäm priserna på credit-paketen.
 
 ## Del 2 – for Claude: installing the backend
 

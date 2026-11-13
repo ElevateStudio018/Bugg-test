@@ -17,8 +17,8 @@
       "button": "#1C2817",
       "buttonHover": "#131C10",
       "buttonText": "#FFFFFF",
-      "navigation": "#1C2817",
-      "navigationText": "#FFFFFF",
+      "navigation": "#FFFFFF",
+      "navigationText": "#1C2817",
       "footer": "#1C2817",
       "footerText": "#FFFFFF",
       "onPrimary": "#FFFFFF",
@@ -66,7 +66,7 @@
     "foundedYear": 2002,
     "employees": 18,
     "city": "Kungälv",
-    "serviceArea": "Kungälv, Göteborg och övriga Västra Götaland",
+    "serviceArea": "Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd",
     "address": {
       "street": "Lybeck 140",
       "postalCode": "442 91",
@@ -77,7 +77,7 @@
         "lng": 12.019944
       }
     },
-    "phone": "031-385 41 41",
+    "phone": "070-434 40 56",
     "email": "info@markmontage.se",
     "orgNumber": "556625-8157",
     "vatNumber": "SE556625815701",
@@ -94,7 +94,7 @@
         "tjanster",
         "uppdrag",
         "om-oss",
-        "certifikat",
+        "hallbarhet",
         "kontakt"
       ],
       "items": {
@@ -110,13 +110,13 @@
           "label": "Om oss",
           "href": "/om-oss"
         },
-        "certifikat": {
-          "label": "Certifikat",
-          "href": "/certifikat"
-        },
         "kontakt": {
           "label": "Kontakt",
           "href": "/#kontakt"
+        },
+        "hallbarhet": {
+          "label": "Hållbarhet",
+          "href": "/hallbarhet"
         }
       }
     },
@@ -126,7 +126,7 @@
         "tjanster",
         "uppdrag",
         "om-oss",
-        "certifikat",
+        "hallbarhet",
         "kontakt"
       ],
       "items": {
@@ -150,14 +150,14 @@
           "href": "/om-oss",
           "kind": "link"
         },
-        "certifikat": {
-          "label": "Certifikat",
-          "href": "/certifikat",
-          "kind": "link"
-        },
         "kontakt": {
           "label": "Kontakt",
           "href": "/#kontakt",
+          "kind": "link"
+        },
+        "hallbarhet": {
+          "label": "Hållbarhet",
+          "href": "/hallbarhet",
           "kind": "link"
         }
       }
@@ -171,7 +171,7 @@
     "companyLinks": {
       "order": [
         "om-oss",
-        "certifikat",
+        "hallbarhet",
         "uppdrag",
         "process",
         "faq",
@@ -181,10 +181,6 @@
         "om-oss": {
           "label": "Om oss",
           "href": "/om-oss"
-        },
-        "certifikat": {
-          "label": "Certifikat",
-          "href": "/certifikat"
         },
         "uppdrag": {
           "label": "Uppdrag",
@@ -201,6 +197,10 @@
         "kontakt": {
           "label": "Kontakt",
           "href": "/#kontakt"
+        },
+        "hallbarhet": {
+          "label": "Hållbarhet",
+          "href": "/hallbarhet"
         }
       }
     },
@@ -344,8 +344,10 @@
       "dranering",
       "grundlaggning",
       "va-arbeten",
+      "fiber",
       "anlaggning-vagar-planer",
       "stenlaggning",
+      "transporter-kranbil",
       "totalentreprenad"
     ],
     "items": {
@@ -354,7 +356,7 @@
         "name": "Schaktning & markarbeten",
         "shortDescription": "Schaktning och markarbeten som förbereder tomten inför bygget, anpassade efter markförhållandena.",
         "description": [
-          "Ett bygge börjar alltid under mark, och ett väl förberett underlag avgör hur resten av projektet går. Markmontage BEAB AB utför schaktning och markarbeten i Kungälv, Göteborg och övriga Västra Götaland, både som en del av större entreprenader och som fristående uppdrag.",
+          "Ett bygge börjar alltid under mark, och ett väl förberett underlag avgör hur resten av projektet går. Markmontage BEAB AB utför schaktning och markarbeten i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd, både som en del av större entreprenader och som fristående uppdrag.",
           "Vi hanterar schaktning för grund, ledningar och anslutningar, samt terrassering och iordningställande av tomtmark inför fortsatt byggnation. Varje uppdrag anpassas efter markförhållandena på plats, från lera och berg till mer lättarbetad mark.",
           "Som totalentreprenör kan vi samordna schaktningen med efterföljande moment som grundläggning och VA-arbeten, så att projektet flyter på utan onödiga avbrott mellan olika entreprenörer.",
           "Kontakta oss för en kostnadsfri offert, så tittar vi tillsammans på förutsättningarna för just din tomt."
@@ -396,7 +398,7 @@
         "name": "Dränering",
         "shortDescription": "Dränering som skyddar grunden mot fukt och sättningsskador, utförd enligt branschens riktlinjer.",
         "description": [
-          "Bristfällig dränering är en av de vanligaste orsakerna till fukt- och sättningsskador i äldre hus. Markmontage BEAB AB utför dränering i Kungälv, Göteborg och övriga Västra Götaland, både vid nybyggnation och som åtgärd vid befintliga fuktproblem.",
+          "Bristfällig dränering är en av de vanligaste orsakerna till fukt- och sättningsskador i äldre hus. Markmontage BEAB AB utför dränering i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd, både vid nybyggnation och som åtgärd vid befintliga fuktproblem.",
           "Arbetet omfattar schaktning runt grunden, ny dränering och fuktskydd, samt återfyllning och iordningställande av marken efteråt. Vi lägger stor vikt vid att dräneringen leder bort vatten på rätt sätt, anpassat efter husets grundläggning och markens lutning.",
           "Dränering vid en befintlig bostad ger i många fall rätt till rotavdrag för arbetskostnaden – vi berättar gärna vad som gäller för just ditt hus.",
           "Kontakta oss för ett kostnadsfritt hembesök, så gör vi en bedömning av dräneringen vid din fastighet."
@@ -438,7 +440,7 @@
         "name": "Grundläggning",
         "shortDescription": "Grundläggning för nybyggnation och tillbyggnad, anpassad efter markens bärighet.",
         "description": [
-          "Grunden bär hela byggnaden, och felaktigt utförd grundläggning är svår och kostsam att åtgärda i efterhand. Markmontage BEAB AB utför grundläggning i Kungälv, Göteborg och övriga Västra Götaland, vid såväl nybyggnation som tillbyggnad.",
+          "Grunden bär hela byggnaden, och felaktigt utförd grundläggning är svår och kostsam att åtgärda i efterhand. Markmontage BEAB AB utför grundläggning i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd, vid såväl nybyggnation som tillbyggnad.",
           "Vi utför bland annat gjutning av platta på mark, grundsulor och källargrunder, alltid anpassat efter markens bärighet och grundvattenförhållandena på platsen. Markisolering och fuktskydd ingår som en naturlig del av arbetet.",
           "Tack vare vår erfarenhet av mark- och grundarbeten vet vi vad som krävs för en grund som håller över tid. Vid behov samordnar vi arbetet med övriga entreprenörer i projektet.",
           "Hör av dig för en kostnadsfri offert, så berättar vi mer om vad som gäller för grundläggningen på just din tomt."
@@ -480,7 +482,7 @@
         "name": "VA-arbeten",
         "shortDescription": "Vatten- och avloppsarbeten – ledningar på den egna tomten och anslutning till det kommunala nätet.",
         "description": [
-          "Vatten- och avloppsarbeten kräver både rätt kompetens och rätt tillstånd, eftersom felaktigt utförda VA-installationer kan bli kostsamma att åtgärda. Markmontage BEAB AB utför VA-arbeten i Kungälv, Göteborg och övriga Västra Götaland.",
+          "Vatten- och avloppsarbeten kräver både rätt kompetens och rätt tillstånd, eftersom felaktigt utförda VA-installationer kan bli kostsamma att åtgärda. Markmontage BEAB AB utför VA-arbeten i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd.",
           "Vi lägger och byter ledningar för vatten, spillvatten och dagvatten, samt utför anslutningar till kommunalt VA-nät eller enskilda avloppsanläggningar. Arbetet utförs enligt gällande branschregler för VA-installationer.",
           "Som totalentreprenör kan vi samordna VA-arbetet med schaktning och återställning av marken, så att du slipper hålla ihop flera separata entreprenörer.",
           "Kontakta oss för en kostnadsfri offert på VA-arbetet vid din fastighet."
@@ -522,7 +524,7 @@
         "name": "Anläggning av vägar & planer",
         "shortDescription": "Anläggning av vägar, uppfarter och asfalterade eller grusade ytor med hållbar bärighet.",
         "description": [
-          "En väl anlagd väg eller uppställningsyta kräver rätt uppbyggnad i flera lager för att hålla över tid, oavsett belastning och väderlek. Markmontage BEAB AB utför anläggning av vägar och planer i Kungälv, Göteborg och övriga Västra Götaland.",
+          "En väl anlagd väg eller uppställningsyta kräver rätt uppbyggnad i flera lager för att hålla över tid, oavsett belastning och väderlek. Markmontage BEAB AB utför anläggning av vägar och planer i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd.",
           "Vi anlägger uppfarter, parkeringsytor och interna vägar, med förstärkningslager anpassade efter markens bärighet och den tänkta belastningen. Ytorna kan färdigställas med allt från grus till asfalt beroende på behov.",
           "Rätt dränering och lutning i uppbyggnaden är avgörande för att undvika vattenansamling och tjälskador, något vi planerar för redan i markarbetet.",
           "Hör av dig för en kostnadsfri offert, så går vi igenom vad som passar bäst för just din yta."
@@ -564,7 +566,7 @@
         "name": "Stenläggning & plattläggning",
         "shortDescription": "Stenläggning och plattläggning utomhus med stabilt underlag för gångar, uteplatser och infarter.",
         "description": [
-          "En hållbar stenläggning avgörs av underarbetet minst lika mycket som av själva stenen eller plattan. Markmontage BEAB AB utför stenläggning och plattläggning utomhus i Kungälv, Göteborg och övriga Västra Götaland.",
+          "En hållbar stenläggning avgörs av underarbetet minst lika mycket som av själva stenen eller plattan. Markmontage BEAB AB utför stenläggning och plattläggning utomhus i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd.",
           "Vi bygger upp bärlager och sättsand enligt branschens riktlinjer inför läggning av marksten, plattor eller kantsten till gångar, uteplatser och infarter, så att ytan ligger stabilt och jämnt även efter flera års användning.",
           "Vid behov kombinerar vi stenläggningen med dränering under ytan för att leda bort vatten och minska risken för sättningar och ogräs i fogarna.",
           "Kontakta oss för en kostnadsfri offert på stenläggningen vid din fastighet."
@@ -606,7 +608,7 @@
         "name": "Totalentreprenad",
         "shortDescription": "Totalentreprenad där vi tar helhetsansvar för mark- och grundarbetet från start till avslut.",
         "description": [
-          "På större projekt är det ofta en fördel att samla mark- och grundarbetet hos en och samma entreprenör. Markmontage BEAB AB åtar sig totalentreprenader inom mark- och grundarbeten i Kungälv, Göteborg och övriga Västra Götaland.",
+          "På större projekt är det ofta en fördel att samla mark- och grundarbetet hos en och samma entreprenör. Markmontage BEAB AB åtar sig totalentreprenader inom mark- och grundarbeten i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd.",
           "Som totalentreprenör tar vi helhetsansvaret för projektet – från schaktning och dränering till grundläggning, VA-arbeten och färdigställande av mark – och samordnar de moment som krävs för att arbetet ska flyta på utan onödiga förseningar.",
           "Du får en kontaktperson genom hela projektet och en tydlig tidsplan, istället för att själv behöva samordna flera olika entreprenörer.",
           "Kontakta oss för en kostnadsfri offert, så berättar vi mer om hur en totalentreprenad kan se ut för just ditt projekt."
@@ -643,17 +645,85 @@
           "title": "Totalentreprenad i Kungälv",
           "description": "Totalentreprenad där vi tar helhetsansvar för mark- och grundarbetet från start till avslut."
         }
+      },
+      "fiber": {
+        "slug": "fiber",
+        "name": "Fiberblåsning & fiberinstallation",
+        "shortDescription": "Fiberblåsning och fiberinstallation – från schakt och rör i marken till inblåst fiberkabel, även över vatten.",
+        "description": [
+          "Markmontage BEAB AB utför fiberblåsning och fiberinstallation i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd. Vi tar hand om arbetet i marken: schakt, förläggning av rör och kanalisation och inblåsning av fiberkabeln.",
+          "Vid fiberblåsning blåses kabeln in i ett tomrör med hjälp av tryckluft. Metoden är skonsam mot kabeln och gör det möjligt att dra långa sträckor i ett stycke.",
+          "Vi har också utrustning för att förlägga kabel över vatten, där kabeln läggs ut från pråm med hjälp av båt.",
+          "Kontakta oss så berättar vi mer om hur vi kan hjälpa till i ditt fiberprojekt."
+        ],
+        "icon": "Cable",
+        "image": {
+          "src": "/photos/markmontage-fiber-kabeltrumma.webp",
+          "variants": [
+            {
+              "width": 480,
+              "src": "/photos/markmontage-fiber-kabeltrumma-480.webp"
+            },
+            {
+              "width": 800,
+              "src": "/photos/markmontage-fiber-kabeltrumma-800.webp"
+            },
+            {
+              "width": 1125,
+              "src": "/photos/markmontage-fiber-kabeltrumma.webp"
+            }
+          ],
+          "alt": "Kabeltrumma på pråm vid kabelförläggning över vatten",
+          "focus": "50% 40%"
+        },
+        "seo": {
+          "title": "Fiberblåsning och fiberinstallation i Kungälv",
+          "description": "Fiberblåsning och fiberinstallation i Kungälv, Stenungsund, Ale, Trestad och Göteborg – schakt, rör och inblåsning av fiberkabel."
+        }
+      },
+      "transporter-kranbil": {
+        "slug": "transporter-kranbil",
+        "name": "Transporter & kranbil",
+        "shortDescription": "Transporter och lyft med egna kranlastbilar – maskiner, betongelement, material och mycket annat.",
+        "description": [
+          "Markmontage BEAB AB har egna kranlastbilar och utför transporter och kranlyft i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd. Med kranen på bilen kan vi både frakta och lyfta på plats.",
+          "Vi transporterar bland annat grävmaskiner, betongelement, pooler, växthus och byggmaterial, och lyfter det dit det ska. Med arbetskorg på kranen utför vi också arbeten på höjd, till exempel vid stolpar och ledningar.",
+          "Hör av dig med vad som ska fraktas eller lyftas, så återkommer vi med ett förslag."
+        ],
+        "icon": "Truck",
+        "image": {
+          "src": "/photos/markmontage-kranbil-gravmaskin.webp",
+          "variants": [
+            {
+              "width": 480,
+              "src": "/photos/markmontage-kranbil-gravmaskin-480.webp"
+            },
+            {
+              "width": 720,
+              "src": "/photos/markmontage-kranbil-gravmaskin.webp"
+            }
+          ],
+          "alt": "Röd kranlastbil med en grävmaskin på flaket",
+          "focus": "50% 55%"
+        },
+        "seo": {
+          "title": "Transporter och kranbil i Kungälv",
+          "description": "Transporter och kranlyft med egna kranlastbilar i Kungälv, Stenungsund, Ale, Trestad och Göteborg."
+        }
       }
     }
   },
   "uppdrag": {
     "order": [
       "schakt",
+      "pool",
       "grund",
       "dagvatten",
       "vagar",
       "marksten",
-      "helhet"
+      "helhet",
+      "fiber-sjo",
+      "kranlyft"
     ],
     "items": {
       "schakt": {
@@ -841,6 +911,80 @@
           ],
           "alt": "Kranbil lastar av vid en avspärrad arbetsplats i stan"
         }
+      },
+      "fiber-sjo": {
+        "tag": "Fiber",
+        "title": "Kabelförläggning över vatten",
+        "href": "/tjanster/fiber",
+        "image": {
+          "src": "/photos/markmontage-fiber-bat.webp",
+          "variants": [
+            {
+              "width": 480,
+              "src": "/photos/markmontage-fiber-bat-480.webp"
+            },
+            {
+              "width": 800,
+              "src": "/photos/markmontage-fiber-bat-800.webp"
+            },
+            {
+              "width": 1125,
+              "src": "/photos/markmontage-fiber-bat.webp"
+            }
+          ],
+          "alt": "Båt bogserar pråmen vid kabelförläggning i sjö",
+          "focus": "50% 50%"
+        }
+      },
+      "kranlyft": {
+        "tag": "Transporter",
+        "title": "Transport och lyft med kranbil",
+        "href": "/tjanster/transporter-kranbil",
+        "image": {
+          "src": "/photos/markmontage-kranbil-betong.webp",
+          "variants": [
+            {
+              "width": 480,
+              "src": "/photos/markmontage-kranbil-betong-480.webp"
+            },
+            {
+              "width": 800,
+              "src": "/photos/markmontage-kranbil-betong-800.webp"
+            },
+            {
+              "width": 1200,
+              "src": "/photos/markmontage-kranbil-betong-1200.webp"
+            },
+            {
+              "width": 1242,
+              "src": "/photos/markmontage-kranbil-betong.webp"
+            }
+          ],
+          "alt": "Kranlastbilar lastar betongelement"
+        }
+      },
+      "pool": {
+        "tag": "Markarbeten",
+        "title": "Schakt och lyft av pool",
+        "href": "/tjanster/schaktning-markarbeten",
+        "image": {
+          "src": "/photos/markmontage-pool-lyft.webp",
+          "variants": [
+            {
+              "width": 480,
+              "src": "/photos/markmontage-pool-lyft-480.webp"
+            },
+            {
+              "width": 800,
+              "src": "/photos/markmontage-pool-lyft-800.webp"
+            },
+            {
+              "width": 960,
+              "src": "/photos/markmontage-pool-lyft.webp"
+            }
+          ],
+          "alt": "En pool lyfts med kran ner i en schaktad grop i en trädgård"
+        }
       }
     }
   },
@@ -943,7 +1087,7 @@
       "hem",
       "om-oss",
       "projekt",
-      "certifikat"
+      "hallbarhet"
     ],
     "items": {
       "hem": {
@@ -951,7 +1095,7 @@
         "title": "Hem",
         "seo": {
           "title": "Markarbeten i Kungälv & Göteborg | Markmontage BEAB AB",
-          "description": "Markmontage BEAB AB utför mark- och grundarbeten i Kungälv, Göteborg och övriga Västra Götaland."
+          "description": "Markmontage BEAB AB utför mark- och grundarbeten i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd."
         },
         "sections": {
           "order": [
@@ -976,30 +1120,69 @@
               "eyebrow": "Markmontage BEAB AB · Sedan 2002",
               "heading": "Mark- och grundarbeten i Kungälv & Göteborg",
               "image": {
-                "src": "/photos/hero-hamnen.webp",
+                "src": "/photos/markmontage-bil-solnedgang.webp",
                 "variants": [
                   {
                     "width": 480,
-                    "src": "/photos/hero-hamnen-480.webp"
+                    "src": "/photos/markmontage-bil-solnedgang-480.webp"
                   },
                   {
                     "width": 800,
-                    "src": "/photos/hero-hamnen-800.webp"
+                    "src": "/photos/markmontage-bil-solnedgang-800.webp"
                   },
                   {
                     "width": 1200,
-                    "src": "/photos/hero-hamnen-1200.webp"
+                    "src": "/photos/markmontage-bil-solnedgang-1200.webp"
+                  },
+                  {
+                    "width": 1240,
+                    "src": "/photos/markmontage-bil-solnedgang.webp"
+                  }
+                ],
+                "alt": "Markmontages servicebil i solnedgången",
+                "focus": "40% 60%"
+              },
+              "secondImage": {
+                "src": "/photos/markmontage-kranbil-gravmaskin.webp",
+                "variants": [
+                  {
+                    "width": 480,
+                    "src": "/photos/markmontage-kranbil-gravmaskin-480.webp"
+                  },
+                  {
+                    "width": 720,
+                    "src": "/photos/markmontage-kranbil-gravmaskin.webp"
+                  }
+                ],
+                "alt": "Kranlastbil med en grävmaskin på flaket",
+                "focus": "40% 50%"
+              },
+              "thirdImage": {
+                "src": "/photos/markmontage-gravmaskin-ror.webp",
+                "variants": [
+                  {
+                    "width": 480,
+                    "src": "/photos/markmontage-gravmaskin-ror-480.webp"
+                  },
+                  {
+                    "width": 800,
+                    "src": "/photos/markmontage-gravmaskin-ror-800.webp"
+                  },
+                  {
+                    "width": 1200,
+                    "src": "/photos/markmontage-gravmaskin-ror-1200.webp"
                   },
                   {
                     "width": 1600,
-                    "src": "/photos/hero-hamnen-1600.webp"
+                    "src": "/photos/markmontage-gravmaskin-ror-1600.webp"
                   },
                   {
                     "width": 2400,
-                    "src": "/photos/hero-hamnen.webp"
+                    "src": "/photos/markmontage-gravmaskin-ror.webp"
                   }
                 ],
-                "alt": "Två medarbetare i varselkläder vid en byggarbetsplats i hamnen"
+                "alt": "Grävmaskin och medarbetare i varselkläder vid en schakt",
+                "focus": "40% 50%"
               },
               "button": {
                 "label": "Begär offert",
@@ -1273,7 +1456,7 @@
                 "href": "/om-oss"
               },
               "subheading": "Markmontage BEAB AB har sin bas i Romelanda utanför Kungälv och grundades 2002.",
-              "text": "Markmontage BEAB AB är ett entreprenadföretag inom mark- och grundarbeten, verksamt i Kungälv, Göteborg och övriga Västra Götaland. Vi utför bland annat schaktning, dränering, grundläggning och VA-arbeten, och tar även helhetsansvar som totalentreprenör på större projekt.",
+              "text": "Markmontage BEAB AB är ett entreprenadföretag inom mark- och grundarbeten, verksamt i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd. Vi utför bland annat schaktning, dränering, grundläggning, VA-arbeten och fiberinstallation, har egna kranlastbilar för transporter och lyft, och tar även helhetsansvar som totalentreprenör på större projekt.",
               "image": {
                 "src": "/photos/markmontage-teamet.webp",
                 "variants": [
@@ -1383,7 +1566,7 @@
                   },
                   "omraden": {
                     "question": "Vilka områden arbetar ni i?",
-                    "answer": "Vi utför mark- och grundarbeten i Kungälv, Göteborg och övriga Västra Götaland. Är du osäker på om vi arbetar där du bor är du varmt välkommen att höra av dig, så ger vi dig snabbt besked."
+                    "answer": "Vi utför mark- och grundarbeten i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd. Är du osäker på om vi arbetar där du bor är du varmt välkommen att höra av dig, så ger vi dig snabbt besked."
                   }
                 }
               }
@@ -1420,7 +1603,7 @@
         "title": "Om oss",
         "seo": {
           "title": "Om oss",
-          "description": "Markmontage BEAB AB utför mark- och grundarbeten i Kungälv, Göteborg och övriga Västra Götaland sedan 2002."
+          "description": "Markmontage BEAB AB utför mark- och grundarbeten i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd sedan 2002."
         },
         "sections": {
           "order": [
@@ -1472,7 +1655,7 @@
               "heading": "Om oss",
               "subheading": "Markmontage BEAB AB har sin bas i Romelanda utanför Kungälv och grundades 2002.",
               "paragraphs": [
-                "Markmontage BEAB AB är ett entreprenadföretag inom mark- och grundarbeten, verksamt i Kungälv, Göteborg och övriga Västra Götaland. Vi utför bland annat schaktning, dränering, grundläggning och VA-arbeten, och tar även helhetsansvar som totalentreprenör på större projekt.",
+                "Markmontage BEAB AB är ett entreprenadföretag inom mark- och grundarbeten, verksamt i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd. Vi utför bland annat schaktning, dränering, grundläggning, VA-arbeten och fiberinstallation, har egna kranlastbilar för transporter och lyft, och tar även helhetsansvar som totalentreprenör på större projekt.",
                 "Markmontage BEAB AB har över 20 års erfarenhet inom branschen. Ett bygge är aldrig starkare än sin grund, och vi lägger därför stor vikt vid fackmannamässigt utförande i varje moment av mark- och grundarbetet.",
                 "Markmontage BEAB AB grundades 2002 och har idag 18 anställda.",
                 "Du är varmt välkommen att kontakta oss!"
@@ -1588,7 +1771,7 @@
               "anchor": "",
               "label": "",
               "heading": "Vi lägger grunden för ditt bygge",
-              "text": "Vi utför bland annat schaktning, dränering, grundläggning och VA-arbeten i Kungälv, Göteborg och övriga Västra Götaland – och tar helhetsansvar som totalentreprenör på större projekt. Oavsett uppdrag lägger vi stor vikt vid fackmannamässigt utförande i varje moment.",
+              "text": "Vi utför bland annat schaktning, dränering, grundläggning, VA-arbeten, fiberinstallation och transporter med kranbil i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd – och tar helhetsansvar som totalentreprenör på större projekt. Oavsett uppdrag lägger vi stor vikt vid fackmannamässigt utförande i varje moment.",
               "link": {
                 "label": "Se våra tjänster",
                 "href": "/#tjanster"
@@ -1634,7 +1817,7 @@
         "title": "Uppdrag",
         "seo": {
           "title": "Uppdrag vi utför",
-          "description": "De typer av mark- och grundarbeten som Markmontage BEAB AB utför i Kungälv, Göteborg och övriga Västra Götaland."
+          "description": "De typer av mark- och grundarbeten som Markmontage BEAB AB utför i Kungälv, Stenungsund, Ale, Trestad och Göteborg med omnejd."
         },
         "sections": {
           "order": [
@@ -1666,17 +1849,18 @@
           }
         }
       },
-      "certifikat": {
-        "slug": "certifikat",
-        "title": "Certifikat",
+      "hallbarhet": {
+        "slug": "hallbarhet",
+        "title": "Hållbarhet",
         "seo": {
-          "title": "Certifikat",
-          "description": "Markmontage BEAB AB är certifierat enligt ISO 9001, ISO 14001 och ISO 45001 och har kreditbetyget AA, God kreditvärdighet, från Dun & Bradstreet."
+          "title": "Hållbarhet – certifikat och policyer",
+          "description": "Markmontage BEAB AB är certifierat enligt ISO 9001, ISO 14001 och ISO 45001. Här finns våra certifikat och våra policyer för kvalitet, miljö och arbetsmiljö."
         },
         "sections": {
           "order": [
             "bild",
             "certifikat",
+            "policyer",
             "offert"
           ],
           "items": {
@@ -1718,8 +1902,8 @@
               "hidden": false,
               "anchor": "",
               "label": "",
-              "heading": "Certifikat",
-              "text": "Markmontage är certifierat enligt ISO 9001, ISO 14001 och ISO 45001 – de internationella standarderna för kvalitet, miljö och arbetsmiljö. Certifieringarna är utfärdade av Svensk Certifiering, och dessutom har vi kreditbetyget AA från Dun & Bradstreet.",
+              "heading": "Hållbarhet",
+              "text": "Kvalitet, miljö och arbetsmiljö är en del av hur vi arbetar varje dag. Markmontage är certifierat enligt ISO 9001, ISO 14001 och ISO 45001 – de internationella standarderna för kvalitet, miljö och arbetsmiljö – utfärdade av Svensk Certifiering. Dessutom har vi kreditbetyget AA från Dun & Bradstreet. Längre ner finns våra policyer.",
               "issuerPrefix": "Utfärdat av",
               "validUntilPrefix": "Giltigt till",
               "documentLabel": "Se hela certifikatet (PDF)",
@@ -1736,6 +1920,93 @@
               "button": {
                 "label": "Begär offert",
                 "href": "#offert"
+              }
+            },
+            "policyer": {
+              "type": "policies",
+              "hidden": false,
+              "anchor": "policyer",
+              "label": "",
+              "heading": "Våra policyer",
+              "text": "Policyerna beskriver hur vi arbetar med kvalitet, miljö och arbetsmiljö, och vilka mål vi följer upp.",
+              "goalLabel": "Mål",
+              "measureLabel": "Uppföljning:",
+              "documentLabel": "Läs hela policyn (PDF)",
+              "items": {
+                "order": [
+                  "kvalitet",
+                  "miljo",
+                  "arbetsmiljo"
+                ],
+                "items": {
+                  "kvalitet": {
+                    "name": "Kvalitetspolicy",
+                    "icon": "BadgeCheck",
+                    "paragraphs": [
+                      "Markmontage ska arbeta för att ständigt förbättra och utveckla sin verksamhet. Vi är innovativa i all vår företagsamhet, viljan att alltid utveckla och förbättra vår verksamhet skall vara påtaglig. Vi uppfyller de lagar och krav som ställs på oss.",
+                      "Vi strävar efter att ständigt förbättra vårt verksamhetssystem så att vårt arbete därigenom kan bedrivas på ett mera effektivt sätt.",
+                      "Vi uppfyller våra kunders krav på kvalitet avseende de tjänster och produkter som vi tillhandahåller."
+                    ],
+                    "goals": {
+                      "order": [
+                        "forbattringsforslag"
+                      ],
+                      "items": {
+                        "forbattringsforslag": {
+                          "goal": "Antal förbättringsförslag, därav även delaktigheten av företagets kvalitet, från medarbetare och andra intressenter skall öka med 50 % årligen.",
+                          "measure": "Uppföljning och genomförande av förbättringsförslagen."
+                        }
+                      }
+                    },
+                    "document": "/dokument/markmontage-kvalitetspolicy.pdf"
+                  },
+                  "miljo": {
+                    "name": "Miljöpolicy",
+                    "icon": "Leaf",
+                    "paragraphs": [
+                      "Markmontage tar ansvar för vår miljöpåverkan, genom kunskap, kompetens och engagemang bidra till en hållbar miljö. Ambitionen är att minska koncernens klimatpåverkan genom hela projekten. Vi jobbar ständigt med vårt miljöarbete och ser till att det bedrivs systematiskt med en tydlig struktur.",
+                      "Vi strävar efter att använda miljömärkta produkter, i den mån de finns tillgängliga på marknaden samt uppfyller våra egna krav på egenskaper och ekonomi."
+                    ],
+                    "goals": {
+                      "order": [
+                        "fordon"
+                      ],
+                      "items": {
+                        "fordon": {
+                          "goal": "För att minska klimatpåverkan och främja en mer hållbar verksamhet ska befintlig maskin- och fordonspark som drivs av fossila bränslen fasas ut enligt fastställd planering. Ersättning ska ske med fordon och maskiner som uppfyller miljöklass Euro 6 eller bättre.",
+                          "measure": "Företagets fordonsinnehavslista samt företagets utfasningsplanering för fordon."
+                        }
+                      }
+                    },
+                    "document": "/dokument/markmontage-miljopolicy.pdf"
+                  },
+                  "arbetsmiljo": {
+                    "name": "Arbetsmiljöpolicy",
+                    "icon": "HardHat",
+                    "paragraphs": [
+                      "Markmontage bedriver ett systematiskt arbetsmiljöarbete som integreras i de övriga verksamhetsfrågorna. Våra medarbetare är vår viktigaste resurs. Genom att integrera hälsa och säkerhet i vårt dagliga arbete skapar vi en god och säker fysisk, psykisk och social sund och utvecklande arbetsplats för alla medarbetare.",
+                      "Vi bedriver ett långsiktigt och strategiskt arbete för att främja jämställdhet samt stärka den organisatoriska och sociala arbetsmiljön inom verksamheten. Arbetet utgår från ett förbättringsperspektiv och genomsyras i ledarskapet.",
+                      "Vi har absolut nolltolerans för hot och våld samt kränkande särbehandling och uppmuntrar till att vi anmäler om vi misstänker att detta pågår i vår organisation."
+                    ],
+                    "goals": {
+                      "order": [
+                        "utbildning",
+                        "upplevelse"
+                      ],
+                      "items": {
+                        "utbildning": {
+                          "goal": "100 % av vår personal skall ha fått internutbildning i arbetsmiljön på Markmontage och inneha rätt kompetens inom arbetsmiljö.",
+                          "measure": "Uppföljning av kompetensmatrisen."
+                        },
+                        "upplevelse": {
+                          "goal": "90 % av medarbetarna ger minst 6 i positiv uppskattning på en 10-gradig skala i hur deras arbetsmiljö upplevs generellt på Markmontage.",
+                          "measure": "Resultatet från medarbetarsamtalen, där medarbetarna berättar hur de upplever arbetsmiljön generellt på Markmontage."
+                        }
+                      }
+                    },
+                    "document": "/dokument/markmontage-arbetsmiljopolicy.pdf"
+                  }
+                }
               }
             }
           }

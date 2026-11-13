@@ -1,17 +1,16 @@
 {
-  "hero-hamnen": [
-    480,
-    800,
-    1200,
-    1600,
-    2400
-  ],
   "markmontage-arbete": [
     480,
     800,
     1200,
     1600,
     2400
+  ],
+  "markmontage-bil-solnedgang": [
+    480,
+    800,
+    1200,
+    1240
   ],
   "markmontage-dagvatten-ror": [
     480,
@@ -26,6 +25,16 @@
     1200,
     1600,
     1800
+  ],
+  "markmontage-fiber-bat": [
+    480,
+    800,
+    1125
+  ],
+  "markmontage-fiber-kabeltrumma": [
+    480,
+    800,
+    1125
   ],
   "markmontage-gatsten-stad": [
     480,
@@ -62,12 +71,46 @@
     1600,
     2400
   ],
+  "markmontage-kranbil-betong": [
+    480,
+    800,
+    1200,
+    1242
+  ],
+  "markmontage-kranbil-gravmaskin": [
+    480,
+    720
+  ],
+  "markmontage-kranbil-grip": [
+    480,
+    800,
+    1200,
+    1242
+  ],
+  "markmontage-kranbil-korg": [
+    480,
+    800,
+    1200,
+    1242
+  ],
   "markmontage-kranbil-stad": [
     480,
     800,
     1200,
     1600,
     1800
+  ],
+  "markmontage-kranbil-stolpe": [
+    480,
+    800,
+    1200,
+    1512
+  ],
+  "markmontage-kranbil-vaxthus": [
+    480,
+    800,
+    1200,
+    1242
   ],
   "markmontage-minigravare-grasmatta": [
     480,
@@ -96,6 +139,11 @@
     1200,
     1600,
     2400
+  ],
+  "markmontage-pool-lyft": [
+    480,
+    800,
+    960
   ],
   "markmontage-schakt-kabel": [
     480,

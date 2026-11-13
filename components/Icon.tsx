@@ -1,6 +1,7 @@
 import {
   BadgeCheck,
   Building2,
+  Cable,
   Calendar,
   Check,
   CheckCircle2,
@@ -79,6 +80,7 @@ const contentIconMap: Record<ContentIcon, typeof HardHat> = {
   Zap,
   TreePine,
   Fence,
+  Cable,
 };
 
 const iconMap = {

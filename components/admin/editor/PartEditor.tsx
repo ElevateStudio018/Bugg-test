@@ -39,7 +39,7 @@ export const parts: Part[] = [
     id: "certifikat",
     label: "Alla certifikat",
     group: "Listor som visas på flera sidor",
-    description: "Certifikaten och behörigheterna på certifikatsidan.",
+    description: "Certifikaten och behörigheterna på hållbarhetssidan.",
     root: "certificates",
   },
   { id: "meny", label: "Menyn", group: "Delar av varje sida", description: "Menyraden högst upp och menyn som öppnas med knappen.", root: "navigation" },

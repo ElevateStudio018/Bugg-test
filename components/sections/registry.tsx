@@ -14,6 +14,7 @@ import { HeroSection } from "./HeroSection";
 import { MapSection } from "./MapSection";
 import { PageHeroSection } from "./PageHeroSection";
 import { PhotoPairSection } from "./PhotoPairSection";
+import { PoliciesSection } from "./PoliciesSection";
 import { PricelistSection } from "./PricelistSection";
 import { ProcessSection } from "./ProcessSection";
 import { PromoSection } from "./PromoSection";
@@ -49,13 +50,14 @@ export const sectionComponents: { [T in SectionType]: ComponentType<SectionProps
   pricelist: PricelistSection,
   testimonials: TestimonialsSection,
   text: TextSection,
+  policies: PoliciesSection,
 };
 
 /** Sections that end without bottom space of their own, so the section after them can carry straight on. */
-export const flushBottom = new Set<SectionType>(["aboutIntro", "certificates", "uppdragGrid"]);
+export const flushBottom = new Set<SectionType>(["aboutIntro", "certificates", "uppdragGrid", "policies"]);
 
 /** Sections that can carry straight on from a flush one before them. */
-export const attachesTop = new Set<SectionType>(["cta", "photoPair"]);
+export const attachesTop = new Set<SectionType>(["cta", "photoPair", "policies"]);
 
 /** Sections that open a subpage with the breadcrumb trail and the page's main heading. */
 export const opensPage = new Set<SectionType>(["aboutIntro", "certificates", "uppdragGrid"]);
