@@ -10,7 +10,7 @@
     "start": "next start",
     "lint": "next lint",
     "build:inleed": "node scripts/build-inleed.mjs",
-    "photos": "node scripts/photo-sizes.mjs",
+    "photos": "node scripts/photo-sizes.mjs && node scripts/photo-placeholders.mjs",
     "snapshot": "tsx scripts/fetch-snapshot.ts"
   },
   "dependencies": {

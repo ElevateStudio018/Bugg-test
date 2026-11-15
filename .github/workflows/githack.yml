@@ -8,6 +8,9 @@ on:
   push:
     branches: [claude/markmontage-hemsida, claude/markmontage-tillagg]
   workflow_dispatch:
+  # Picks up what the admin publishes (see deploy-pages.yml).
+  schedule:
+    - cron: "*/10 * * * *"
 
 permissions:
   contents: write
@@ -17,7 +20,28 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # On the schedule: build only when the admin has published a version the live site does not have yet. Pushes and
+  # runs started by hand always build.
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      build: ${{ steps.compare.outputs.build }}
+    steps:
+      - id: compare
+        env:
+          SUPABASE_URL: ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_KEY: ${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          LIVE_VERSION_URL: https://raw.githubusercontent.com/ElevateStudio018/Bugg-test/githack/site-version.json
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then echo "build=true" >> "$GITHUB_OUTPUT"; exit 0; fi
+          published=$(curl -sf "$SUPABASE_URL/rest/v1/site_snapshot?select=version&id=eq.1" -H "apikey: $SUPABASE_KEY" | jq -r '.[0].version // empty')
+          live=$(curl -sf "$LIVE_VERSION_URL" | jq -r '.version // empty' || true)
+          echo "published=$published live=$live"
+          if [ -n "$published" ] && [ "$published" != "$live" ]; then echo "build=true" >> "$GITHUB_OUTPUT"; else echo "build=false" >> "$GITHUB_OUTPUT"; fi
+
   build:
+    needs: check
+    if: needs.check.outputs.build == 'true'
     runs-on: ubuntu-latest
     env:
       OUT_BRANCH: ${{ github.ref_name == 'claude/markmontage-tillagg' && 'githack-tillagg' || 'githack' }}

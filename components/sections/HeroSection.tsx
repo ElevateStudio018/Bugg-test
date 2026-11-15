@@ -3,6 +3,7 @@ import { SiteLink } from "../SiteLink";
 import { ZoomImage } from "../ZoomImage";
 import { focusStyle, imageProps } from "@/lib/site/images.ts";
 import type { SiteImage } from "@/lib/site/schema.ts";
+import placeholders from "@/lib/photo-placeholders.json";
 import type { SectionProps } from "./types";
 
 type HeroProps = SectionProps<"hero">;
@@ -14,16 +15,25 @@ export function HeroSection({ section }: HeroProps) {
 
 /** One photo fills the first screen under an even dark filter, with the white text over it. */
 function PhotoHero({ section }: { section: HeroProps["section"] }) {
+  const placeholder = (placeholders as Record<string, string>)[section.image.src];
   return (
     // The white text sits near the bottom on phones and tablets, and just below the middle on the left on desktop.
     <section
       id={section.anchor || undefined}
       className="relative isolate flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden bg-secondary sm:min-h-[calc(100svh-5rem)]"
     >
-      {/* On a portrait screen the photo fills the height, so it is shown about one and a half times the screen's
-          height wide; the browser then fetches a copy large enough to stay sharp. */}
+      {/* A tiny blurred copy, inlined in the page, shows the photo's colours at once while the sharp one loads. */}
+      {placeholder && (
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 scale-110 bg-cover blur-xl"
+          style={{ backgroundImage: `url(${placeholder})`, backgroundPosition: section.image.focus || "74% center" }}
+        />
+      )}
+      {/* On a portrait screen the photo fills the height and is shown wider than the screen. Asking for a copy about the
+          screen's height wide keeps it sharp enough without sending a phone the full 4K photo. */}
       <ZoomImage
-        {...imageProps(section.image, "(orientation: portrait) 150vh, 100vw")}
+        {...imageProps(section.image, "(orientation: portrait) 90vh, 100vw")}
         alt={section.image.alt}
         priority
         parallax="top"
