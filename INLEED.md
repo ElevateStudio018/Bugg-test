@@ -58,7 +58,7 @@ visa 404-sidan) och offertformuläret.
 | Alla sidor, bilder, typsnitt, PDF:er och 404-sidan | Fungerar direkt. |
 | Offertformuläret och `/forslag/` | Skickas via FormSubmit till elevate.studio018@gmail.com tills Supabase är inkopplat. Första gången kan FormSubmit skicka ett aktiveringsmejl dit, och du trycker **Activate**. |
 | Adminpanelen (`/admin/`) | Laddas, men visar ”inte inkopplad” tills Supabase är inkopplat (`SETUP.md`). |
-| Publicera i adminpanelen | Bygger om GitHub Pages, men inte Inleed. Tills vidare laddas en ny zip upp för hand. En automatisk uppladdning från GitHub till Inleed via FTP kan läggas till senare, med FTP-uppgifterna som GitHub-secrets (aldrig i chatten). |
+| Publicera i adminpanelen | Syns direkt för besökarna: sidan jämför sin byggda version med den publicerade i Supabase och visar den nyare. Google, besökare utan JavaScript och helt nya sidor ser den byggda versionen tills en ny zip laddas upp. En automatisk uppladdning från GitHub till Inleed via FTP kan läggas till senare, med FTP-uppgifterna som GitHub-secrets (aldrig i chatten). |
 
 När Supabase kopplas in för Inleed behöver även de här inställningarna den nya adressen: Auth → Site URL och Redirect
 URLs (`https://www.markmontagebeab.se/admin/**`), och funktionernas `SITE_URL`, `ADMIN_URL` och `ALLOWED_ORIGINS`
