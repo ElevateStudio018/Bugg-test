@@ -169,7 +169,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
       <div {...entrance(0)}>
-        <label htmlFor={`${idPrefix}-namn`} className={labelClass}>
+        <label htmlFor={`${idPrefix}-namn`} className={labelClass} data-k="form.labels.name">
           {texts.labels.name}
         </label>
         <div className="group/field relative">
@@ -193,7 +193,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
       </div>
 
       <div {...entrance(1)}>
-        <label htmlFor={`${idPrefix}-telefon`} className={labelClass}>
+        <label htmlFor={`${idPrefix}-telefon`} className={labelClass} data-k="form.labels.phone">
           {texts.labels.phone}
         </label>
         <div className="group/field relative">
@@ -217,7 +217,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
       </div>
 
       <div {...entrance(2)}>
-        <label htmlFor={`${idPrefix}-epost`} className={labelClass}>
+        <label htmlFor={`${idPrefix}-epost`} className={labelClass} data-k="form.labels.email">
           {texts.labels.email}
         </label>
         <div className="group/field relative">
@@ -240,6 +240,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
         )}
         <p
           id={`${idPrefix}-kontakt`}
+          data-k={errors.kontakt ? "form.errors.contact" : "form.contactHint"}
           className={`mt-1.5 text-[14px] ${errors.kontakt ? "animate-error-in text-error" : "text-muted"}`}
         >
           {errors.kontakt ?? texts.contactHint}
@@ -247,7 +248,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
       </div>
 
       <div {...entrance(3)}>
-        <label htmlFor={`${idPrefix}-typ`} className={labelClass}>
+        <label htmlFor={`${idPrefix}-typ`} className={labelClass} data-k="form.labels.workType">
           {texts.labels.workType}
         </label>
         <div className="group/field relative">
@@ -279,7 +280,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
       </div>
 
       <div {...entrance(4)}>
-        <label htmlFor={`${idPrefix}-beskrivning`} className={labelClass}>
+        <label htmlFor={`${idPrefix}-beskrivning`} className={labelClass} data-k="form.labels.description">
           {texts.labels.description}
         </label>
         <div className="group/field relative">
@@ -297,7 +298,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
 
       {/* Wrapped, so the entrance doesn't hold the button's own press-in transform. */}
       <div {...entrance(5)}>
-        <button type="submit" disabled={isSubmitting} className={buttonClasses("solid", "w-full disabled:opacity-70")}>
+        <button type="submit" disabled={isSubmitting} data-k="form.submit" className={buttonClasses("solid", "w-full disabled:opacity-70")}>
           {isSubmitting ? (
             <>
               <Icon name="Loader2" className="mr-2 h-5 w-5 animate-spin" />

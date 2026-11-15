@@ -67,6 +67,11 @@ export function describePath(doc: unknown, path: string[]): string {
     return [pageName, ...describeIn(doc, ["pages", "items", rest[1]], pageFields, rest.slice(2))].join(" › ");
   }
   const rootName = rootLabels[root] ?? root;
+  // An element's look: named after the element ("Utseende › Startsidan › Toppen › Rubrik").
+  if (root === "styles") {
+    const style = getAt(doc, path) as { k?: string } | undefined;
+    return style?.k ? `Utseende › ${describePath(doc, style.k.split("."))}` : rootName;
+  }
   if (root in rootCollections) {
     const spec = rootCollections[root as keyof typeof rootCollections];
     if (rest[0] === "items" && rest[1]) {

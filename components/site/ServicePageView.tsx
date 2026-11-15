@@ -19,6 +19,10 @@ export function ServicePageView({ site, service }: { site: SiteData; service: Se
   const otherServices = list(site.services).filter((item) => item.slug !== service.slug);
   const address = fullAddress(company);
   const linkPrefix = cardLinkPrefix(site);
+  // The service's place in the content (lib/site/edit.ts).
+  const serviceId = Object.keys(site.services.items).find((id) => site.services.items[id].slug === service.slug);
+  const base = serviceId ? `services.items.${serviceId}` : undefined;
+  const sk = (field: string) => base && `${base}.${field}`;
 
   return (
     <>
@@ -43,6 +47,7 @@ export function ServicePageView({ site, service }: { site: SiteData; service: Se
         <ZoomImage
           {...imageProps(service.image, "100vw")}
           alt={service.image.alt}
+          k={sk("image")}
           priority
           parallax="top"
           style={focusStyle(service.image)}
@@ -66,27 +71,35 @@ export function ServicePageView({ site, service }: { site: SiteData; service: Se
         <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
           <article>
             {texts.badge && (
-              <span className="inline-block animate-rise bg-accent px-4 py-[11px] text-tag uppercase text-on-primary [animation-delay:250ms]">
+              <span data-k="servicePage.badge" className="inline-block animate-rise bg-accent px-4 py-[11px] text-tag uppercase text-on-primary [animation-delay:250ms]">
                 {texts.badge}
               </span>
             )}
-            <h1 className="mt-4 animate-rise text-[38px] font-semibold leading-[1.1] tracking-[-0.01em] text-heading [animation-delay:330ms] lg:text-[56px]">
+            <h1 data-k={sk("name")} className="mt-4 animate-rise text-[38px] font-semibold leading-[1.1] tracking-[-0.01em] text-heading [animation-delay:330ms] lg:text-[56px]">
               {service.name}
             </h1>
-            <p className="mt-6 animate-rise text-copy text-body [animation-delay:410ms] lg:text-[21px]">{service.shortDescription}</p>
+            <p data-k={sk("shortDescription")} className="mt-6 animate-rise text-copy text-body [animation-delay:410ms] lg:text-[21px]">
+              {service.shortDescription}
+            </p>
             <div className="mt-6 animate-rise space-y-5 [animation-delay:490ms]">
               {service.description.map((paragraph, index) => (
-                <p key={index} className="text-copy text-body lg:text-[18px]">
+                <p key={index} data-k={sk(`description.${index}`)} className="text-copy text-body lg:text-[18px]">
                   {paragraph}
                 </p>
               ))}
             </div>
 
             <AccentBlock className="mt-12">
-              <h2 className="text-h2 text-heading lg:text-[38px]">{texts.cta.heading}</h2>
-              {texts.cta.text && <p className="mt-4 text-copy text-body">{texts.cta.text}</p>}
+              <h2 data-k="servicePage.cta.heading" className="text-h2 text-heading lg:text-[38px]">
+                {texts.cta.heading}
+              </h2>
+              {texts.cta.text && (
+                <p data-k="servicePage.cta.text" className="mt-4 text-copy text-body">
+                  {texts.cta.text}
+                </p>
+              )}
               {texts.cta.button.label && (
-                <SiteLink href={texts.cta.button.href} className={buttonClasses("solid", "mt-7")}>
+                <SiteLink href={texts.cta.button.href} k="servicePage.cta.button" className={buttonClasses("solid", "mt-7")}>
                   {texts.cta.button.label}
                 </SiteLink>
               )}
@@ -96,24 +109,31 @@ export function ServicePageView({ site, service }: { site: SiteData; service: Se
           <aside className="animate-rise space-y-6 [animation-delay:550ms] lg:pt-14">
             <FaktaBox
               title={texts.factsTitle}
+              base="servicePage"
               rows={[
-                { label: texts.factLabels.service, value: service.name },
-                { label: texts.factLabels.performedBy, value: company.legalName },
-                { label: texts.factLabels.seat, value: seat(company) },
-                { label: texts.factLabels.area, value: company.serviceArea },
-                { label: texts.factLabels.org, value: company.orgNumber },
+                { label: texts.factLabels.service, value: service.name, labelKey: "servicePage.factLabels.service", valueKey: sk("name") },
+                { label: texts.factLabels.performedBy, value: company.legalName, labelKey: "servicePage.factLabels.performedBy", valueKey: "company.legalName" },
+                { label: texts.factLabels.seat, value: seat(company), labelKey: "servicePage.factLabels.seat", valueKey: "company.city" },
+                { label: texts.factLabels.area, value: company.serviceArea, labelKey: "servicePage.factLabels.area", valueKey: "company.serviceArea" },
+                { label: texts.factLabels.org, value: company.orgNumber, labelKey: "servicePage.factLabels.org", valueKey: "company.orgNumber" },
               ]}
             />
 
             <div className="bg-card px-6 py-7 sm:px-8 sm:py-8">
-              <p className="text-[22px] font-semibold leading-tight text-heading">{company.legalName}</p>
-              {texts.contactTagline && <p className="mt-1 text-[17px] text-body">{texts.contactTagline}</p>}
+              <p data-k="company.legalName" className="text-[22px] font-semibold leading-tight text-heading">
+                {company.legalName}
+              </p>
+              {texts.contactTagline && (
+                <p data-k="servicePage.contactTagline" className="mt-1 text-[17px] text-body">
+                  {texts.contactTagline}
+                </p>
+              )}
               <ul className="mt-6 space-y-6 text-[18px] text-heading">
                 {company.phone && (
                   <li>
                     <a href={toTelHref(company.phone)} className={`${tapTarget} flex items-center gap-4 transition-colors hover:text-accent`}>
                       <Icon name="Phone" strokeWidth={2.25} className="h-6 w-6 shrink-0 text-accent" />
-                      {company.phone}
+                      <span data-k="company.phone">{company.phone}</span>
                     </a>
                   </li>
                 )}
@@ -121,24 +141,26 @@ export function ServicePageView({ site, service }: { site: SiteData; service: Se
                   <li>
                     <a href={`mailto:${company.email}`} className={`${tapTarget} flex items-center gap-4 transition-colors hover:text-accent`}>
                       <Icon name="Mail" strokeWidth={2.25} className="h-6 w-6 shrink-0 text-accent" />
-                      <span className="break-all">{company.email}</span>
+                      <span data-k="company.email" className="break-all">
+                        {company.email}
+                      </span>
                     </a>
                   </li>
                 )}
                 <li className="flex items-start gap-4">
                   <Icon name="MapPin" strokeWidth={2.25} className="mt-0.5 h-6 w-6 shrink-0 text-accent" />
-                  {address}
+                  <span data-k="company.address">{address}</span>
                 </li>
               </ul>
               {texts.contactButton.label && (
-                <SiteLink href={texts.contactButton.href} className={buttonClasses("solid", "mt-8 w-full")}>
+                <SiteLink href={texts.contactButton.href} k="servicePage.contactButton" className={buttonClasses("solid", "mt-8 w-full")}>
                   {texts.contactButton.label}
                 </SiteLink>
               )}
             </div>
 
             {texts.backLink.label && (
-              <SiteLink href={texts.backLink.href} className={buttonClasses("outline", "w-full")}>
+              <SiteLink href={texts.backLink.href} k="servicePage.backLink" className={buttonClasses("outline", "w-full")}>
                 {texts.backLink.label}
               </SiteLink>
             )}
@@ -150,12 +172,14 @@ export function ServicePageView({ site, service }: { site: SiteData; service: Se
         <section className="border-t border-line/10">
           <div className="mx-auto max-w-content px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
             <Reveal>
-              <h2 className="text-h2 text-heading lg:text-h2-lg">{texts.moreHeading}</h2>
+              <h2 data-k="servicePage.moreHeading" className="text-h2 text-heading lg:text-h2-lg">
+                {texts.moreHeading}
+              </h2>
             </Reveal>
             <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-6 xl:grid-cols-3">
               {otherServices.map((item, index) => (
                 <Reveal key={item.id} delayMs={(index % 3) * 70}>
-                  <ServiceCard service={item} linkPrefix={linkPrefix} />
+                  <ServiceCard service={item} id={item.id} linkPrefix={linkPrefix} />
                 </Reveal>
               ))}
             </div>

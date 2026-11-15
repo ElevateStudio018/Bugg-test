@@ -60,7 +60,7 @@ export function Navbar({ content }: { content: NavContent }) {
 
   return (
     <>
-      <header className="header-shadow fixed inset-x-0 top-0 z-40 bg-nav">
+      <header data-k="navigation" className="header-shadow fixed inset-x-0 top-0 z-40 bg-nav">
         <div className="mx-auto flex h-16 max-w-content items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
           <Link href="/" aria-label={content.labels.homeLink} className="flex min-h-12 items-center text-nav-text">
             <Wordmark content={content.logo} />
@@ -75,6 +75,7 @@ export function Navbar({ content }: { content: NavContent }) {
                     <li key={link.id}>
                       <Link
                         href={link.href}
+                        data-k={`navigation.barLinks.items.${link.id}`}
                         aria-current={isActive ? "page" : undefined}
                         className={`relative py-2 text-[16px] font-semibold transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:bg-nav-text after:transition-transform after:duration-200 hover:text-nav-text hover:after:scale-x-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-nav-text ${
                           isActive ? "text-nav-text after:scale-x-100" : "text-nav-text/75 after:scale-x-0"
@@ -93,6 +94,7 @@ export function Navbar({ content }: { content: NavContent }) {
               {content.phone && (
                 <a
                   href={toTelHref(content.phone)}
+                  data-k="company.phone"
                   aria-label={`${content.labels.callPrefix} ${content.phone}`}
                   className="flex h-12 w-12 items-center justify-center rounded-xl text-nav-text transition-colors hover:text-nav-text/75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-nav-text"
                 >

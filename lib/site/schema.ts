@@ -553,6 +553,32 @@ export const uiSchema = z.object({
   cookieSettings: lineText.optional(),
 });
 
+// ---------------------------------------------------------------------------------------------------------------------
+// The look of single elements, set in the admin's visual editor on top of the theme
+
+/** An element's place in the content: the parts of its content path joined with dots, as in its data-k attribute. */
+export const elementKeySchema = z
+  .string()
+  .max(300)
+  .regex(/^[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*$/, "Ogiltig elementadress");
+
+export const elementStyleSchema = z.object({
+  k: elementKeySchema,
+  color: hexColorSchema.optional(),
+  background: hexColorSchema.optional(),
+  font: fontSchema.optional(),
+  /** Text size in pixels. */
+  size: z.number().int().min(8).max(160).optional(),
+  weight: z.number().int().min(100).max(900).optional(),
+  /** Corner rounding in pixels. */
+  radius: z.number().int().min(0).max(999).optional(),
+  align: z.enum(["left", "center", "right"]).optional(),
+});
+export type ElementStyle = z.infer<typeof elementStyleSchema>;
+
+/** Element styles by a short key made from the element's address (lib/site/styles.ts → styleKey). */
+export const stylesSchema = z.record(z.string().regex(/^[a-z0-9]{1,16}$/), elementStyleSchema);
+
 export const notFoundSchema = z.object({ eyebrow: lineText, heading: lineText, text: longText, button: linkSchema, seoTitle: lineText });
 
 export const siteDataSchema = z.object({
@@ -570,6 +596,8 @@ export const siteDataSchema = z.object({
   uppdrag: collectionSchema(uppdragSchema, 60),
   certificates: collectionSchema(certificateSchema, 60),
   pages: collectionSchema(pageSchema, 30),
+  /** Missing until the first element is styled. */
+  styles: stylesSchema.optional(),
 });
 export type SiteData = z.infer<typeof siteDataSchema>;
 

@@ -8,8 +8,8 @@ export interface FaqEntry {
   answer: string;
 }
 
-/** Plain rows split by thin lines; the answer opens under its question. */
-export function FaqAccordion({ items }: { items: FaqEntry[] }) {
+/** Plain rows split by thin lines; the answer opens under its question. `base` is the items' place in the content. */
+export function FaqAccordion({ items, base }: { items: FaqEntry[]; base?: string }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const idPrefix = useId();
 
@@ -31,7 +31,7 @@ export function FaqAccordion({ items }: { items: FaqEntry[] }) {
                 onClick={() => setOpenIndex(isOpen ? null : index)}
                 className="flex w-full items-center justify-between gap-6 py-4 text-left text-[18px] font-bold leading-[1.25] text-heading transition-colors duration-200 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:py-5 lg:text-[20px]"
               >
-                {item.question}
+                <span data-k={base && `${base}.${item.id}.question`}>{item.question}</span>
                 {/* A downward chevron of two thin bars that pivot on its tip. Opening the answer turns both arms
                     flat into a minus, which rises to the middle; closing folds it back into the chevron. */}
                 <span
@@ -60,7 +60,9 @@ export function FaqAccordion({ items }: { items: FaqEntry[] }) {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="pb-5 pr-10 text-copy leading-[1.4] text-body">{item.answer}</p>
+                <p data-k={base && `${base}.${item.id}.answer`} className="pb-5 pr-10 text-copy leading-[1.4] text-body">
+                  {item.answer}
+                </p>
               </div>
             </div>
           </div>

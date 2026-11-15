@@ -27,6 +27,8 @@ export function PageView({
   const breadcrumbs: Crumb[] = [{ label: site.ui.breadcrumbHome, href: "/" }, { label: page.title }];
   // On a subpage the first section that opens it shows the breadcrumb trail and the page's main heading.
   const opener = isHome ? -1 : sections.findIndex((section) => opensPage.has(section.type));
+  // The page's id, for the sections' places in the content (lib/site/edit.ts).
+  const pageId = Object.keys(site.pages.items).find((id) => site.pages.items[id] === page || site.pages.items[id].slug === page.slug);
 
   return (
     <>
@@ -35,6 +37,7 @@ export function PageView({
         const previous = sections[index - 1];
         const next = sections[index + 1];
         const attached = Boolean(previous && flushBottom.has(previous.type) && attachesTop.has(section.type));
+        const path = pageId ? `pages.items.${pageId}.sections.items.${section.id}` : undefined;
         const needsClosingSpace = flushBottom.has(section.type) && !(next && attachesTop.has(next.type));
         return (
           <Fragment key={section.id}>
@@ -43,10 +46,10 @@ export function PageView({
             {section.hidden ? (
               <div className="relative opacity-50">
                 <span className="absolute left-4 top-4 z-10 rounded-full bg-black/80 px-3 py-1.5 text-[13px] font-semibold text-white">{reveal?.label}</span>
-                <Component section={section} id={section.id} ctx={{ site, attached, breadcrumbs: index === opener ? breadcrumbs : undefined }} />
+                <Component section={section} id={section.id} ctx={{ site, attached, path, breadcrumbs: index === opener ? breadcrumbs : undefined }} />
               </div>
             ) : (
-              <Component section={section} id={section.id} ctx={{ site, attached, breadcrumbs: index === opener ? breadcrumbs : undefined }} />
+              <Component section={section} id={section.id} ctx={{ site, attached, path, breadcrumbs: index === opener ? breadcrumbs : undefined }} />
             )}
             {needsClosingSpace && <div aria-hidden="true" className={closingSpace} />}
           </Fragment>

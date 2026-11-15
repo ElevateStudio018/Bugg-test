@@ -513,6 +513,7 @@ export const rootLabels: Record<string, string> = {
   uppdrag: "Uppdrag",
   certificates: "Certifikat",
   pages: "Sidor",
+  styles: "Utseende på enskilda delar",
 };
 
 // ---------------------------------------------------------------------------------------------------------------------

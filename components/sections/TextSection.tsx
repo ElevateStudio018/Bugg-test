@@ -3,6 +3,7 @@ import { SiteLink } from "../SiteLink";
 import { buttonClasses } from "../Button";
 import { ZoomImage } from "../ZoomImage";
 import { focusStyle, imageProps } from "@/lib/site/images.ts";
+import { key } from "@/lib/site/edit.ts";
 import type { SectionProps } from "./types";
 
 const tones = {
@@ -12,28 +13,32 @@ const tones = {
 } as const;
 
 /** Free text: a heading, paragraphs, an optional photo beside them and an optional button. */
-export function TextSection({ section }: SectionProps<"text">) {
+export function TextSection({ section, ctx }: SectionProps<"text">) {
   const tone = tones[section.tone];
   const image = section.image;
 
   return (
-    <section id={section.anchor || undefined} className={`scroll-mt-20 ${tone.section}`}>
+    <section id={section.anchor || undefined} data-k={ctx.path} className={`scroll-mt-20 ${tone.section}`}>
       <div
         className={`mx-auto grid max-w-content grid-cols-1 gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:gap-16 lg:px-8 lg:py-28 ${
           image ? "lg:grid-cols-2" : ""
         }`}
       >
         <Reveal className={`max-w-3xl ${image && section.imageSide === "left" ? "lg:order-2" : ""}`}>
-          {section.heading && <h2 className={`text-h2 lg:text-h2-lg ${tone.heading}`}>{section.heading}</h2>}
+          {section.heading && (
+            <h2 data-k={key(ctx.path, "heading")} className={`text-h2 lg:text-h2-lg ${tone.heading}`}>
+              {section.heading}
+            </h2>
+          )}
           <div className="mt-5 space-y-4">
             {section.paragraphs.map((paragraph, index) => (
-              <p key={index} className={`text-copy lg:text-lead ${tone.text}`}>
+              <p key={index} data-k={key(ctx.path, "paragraphs", index)} className={`text-copy lg:text-lead ${tone.text}`}>
                 {paragraph}
               </p>
             ))}
           </div>
           {section.button && section.button.label && (
-            <SiteLink href={section.button.href} className={buttonClasses(tone.button, "mt-8")}>
+            <SiteLink href={section.button.href} k={key(ctx.path, "button")} className={buttonClasses(tone.button, "mt-8")}>
               {section.button.label}
             </SiteLink>
           )}
@@ -45,6 +50,7 @@ export function TextSection({ section }: SectionProps<"text">) {
               <ZoomImage
                 {...imageProps(image, "(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw")}
                 alt={image.alt}
+                k={key(ctx.path, "image")}
                 loading="lazy"
                 style={focusStyle(image)}
                 className="absolute inset-0 h-full w-full object-cover"

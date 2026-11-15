@@ -6,25 +6,31 @@ import { isExternalHref, isQuoteHref } from "@/lib/site/links.ts";
 /**
  * A link from the content: the quote form opens in its window, pages on the site go through Next's Link (which adds the
  * base path), parts of the current page and mail/phone addresses are plain links, and other sites open in a new tab.
+ * `k` is the link's place in the content (lib/site/edit.ts).
  */
-export function SiteLink({ href, className, children }: { href: string; className?: string; children: ReactNode }) {
-  if (isQuoteHref(href)) return <QuoteTrigger className={className ?? ""}>{children}</QuoteTrigger>;
+export function SiteLink({ href, className, children, k }: { href: string; className?: string; children: ReactNode; k?: string }) {
+  if (isQuoteHref(href))
+    return (
+      <QuoteTrigger className={className ?? ""} k={k}>
+        {children}
+      </QuoteTrigger>
+    );
   if (href.startsWith("/")) {
     return (
-      <Link href={href} className={className}>
+      <Link href={href} className={className} data-k={k}>
         {children}
       </Link>
     );
   }
   if (isExternalHref(href)) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+      <a href={href} target="_blank" rel="noopener noreferrer" className={className} data-k={k}>
         {children}
       </a>
     );
   }
   return (
-    <a href={href} className={className}>
+    <a href={href} className={className} data-k={k}>
       {children}
     </a>
   );

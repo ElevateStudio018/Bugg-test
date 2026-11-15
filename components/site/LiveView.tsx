@@ -16,10 +16,11 @@ import { googleFontsHref } from "@/lib/site/fonts.ts";
 import { homePage, pageBySlug } from "@/lib/site/pages.ts";
 import { siteDataSchema, type SiteData } from "@/lib/site/schema.ts";
 import { themeCss } from "@/lib/site/theme.ts";
+import { fontFamilies, stylesCss } from "@/lib/site/styles.ts";
 
 /** Google Fonts for fonts the build has not downloaded yet (the built site hosts its own copies). */
 function fontHref(site: SiteData): string | null {
-  const families = Array.from(new Set(Object.values(site.theme.fonts).map((font) => font.family))).filter((family) => family !== "Figtree");
+  const families = fontFamilies(site);
   return families.length > 0 ? googleFontsHref(families) : null;
 }
 
@@ -48,7 +49,7 @@ export function LiveView({ data, pathname, children }: { data: unknown; pathname
   const fonts = fontHref(site);
   const head = (
     <>
-      <style dangerouslySetInnerHTML={{ __html: themeCss(site.theme) }} />
+      <style dangerouslySetInnerHTML={{ __html: themeCss(site.theme) + stylesCss(site) }} />
       {fonts && <link rel="stylesheet" href={fonts} />}
     </>
   );

@@ -1,10 +1,11 @@
-// The fonts the owner has chosen (other than Figtree, which the site bundles), downloaded from Google Fonts while the
+// The fonts the owner has chosen for the theme and single elements (other than Figtree, which the site bundles), downloaded from Google Fonts while the
 // site is built so that it serves its own copies: visitors' browsers never contact Google, and the text is drawn in
 // the right font from the first paint. Only the Latin subset is kept; it covers Swedish (å, ä, ö, é …).
 import { createHash } from "node:crypto";
 import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { fontOption, googleFontsHref } from "../lib/site/fonts.ts";
 import type { SiteData } from "../lib/site/schema.ts";
+import { fontFamilies } from "../lib/site/styles.ts";
 
 export interface FontFace {
   family: string;
@@ -40,7 +41,7 @@ async function get(url: string): Promise<Response> {
  */
 export async function downloadFonts(site: SiteData, publicDir = "public/fonts"): Promise<FontFace[]> {
   rmSync(publicDir, { recursive: true, force: true });
-  const families = Array.from(new Set(Object.values(site.theme.fonts).map((font) => font.family))).filter((family) => family !== "Figtree");
+  const families = fontFamilies(site);
   if (families.length === 0) return [];
   mkdirSync(publicDir, { recursive: true });
 

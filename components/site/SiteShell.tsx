@@ -5,6 +5,7 @@ import { QuoteModal } from "../QuoteModal";
 import { ConfirmationToast } from "../ConfirmationToast";
 import { QuoteModalProvider } from "@/contexts/QuoteModalContext";
 import { themeCss } from "@/lib/site/theme.ts";
+import { stylesCss } from "@/lib/site/styles.ts";
 import { fontFaceCss } from "@/lib/site/data.ts";
 import type { SiteData } from "@/lib/site/schema.ts";
 import { navContent } from "./navContent";
@@ -18,7 +19,7 @@ export function SiteShell({ site, children }: { site: SiteData; children: ReactN
   if (site.settings.maintenance.enabled) {
     return (
       <>
-        <style dangerouslySetInnerHTML={{ __html: fontFaceCss() + themeCss(site.theme) }} />
+        <style dangerouslySetInnerHTML={{ __html: fontFaceCss() + themeCss(site.theme) + stylesCss(site) }} />
         <MaintenanceView site={site} />
       </>
     );
@@ -26,7 +27,7 @@ export function SiteShell({ site, children }: { site: SiteData; children: ReactN
   return (
     <>
       {/* The theme's colours and fonts, in place before anything is drawn. */}
-      <style dangerouslySetInnerHTML={{ __html: fontFaceCss() + themeCss(site.theme) }} />
+      <style dangerouslySetInnerHTML={{ __html: fontFaceCss() + themeCss(site.theme) + stylesCss(site) }} />
       {/* For keyboard and screen reader users: straight past the header to the page's own content. */}
       <a
         href="#innehall"

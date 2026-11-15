@@ -3,18 +3,25 @@ import { SiteLink } from "../SiteLink";
 import { UppdragCarousel } from "../UppdragCarousel";
 import { ArrowLabel, arrowLinkClasses } from "../Button";
 import { list } from "@/lib/site/collection.ts";
+import { key } from "@/lib/site/edit.ts";
 import type { SectionProps } from "./types";
 
 export function UppdragCarouselSection({ section, ctx }: SectionProps<"uppdragCarousel">) {
   const { ui } = ctx.site;
   return (
-    <section id={section.anchor || undefined} className="pb-10 pt-16 sm:pb-14 sm:pt-20 lg:pb-20 lg:pt-28">
+    <section id={section.anchor || undefined} data-k={ctx.path} className="pb-10 pt-16 sm:pb-14 sm:pt-20 lg:pb-20 lg:pt-28">
       <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
         <Reveal className="max-w-3xl">
-          <h2 className="text-h2 text-heading lg:text-h2-lg">{section.heading}</h2>
-          {section.text && <p className="mt-5 text-copy text-body lg:text-lead">{section.text}</p>}
+          <h2 data-k={key(ctx.path, "heading")} className="text-h2 text-heading lg:text-h2-lg">
+            {section.heading}
+          </h2>
+          {section.text && (
+            <p data-k={key(ctx.path, "text")} className="mt-5 text-copy text-body lg:text-lead">
+              {section.text}
+            </p>
+          )}
           {section.link.label && (
-            <SiteLink href={section.link.href} className={arrowLinkClasses("mt-6")}>
+            <SiteLink href={section.link.href} k={key(ctx.path, "link")} className={arrowLinkClasses("mt-6")}>
               <ArrowLabel>{section.link.label}</ArrowLabel>
             </SiteLink>
           )}

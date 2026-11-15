@@ -15,6 +15,7 @@ export function Photo({
   className = "",
   style,
   transition,
+  k,
 }: {
   src: string;
   srcSet?: string;
@@ -23,6 +24,8 @@ export function Photo({
   className?: string;
   style?: CSSProperties;
   transition?: string;
+  /** The photo's place in the content (lib/site/edit.ts). */
+  k?: string;
 }) {
   const ref = useRef<HTMLImageElement>(null);
   const isLoaded = useImageLoaded(ref);
@@ -31,6 +34,7 @@ export function Photo({
     // eslint-disable-next-line @next/next/no-img-element
     <img
       ref={ref}
+      data-k={k}
       src={src}
       srcSet={srcSet}
       sizes={sizes}

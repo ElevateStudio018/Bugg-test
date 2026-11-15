@@ -1,6 +1,7 @@
 import { ZoomImage } from "../ZoomImage";
 import { list } from "@/lib/site/collection.ts";
 import { focusStyle, imageProps } from "@/lib/site/images.ts";
+import { key } from "@/lib/site/edit.ts";
 import type { SectionProps } from "./types";
 
 /** Two photos side by side, closing off the section before it or standing on their own. */
@@ -8,6 +9,7 @@ export function PhotoPairSection({ section, ctx }: SectionProps<"photoPair">) {
   return (
     <div
       id={section.anchor || undefined}
+      data-k={ctx.path}
       className={`mx-auto max-w-content px-4 pb-14 sm:px-6 sm:pb-20 lg:px-8 lg:pb-24 ${ctx.attached ? "" : "pt-4 lg:pt-8"}`}
     >
       <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-6 lg:mt-16">
@@ -16,6 +18,7 @@ export function PhotoPairSection({ section, ctx }: SectionProps<"photoPair">) {
             <ZoomImage
               {...imageProps(photo.image, "(min-width: 1280px) 600px, 50vw")}
               alt={photo.image.alt}
+              k={key(ctx.path, "photos.items", photo.id, "image")}
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover"
               style={focusStyle(photo.image)}

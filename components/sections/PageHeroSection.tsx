@@ -1,5 +1,6 @@
 import { ZoomImage } from "../ZoomImage";
 import { focusStyle, imageProps } from "@/lib/site/images.ts";
+import { key } from "@/lib/site/edit.ts";
 import type { SectionProps } from "./types";
 
 const sizes = {
@@ -8,12 +9,13 @@ const sizes = {
 } as const;
 
 /** The full-width photo at the top of a subpage. */
-export function PageHeroSection({ section }: SectionProps<"pageHero">) {
+export function PageHeroSection({ section, ctx }: SectionProps<"pageHero">) {
   return (
-    <div id={section.anchor || undefined} className={`relative w-full overflow-hidden bg-primary/20 ${sizes[section.size]}`}>
+    <div id={section.anchor || undefined} data-k={ctx.path} className={`relative w-full overflow-hidden bg-primary/20 ${sizes[section.size]}`}>
       <ZoomImage
         {...imageProps(section.image, "100vw")}
         alt={section.image.alt}
+        k={key(ctx.path, "image")}
         priority
         parallax="top"
         style={focusStyle(section.image)}

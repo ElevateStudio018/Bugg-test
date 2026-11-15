@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { QuoteModal } from "@/components/QuoteModal";
@@ -15,12 +15,14 @@ import { QuoteModalProvider } from "@/contexts/QuoteModalContext";
 import { themeCss } from "@/lib/site/theme.ts";
 import { homePage } from "@/lib/site/pages.ts";
 import { googleFontsHref } from "@/lib/site/fonts.ts";
+import { fontFamilies, stylesCss } from "@/lib/site/styles.ts";
+import { EditLayer } from "@/components/admin/visual/EditLayer";
 import type { SiteData } from "@/lib/site/schema.ts";
 import { PREVIEW_READY, type PreviewMessage, type PreviewTarget } from "@/lib/admin/preview";
 
 /** Google Fonts for the draft's fonts, here in the preview only (the published site hosts its own copies). */
 function fontHref(site: SiteData): string | null {
-  const families = Array.from(new Set(Object.values(site.theme.fonts).map((font) => font.family))).filter((family) => family !== "Figtree");
+  const families = fontFamilies(site);
   return families.length > 0 ? googleFontsHref(families) : null;
 }
 
@@ -28,14 +30,35 @@ function fontHref(site: SiteData): string | null {
 export default function PreviewPage() {
   const [site, setSite] = useState<SiteData | null>(null);
   const [target, setTarget] = useState<PreviewTarget | null>(null);
+  const [edit, setEdit] = useState<PreviewMessage["edit"]>(undefined);
+  // While text is typed straight into the page, new drafts wait, so the text under the caret is not redrawn.
+  const typing = useRef(false);
+  const waiting = useRef<PreviewMessage | null>(null);
+
+  const apply = useCallback((data: PreviewMessage) => {
+    setSite(data.draft);
+    setTarget(data.target);
+    setEdit(data.edit);
+  }, []);
+
+  const onTyping = useCallback(
+    (now: boolean) => {
+      typing.current = now;
+      if (!now && waiting.current) {
+        apply(waiting.current);
+        waiting.current = null;
+      }
+    },
+    [apply],
+  );
 
   useEffect(() => {
     function onMessage(event: MessageEvent) {
       if (event.origin !== window.location.origin) return;
       const data = event.data as PreviewMessage;
       if (data?.type !== "markmontage-preview") return;
-      setSite(data.draft);
-      setTarget(data.target);
+      if (typing.current) waiting.current = data;
+      else apply(data);
     }
     window.addEventListener("message", onMessage);
     window.parent?.postMessage({ type: PREVIEW_READY }, window.location.origin);
@@ -49,7 +72,7 @@ export default function PreviewPage() {
       window.removeEventListener("message", onMessage);
       document.removeEventListener("click", stopLinks, true);
     };
-  }, []);
+  }, [apply]);
 
   // Bring the part being edited into view: a section, or the footer.
   const focusKey = target?.kind === "page" ? target.sectionId ?? "" : target?.kind === "chrome" ? target.part : "";
@@ -67,7 +90,12 @@ export default function PreviewPage() {
 
   if (!site || !target) return <div className="min-h-svh bg-[#F4F3EF]" />;
 
-  const theme = <style dangerouslySetInnerHTML={{ __html: `${themeCss(site.theme)}body{background:rgb(var(--c-background));color:rgb(var(--c-text))}` }} />;
+  const theme = (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: `${themeCss(site.theme)}body{background:rgb(var(--c-background));color:rgb(var(--c-text))}${stylesCss(site)}` }} />
+      {edit && <EditLayer selected={edit.selected} onTyping={onTyping} />}
+    </>
+  );
   const fontLink = fonts && <link rel="stylesheet" href={fonts} />;
 
   if (target.kind === "maintenance") {

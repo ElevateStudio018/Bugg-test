@@ -10,6 +10,8 @@ export interface SectionContext {
    * the section before them ends without its own bottom space, so they close it off instead of starting afresh.
    */
   attached?: boolean;
+  /** The section's place in the content ("pages.items.hem.sections.items.hero"), for the data-k attributes (lib/site/edit.ts). */
+  path?: string;
 }
 
 export interface SectionProps<T extends SectionType> {

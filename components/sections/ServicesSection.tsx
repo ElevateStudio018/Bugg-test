@@ -3,6 +3,7 @@ import { ServiceCard } from "../ServiceCard";
 import { SiteLink } from "../SiteLink";
 import { ArrowLabel, arrowLinkClasses } from "../Button";
 import { list } from "@/lib/site/collection.ts";
+import { key } from "@/lib/site/edit.ts";
 import type { SectionProps } from "./types";
 
 export function ServicesSection({ section, ctx }: SectionProps<"services">) {
@@ -12,12 +13,14 @@ export function ServicesSection({ section, ctx }: SectionProps<"services">) {
   const widenLast = services.length % 2 === 1;
 
   return (
-    <section id={section.anchor || undefined} className="scroll-mt-20">
+    <section id={section.anchor || undefined} data-k={ctx.path} className="scroll-mt-20">
       <div className="mx-auto max-w-content px-4 pb-16 pt-10 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
         <Reveal>
-          <h2 className="text-h2 text-heading lg:text-h2-lg">{section.heading}</h2>
+          <h2 data-k={key(ctx.path, "heading")} className="text-h2 text-heading lg:text-h2-lg">
+            {section.heading}
+          </h2>
           {section.link.label && (
-            <SiteLink href={section.link.href} className={arrowLinkClasses("mt-0.5 lg:mt-2")}>
+            <SiteLink href={section.link.href} k={key(ctx.path, "link")} className={arrowLinkClasses("mt-0.5 lg:mt-2")}>
               <ArrowLabel>{section.link.label}</ArrowLabel>
             </SiteLink>
           )}
@@ -28,7 +31,13 @@ export function ServicesSection({ section, ctx }: SectionProps<"services">) {
             const wide = widenLast && index === lastIndex;
             return (
               <Reveal key={service.id} delayMs={(index % 4) * 70} className={wide ? "col-span-2" : ""}>
-                <ServiceCard service={service} linkPrefix={section.cardLinkPrefix} wide={wide} />
+                <ServiceCard
+                  service={service}
+                  id={service.id}
+                  linkPrefix={section.cardLinkPrefix}
+                  linkPrefixKey={key(ctx.path, "cardLinkPrefix")}
+                  wide={wide}
+                />
               </Reveal>
             );
           })}

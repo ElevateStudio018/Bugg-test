@@ -21,13 +21,15 @@ interface ZoomImageProps {
    * down, whose frame must then clip with overflow-clip rather than overflow-hidden.
    */
   parallax?: keyof typeof parallaxClasses;
+  /** The photo's place in the content (lib/site/edit.ts). */
+  k?: string;
 }
 
 /**
  * A photo that slowly eases from a slight zoom to its normal size the first time it comes into view; one at the top
  * of a page does so as the page loads. One still loading fades in when it arrives. Its frame must clip overflow.
  */
-export function ZoomImage({ src, alt = "", className = "", style, loading, srcSet, sizes, priority, parallax }: ZoomImageProps) {
+export function ZoomImage({ src, alt = "", className = "", style, loading, srcSet, sizes, priority, parallax, k }: ZoomImageProps) {
   const { ref, isInView } = useInView<HTMLImageElement>();
   const isLoaded = useImageLoaded(ref);
 
@@ -35,6 +37,7 @@ export function ZoomImage({ src, alt = "", className = "", style, loading, srcSe
     // eslint-disable-next-line @next/next/no-img-element
     <img
       ref={ref}
+      data-k={k}
       src={src}
       srcSet={srcSet}
       sizes={sizes}

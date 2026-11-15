@@ -28,7 +28,7 @@ export function Footer({ site }: { site: SiteData }) {
   const social = socialIcons.filter(({ key }) => company.social[key]);
 
   return (
-    <footer className="relative overflow-hidden bg-footer text-footer-text">
+    <footer data-k="footer" className="relative overflow-hidden bg-footer text-footer-text">
       {/* Faint ring systems that merge into each other, tiling seamlessly over the whole footer. */}
       <div
         aria-hidden="true"
@@ -54,13 +54,15 @@ export function Footer({ site }: { site: SiteData }) {
         {/* Phones: contact on top, then the two link lists side by side, to keep the footer short. */}
         <div className="grid grid-cols-2 gap-x-6 gap-y-9 lg:grid-cols-[1.3fr_1fr_1fr] lg:gap-10">
           <Reveal delayMs={80} className="col-span-2 lg:col-span-1">
-            <h2 className={headingClass}>{footer.contactHeading}</h2>
+            <h2 data-k="footer.contactHeading" className={headingClass}>
+              {footer.contactHeading}
+            </h2>
             <ul className="mt-1.5 text-[17px] leading-snug lg:mt-2.5 lg:text-[18px]">
               {company.phone && (
                 <li>
                   <a href={toTelHref(company.phone)} className="flex min-h-11 items-center gap-3 transition-colors hover:text-footer-text/70">
                     <Icon name="Phone" strokeWidth={2.25} className="h-5 w-5 shrink-0 text-footer-text/60" />
-                    {company.phone}
+                    <span data-k="company.phone">{company.phone}</span>
                   </a>
                 </li>
               )}
@@ -68,13 +70,15 @@ export function Footer({ site }: { site: SiteData }) {
                 <li>
                   <a href={`mailto:${company.email}`} className="flex min-h-11 items-center gap-3 transition-colors hover:text-footer-text/70">
                     <Icon name="Mail" strokeWidth={2.25} className="h-5 w-5 shrink-0 text-footer-text/60" />
-                    <span className="break-all">{company.email}</span>
+                    <span data-k="company.email" className="break-all">
+                      {company.email}
+                    </span>
                   </a>
                 </li>
               )}
               <li className="flex items-start gap-3 py-2.5">
                 <Icon name="MapPin" strokeWidth={2.25} className="mt-0.5 h-5 w-5 shrink-0 text-footer-text/60" />
-                <span>
+                <span data-k="company.address">
                   {company.address.street}
                   <br />
                   {company.address.postalCode} {company.address.city}
@@ -83,12 +87,12 @@ export function Footer({ site }: { site: SiteData }) {
               {company.openingHours && (
                 <li className="flex items-start gap-3 py-2.5">
                   <Icon name="Clock" strokeWidth={2.25} className="mt-0.5 h-5 w-5 shrink-0 text-footer-text/60" />
-                  <span>{company.openingHours}</span>
+                  <span data-k="company.openingHours">{company.openingHours}</span>
                 </li>
               )}
             </ul>
             {footer.button.label && (
-              <SiteLink href={footer.button.href} className={buttonClasses("on-footer", "mt-6 lg:mt-7")}>
+              <SiteLink href={footer.button.href} k="footer.button" className={buttonClasses("on-footer", "mt-6 lg:mt-7")}>
                 {footer.button.label}
               </SiteLink>
             )}
@@ -112,11 +116,13 @@ export function Footer({ site }: { site: SiteData }) {
           </Reveal>
 
           <Reveal delayMs={160}>
-            <h2 className={headingClass}>{footer.servicesHeading}</h2>
+            <h2 data-k="footer.servicesHeading" className={headingClass}>
+              {footer.servicesHeading}
+            </h2>
             <ul className="mt-1 lg:mt-4 lg:space-y-0.5">
               {list(site.services).map((service) => (
                 <li key={service.id}>
-                  <Link href={`/tjanster/${service.slug}`} className={linkClass}>
+                  <Link href={`/tjanster/${service.slug}`} data-k={`services.items.${service.id}.name`} className={linkClass}>
                     {service.name}
                   </Link>
                 </li>
@@ -125,11 +131,13 @@ export function Footer({ site }: { site: SiteData }) {
           </Reveal>
 
           <Reveal delayMs={240}>
-            <h2 className={headingClass}>{footer.companyHeading}</h2>
+            <h2 data-k="footer.companyHeading" className={headingClass}>
+              {footer.companyHeading}
+            </h2>
             <ul className="mt-1 lg:mt-4 lg:space-y-0.5">
               {list(footer.companyLinks).map((link) => (
                 <li key={link.id}>
-                  <SiteLink href={link.href} className={linkClass}>
+                  <SiteLink href={link.href} k={`footer.companyLinks.items.${link.id}`} className={linkClass}>
                     {link.label}
                   </SiteLink>
                 </li>
@@ -143,12 +151,14 @@ export function Footer({ site }: { site: SiteData }) {
           className="mt-9 flex flex-col gap-1 border-t border-footer-text/15 pt-5 text-[13px] text-footer-text/70 sm:flex-row sm:justify-between lg:mt-12 lg:text-[14px]"
         >
           {/* Joined into the same pieces of text as ever, so the line sets exactly as before. */}
-          <p>{`© ${new Date().getFullYear()} ${footer.copyrightName}`}</p>
           <p>
-            {`${footer.orgLabel} `}
-            {company.orgNumber}
-            {` · ${footer.vatLabel} `}
-            {company.vatNumber}
+            {`© ${new Date().getFullYear()} `}
+            <span data-k="footer.copyrightName">{footer.copyrightName}</span>
+          </p>
+          <p>
+            <span data-k="footer.orgLabel">{footer.orgLabel}</span> <span data-k="company.orgNumber">{company.orgNumber}</span>
+            {" · "}
+            <span data-k="footer.vatLabel">{footer.vatLabel}</span> <span data-k="company.vatNumber">{company.vatNumber}</span>
             {site.settings.analyticsId && site.ui.cookieSettings && (
               <>
                 {" · "}

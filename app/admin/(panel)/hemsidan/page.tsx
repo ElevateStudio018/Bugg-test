@@ -15,12 +15,14 @@ import { PartEditor, partTarget, parts } from "@/components/admin/editor/PartEdi
 import { PreviewPane } from "@/components/admin/editor/PreviewPane";
 import { ColorEditor } from "@/components/admin/editor/ColorEditor";
 import { FontEditor } from "@/components/admin/editor/FontEditor";
+import { VisualEditor } from "@/components/admin/visual/VisualEditor";
 import { useDraft } from "@/contexts/admin/AdminDataContext";
 import { list } from "@/lib/site/collection.ts";
 import type { PreviewTarget } from "@/lib/admin/preview";
 
 const tabs = [
-  { id: "innehall", label: "Innehåll" },
+  { id: "visuellt", label: "Klicka och ändra" },
+  { id: "innehall", label: "Sidor och sektioner" },
   { id: "farger", label: "Färger" },
   { id: "typsnitt", label: "Typsnitt" },
 ];
@@ -48,7 +50,12 @@ function WebsiteEditor() {
   const router = useRouter();
   const pathname = usePathname();
   const { status, loadError, draft, canUndo, store } = useDraft();
-  const tab = tabs.some((item) => item.id === params.get("flik")) ? (params.get("flik") as string) : "innehall";
+  // The visual editor first; a link to a particular section or part opens the forms instead.
+  const tab = tabs.some((item) => item.id === params.get("flik"))
+    ? (params.get("flik") as string)
+    : params.get("sektion") || params.get("del")
+      ? "innehall"
+      : "visuellt";
   const pageParam = params.get("sida");
   const partParam = params.get("del");
   const sectionParam = params.get("sektion");
@@ -92,7 +99,11 @@ function WebsiteEditor() {
     <>
       <PageHeader
         title="Hemsidan"
-        description="Allt sparas automatiskt medan du skriver. Ändringarna syns på hemsidan när du publicerar."
+        description={
+          tab === "visuellt"
+            ? "Klicka på det du vill ändra på sidan. Allt sparas automatiskt och syns på hemsidan när du publicerar."
+            : "Allt sparas automatiskt medan du skriver. Ändringarna syns på hemsidan när du publicerar."
+        }
         actions={
           <AdminButton icon={Undo2} onClick={() => store.undo()} disabled={!canUndo} title="Ångrar din senaste ändring (upp till 20 steg)">
             Ångra
@@ -100,7 +111,7 @@ function WebsiteEditor() {
         }
       />
       <PublishBar />
-      <Tabs label="Vad du vill ändra" items={tabs} active={tab} onChange={(id) => navigate({ flik: id === "innehall" ? null : id })} />
+      <Tabs label="Vad du vill ändra" items={tabs} active={tab} onChange={(id) => navigate({ flik: id === "visuellt" ? null : id })} />
     </>
   );
 
@@ -114,6 +125,17 @@ function WebsiteEditor() {
           Försök igen
         </AdminButton>
       </Card>
+    );
+  }
+
+  if (tab === "visuellt") {
+    return (
+      <>
+        {header}
+        <div role="tabpanel" id="panel-visuellt" aria-labelledby="tab-visuellt">
+          <VisualEditor draft={draft} initialPage={pageParam} />
+        </div>
+      </>
     );
   }
 

@@ -4,24 +4,47 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Monitor, Smartphone } from "lucide-react";
 import { Skeleton } from "../ui/Skeleton";
 import { basePath } from "@/lib/admin/config";
-import { PREVIEW_READY, type PreviewMessage, type PreviewTarget } from "@/lib/admin/preview";
+import { PREVIEW_READY, type PreviewMessage, type PreviewReply, type PreviewTarget } from "@/lib/admin/preview";
 import type { SiteData } from "@/lib/site/schema.ts";
 
 const widths = { desktop: 1280, mobile: 390 } as const;
 type Device = keyof typeof widths;
 
+/** In the visual editor: the chosen element, and what to do when one is clicked or typed into in the frame. */
+export interface PreviewEditing {
+  selected: string | null;
+  onSelect: (k: string) => void;
+  onText: (k: string, value: string) => void;
+}
+
 /**
  * The site as it will look, drawn by the site's own components in a frame and updated with every keystroke (the draft
- * is posted to the frame; nothing is saved or reloaded for it). Desktop is shown scaled down to fit.
+ * is posted to the frame; nothing is saved or reloaded for it). Desktop is shown scaled down to fit. With `edit`, the
+ * page in the frame can be clicked to choose what to change, and its texts typed into.
  */
-export function PreviewPane({ draft, target, className = "" }: { draft: SiteData; target: PreviewTarget; className?: string }) {
+export function PreviewPane({
+  draft,
+  target,
+  edit,
+  toolbar,
+  className = "",
+}: {
+  draft: SiteData;
+  target: PreviewTarget;
+  edit?: PreviewEditing;
+  /** More controls in the bar above the frame (the visual editor's page picker). */
+  toolbar?: React.ReactNode;
+  className?: string;
+}) {
   const frameRef = useRef<HTMLIFrameElement>(null);
   const boxRef = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
   const [device, setDevice] = useState<Device>("desktop");
   const [box, setBox] = useState({ width: 0, height: 0 });
-  const latest = useRef({ draft, target });
-  latest.current = { draft, target };
+  const latest = useRef({ draft, target, selected: edit?.selected ?? null, editing: Boolean(edit) });
+  latest.current = { draft, target, selected: edit?.selected ?? null, editing: Boolean(edit) };
+  const handlers = useRef(edit);
+  handlers.current = edit;
 
   // Phones start in the phone view.
   useEffect(() => {
@@ -41,7 +64,8 @@ export function PreviewPane({ draft, target, className = "" }: { draft: SiteData
   const post = useCallback(() => {
     cancelAnimationFrame(frame.current);
     frame.current = requestAnimationFrame(() => {
-      const message: PreviewMessage = { type: "markmontage-preview", ...latest.current };
+      const { draft, target, selected, editing } = latest.current;
+      const message: PreviewMessage = { type: "markmontage-preview", draft, target, edit: editing ? { selected } : undefined };
       frameRef.current?.contentWindow?.postMessage(message, window.location.origin);
     });
   }, []);
@@ -53,6 +77,9 @@ export function PreviewPane({ draft, target, className = "" }: { draft: SiteData
         setReady(true);
         post();
       }
+      const reply = event.data as PreviewReply;
+      if (reply?.type === "markmontage-preview-select") handlers.current?.onSelect(reply.k);
+      if (reply?.type === "markmontage-preview-text") handlers.current?.onText(reply.k, reply.value);
     }
     window.addEventListener("message", onMessage);
     return () => window.removeEventListener("message", onMessage);
@@ -60,7 +87,7 @@ export function PreviewPane({ draft, target, className = "" }: { draft: SiteData
 
   useEffect(() => {
     if (ready) post();
-  }, [draft, target, ready, post]);
+  }, [draft, target, ready, post, edit?.selected]);
 
   const virtualWidth = widths[device];
   const scale = box.width > 0 ? Math.min(1, box.width / virtualWidth) : 1;
@@ -70,12 +97,13 @@ export function PreviewPane({ draft, target, className = "" }: { draft: SiteData
 
   return (
     <div className={`flex min-h-0 flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-admin-line ${className}`}>
-      <div className="flex items-center justify-between gap-3 border-b border-admin-line px-3 py-2">
-        <p className="flex items-center gap-2 pl-1 text-[13px] font-semibold text-admin-muted">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-admin-line px-3 py-2">
+        <p className={`${toolbar ? "hidden xl:flex" : "flex"} items-center gap-2 pl-1 text-[13px] font-semibold text-admin-muted`}>
           <span aria-hidden="true" className="h-2 w-2 rounded-full bg-emerald-500" />
           Förhandsvisning
           <span className="sr-only">– uppdateras medan du skriver</span>
         </p>
+        {toolbar}
         <div role="group" aria-label="Skärmstorlek" className="flex rounded-xl bg-stone-100 p-1">
           {(
             [
@@ -93,7 +121,7 @@ export function PreviewPane({ draft, target, className = "" }: { draft: SiteData
               }`}
             >
               <Icon aria-hidden="true" className="h-4 w-4" />
-              {label}
+              <span className={toolbar ? "sr-only sm:not-sr-only" : ""}>{label}</span>
             </button>
           ))}
         </div>

@@ -3,21 +3,32 @@ import { SiteLink } from "../SiteLink";
 import { ArrowLabel, arrowLinkClasses } from "../Button";
 import { ZoomImage } from "../ZoomImage";
 import { focusStyle, imageProps } from "@/lib/site/images.ts";
+import { key } from "@/lib/site/edit.ts";
 import type { SectionProps } from "./types";
 
-export function AboutSection({ section }: SectionProps<"about">) {
+export function AboutSection({ section, ctx }: SectionProps<"about">) {
   return (
-    <section id={section.anchor || undefined} className="scroll-mt-20 bg-card">
+    <section id={section.anchor || undefined} data-k={ctx.path} className="scroll-mt-20 bg-card">
       <div className="mx-auto grid max-w-content grid-cols-1 gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16 lg:px-8 lg:py-28">
         <Reveal>
-          <h2 className="text-h2 text-heading lg:text-h2-lg">{section.heading}</h2>
+          <h2 data-k={key(ctx.path, "heading")} className="text-h2 text-heading lg:text-h2-lg">
+            {section.heading}
+          </h2>
           {section.link.label && (
-            <SiteLink href={section.link.href} className={arrowLinkClasses("mt-0.5 lg:mt-2")}>
+            <SiteLink href={section.link.href} k={key(ctx.path, "link")} className={arrowLinkClasses("mt-0.5 lg:mt-2")}>
               <ArrowLabel>{section.link.label}</ArrowLabel>
             </SiteLink>
           )}
-          {section.subheading && <p className="mt-6 text-copy font-semibold text-heading lg:text-[22px]">{section.subheading}</p>}
-          {section.text && <p className="mt-4 text-copy text-body">{section.text}</p>}
+          {section.subheading && (
+            <p data-k={key(ctx.path, "subheading")} className="mt-6 text-copy font-semibold text-heading lg:text-[22px]">
+              {section.subheading}
+            </p>
+          )}
+          {section.text && (
+            <p data-k={key(ctx.path, "text")} className="mt-4 text-copy text-body">
+              {section.text}
+            </p>
+          )}
         </Reveal>
 
         <Reveal delayMs={120} className="lg:pt-2">
@@ -25,6 +36,7 @@ export function AboutSection({ section }: SectionProps<"about">) {
             <ZoomImage
               {...imageProps(section.image, "(min-width: 1280px) 480px, (min-width: 1024px) 40vw, 100vw")}
               alt={section.image.alt}
+              k={key(ctx.path, "image")}
               loading="lazy"
               style={focusStyle(section.image)}
               className="absolute inset-0 h-full w-full object-cover"
