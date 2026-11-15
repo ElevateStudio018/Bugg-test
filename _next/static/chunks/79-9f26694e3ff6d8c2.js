@@ -13,7 +13,7 @@
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */let d=(0,a.forwardRef)((t,e)=>{let{color:n="currentColor",size:r=24,strokeWidth:d=2,absoluteStrokeWidth:u,className:i="",children:y,iconNode:k,...l}=t;return(0,a.createElement)("svg",{ref:e,...c,width:r,height:r,stroke:n,strokeWidth:u?24*Number(d)/Number(r):d,className:h("lucide",i),...l},[...k.map(t=>{let[e,n]=t;return(0,a.createElement)(e,n)}),...Array.isArray(y)?y:[y]])}),u=(t,e)=>{let n=(0,a.forwardRef)((n,c)=>{let{className:u,...i}=n;return(0,a.createElement)(d,{ref:c,iconNode:e,className:h("lucide-".concat(r(t)),u),...i})});return n.displayName="".concat(t),n}},3541:function(t,e,n){n.d(e,{Z:function(){return a}});/**
+ */let d=(0,a.forwardRef)((t,e)=>{let{color:n="currentColor",size:r=24,strokeWidth:d=2,absoluteStrokeWidth:u,className:i="",children:y,iconNode:k,...l}=t;return(0,a.createElement)("svg",{ref:e,...c,width:r,height:r,stroke:n,strokeWidth:u?24*Number(d)/Number(r):d,className:h("lucide",i),...l},[...k.map(t=>{let[e,n]=t;return(0,a.createElement)(e,n)}),...Array.isArray(y)?y:[y]])}),u=(t,e)=>{let n=(0,a.forwardRef)((n,c)=>{let{className:u,...i}=n;return(0,a.createElement)(d,{ref:c,iconNode:e,className:h("lucide-".concat(r(t)),u),...i})});return n.displayName="".concat(t),n}},9707:function(t,e,n){n.d(e,{Z:function(){return a}});/**
  * @license lucide-react v0.400.0 - ISC
  *
  * This source code is licensed under the ISC license.
