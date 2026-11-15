@@ -1,9 +1,10 @@
 import { supabase } from "./supabase";
 
-/** An employee's suggestion for the website, sent from the unlisted /forslag page. */
+/** An employee's improvement suggestion, sent from the unlisted /forslag page. */
 export interface Suggestion {
   id: string;
   name: string;
+  /** The subject the employee wrote (kept in the column first used for which part of the website it concerned). */
   area: string;
   message: string;
   status: "new" | "read" | "done";
@@ -37,8 +38,3 @@ export async function deleteSuggestion(id: string): Promise<void> {
   if (error) throw error;
 }
 
-/** What the AI assistant is asked when the admin wants a suggestion carried out. */
-export function suggestionPrompt(suggestion: Pick<Suggestion, "name" | "area" | "message">): string {
-  const about = suggestion.area ? ` (gäller: ${suggestion.area})` : "";
-  return `${suggestion.name} har föreslagit en förbättring av hemsidan${about}:\n\n${suggestion.message.trim()}\n\nKan du göra den ändringen?`;
-}

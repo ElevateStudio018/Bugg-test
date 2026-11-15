@@ -65,7 +65,7 @@ Deno.serve(
       subject: `Godkänn rensning av hemsidan – ${company || "kund"}`,
       blocks: [
         block.heading("Begäran om att rensa alla ändringar"),
-        block.text("Kunden vill återställa hemsidan till den ursprungliga versionen. Alla ändringar av texter, färger, typsnitt och sektioner tas bort. Offertförfrågningar, bilder, credits och historik påverkas inte, och en säkerhetskopia tas först."),
+        block.text("Kunden vill återställa hemsidan till den ursprungliga versionen. Alla ändringar av texter, färger, typsnitt och sektioner tas bort. Offertförfrågningar, bilder och historik påverkas inte, och en säkerhetskopia tas först."),
         block.rows([
           ["Företag", company || "–"],
           ["Begärd av", user.email ?? "–"],

@@ -1,23 +1,10 @@
 {
   "version": "5",
   "specifiers": {
-    "npm:@anthropic-ai/sdk@0.131.0": "0.131.0_zod@4.6.5",
     "npm:@supabase/supabase-js@2.117.2": "2.117.2",
     "npm:zod@4.6.5": "4.6.5"
   },
   "npm": {
-    "@anthropic-ai/sdk@0.131.0_zod@4.6.5": {
-      "integrity": "sha512-9+PepoU7qVMmM70jSahdnfcMHAvAnzhMOLv2W9WjRLO+OG/MAiBETkwKZqv7KIJ1Cj5h8eZ019bHzZaq+Mbepw==",
-      "dependencies": [
-        "json-schema-to-ts",
-        "standardwebhooks",
-        "zod"
-      ],
-      "optionalPeers": [
-        "zod"
-      ],
-      "bin": true
-    },
     "@babel/runtime@7.29.7": {
       "integrity": "sha512-Nq8OhGWiZIZGV6hLHoyAKLLcJihP/xFeBMGJoUrxTX2psI8dCifzLhZISFb+VWS3wFMRDmCGw5R+dOySCqPLhw=="
     },
@@ -101,7 +88,6 @@
   },
   "workspace": {
     "dependencies": [
-      "npm:@anthropic-ai/sdk@0.131.0",
       "npm:@supabase/supabase-js@2.117.2",
       "npm:zod@4.6.5"
     ]

@@ -168,7 +168,7 @@ export function VersionsTab() {
         size="sm"
         description={
           <>
-            Hemsidan blir som den var i version {restoring?.version} och publiceras direkt som en ny version. Det kostar inga credits.
+            Hemsidan blir som den var i version {restoring?.version} och publiceras direkt som en ny version.
             {hasDraft && (
               <strong className="mt-2 block font-semibold text-amber-800">Dina opublicerade ändringar i utkastet försvinner.</strong>
             )}

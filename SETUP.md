@@ -47,8 +47,7 @@ ska skrivas exakt som nedan.
 | Namn | Vad den gör | Var du skapar nyckeln |
 | --- | --- | --- |
 | `GITHUB_DISPATCH_TOKEN` | Hemsidan uppdateras när du trycker Publicera. | GitHub → din profilbild → **Settings** → **Developer settings** → **Personal access tokens** → **Fine-grained tokens** → **Generate new token**. Resource owner: `ElevateStudio018`. Repository access: **Only select repositories** → `Bugg-test`. Permissions → Repository → **Actions: Read and write**. |
-| `RESEND_API_KEY` | Mejl om offertförfrågningar och förslag. | [resend.com](https://resend.com): registrera dig med **elevate.studio018@gmail.com** → **API Keys** → **Create API key**. Med den adressen behövs ingen egen domän under testperioden. |
-| `ANTHROPIC_API_KEY` | AI-assistenten. | [console.anthropic.com](https://console.anthropic.com) → **API keys** → **Create key**. Lägg också in ett betalkort och några dollar under **Billing**. |
+| `RESEND_API_KEY` | Mejl om offertförfrågningar och förbättringsförslag. | [resend.com](https://resend.com): registrera dig med **elevate.studio018@gmail.com** → **API Keys** → **Create API key**. Med den adressen behövs ingen egen domän under testperioden. |
 
 ### Vid lansering (senare, när du säger till)
 
@@ -57,13 +56,12 @@ ska skrivas exakt som nedan.
   Förslagen fortsätter till Elevate.
 - Egen domän: verifiera domänen i Resend och sätt `EMAIL_FROM`, `SITE_URL`, `ADMIN_URL` och `ALLOWED_ORIGINS`
   (se `supabase/functions/.env.example`).
-- Bestäm priserna på credit-paketen.
 
 ## Del 2 – for Claude: installing the backend
 
 Everything is in this repository. The site is a Next.js static export on GitHub Pages (basePath `/Bugg-test`), built by
-`.github/workflows/deploy-pages.yml`. Supabase holds the drafts, published versions, quote requests, staff suggestions,
-images, credits and the AI conversations. `supabase/tests/README.md` describes the local test stack these steps were
+`.github/workflows/deploy-pages.yml`. Supabase holds the drafts, published versions, quote requests, staff's improvement
+suggestions and images. `supabase/tests/README.md` describes the local test stack these steps were
 verified on.
 
 Ground rules: nothing may be e-mailed to info@markmontage.se, and the customer may not be made an admin or invited,
@@ -79,11 +77,11 @@ until the user says so. Never ask the user to paste a key, token or password int
    `supabase/functions/deno.json`. Deploy every function with `verify_jwt = false`, as in `supabase/config.toml`; the
    functions check the caller themselves. `supabase/functions/_shared/site` is a copy of `lib/site`, kept identical by
    `node scripts/sync-shared.mjs`.
-4. **Secrets.** The user adds `GITHUB_DISPATCH_TOKEN`, `RESEND_API_KEY` and `ANTHROPIC_API_KEY` when they want
-   publishing, e-mail and the AI (part 1, step 4); the admin works without them. Every other setting has a default for
+4. **Secrets.** The user adds `GITHUB_DISPATCH_TOKEN` and `RESEND_API_KEY` when they want publishing and
+   e-mail (part 1, step 4); the admin works without them. Every other setting has a default for
    the preview (`supabase/functions/_shared/env.ts`, `.env.example`).
    `IP_HASH_SALT` and `RESET_SIGNING_SECRET` fall back to values derived from the service role key, and quote requests
-   go to `AGENCY_EMAIL` until `QUOTE_NOTIFY_EMAIL` is set. Confirm the three secrets exist by name only, never by value.
+   go to `AGENCY_EMAIL` until `QUOTE_NOTIFY_EMAIL` is set. Confirm the two secrets exist by name only, never by value.
 5. **Auth settings.** Change these through the connector or the Management API, or have the user change them in the
    dashboard. Site URL: `https://elevatestudio018.github.io/Bugg-test/admin/`. Redirect URLs:
    `https://elevatestudio018.github.io/Bugg-test/admin/**`. Sign-ups off. Minimum password length 12, requiring
@@ -101,6 +99,6 @@ until the user says so. Never ask the user to paste a key, token or password int
    and POST `{"token": "<token>"}` to `<project url>/functions/v1/admin-invite`, from the database with `pg_net` if
    this sandbox cannot reach `*.supabase.co`.
 8. **Check end to end with the user.** Log in, edit and publish, send a quote request and a suggestion on `/forslag/`,
-   and check that they show in the admin. With the keys in place: the site rebuilds on publishing, both forms e-mail
-   Elevate, and the AI answers. Read the functions' logs through the connector when
+   and check that they show in the admin. With the keys in place: the site rebuilds on publishing, and both forms e-mail
+   Elevate. Read the functions' logs through the connector when
    something fails.

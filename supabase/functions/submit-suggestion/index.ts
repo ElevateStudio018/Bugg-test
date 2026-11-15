@@ -1,5 +1,5 @@
-// The employees' suggestion box (/forslag): checks what was sent, stores it for the admin (Hemsidan → Förslag) and
-// e-mails Elevate Studio.
+// The staff's improvement suggestions (/forslag): checks what was sent, stores it for the admin (Förbättringsförslag)
+// and e-mails Elevate Studio.
 import { z } from "zod";
 import { clientIp, handle, json, readJson, UserError } from "../_shared/http.ts";
 import { serviceClient } from "../_shared/supabase.ts";
@@ -9,7 +9,8 @@ import { config } from "../_shared/env.ts";
 
 const requestSchema = z.object({
   name: z.string().trim().min(1).max(100),
-  area: z.string().trim().max(120).default(""),
+  /** The subject. */
+  area: z.string().trim().min(1).max(120),
   message: z.string().trim().min(3).max(3000),
   /** Left empty by people; filled in by bots that fill in every field. */
   website: z.string().max(500).optional(),
@@ -19,7 +20,7 @@ Deno.serve(
   handle(async (request) => {
     if (request.method !== "POST") throw new UserError(405, "method", "Fel metod.");
     const parsed = requestSchema.safeParse(await readJson(request, 20_000));
-    if (!parsed.success) throw new UserError(400, "invalid", "Skriv ditt namn och ditt förslag.");
+    if (!parsed.success) throw new UserError(400, "invalid", "Skriv ditt namn, ett ämne och ditt förslag.");
     const form = parsed.data;
     // A bot: thank it and do nothing.
     if (form.website) return json(request, { ok: true });
@@ -40,15 +41,15 @@ Deno.serve(
     // Elevate Studio, who looks after the website, gets them by e-mail; the customer sees them in the admin.
     await sendMail({
       to: config.agencyEmail(),
-      subject: `Förbättringsförslag från ${form.name}`,
+      subject: `Förbättringsförslag från ${form.name}: ${form.area}`,
       blocks: [
-        block.heading("Nytt förslag för hemsidan"),
+        block.heading("Nytt förbättringsförslag"),
         block.rows([
           ["Från", form.name],
-          ["Gäller", form.area || "–"],
+          ["Ämne", form.area],
           ["Förslag", form.message],
         ]),
-        block.button("Öppna i adminpanelen", `${config.adminUrl()}/hemsidan/?flik=forslag`),
+        block.button("Öppna i adminpanelen", `${config.adminUrl()}/forbattringsforslag/`),
       ],
     });
     return json(request, { ok: true });

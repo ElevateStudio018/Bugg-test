@@ -59,7 +59,7 @@ export function DangerTab() {
           <h2 className="text-[17px] font-semibold text-admin-ink">Rensa alla ändringar</h2>
           <p className="mt-1 text-[15px] leading-relaxed text-admin-muted">
             Hemsidan återställs till den ursprungliga versionen: alla ändringar av texter, färger, typsnitt och sektioner tas bort. Offertförfrågningar,
-            bilder, credits, historik och inloggningar påverkas inte. Elevate Studio måste godkänna begäran, och en säkerhetskopia tas innan något
+            bilder, historik och inloggningar påverkas inte. Elevate Studio måste godkänna begäran, och en säkerhetskopia tas innan något
             ändras – så även en rensning går att ångra.
           </p>
 
@@ -101,7 +101,7 @@ export function DangerTab() {
           <ul className="space-y-2 text-[15px] leading-relaxed text-admin-ink">
             <li>• Hemsidan blir som den ursprungliga versionen, med alla texter, färger, typsnitt och sektioner.</li>
             <li>• Ingenting händer förrän Elevate Studio har godkänt. Du får ett mejl när det är gjort.</li>
-            <li>• Offertförfrågningar, bilder, credits och historik finns kvar.</li>
+            <li>• Offertförfrågningar, bilder och historik finns kvar.</li>
             <li>• Du kan återkalla begäran så länge den väntar.</li>
           </ul>
           <TextArea label="Anledning (valfritt)" value={reason} onChange={setReason} rows={2} recommended={300} />

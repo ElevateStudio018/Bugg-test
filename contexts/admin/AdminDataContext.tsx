@@ -15,11 +15,9 @@ export interface PendingReset {
 
 interface AdminData {
   store: DraftStore;
-  credits: number | null;
-  refreshCredits: () => Promise<void>;
   newQuotes: number;
   refreshQuotes: () => Promise<void>;
-  /** Employees' suggestions for the website not yet seen (Hemsidan → Förslag). */
+  /** The staff's improvement suggestions not yet seen (Förbättringsförslag). */
   newSuggestions: number;
   refreshSuggestions: () => Promise<void>;
   /** A "Rensa alla ändringar" request waiting for Elevate Studio, if any. */
@@ -29,12 +27,11 @@ interface AdminData {
 
 const AdminDataContext = createContext<AdminData | null>(null);
 
-/** One draft store, credit balance and inbox counters for the whole panel, kept while moving between its pages. */
+/** One draft store and the inbox counters for the whole panel, kept while moving between its pages. */
 export function AdminDataProvider({ children }: { children: ReactNode }) {
   const storeRef = useRef<DraftStore | null>(null);
   storeRef.current ??= new DraftStore();
   const store = storeRef.current;
-  const [credits, setCredits] = useState<number | null>(null);
   const [newQuotes, setNewQuotes] = useState(0);
   const [newSuggestions, setNewSuggestions] = useState(0);
   const [pendingReset, setPendingReset] = useState<PendingReset | null>(null);
@@ -49,11 +46,6 @@ export function AdminDataProvider({ children }: { children: ReactNode }) {
     setPendingReset((data as PendingReset) ?? null);
   }, []);
 
-  const refreshCredits = useCallback(async () => {
-    const { data } = await supabase().from("credit_balance").select("balance").eq("account_id", "site").maybeSingle();
-    setCredits(data?.balance ?? 0);
-  }, []);
-
   const refreshQuotes = useCallback(async () => {
     const { count } = await supabase().from("quote_requests").select("id", { count: "exact", head: true }).eq("status", "new").is("deleted_at", null);
     setNewQuotes(count ?? 0);
@@ -65,7 +57,6 @@ export function AdminDataProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     void store.start();
-    void refreshCredits();
     void refreshQuotes();
     void refreshSuggestions();
     void refreshReset();
@@ -83,7 +74,7 @@ export function AdminDataProvider({ children }: { children: ReactNode }) {
       clearInterval(poll);
       void supabase().removeChannel(channel);
     };
-  }, [store, refreshCredits, refreshQuotes, refreshSuggestions, refreshReset]);
+  }, [store, refreshQuotes, refreshSuggestions, refreshReset]);
 
   // The prime colour follows the saved setting.
   const adminPrime = useSyncExternalStore(store.subscribe, () => store.getState().adminColors.primary, () => undefined);
@@ -93,8 +84,8 @@ export function AdminDataProvider({ children }: { children: ReactNode }) {
   }, [adminPrime]);
 
   const value = useMemo(
-    () => ({ store, credits, refreshCredits, newQuotes, refreshQuotes, newSuggestions, refreshSuggestions, pendingReset, refreshReset }),
-    [store, credits, refreshCredits, newQuotes, refreshQuotes, newSuggestions, refreshSuggestions, pendingReset, refreshReset]
+    () => ({ store, newQuotes, refreshQuotes, newSuggestions, refreshSuggestions, pendingReset, refreshReset }),
+    [store, newQuotes, refreshQuotes, newSuggestions, refreshSuggestions, pendingReset, refreshReset]
   );
   return <AdminDataContext.Provider value={value}>{children}</AdminDataContext.Provider>;
 }

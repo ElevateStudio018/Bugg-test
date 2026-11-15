@@ -1,9 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Check, Copy, ExternalLink, Lightbulb, RotateCcw, Share2, Sparkles, Trash2 } from "lucide-react";
-import { AdminButton, buttonClasses } from "../ui/Button";
+import { Check, Copy, ExternalLink, Lightbulb, RotateCcw, Share2, Trash2 } from "lucide-react";
+import { AdminButton } from "../ui/Button";
 import { Badge } from "../ui/Badge";
 import { Card, CardHeader } from "../ui/Card";
 import { Dialog } from "../ui/Dialog";
@@ -13,14 +12,7 @@ import { useToast } from "../ui/Toast";
 import { useAdminData } from "@/contexts/admin/AdminDataContext";
 import { errorMessage } from "@/lib/admin/supabase";
 import { formatRelative } from "@/lib/admin/dates";
-import {
-  deleteSuggestion,
-  listSuggestions,
-  setSuggestionStatus,
-  suggestionPrompt,
-  type Suggestion,
-  type SuggestionFilter,
-} from "@/lib/admin/suggestions";
+import { deleteSuggestion, listSuggestions, setSuggestionStatus, type Suggestion, type SuggestionFilter } from "@/lib/admin/suggestions";
 
 const filters: { id: SuggestionFilter; label: string }[] = [
   { id: "open", label: "Att göra" },
@@ -75,7 +67,7 @@ function ShareCard() {
     <Card>
       <CardHeader
         title="Länk till medarbetarna"
-        description="Här skriver medarbetarna sitt namn och vad som kan bli bättre på hemsidan. Sidan finns inte i menyn och syns inte på Google. Du får ett mejl för varje nytt förslag."
+        description="Skicka länken till medarbetarna. Där skriver de sitt namn, ett ämne och sitt förslag. Sidan finns inte i hemsidans meny och syns inte på Google."
       />
       <label htmlFor="suggestion-link" className="sr-only">
         Länken till förslagssidan
@@ -96,7 +88,7 @@ function ShareCard() {
           {canShare && (
             <AdminButton
               icon={Share2}
-              onClick={() => void navigator.share({ title: "Förslag på förbättringar av hemsidan", url: link }).catch(() => undefined)}
+              onClick={() => void navigator.share({ title: "Förbättringsförslag", url: link }).catch(() => undefined)}
               className="flex-1"
             >
               Dela
@@ -156,22 +148,15 @@ function SuggestionCard({
               </Badge>
             )}
           </p>
-          <p className="mt-0.5 text-[13px] text-admin-muted">
-            {formatRelative(suggestion.created_at)}
-            {suggestion.area && <> · Gäller: {suggestion.area}</>}
-          </p>
+          <p className="mt-0.5 text-[13px] text-admin-muted">{formatRelative(suggestion.created_at)}</p>
         </div>
       </header>
 
-      <p className={`mt-4 whitespace-pre-wrap break-words text-[15px] leading-relaxed ${done ? "text-admin-muted" : "text-admin-ink"}`}>{suggestion.message}</p>
+      {suggestion.area && <h3 className={`mt-4 break-words text-[16px] font-semibold ${done ? "text-admin-muted" : "text-admin-ink"}`}>{suggestion.area}</h3>}
+
+      <p className={`${suggestion.area ? "mt-1.5" : "mt-4"} whitespace-pre-wrap break-words text-[15px] leading-relaxed ${done ? "text-admin-muted" : "text-admin-ink"}`}>{suggestion.message}</p>
 
       <div className="mt-5 flex flex-wrap gap-2 border-t border-admin-line pt-4">
-        {!done && (
-          <Link href={`/admin/ai?fraga=${encodeURIComponent(suggestionPrompt(suggestion))}`} className={buttonClasses("primary", "sm")}>
-            <Sparkles aria-hidden="true" className="h-4 w-4" />
-            Be AI:n göra det
-          </Link>
-        )}
         {done ? (
           <AdminButton size="sm" icon={RotateCcw} onClick={() => onStatus("read")}>
             Flytta tillbaka till att göra
@@ -189,7 +174,7 @@ function SuggestionCard({
   );
 }
 
-/** Hemsidan → Förslag: what the staff think could be better, and the link to send them. */
+/** Förbättringsförslag: what the staff think the company could do better, and the link to send them. */
 export function SuggestionsTab() {
   const toast = useToast();
   const { newSuggestions, refreshSuggestions } = useAdminData();
@@ -262,8 +247,8 @@ export function SuggestionsTab() {
     filter === "done"
       ? { title: "Inga klara förslag än", text: "När du markerar ett förslag som klart hamnar det här." }
       : filter === "open"
-        ? { title: "Inga förslag att ta hand om", text: "Skicka länken till medarbetarna. Nya förslag dyker upp här, och du får ett mejl för varje nytt." }
-        : { title: "Inga förslag än", text: "Skicka länken till medarbetarna. Nya förslag dyker upp här, och du får ett mejl för varje nytt." };
+        ? { title: "Inga förslag att ta hand om", text: "Skicka länken till medarbetarna. Nya förslag dyker upp här." }
+        : { title: "Inga förslag än", text: "Skicka länken till medarbetarna. Nya förslag dyker upp här." };
 
   return (
     <div className="grid max-w-[1200px] gap-6 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start xl:grid-cols-[minmax(0,1fr)_380px]">

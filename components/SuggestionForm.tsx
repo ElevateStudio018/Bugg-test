@@ -5,20 +5,20 @@ import { buttonClasses } from "./Button";
 import { Icon } from "./Icon";
 import { fallbackFormEmail, isConnected, supabaseAnonKey, supabaseUrl } from "@/lib/connection";
 
-// The suggestion box's own words: an internal tool for the company's staff, not part of the public site's content.
+// The form's own words: an internal tool for the company's staff, not part of the public site's content.
 const NAME_KEY = "markmontage-forslag-namn";
 const fieldClass =
   "w-full border border-line/15 bg-field px-4 py-3.5 text-[17px] text-heading placeholder:text-muted transition-colors duration-150 focus:border-accent focus:outline focus:outline-2 focus:outline-accent/25";
 const labelClass = "mb-2 block text-[15px] font-semibold text-heading";
 
-/** Name, what it concerns and the suggestion; sent to the admin, or by e-mail while the site has no backend. */
-export function SuggestionForm({ areas }: { areas: string[] }) {
+/** Name, subject and the suggestion; sent to the admin, or by e-mail while the site has no backend. */
+export function SuggestionForm() {
   const id = useId();
   const [name, setName] = useState("");
-  const [area, setArea] = useState(areas[0] ?? "");
+  const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [website, setWebsite] = useState("");
-  const [errors, setErrors] = useState<{ name?: string; message?: string }>({});
+  const [errors, setErrors] = useState<{ name?: string; subject?: string; message?: string }>({});
   const [state, setState] = useState<"idle" | "sending" | "sent" | "failed">("idle");
   const [failure, setFailure] = useState("");
   const [sentBy, setSentBy] = useState("");
@@ -36,16 +36,17 @@ export function SuggestionForm({ areas }: { areas: string[] }) {
     event.preventDefault();
     const next: typeof errors = {};
     if (!name.trim()) next.name = "Skriv ditt namn.";
+    if (!subject.trim()) next.subject = "Skriv vad förslaget handlar om.";
     if (message.trim().length < 3) next.message = "Skriv ditt förslag.";
     setErrors(next);
-    if (next.name || next.message) return;
+    if (next.name || next.subject || next.message) return;
     setState("sending");
     try {
       if (isConnected) {
         const response = await fetch(`${supabaseUrl}/functions/v1/submit-suggestion`, {
           method: "POST",
           headers: { "Content-Type": "application/json", apikey: supabaseAnonKey, Authorization: `Bearer ${supabaseAnonKey}` },
-          body: JSON.stringify({ name: name.trim(), area, message: message.trim(), website }),
+          body: JSON.stringify({ name: name.trim(), area: subject.trim(), message: message.trim(), website }),
         });
         if (!response.ok) {
           // The function explains in Swedish, for example when one person has sent very many in a short time.
@@ -57,12 +58,12 @@ export function SuggestionForm({ areas }: { areas: string[] }) {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify({
-            _subject: `Förbättringsförslag från ${name.trim()}`,
+            _subject: `Förbättringsförslag från ${name.trim()}: ${subject.trim()}`,
             _template: "table",
             _captcha: "false",
             _honey: website,
             Från: name.trim(),
-            Gäller: area,
+            Ämne: subject.trim(),
             Förslag: message.trim(),
           }),
         });
@@ -75,6 +76,7 @@ export function SuggestionForm({ areas }: { areas: string[] }) {
         // Not remembered; nothing else changes.
       }
       setSentBy(name.trim().split(" ")[0]);
+      setSubject("");
       setMessage("");
       setState("sent");
     } catch (error) {
@@ -90,7 +92,7 @@ export function SuggestionForm({ areas }: { areas: string[] }) {
           <Icon name="Check" strokeWidth={2.5} className="h-12 w-12" />
         </span>
         <p className="mt-4 text-h3 text-heading">Tack {sentBy}! Förslaget är skickat.</p>
-        <p className="mt-2 text-[17px] text-body">Den som sköter hemsidan har fått det.</p>
+        <p className="mt-2 text-[17px] text-body">Tack för att du hjälper oss att bli bättre.</p>
         <button type="button" onClick={() => setState("idle")} className={buttonClasses("outline", "mt-7")}>
           Skriv ett förslag till
         </button>
@@ -121,16 +123,23 @@ export function SuggestionForm({ areas }: { areas: string[] }) {
         )}
       </div>
       <div>
-        <label htmlFor={`${id}-del`} className={labelClass}>
-          Vad gäller det?
+        <label htmlFor={`${id}-amne`} className={labelClass}>
+          Ämne
         </label>
-        <select id={`${id}-del`} value={area} onChange={(event) => setArea(event.target.value)} className={`${fieldClass} appearance-none`}>
-          {areas.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
+        <input
+          id={`${id}-amne`}
+          value={subject}
+          onChange={(event) => setSubject(event.target.value)}
+          maxLength={120}
+          className={fieldClass}
+          aria-invalid={Boolean(errors.subject)}
+          aria-describedby={errors.subject ? `${id}-amne-fel` : undefined}
+        />
+        {errors.subject && (
+          <p id={`${id}-amne-fel`} className="mt-1.5 text-[14px] text-error">
+            {errors.subject}
+          </p>
+        )}
       </div>
       <div>
         <label htmlFor={`${id}-forslag`} className={labelClass}>
@@ -142,7 +151,6 @@ export function SuggestionForm({ areas }: { areas: string[] }) {
           onChange={(event) => setMessage(event.target.value)}
           rows={6}
           maxLength={3000}
-          placeholder="Till exempel: telefonnumret på kontaktsidan är fel, det ska vara …"
           className={`${fieldClass} resize-y leading-relaxed`}
           aria-invalid={Boolean(errors.message)}
           aria-describedby={errors.message ? `${id}-forslag-fel` : undefined}

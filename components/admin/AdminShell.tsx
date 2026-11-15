@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
-import { ExternalLink, Images, Inbox, LayoutDashboard, LogOut, Menu, PanelsTopLeft, Settings, Sparkles, X, type LucideIcon } from "lucide-react";
+import { ExternalLink, Images, Inbox, LayoutDashboard, Lightbulb, LogOut, Menu, PanelsTopLeft, Settings, X, type LucideIcon } from "lucide-react";
 import { Wordmark } from "@/components/Wordmark";
 import { StatusBar } from "./StatusBar";
 import { ConflictBanner } from "./ConflictBanner";
@@ -20,19 +20,19 @@ interface NavItem {
 const nav: NavItem[] = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/hemsidan", label: "Hemsidan", icon: PanelsTopLeft },
-  { href: "/admin/ai", label: "AI-assistent", icon: Sparkles },
   { href: "/admin/bilder", label: "Bilder", icon: Images },
   { href: "/admin/offertforfragningar", label: "Offertförfrågningar", icon: Inbox },
+  { href: "/admin/forbattringsforslag", label: "Förbättringsförslag", icon: Lightbulb },
   { href: "/admin/installningar", label: "Inställningar", icon: Settings },
 ];
 
 function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname().replace(/\/$/, "");
   const { newQuotes, newSuggestions } = useAdminData();
-  // What is waiting behind a page: new quote requests, and new suggestions from the staff under Hemsidan → Förslag.
+  // What is waiting behind a page: new quote requests, and new improvement suggestions from the staff.
   const counts: Record<string, { count: number; label: string }> = {
-    "/admin/hemsidan": { count: newSuggestions, label: newSuggestions === 1 ? "1 nytt förslag" : `${newSuggestions} nya förslag` },
     "/admin/offertforfragningar": { count: newQuotes, label: `${newQuotes} nya` },
+    "/admin/forbattringsforslag": { count: newSuggestions, label: newSuggestions === 1 ? "1 nytt förslag" : `${newSuggestions} nya förslag` },
   };
   return (
     <ul className="space-y-0.5">
@@ -111,7 +111,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   // The editor uses the whole width for its form and live preview side by side.
-  const wide = pathname.startsWith("/admin/hemsidan") || pathname.startsWith("/admin/ai");
+  const wide = pathname.startsWith("/admin/hemsidan");
 
   useEffect(() => setMenuOpen(false), [pathname]);
 

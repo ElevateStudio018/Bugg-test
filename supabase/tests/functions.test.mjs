@@ -177,50 +177,30 @@ await test("submit-suggestion stores the suggestion, e-mails Elevate Studio and 
   assert.equal(res.status, 200, JSON.stringify(res.json));
   const mail = (await mocked()).find((r) => r.url === "/emails");
   assert.deepEqual(mail.body.to, [AGENCY]);
-  assert.equal(mail.body.subject, "Förbättringsförslag från Erik Lund");
-  assert.match(mail.body.html, /\/hemsidan\/\?flik=forslag/);
+  assert.equal(mail.body.subject, "Förbättringsförslag från Erik Lund: Offertformuläret");
+  assert.match(mail.body.html, /\/forbattringsforslag\//);
   const rows = (await call("/rest/v1/site_suggestions?select=name,area,status", { method: "GET", token: adminToken })).json;
   assert.deepEqual(rows.find((r) => r.name === "Erik Lund"), { name: "Erik Lund", area: "Offertformuläret", status: "new" });
   for (let i = 0; i < 9; i++) {
-    const more = await fn("submit-suggestion", { headers: sender, body: { name: "Erik Lund", message: `Förslag ${i}` } });
+    const more = await fn("submit-suggestion", { headers: sender, body: { name: "Erik Lund", area: "Idé", message: `Förslag ${i}` } });
     assert.equal(more.status, 200, JSON.stringify(more.json));
   }
-  const limited = await fn("submit-suggestion", { headers: sender, body: { name: "Erik Lund", message: "Ett till" } });
+  const limited = await fn("submit-suggestion", { headers: sender, body: { name: "Erik Lund", area: "Idé", message: "Ett till" } });
   assert.equal(limited.status, 429);
   assert.match(limited.json.message, /Vänta en stund/);
-  const other = await fn("submit-suggestion", { headers: { "X-Forwarded-For": "10.20.30.41" }, body: { name: "Maria Holm", message: "Från någon annan" } });
+  const other = await fn("submit-suggestion", { headers: { "X-Forwarded-For": "10.20.30.41" }, body: { name: "Maria Holm", area: "Idé", message: "Från någon annan" } });
   assert.equal(other.status, 200);
 });
 
-await test("submit-suggestion: a bot is thanked and ignored; an empty suggestion is refused", async () => {
-  const bot = await fn("submit-suggestion", { body: { name: "Bot", message: "Köp nu", website: "spam" } });
+await test("submit-suggestion: a bot is thanked and ignored; an empty suggestion or one without a subject is refused", async () => {
+  const bot = await fn("submit-suggestion", { body: { name: "Bot", area: "Idé", message: "Köp nu", website: "spam" } });
   assert.equal(bot.status, 200);
   const rows = (await call("/rest/v1/site_suggestions?select=name&name=eq.Bot", { method: "GET", token: adminToken })).json;
   assert.equal(rows.length, 0);
   const empty = await fn("submit-suggestion", { body: { name: "", message: "" } });
   assert.equal(empty.status, 400);
-});
-
-await test("credits-topup adds a pack, mails customer and agency; the fourth order in a day waits", async () => {
-  await clearMocks();
-  const balance = async () => (await call("/rest/v1/credit_balance?select=balance", { method: "GET", token: adminToken })).json[0].balance;
-  const before = await balance();
-  const bad = await fn("credits-topup", { token: adminToken, body: { credits: 7 } });
-  assert.equal(bad.status, 400);
-  const res = await fn("credits-topup", { token: adminToken, body: { credits: 50 } });
-  assert.equal(res.status, 200, JSON.stringify(res.json));
-  assert.equal(res.json.status, "completed");
-  assert.equal(await balance(), before + 50);
-  const mails = (await mocked()).filter((r) => r.url === "/emails");
-  // The confirmation to the admin who ordered, and the order to the agency.
-  assert.deepEqual(mails.map((m) => m.body.to[0]), [ADMIN, AGENCY]);
-  assert.match(mails[0].body.html, /årsfakturan/);
-  assert.doesNotMatch(mails[1].body.html, /årsfakturan/);
-  await fn("credits-topup", { token: adminToken, body: { credits: 50 } });
-  await fn("credits-topup", { token: adminToken, body: { credits: 50 } });
-  const fourth = await fn("credits-topup", { token: adminToken, body: { credits: 500 } });
-  assert.equal(fourth.json.status, "pending_approval");
-  assert.equal(await balance(), before + 150);
+  const noSubject = await fn("submit-suggestion", { body: { name: "Erik Lund", message: "Utan ämne" } });
+  assert.equal(noSubject.status, 400);
 });
 
 let approveLink;
@@ -278,113 +258,6 @@ await test("a pending request can be withdrawn by the customer", async () => {
   assert.equal(cancel.json.status, "cancelled");
   const state = await fn("reset-request", { method: "GET", token: adminToken });
   assert.equal(state.json.pending, null);
-});
-
-// ---------------------------------------------------------------------------------------------------------------------
-// The AI assistant, with scripted answers from the mock instead of the model.
-
-const scriptAi = (answers) => fetch(`${MOCK}/__ai`, { method: "POST", body: JSON.stringify(answers) });
-/** Calls a streaming action and returns its events. */
-async function aiStream(body) {
-  const response = await fetch(`${API}/functions/v1/ai-assistant`, {
-    method: "POST",
-    headers: { apikey: ANON, Origin: ORIGIN, Authorization: `Bearer ${adminToken}`, "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
-  const text = await response.text();
-  if (!response.headers.get("content-type")?.includes("event-stream")) return { status: response.status, json: JSON.parse(text), events: [] };
-  const events = text.split("\n\n").filter((chunk) => chunk.startsWith("data: ")).map((chunk) => JSON.parse(chunk.slice(6)));
-  return { status: response.status, events, done: events.find((event) => event.type === "done") };
-}
-const credits = async () => (await call("/rest/v1/credit_balance?select=balance", { method: "GET", key: SERVICE, headers: { Authorization: `Bearer ${SERVICE}` } })).json[0].balance;
-const published = async () => (await call("/rest/v1/site_snapshot?select=version,data&id=eq.1", { method: "GET" })).json[0];
-const faqPath = ["pages", "items", "hem", "sections", "items", "faq", "items"];
-const newQuestion = { question: "Hur djupt måste man gräva för dränering?", answer: "Oftast ned till husgrundens underkant, så att vattnet leds bort från grunden." };
-
-let conversationId;
-await test("ai: a question is answered at no cost, streaming the reply", async () => {
-  await clearMocks();
-  await scriptAi([{ text: JSON.stringify({ reply: "Dränering görs oftast när grunden har fuktproblem.", kind: "answer", summary: "", items: [] }) }]);
-  const res = await aiStream({ action: "send", text: "När behöver man dränera?" });
-  assert.equal(res.status, 200, JSON.stringify(res.json));
-  conversationId = res.events.find((event) => event.type === "start").conversationId;
-  const streamed = res.events.filter((event) => event.type === "reply").map((event) => event.text).join("");
-  assert.equal(streamed, "Dränering görs oftast när grunden har fuktproblem.");
-  assert.equal(res.done.message.status, "done");
-  assert.equal(res.done.message.credit_cost, 0);
-  const sent = (await mocked()).find((r) => r.url.startsWith("/v1/messages"));
-  assert.equal(sent.body.model, "claude-opus-5-5");
-  assert.equal(sent.body.fallbacks, "default");
-  assert.equal(sent.body.output_config.format.type, "json_schema");
-  assert.match(sent.body.system[1].text, /Markmontage BEAB AB/);
-});
-
-let proposal;
-await test("ai: a change is planned and priced by the table before anything happens", async () => {
-  await scriptAi([{ text: JSON.stringify({ reply: "Jag lägger till en fråga om dränering.", kind: "change", summary: "En ny fråga i Vanliga frågor.", items: [{ kind: "element", description: "Ny fråga om dränering" }] }) }]);
-  const before = await published();
-  const res = await aiStream({ action: "send", conversationId, text: "Lägg till en fråga om hur djupt man gräver vid dränering" });
-  proposal = res.done.message;
-  assert.equal(proposal.status, "estimated");
-  assert.equal(proposal.credit_cost, 5);
-  assert.equal(proposal.plan.total, 5);
-  assert.equal((await published()).version, before.version);
-});
-
-await test("ai: approving makes the change set, retries once when it breaks the rules, then shows a preview", async () => {
-  await clearMocks();
-  const bad = { summary: "x", operations: [{ op: "insert", path: faqPath, id: "dranering-djup", place: "after", afterId: "finns-inte", itemJson: JSON.stringify(newQuestion) }], imagesNeeded: [] };
-  const good = { summary: "Jag lade till frågan om dränering sist i Vanliga frågor.", operations: [{ op: "insert", path: faqPath, id: "dranering-djup", place: "last", afterId: "", itemJson: JSON.stringify(newQuestion) }], imagesNeeded: [] };
-  await scriptAi([{ text: JSON.stringify(bad) }, { text: JSON.stringify(good) }]);
-  const startCredits = await credits();
-  const res = await aiStream({ action: "approve", messageId: proposal.id });
-  assert.equal(res.done?.message?.status, "preview", JSON.stringify(res.events.slice(-2)));
-  assert.equal(res.done.message.credit_cost, 5);
-  assert.ok(res.done.message.change_set.patches.some((patch) => patch.path.join(".") === [...faqPath, "items", "dranering-djup"].join(".")));
-  const calls = (await mocked()).filter((r) => r.url.startsWith("/v1/messages"));
-  assert.equal(calls.length, 2);
-  assert.match(JSON.stringify(calls[1].body.messages.at(-1)), /afterId/);
-  assert.equal(await credits(), startCredits, "nothing is charged for a preview");
-});
-
-await test("ai: publishing charges the credits and publishes the change as a new version", async () => {
-  const startCredits = await credits();
-  const before = await published();
-  const res = await fn("ai-assistant", { token: adminToken, body: { action: "publish", messageId: proposal.id } });
-  assert.equal(res.status, 200, JSON.stringify(res.json));
-  assert.equal(res.json.version, before.version + 1);
-  assert.equal(res.json.balance, startCredits - 5);
-  const site = await published();
-  assert.deepEqual(site.data.pages.items.hem.sections.items.faq.items.items["dranering-djup"], newQuestion);
-  assert.equal(site.data.pages.items.hem.sections.items.faq.items.order.at(-1), "dranering-djup");
-  assert.ok((await mocked()).some((r) => r.url.includes("/dispatches")), "the site is rebuilt");
-});
-
-await test("ai: undoing a published change restores the version before it and refunds the credits", async () => {
-  const startCredits = await credits();
-  const res = await fn("ai-assistant", { token: adminToken, body: { action: "rollback", messageId: proposal.id } });
-  assert.equal(res.status, 200, JSON.stringify(res.json));
-  assert.equal(res.json.message.status, "rolled_back");
-  assert.equal(res.json.balance, startCredits + 5);
-  const site = await published();
-  assert.equal(site.data.pages.items.hem.sections.items.faq.items.items["dranering-djup"], undefined);
-});
-
-await test("ai: a proposal can be dropped, and a refused or cut-off answer charges nothing", async () => {
-  await scriptAi([{ text: JSON.stringify({ reply: "Jag gör knapparna mörkare.", kind: "change", summary: "Mörkare knappar.", items: [{ kind: "theme", description: "Mörkare knappfärg" }] }) }]);
-  const res = await aiStream({ action: "send", conversationId, text: "Gör knapparna mörkare" });
-  assert.equal(res.done.message.credit_cost, 2);
-  const dropped = await fn("ai-assistant", { token: adminToken, body: { action: "discard", messageId: res.done.message.id } });
-  assert.equal(dropped.json.message.status, "discarded");
-  await scriptAi([{ text: "", stop_reason: "refusal" }]);
-  const refused = await aiStream({ action: "send", conversationId, text: "Något konstigt" });
-  assert.equal(refused.done.message.status, "failed");
-  assert.equal(refused.done.message.credit_cost, 0);
-});
-
-await test("ai: only admins may use it", async () => {
-  const res = await fn("ai-assistant", { body: { action: "send", text: "Hej" } });
-  assert.equal(res.status, 401);
 });
 
 for (const [status, name, message] of results) console.log(status.padEnd(4), name, message ? `— ${message}` : "");

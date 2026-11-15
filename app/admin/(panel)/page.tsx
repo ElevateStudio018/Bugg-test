@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { ArrowUpRight, Coins, Globe, Inbox, Lightbulb, PanelsTopLeft, Sparkles, TrendingDown, TrendingUp } from "lucide-react";
+import { ArrowUpRight, Globe, Inbox, Lightbulb, PanelsTopLeft, TrendingDown, TrendingUp } from "lucide-react";
 import { PageHeader } from "@/components/admin/PageHeader";
 import { PublishBar } from "@/components/admin/PublishBar";
 import { Onboarding } from "@/components/admin/dashboard/Onboarding";
@@ -39,12 +39,11 @@ function greeting(): string {
 export default function DashboardPage() {
   const { profile } = useAuth();
   const { status, publishedAt, pendingChanges, themeChanged } = useDraft();
-  const { credits, newSuggestions } = useAdminData();
+  const { newSuggestions } = useAdminData();
   const [quotes, setQuotes] = useState<QuoteRow[] | null>(null);
   const [total, setTotal] = useState<number | null>(null);
-  const [lastAi, setLastAi] = useState<Revision | null | undefined>(undefined);
   const [lastPublish, setLastPublish] = useState<Revision | null | undefined>(undefined);
-  const [spentThisMonth, setSpentThisMonth] = useState<number | null>(null);
+  const [openSuggestions, setOpenSuggestions] = useState<number | null>(null);
 
   useEffect(() => {
     const client = supabase();
@@ -64,26 +63,16 @@ export default function DashboardPage() {
     void client
       .from("content_revisions")
       .select("created_at, summary, source")
-      .eq("source", "ai")
-      .order("id", { ascending: false })
-      .limit(1)
-      .then(({ data }) => setLastAi((data?.[0] as Revision) ?? null));
-    void client
-      .from("content_revisions")
-      .select("created_at, summary, source")
       .order("id", { ascending: false })
       .limit(1)
       .then(({ data }) => setLastPublish((data?.[0] as Revision) ?? null));
-    const monthStart = new Date();
-    monthStart.setDate(1);
-    monthStart.setHours(0, 0, 0, 0);
     void client
-      .from("credit_transactions")
-      .select("amount")
-      .eq("type", "spend")
-      .gte("created_at", monthStart.toISOString())
-      .then(({ data }) => setSpentThisMonth((data ?? []).reduce((sum, row: { amount: number }) => sum - row.amount, 0)));
-  }, []);
+      .from("site_suggestions")
+      .select("id", { count: "exact", head: true })
+      .in("status", ["new", "read"])
+      .then(({ count }) => setOpenSuggestions(count ?? 0));
+    // A new suggestion arriving (the counter goes up) updates the count.
+  }, [newSuggestions]);
 
   const perDay = useMemo(() => {
     if (!quotes) return null;
@@ -105,7 +94,6 @@ export default function DashboardPage() {
     return { thisWeek, delta: thisWeek - lastWeek, hasHistory };
   }, [quotes]);
 
-  const monthlyTotal = credits !== null && spentThisMonth !== null ? credits + spentThisMonth : null;
   const hasChartData = perDay ? perDay.some((day) => day.count > 0) : false;
   const name = profile?.fullName?.split(" ")[0];
 
@@ -115,16 +103,10 @@ export default function DashboardPage() {
         title={name ? `${greeting()}, ${name}` : `${greeting()}!`}
         description="Så går det för hemsidan just nu."
         actions={
-          <>
-            <Link href="/admin/ai" className={buttonClasses("secondary")}>
-              <Sparkles aria-hidden="true" className="h-4 w-4" />
-              Fråga AI:n
-            </Link>
-            <Link href="/admin/hemsidan" className={buttonClasses("primary")}>
-              <PanelsTopLeft aria-hidden="true" className="h-4 w-4" />
-              Redigera hemsidan
-            </Link>
-          </>
+          <Link href="/admin/hemsidan" className={buttonClasses("primary")}>
+            <PanelsTopLeft aria-hidden="true" className="h-4 w-4" />
+            Redigera hemsidan
+          </Link>
         }
       />
 
@@ -133,12 +115,12 @@ export default function DashboardPage() {
 
       {newSuggestions > 0 && (
         <Link
-          href="/admin/hemsidan?flik=forslag"
+          href="/admin/forbattringsforslag"
           className="admin-rise mb-6 flex min-h-14 items-center gap-3 rounded-2xl bg-white px-4 py-3 ring-1 ring-admin-line transition hover:ring-admin/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin sm:px-5"
         >
           <Lightbulb aria-hidden="true" className="h-[18px] w-[18px] shrink-0 text-admin" />
           <span className="min-w-0 flex-1 text-[14px] text-admin-ink sm:text-[15px]">
-            <strong className="font-semibold">{newSuggestions === 1 ? "Ett nytt förslag" : `${newSuggestions} nya förslag`}</strong> från medarbetarna
+            <strong className="font-semibold">{newSuggestions === 1 ? "Ett nytt förslag" : `${newSuggestions} nya förslag`}</strong> på förbättringar från medarbetarna
           </span>
           <span className="flex shrink-0 items-center gap-1 text-[14px] font-semibold text-admin">
             Läs <ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5" />
@@ -167,10 +149,6 @@ export default function DashboardPage() {
                 <div>
                   <dt className="text-admin-muted">Senaste ändring</dt>
                   <dd className="line-clamp-2 text-admin-ink">{lastPublish?.summary ?? "–"}</dd>
-                </div>
-                <div>
-                  <dt className="text-admin-muted">Senaste AI-ändring</dt>
-                  <dd className="line-clamp-2 text-admin-ink">{lastAi ? `${lastAi.summary} · ${formatRelative(lastAi.created_at)}` : "Ingen än"}</dd>
                 </div>
               </dl>
               <a
@@ -217,42 +195,24 @@ export default function DashboardPage() {
         </Card>
 
         <Card>
-          <CardHeader title="Credits" />
-          {credits === null || monthlyTotal === null ? (
+          <CardHeader title="Förbättringsförslag" />
+          {openSuggestions === null ? (
             <div className="space-y-3">
-              <Skeleton className="h-10 w-24" />
-              <Skeleton className="h-2 w-full" />
+              <Skeleton className="h-10 w-20" />
+              <Skeleton className="h-4 w-40" />
             </div>
           ) : (
             <>
               <p className="flex items-baseline gap-2">
-                <span className="text-[40px] font-semibold leading-none tracking-[-0.02em] text-admin-ink">{credits}</span>
-                <span className="text-[14px] text-admin-muted">kvar</span>
+                <span className="text-[40px] font-semibold leading-none tracking-[-0.02em] text-admin-ink">{openSuggestions}</span>
+                <span className="text-[14px] text-admin-muted">att ta hand om</span>
               </p>
-              <div className="mt-4">
-                <div className="flex justify-between text-[13px] text-admin-muted">
-                  <span>Använt i månaden</span>
-                  <span className="font-semibold tabular-nums text-admin-ink">{spentThisMonth}</span>
-                </div>
-                {/* Meter: the used part in the prime colour on a lighter track of the same colour. */}
-                <div
-                  className="mt-2 h-1.5 overflow-hidden rounded-full bg-admin/10"
-                  role="meter"
-                  aria-label="Credits använda den här månaden"
-                  aria-valuemin={0}
-                  aria-valuemax={monthlyTotal}
-                  aria-valuenow={spentThisMonth ?? 0}
-                >
-                  <div className={`h-full rounded-full ${credits <= 20 ? "bg-amber-600" : "bg-admin"}`} style={{ width: `${monthlyTotal > 0 ? ((spentThisMonth ?? 0) / monthlyTotal) * 100 : 0}%` }} />
-                </div>
-              </div>
-              {credits <= 20 && (
-                <p className="mt-3 text-[13px] text-amber-800">
-                  {credits === 0 ? "Slut på credits – AI-assistenten är pausad tills du fyller på." : "Snart slut på credits."}
-                </p>
-              )}
-              <Link href="/admin/installningar?flik=credits" className={buttonClasses("secondary", "sm", "mt-4")}>
-                <Coins aria-hidden="true" className="h-4 w-4" /> Fyll på credits
+              <p className="mt-3 text-[13px] text-admin-muted">Från medarbetarna, via länken du skickar till dem.</p>
+              <Link
+                href="/admin/forbattringsforslag"
+                className="mt-4 flex min-h-10 items-center gap-1.5 text-[14px] font-semibold text-admin hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-admin"
+              >
+                Visa alla <ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5" />
               </Link>
             </>
           )}

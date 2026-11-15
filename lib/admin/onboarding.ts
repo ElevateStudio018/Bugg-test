@@ -1,4 +1,4 @@
-// The first-login checklist: five things that make the site the owner's own. Each ticks itself off when the content
+// The first-login checklist: four things that make the site the owner's own. Each ticks itself off when the content
 // shows it is done or the relevant save happens; when all are done the list goes away for good.
 import type { SiteData } from "@/lib/site/schema.ts";
 import type { Entry } from "./draftStore";
@@ -21,17 +21,15 @@ export const onboardingItems: OnboardingItem[] = [
   { id: "logo", label: "Ladda upp din logga", hint: "Visas i menyn och sidfoten", href: "/admin/installningar?flik=hemsida" },
   { id: "about", label: "Skriv om-oss-text", hint: "Berätta vilka ni är", href: "/admin/hemsidan?sida=om-oss" },
   { id: "colors", label: "Välj färger", hint: "Hemsidans färger och adminpanelens egen", href: "/admin/hemsidan?flik=farger" },
-  { id: "ai", label: "Testa AI-assistenten", hint: "Be den om en ändring", href: "/admin/ai" },
 ];
 
 /** Which items the content itself shows are done. */
-export function doneFromContent(draft: SiteData | null, conversations: number): string[] {
+export function doneFromContent(draft: SiteData | null): string[] {
   if (!draft) return [];
   const done: string[] = [];
   const { company } = draft;
   if (company.phone && company.email && company.address.street) done.push("contact");
   if (draft.settings.logo.kind === "image") done.push("logo");
-  if (conversations > 0) done.push("ai");
   return done;
 }
 
