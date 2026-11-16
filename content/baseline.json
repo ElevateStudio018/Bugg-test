@@ -761,31 +761,31 @@
         ],
         "icon": "Waves",
         "image": {
-          "src": "/photos/markmontage-pool-glasfiber.webp",
+          "src": "/photos/markmontage-pool-terrass.webp",
           "variants": [
             {
               "width": 480,
-              "src": "/photos/markmontage-pool-glasfiber-480.webp"
+              "src": "/photos/markmontage-pool-terrass-480.webp"
             },
             {
               "width": 800,
-              "src": "/photos/markmontage-pool-glasfiber-800.webp"
+              "src": "/photos/markmontage-pool-terrass-800.webp"
             },
             {
               "width": 1200,
-              "src": "/photos/markmontage-pool-glasfiber-1200.webp"
+              "src": "/photos/markmontage-pool-terrass-1200.webp"
             },
             {
               "width": 1600,
-              "src": "/photos/markmontage-pool-glasfiber-1600.webp"
+              "src": "/photos/markmontage-pool-terrass-1600.webp"
             },
             {
-              "width": 1800,
-              "src": "/photos/markmontage-pool-glasfiber.webp"
+              "width": 2400,
+              "src": "/photos/markmontage-pool-terrass.webp"
             }
           ],
-          "alt": "En glasfiberpool på plats i en schaktad grop i en trädgård",
-          "focus": "50% 45%"
+          "alt": "Färdig pool med poolöverbyggnad, omgiven av en stenlagd terrass i en villaträdgård",
+          "focus": "50% 40%"
         },
         "seo": {
           "title": "Pooler i Kungälv",
@@ -1052,30 +1052,31 @@
         "title": "Schakt och grund för pool",
         "href": "/tjanster/pooler",
         "image": {
-          "src": "/photos/markmontage-pool-glasfiber.webp",
+          "src": "/photos/markmontage-pool-terrass.webp",
           "variants": [
             {
               "width": 480,
-              "src": "/photos/markmontage-pool-glasfiber-480.webp"
+              "src": "/photos/markmontage-pool-terrass-480.webp"
             },
             {
               "width": 800,
-              "src": "/photos/markmontage-pool-glasfiber-800.webp"
+              "src": "/photos/markmontage-pool-terrass-800.webp"
             },
             {
               "width": 1200,
-              "src": "/photos/markmontage-pool-glasfiber-1200.webp"
+              "src": "/photos/markmontage-pool-terrass-1200.webp"
             },
             {
               "width": 1600,
-              "src": "/photos/markmontage-pool-glasfiber-1600.webp"
+              "src": "/photos/markmontage-pool-terrass-1600.webp"
             },
             {
-              "width": 1800,
-              "src": "/photos/markmontage-pool-glasfiber.webp"
+              "width": 2400,
+              "src": "/photos/markmontage-pool-terrass.webp"
             }
           ],
-          "alt": "En glasfiberpool på plats i en schaktad grop i en trädgård"
+          "alt": "Färdig pool med poolöverbyggnad, omgiven av en stenlagd terrass i en villaträdgård",
+          "focus": "50% 50%"
         }
       },
       "betongpool": {
