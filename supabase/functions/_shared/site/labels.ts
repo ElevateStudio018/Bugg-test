@@ -277,7 +277,7 @@ export const sectionFields: Record<SectionType, FieldSpec[]> = {
     heading(),
     intro(),
     link("link", "Knapp"),
-    { key: "image", label: "Bild", kind: "image", imageUsage: "hero" },
+    { key: "image", label: "Bild", kind: "optionalImage", imageUsage: "hero" },
     { key: "secondHeading", label: "Andra rubriken", kind: "text", recommended: 60 },
     { key: "secondText", label: "Andra texten", kind: "textarea", recommended: 220 },
     link("secondLink", "Andra knappen"),

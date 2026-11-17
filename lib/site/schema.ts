@@ -335,7 +335,8 @@ const bandSection = z.object({
   heading: lineText,
   text: longText,
   link: linkSchema,
-  image: imageSchema,
+  /** The full-width photo between the two text blocks; none: the two blocks follow straight on. */
+  image: imageSchema.nullable(),
   secondHeading: lineText,
   secondText: longText,
   secondLink: linkSchema,

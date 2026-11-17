@@ -27,17 +27,19 @@ export function BandSection({ section, ctx }: SectionProps<"band">) {
         </div>
       </div>
 
-      <div className="relative aspect-[3/2] w-full overflow-clip bg-secondary sm:aspect-[2/1] lg:aspect-auto lg:h-[min(60vh,620px)]">
-        <ZoomImage
-          {...imageProps(section.image, "100vw")}
-          alt={section.image.alt}
-          k={key(ctx.path, "image")}
-          loading="lazy"
-          parallax="band"
-          style={focusStyle(section.image)}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-      </div>
+      {section.image && (
+        <div className="relative aspect-[3/2] w-full overflow-clip bg-secondary sm:aspect-[2/1] lg:aspect-auto lg:h-[min(60vh,620px)]">
+          <ZoomImage
+            {...imageProps(section.image, "100vw")}
+            alt={section.image.alt}
+            k={key(ctx.path, "image")}
+            loading="lazy"
+            parallax="band"
+            style={focusStyle(section.image)}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+      )}
 
       <div className="mx-auto max-w-content px-6 pb-16 pt-6 lg:px-8 lg:pb-24 lg:pt-16">
         <div className="max-w-3xl">

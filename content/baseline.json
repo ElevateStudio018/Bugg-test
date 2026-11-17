@@ -176,7 +176,7 @@
                 "label": "Begär offert"
               },
               "hidden": false,
-              "eyebrow": "Markmontage BEAB AB · Sedan 2001",
+              "eyebrow": "Markmontage BEAB AB · Sedan 2002",
               "heading": "Mark- och grundarbeten i Västra Götaland",
               "thirdImage": null,
               "secondImage": null
@@ -704,33 +704,7 @@
             "jobba": {
               "tone": "card",
               "type": "text",
-              "image": {
-                "alt": "Markmontages medarbetare i overaller samlade vid ett bord utomhus",
-                "src": "/photos/markmontage-teamet.webp",
-                "focus": "50% 40%",
-                "variants": [
-                  {
-                    "src": "/photos/markmontage-teamet-480.webp",
-                    "width": 480
-                  },
-                  {
-                    "src": "/photos/markmontage-teamet-800.webp",
-                    "width": 800
-                  },
-                  {
-                    "src": "/photos/markmontage-teamet-1200.webp",
-                    "width": 1200
-                  },
-                  {
-                    "src": "/photos/markmontage-teamet-1600.webp",
-                    "width": 1600
-                  },
-                  {
-                    "src": "/photos/markmontage-teamet.webp",
-                    "width": 2000
-                  }
-                ]
-              },
+              "image": null,
               "label": "",
               "anchor": "jobba",
               "button": {
@@ -752,28 +726,7 @@
               },
               "text": "Vi utför bland annat schaktning, dränering, grundläggning, VA-arbeten, fiberinstallation och transporter med kranbil i Västra Götaland – och tar helhetsansvar som totalentreprenör på större projekt. Oavsett uppdrag lägger vi stor vikt vid fackmannamässigt utförande i varje moment.",
               "type": "band",
-              "image": {
-                "alt": "Grävmaskin och medarbetare i varselkläder vid en schakt",
-                "src": "/photos/markmontage-gravmaskin-ror.webp",
-                "variants": [
-                  {
-                    "src": "/photos/markmontage-gravmaskin-ror-480.webp",
-                    "width": 480
-                  },
-                  {
-                    "src": "/photos/markmontage-gravmaskin-ror-800.webp",
-                    "width": 800
-                  },
-                  {
-                    "src": "/photos/markmontage-gravmaskin-ror-1200.webp",
-                    "width": 1200
-                  },
-                  {
-                    "src": "/photos/markmontage-gravmaskin-ror.webp",
-                    "width": 1500
-                  }
-                ]
-              },
+              "image": null,
               "label": "",
               "anchor": "",
               "hidden": false,
