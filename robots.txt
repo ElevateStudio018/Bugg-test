@@ -2,6 +2,7 @@ User-Agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /forslag/
+Disallow: /omdomen-forslag/
 Disallow: /personal/
 Disallow: /logga-in/
 
