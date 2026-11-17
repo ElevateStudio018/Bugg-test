@@ -162,7 +162,7 @@
                     "src": "/photos/markmontage-bil-solnedgang-1200.webp"
                   },
                   {
-                    "width": 1240,
+                    "width": 1242,
                     "src": "/photos/markmontage-bil-solnedgang.webp"
                   }
                 ],
@@ -199,24 +199,24 @@
                       "focus": "20% 45%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-arbete-480.webp"
+                          "src": "/photos/markmontage-arbete-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-arbete-800.webp"
+                          "src": "/photos/markmontage-arbete-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1200,
-                          "src": "/photos/markmontage-arbete-1200.webp"
+                          "src": "/photos/markmontage-arbete-1200.webp",
+                          "width": 1200
                         },
                         {
-                          "width": 1600,
-                          "src": "/photos/markmontage-arbete-1600.webp"
+                          "src": "/photos/markmontage-arbete-1600.webp",
+                          "width": 1600
                         },
                         {
-                          "width": 1745,
-                          "src": "/photos/markmontage-arbete.webp"
+                          "src": "/photos/markmontage-arbete.webp",
+                          "width": 1745
                         }
                       ]
                     },
@@ -235,20 +235,20 @@
                       "focus": "88% 70%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-minigravare-480.webp"
+                          "src": "/photos/markmontage-minigravare-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-minigravare-800.webp"
+                          "src": "/photos/markmontage-minigravare-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1200,
-                          "src": "/photos/markmontage-minigravare-1200.webp"
+                          "src": "/photos/markmontage-minigravare-1200.webp",
+                          "width": 1200
                         },
                         {
-                          "width": 1500,
-                          "src": "/photos/markmontage-minigravare.webp"
+                          "src": "/photos/markmontage-minigravare.webp",
+                          "width": 1500
                         }
                       ]
                     },
@@ -265,24 +265,24 @@
                 "src": "/photos/markmontage-schakt-kabel.webp",
                 "variants": [
                   {
-                    "width": 480,
-                    "src": "/photos/markmontage-schakt-kabel-480.webp"
+                    "src": "/photos/markmontage-schakt-kabel-480.webp",
+                    "width": 480
                   },
                   {
-                    "width": 800,
-                    "src": "/photos/markmontage-schakt-kabel-800.webp"
+                    "src": "/photos/markmontage-schakt-kabel-800.webp",
+                    "width": 800
                   },
                   {
-                    "width": 1200,
-                    "src": "/photos/markmontage-schakt-kabel-1200.webp"
+                    "src": "/photos/markmontage-schakt-kabel-1200.webp",
+                    "width": 1200
                   },
                   {
-                    "width": 1600,
-                    "src": "/photos/markmontage-schakt-kabel-1600.webp"
+                    "src": "/photos/markmontage-schakt-kabel-1600.webp",
+                    "width": 1600
                   },
                   {
-                    "width": 1805,
-                    "src": "/photos/markmontage-schakt-kabel.webp"
+                    "src": "/photos/markmontage-schakt-kabel.webp",
+                    "width": 1805
                   }
                 ]
               },
@@ -314,24 +314,24 @@
                 "focus": "50% 40%",
                 "variants": [
                   {
-                    "width": 480,
-                    "src": "/photos/markmontage-teamet-480.webp"
+                    "src": "/photos/markmontage-teamet-480.webp",
+                    "width": 480
                   },
                   {
-                    "width": 800,
-                    "src": "/photos/markmontage-teamet-800.webp"
+                    "src": "/photos/markmontage-teamet-800.webp",
+                    "width": 800
                   },
                   {
-                    "width": 1200,
-                    "src": "/photos/markmontage-teamet-1200.webp"
+                    "src": "/photos/markmontage-teamet-1200.webp",
+                    "width": 1200
                   },
                   {
-                    "width": 1600,
-                    "src": "/photos/markmontage-teamet-1600.webp"
+                    "src": "/photos/markmontage-teamet-1600.webp",
+                    "width": 1600
                   },
                   {
-                    "width": 2000,
-                    "src": "/photos/markmontage-teamet.webp"
+                    "src": "/photos/markmontage-teamet.webp",
+                    "width": 2000
                   }
                 ]
               },
@@ -491,20 +491,20 @@
                       "src": "/photos/markmontage-minigravare-tradgard.webp",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-minigravare-tradgard-480.webp"
+                          "src": "/photos/markmontage-minigravare-tradgard-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-minigravare-tradgard-800.webp"
+                          "src": "/photos/markmontage-minigravare-tradgard-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1200,
-                          "src": "/photos/markmontage-minigravare-tradgard-1200.webp"
+                          "src": "/photos/markmontage-minigravare-tradgard-1200.webp",
+                          "width": 1200
                         },
                         {
-                          "width": 1400,
-                          "src": "/photos/markmontage-minigravare-tradgard.webp"
+                          "src": "/photos/markmontage-minigravare-tradgard.webp",
+                          "width": 1400
                         }
                       ]
                     },
@@ -522,24 +522,24 @@
                       "src": "/photos/markmontage-kabeltrumma.webp",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-kabeltrumma-480.webp"
+                          "src": "/photos/markmontage-kabeltrumma-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-kabeltrumma-800.webp"
+                          "src": "/photos/markmontage-kabeltrumma-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1200,
-                          "src": "/photos/markmontage-kabeltrumma-1200.webp"
+                          "src": "/photos/markmontage-kabeltrumma-1200.webp",
+                          "width": 1200
                         },
                         {
-                          "width": 1600,
-                          "src": "/photos/markmontage-kabeltrumma-1600.webp"
+                          "src": "/photos/markmontage-kabeltrumma-1600.webp",
+                          "width": 1600
                         },
                         {
-                          "width": 1700,
-                          "src": "/photos/markmontage-kabeltrumma.webp"
+                          "src": "/photos/markmontage-kabeltrumma.webp",
+                          "width": 1700
                         }
                       ]
                     },
@@ -630,24 +630,24 @@
                 "focus": "50% 35%",
                 "variants": [
                   {
-                    "width": 480,
-                    "src": "/photos/markmontage-teamet-480.webp"
+                    "src": "/photos/markmontage-teamet-480.webp",
+                    "width": 480
                   },
                   {
-                    "width": 800,
-                    "src": "/photos/markmontage-teamet-800.webp"
+                    "src": "/photos/markmontage-teamet-800.webp",
+                    "width": 800
                   },
                   {
-                    "width": 1200,
-                    "src": "/photos/markmontage-teamet-1200.webp"
+                    "src": "/photos/markmontage-teamet-1200.webp",
+                    "width": 1200
                   },
                   {
-                    "width": 1600,
-                    "src": "/photos/markmontage-teamet-1600.webp"
+                    "src": "/photos/markmontage-teamet-1600.webp",
+                    "width": 1600
                   },
                   {
-                    "width": 2000,
-                    "src": "/photos/markmontage-teamet.webp"
+                    "src": "/photos/markmontage-teamet.webp",
+                    "width": 2000
                   }
                 ]
               },
@@ -710,24 +710,24 @@
                 "focus": "50% 40%",
                 "variants": [
                   {
-                    "width": 480,
-                    "src": "/photos/markmontage-teamet-480.webp"
+                    "src": "/photos/markmontage-teamet-480.webp",
+                    "width": 480
                   },
                   {
-                    "width": 800,
-                    "src": "/photos/markmontage-teamet-800.webp"
+                    "src": "/photos/markmontage-teamet-800.webp",
+                    "width": 800
                   },
                   {
-                    "width": 1200,
-                    "src": "/photos/markmontage-teamet-1200.webp"
+                    "src": "/photos/markmontage-teamet-1200.webp",
+                    "width": 1200
                   },
                   {
-                    "width": 1600,
-                    "src": "/photos/markmontage-teamet-1600.webp"
+                    "src": "/photos/markmontage-teamet-1600.webp",
+                    "width": 1600
                   },
                   {
-                    "width": 2000,
-                    "src": "/photos/markmontage-teamet.webp"
+                    "src": "/photos/markmontage-teamet.webp",
+                    "width": 2000
                   }
                 ]
               },
@@ -757,20 +757,20 @@
                 "src": "/photos/markmontage-gravmaskin-ror.webp",
                 "variants": [
                   {
-                    "width": 480,
-                    "src": "/photos/markmontage-gravmaskin-ror-480.webp"
+                    "src": "/photos/markmontage-gravmaskin-ror-480.webp",
+                    "width": 480
                   },
                   {
-                    "width": 800,
-                    "src": "/photos/markmontage-gravmaskin-ror-800.webp"
+                    "src": "/photos/markmontage-gravmaskin-ror-800.webp",
+                    "width": 800
                   },
                   {
-                    "width": 1200,
-                    "src": "/photos/markmontage-gravmaskin-ror-1200.webp"
+                    "src": "/photos/markmontage-gravmaskin-ror-1200.webp",
+                    "width": 1200
                   },
                   {
-                    "width": 1500,
-                    "src": "/photos/markmontage-gravmaskin-ror.webp"
+                    "src": "/photos/markmontage-gravmaskin-ror.webp",
+                    "width": 1500
                   }
                 ]
               },
@@ -877,20 +877,20 @@
                       "focus": "50% 40%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-kranbil-grip-480.webp"
+                          "src": "/photos/markmontage-kranbil-grip-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-kranbil-grip-800.webp"
+                          "src": "/photos/markmontage-kranbil-grip-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1200,
-                          "src": "/photos/markmontage-kranbil-grip-1200.webp"
+                          "src": "/photos/markmontage-kranbil-grip-1200.webp",
+                          "width": 1200
                         },
                         {
-                          "width": 1242,
-                          "src": "/photos/markmontage-kranbil-grip.webp"
+                          "src": "/photos/markmontage-kranbil-grip.webp",
+                          "width": 1242
                         }
                       ]
                     },
@@ -903,20 +903,20 @@
                       "focus": "50% 45%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-kranbil-korg-480.webp"
+                          "src": "/photos/markmontage-kranbil-korg-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-kranbil-korg-800.webp"
+                          "src": "/photos/markmontage-kranbil-korg-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1200,
-                          "src": "/photos/markmontage-kranbil-korg-1200.webp"
+                          "src": "/photos/markmontage-kranbil-korg-1200.webp",
+                          "width": 1200
                         },
                         {
-                          "width": 1242,
-                          "src": "/photos/markmontage-kranbil-korg.webp"
+                          "src": "/photos/markmontage-kranbil-korg.webp",
+                          "width": 1242
                         }
                       ]
                     },
@@ -929,20 +929,20 @@
                       "focus": "40% 45%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-kranbil-betong-480.webp"
+                          "src": "/photos/markmontage-kranbil-betong-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-kranbil-betong-800.webp"
+                          "src": "/photos/markmontage-kranbil-betong-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1200,
-                          "src": "/photos/markmontage-kranbil-betong-1200.webp"
+                          "src": "/photos/markmontage-kranbil-betong-1200.webp",
+                          "width": 1200
                         },
                         {
-                          "width": 1242,
-                          "src": "/photos/markmontage-kranbil-betong.webp"
+                          "src": "/photos/markmontage-kranbil-betong.webp",
+                          "width": 1242
                         }
                       ]
                     },
@@ -955,20 +955,20 @@
                       "focus": "60% 50%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-kranbil-stolpe-480.webp"
+                          "src": "/photos/markmontage-kranbil-stolpe-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-kranbil-stolpe-800.webp"
+                          "src": "/photos/markmontage-kranbil-stolpe-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1200,
-                          "src": "/photos/markmontage-kranbil-stolpe-1200.webp"
+                          "src": "/photos/markmontage-kranbil-stolpe-1200.webp",
+                          "width": 1200
                         },
                         {
-                          "width": 1512,
-                          "src": "/photos/markmontage-kranbil-stolpe.webp"
+                          "src": "/photos/markmontage-kranbil-stolpe.webp",
+                          "width": 1512
                         }
                       ]
                     },
@@ -981,20 +981,20 @@
                       "focus": "50% 45%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-kranbil-vaxthus-480.webp"
+                          "src": "/photos/markmontage-kranbil-vaxthus-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-kranbil-vaxthus-800.webp"
+                          "src": "/photos/markmontage-kranbil-vaxthus-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1200,
-                          "src": "/photos/markmontage-kranbil-vaxthus-1200.webp"
+                          "src": "/photos/markmontage-kranbil-vaxthus-1200.webp",
+                          "width": 1200
                         },
                         {
-                          "width": 1242,
-                          "src": "/photos/markmontage-kranbil-vaxthus.webp"
+                          "src": "/photos/markmontage-kranbil-vaxthus.webp",
+                          "width": 1242
                         }
                       ]
                     },
@@ -1007,24 +1007,24 @@
                       "focus": "60% 50%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-kranbil-palfinger-480.webp"
+                          "src": "/photos/markmontage-kranbil-palfinger-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-kranbil-palfinger-800.webp"
+                          "src": "/photos/markmontage-kranbil-palfinger-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1200,
-                          "src": "/photos/markmontage-kranbil-palfinger-1200.webp"
+                          "src": "/photos/markmontage-kranbil-palfinger-1200.webp",
+                          "width": 1200
                         },
                         {
-                          "width": 1600,
-                          "src": "/photos/markmontage-kranbil-palfinger-1600.webp"
+                          "src": "/photos/markmontage-kranbil-palfinger-1600.webp",
+                          "width": 1600
                         },
                         {
-                          "width": 2400,
-                          "src": "/photos/markmontage-kranbil-palfinger.webp"
+                          "src": "/photos/markmontage-kranbil-palfinger.webp",
+                          "width": 2400
                         }
                       ]
                     },
@@ -1037,20 +1037,20 @@
                       "focus": "50% 40%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-kranbil-truckshow-480.webp"
+                          "src": "/photos/markmontage-kranbil-truckshow-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-kranbil-truckshow-800.webp"
+                          "src": "/photos/markmontage-kranbil-truckshow-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1200,
-                          "src": "/photos/markmontage-kranbil-truckshow-1200.webp"
+                          "src": "/photos/markmontage-kranbil-truckshow-1200.webp",
+                          "width": 1200
                         },
                         {
-                          "width": 1242,
-                          "src": "/photos/markmontage-kranbil-truckshow.webp"
+                          "src": "/photos/markmontage-kranbil-truckshow.webp",
+                          "width": 1242
                         }
                       ]
                     },
@@ -1063,20 +1063,20 @@
                       "focus": "60% 60%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-bil-solnedgang-480.webp"
+                          "src": "/photos/markmontage-bil-solnedgang-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-bil-solnedgang-800.webp"
+                          "src": "/photos/markmontage-bil-solnedgang-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1200,
-                          "src": "/photos/markmontage-bil-solnedgang-1200.webp"
+                          "src": "/photos/markmontage-bil-solnedgang-1200.webp",
+                          "width": 1200
                         },
                         {
-                          "width": 1240,
-                          "src": "/photos/markmontage-bil-solnedgang.webp"
+                          "src": "/photos/markmontage-bil-solnedgang.webp",
+                          "width": 1240
                         }
                       ]
                     },
@@ -1089,20 +1089,20 @@
                       "focus": "50% 50%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-kranbil-vakuumlyft-480.webp"
+                          "src": "/photos/markmontage-kranbil-vakuumlyft-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-kranbil-vakuumlyft-800.webp"
+                          "src": "/photos/markmontage-kranbil-vakuumlyft-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1200,
-                          "src": "/photos/markmontage-kranbil-vakuumlyft-1200.webp"
+                          "src": "/photos/markmontage-kranbil-vakuumlyft-1200.webp",
+                          "width": 1200
                         },
                         {
-                          "width": 1242,
-                          "src": "/photos/markmontage-kranbil-vakuumlyft.webp"
+                          "src": "/photos/markmontage-kranbil-vakuumlyft.webp",
+                          "width": 1242
                         }
                       ]
                     },
@@ -1115,12 +1115,12 @@
                       "focus": "50% 50%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-minigravare-slap-480.webp"
+                          "src": "/photos/markmontage-minigravare-slap-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 720,
-                          "src": "/photos/markmontage-minigravare-slap.webp"
+                          "src": "/photos/markmontage-minigravare-slap.webp",
+                          "width": 720
                         }
                       ]
                     },
@@ -1155,7 +1155,7 @@
               "heading": "Har du ett markprojekt på gång?"
             },
             "uppdrag": {
-              "text": "Från första spadtaget till färdig yta. Här är de typer av uppdrag vi tar oss an – välj ett för att läsa mer om tjänsten.",
+              "text": "Från första spadtaget till färdig yta. Här är några av uppdragen vi har gjort, sorterade efter typ av arbete – tryck på ett för att se bilderna från början till slut.",
               "type": "uppdragGrid",
               "label": "",
               "anchor": "",
@@ -1178,16 +1178,16 @@
                       "focus": "50% 45%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-fiber-kabeltrumma-480.webp"
+                          "src": "/photos/markmontage-fiber-kabeltrumma-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-fiber-kabeltrumma-800.webp"
+                          "src": "/photos/markmontage-fiber-kabeltrumma-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1125,
-                          "src": "/photos/markmontage-fiber-kabeltrumma.webp"
+                          "src": "/photos/markmontage-fiber-kabeltrumma.webp",
+                          "width": 1125
                         }
                       ]
                     },
@@ -1202,16 +1202,16 @@
                       "focus": "50% 45%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-fiber-bat-480.webp"
+                          "src": "/photos/markmontage-fiber-bat-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-fiber-bat-800.webp"
+                          "src": "/photos/markmontage-fiber-bat-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1125,
-                          "src": "/photos/markmontage-fiber-bat.webp"
+                          "src": "/photos/markmontage-fiber-bat.webp",
+                          "width": 1125
                         }
                       ]
                     },
@@ -1243,24 +1243,24 @@
                       "focus": "50% 55%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-pool-vaggar-480.webp"
+                          "src": "/photos/markmontage-pool-vaggar-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-pool-vaggar-800.webp"
+                          "src": "/photos/markmontage-pool-vaggar-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1200,
-                          "src": "/photos/markmontage-pool-vaggar-1200.webp"
+                          "src": "/photos/markmontage-pool-vaggar-1200.webp",
+                          "width": 1200
                         },
                         {
-                          "width": 1600,
-                          "src": "/photos/markmontage-pool-vaggar-1600.webp"
+                          "src": "/photos/markmontage-pool-vaggar-1600.webp",
+                          "width": 1600
                         },
                         {
-                          "width": 2016,
-                          "src": "/photos/markmontage-pool-vaggar.webp"
+                          "src": "/photos/markmontage-pool-vaggar.webp",
+                          "width": 2016
                         }
                       ]
                     },
@@ -1275,24 +1275,24 @@
                       "focus": "50% 50%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-pool-gjutning-480.webp"
+                          "src": "/photos/markmontage-pool-gjutning-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-pool-gjutning-800.webp"
+                          "src": "/photos/markmontage-pool-gjutning-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1200,
-                          "src": "/photos/markmontage-pool-gjutning-1200.webp"
+                          "src": "/photos/markmontage-pool-gjutning-1200.webp",
+                          "width": 1200
                         },
                         {
-                          "width": 1600,
-                          "src": "/photos/markmontage-pool-gjutning-1600.webp"
+                          "src": "/photos/markmontage-pool-gjutning-1600.webp",
+                          "width": 1600
                         },
                         {
-                          "width": 2016,
-                          "src": "/photos/markmontage-pool-gjutning.webp"
+                          "src": "/photos/markmontage-pool-gjutning.webp",
+                          "width": 2016
                         }
                       ]
                     },
@@ -1307,24 +1307,24 @@
                       "focus": "50% 50%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-pool-isolering-480.webp"
+                          "src": "/photos/markmontage-pool-isolering-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-pool-isolering-800.webp"
+                          "src": "/photos/markmontage-pool-isolering-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1200,
-                          "src": "/photos/markmontage-pool-isolering-1200.webp"
+                          "src": "/photos/markmontage-pool-isolering-1200.webp",
+                          "width": 1200
                         },
                         {
-                          "width": 1600,
-                          "src": "/photos/markmontage-pool-isolering-1600.webp"
+                          "src": "/photos/markmontage-pool-isolering-1600.webp",
+                          "width": 1600
                         },
                         {
-                          "width": 1800,
-                          "src": "/photos/markmontage-pool-isolering.webp"
+                          "src": "/photos/markmontage-pool-isolering.webp",
+                          "width": 1800
                         }
                       ]
                     },
@@ -1357,16 +1357,16 @@
                       "focus": "50% 55%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-pool-lyft-480.webp"
+                          "src": "/photos/markmontage-pool-lyft-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-pool-lyft-800.webp"
+                          "src": "/photos/markmontage-pool-lyft-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 960,
-                          "src": "/photos/markmontage-pool-lyft.webp"
+                          "src": "/photos/markmontage-pool-lyft.webp",
+                          "width": 960
                         }
                       ]
                     },
@@ -1381,24 +1381,24 @@
                       "focus": "50% 45%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-pool-glasfiber-480.webp"
+                          "src": "/photos/markmontage-pool-glasfiber-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-pool-glasfiber-800.webp"
+                          "src": "/photos/markmontage-pool-glasfiber-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1200,
-                          "src": "/photos/markmontage-pool-glasfiber-1200.webp"
+                          "src": "/photos/markmontage-pool-glasfiber-1200.webp",
+                          "width": 1200
                         },
                         {
-                          "width": 1600,
-                          "src": "/photos/markmontage-pool-glasfiber-1600.webp"
+                          "src": "/photos/markmontage-pool-glasfiber-1600.webp",
+                          "width": 1600
                         },
                         {
-                          "width": 1800,
-                          "src": "/photos/markmontage-pool-glasfiber.webp"
+                          "src": "/photos/markmontage-pool-glasfiber.webp",
+                          "width": 1800
                         }
                       ]
                     },
@@ -1413,24 +1413,24 @@
                       "focus": "50% 50%",
                       "variants": [
                         {
-                          "width": 480,
-                          "src": "/photos/markmontage-pool-makadam-480.webp"
+                          "src": "/photos/markmontage-pool-makadam-480.webp",
+                          "width": 480
                         },
                         {
-                          "width": 800,
-                          "src": "/photos/markmontage-pool-makadam-800.webp"
+                          "src": "/photos/markmontage-pool-makadam-800.webp",
+                          "width": 800
                         },
                         {
-                          "width": 1200,
-                          "src": "/photos/markmontage-pool-makadam-1200.webp"
+                          "src": "/photos/markmontage-pool-makadam-1200.webp",
+                          "width": 1200
                         },
                         {
-                          "width": 1600,
-                          "src": "/photos/markmontage-pool-makadam-1600.webp"
+                          "src": "/photos/markmontage-pool-makadam-1600.webp",
+                          "width": 1600
                         },
                         {
-                          "width": 1800,
-                          "src": "/photos/markmontage-pool-makadam.webp"
+                          "src": "/photos/markmontage-pool-makadam.webp",
+                          "width": 1800
                         }
                       ]
                     },
@@ -1650,6 +1650,10 @@
           "href": "/#faq",
           "label": "Vanliga frågor"
         },
+        "admin": {
+          "href": "/logga-in",
+          "label": "Admin"
+        },
         "jobba": {
           "href": "/om-oss#jobba",
           "label": "Jobba hos oss"
@@ -1674,17 +1678,13 @@
           "href": "/projekt",
           "label": "Uppdrag"
         },
+        "personal": {
+          "href": "/personal",
+          "label": "Personal"
+        },
         "hallbarhet": {
           "href": "/hallbarhet",
           "label": "Hållbarhet"
-        },
-        "personal": {
-          "label": "Personal",
-          "href": "/personal"
-        },
-        "admin": {
-          "label": "Admin",
-          "href": "/logga-in"
         }
       },
       "order": [
@@ -1740,197 +1740,693 @@
     "openingHours": ""
   },
   "uppdrag": {
+    "order": [
+      "betongpool",
+      "pool",
+      "stenlaggning-tradgard",
+      "schakt",
+      "grund",
+      "dagvatten",
+      "vagar",
+      "marksten",
+      "fiber-sjo",
+      "kranlyft",
+      "maskintransport",
+      "bod"
+    ],
     "items": {
-      "bod": {
-        "tag": "Transporter",
-        "href": "/tjanster/transporter-kranbil",
+      "betongpool": {
+        "tag": "Poolbygge",
+        "title": "Betongpool i villaträdgård",
+        "href": "/tjanster/pooler",
         "image": {
-          "alt": "Kranbil lyfter en blå byggbod",
-          "src": "/photos/markmontage-kranbil-bod.webp",
-          "focus": "40% 45%",
+          "src": "/photos/uppdrag-pool09.webp",
           "variants": [
             {
               "width": 480,
-              "src": "/photos/markmontage-kranbil-bod-480.webp"
+              "src": "/photos/uppdrag-pool09-480.webp"
             },
             {
               "width": 800,
-              "src": "/photos/markmontage-kranbil-bod-800.webp"
+              "src": "/photos/uppdrag-pool09-800.webp"
             },
             {
               "width": 1200,
-              "src": "/photos/markmontage-kranbil-bod-1200.webp"
+              "src": "/photos/uppdrag-pool09-1200.webp"
             },
             {
-              "width": 1242,
-              "src": "/photos/markmontage-kranbil-bod.webp"
+              "width": 1600,
+              "src": "/photos/uppdrag-pool09.webp"
             }
-          ]
+          ],
+          "alt": "Färdig betongpool med blått vatten och stenkant i en trädgård"
         },
-        "title": "Lyft av byggbod",
         "gallery": [
           {
-            "src": "/photos/markmontage-kranbil-bod.webp",
+            "src": "/photos/uppdrag-pool06.webp",
             "variants": [
               {
                 "width": 480,
-                "src": "/photos/markmontage-kranbil-bod-480.webp"
+                "src": "/photos/uppdrag-pool06-480.webp"
               },
               {
                 "width": 800,
-                "src": "/photos/markmontage-kranbil-bod-800.webp"
+                "src": "/photos/uppdrag-pool06-800.webp"
               },
               {
                 "width": 1200,
-                "src": "/photos/markmontage-kranbil-bod-1200.webp"
-              },
-              {
-                "width": 1242,
-                "src": "/photos/markmontage-kranbil-bod.webp"
+                "src": "/photos/uppdrag-pool06.webp"
               }
             ],
-            "alt": "Kranbil lyfter en byggbod"
+            "alt": "Isolering utlagd i den schaktade gropen"
+          },
+          {
+            "src": "/photos/uppdrag-pool07.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-pool07-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-pool07-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-pool07-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-pool07.webp"
+              }
+            ],
+            "alt": "Bottenplattan med armering är gjuten"
+          },
+          {
+            "src": "/photos/uppdrag-pool05.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-pool05-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-pool05-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-pool05-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-pool05.webp"
+              }
+            ],
+            "alt": "Betongbilen gjuter poolens väggar"
+          },
+          {
+            "src": "/photos/uppdrag-pool04.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-pool04-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-pool04-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-pool04.webp"
+              }
+            ],
+            "alt": "Stenläggningen runt poolen tar form"
+          },
+          {
+            "src": "/photos/uppdrag-pool09.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-pool09-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-pool09-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-pool09-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-pool09.webp"
+              }
+            ],
+            "alt": "Den färdiga poolen"
+          },
+          {
+            "src": "/photos/uppdrag-pool03.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-pool03-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-pool03-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-pool03-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-pool03.webp"
+              }
+            ],
+            "alt": "Poolen med poolöverbyggnad"
           }
         ]
       },
       "pool": {
-        "tag": "Markarbeten",
+        "tag": "Poolbygge",
+        "title": "Glasfiberpool i trädgård",
         "href": "/tjanster/pooler",
         "image": {
-          "alt": "Färdig pool med poolöverbyggnad, omgiven av en stenlagd terrass i en villaträdgård",
-          "src": "/photos/markmontage-pool-terrass.webp",
-          "focus": "50% 50%",
+          "src": "/photos/uppdrag-pool00.webp",
           "variants": [
             {
               "width": 480,
-              "src": "/photos/markmontage-pool-terrass-480.webp"
+              "src": "/photos/uppdrag-pool00-480.webp"
             },
             {
-              "width": 732,
-              "src": "/photos/markmontage-pool-terrass.webp"
+              "width": 800,
+              "src": "/photos/uppdrag-pool00-800.webp"
+            },
+            {
+              "width": 1200,
+              "src": "/photos/uppdrag-pool00.webp"
             }
-          ]
+          ],
+          "alt": "Färdig glasfiberpool med poolöverbyggnad och stenlagd terrass"
         },
-        "title": "Schakt och grund för pool",
         "gallery": [
           {
-            "src": "/photos/markmontage-pool-makadam.webp",
+            "src": "/photos/uppdrag-pool02.webp",
             "variants": [
               {
                 "width": 480,
-                "src": "/photos/markmontage-pool-makadam-480.webp"
+                "src": "/photos/uppdrag-pool02-480.webp"
               },
               {
                 "width": 800,
-                "src": "/photos/markmontage-pool-makadam-800.webp"
+                "src": "/photos/uppdrag-pool02-800.webp"
               },
               {
                 "width": 1200,
-                "src": "/photos/markmontage-pool-makadam-1200.webp"
-              },
-              {
-                "width": 1600,
-                "src": "/photos/markmontage-pool-makadam-1600.webp"
-              },
-              {
-                "width": 1800,
-                "src": "/photos/markmontage-pool-makadam.webp"
+                "src": "/photos/uppdrag-pool02.webp"
               }
             ],
-            "alt": "Schaktad grop med makadambädd inför en pool"
+            "alt": "Schaktad grop med makadambädd för poolen"
           },
           {
-            "src": "/photos/markmontage-pool-lyft.webp",
+            "src": "/photos/uppdrag-pool08.webp",
             "variants": [
               {
                 "width": 480,
-                "src": "/photos/markmontage-pool-lyft-480.webp"
+                "src": "/photos/uppdrag-pool08-480.webp"
               },
               {
                 "width": 800,
-                "src": "/photos/markmontage-pool-lyft-800.webp"
+                "src": "/photos/uppdrag-pool08-800.webp"
+              },
+              {
+                "width": 1086,
+                "src": "/photos/uppdrag-pool08.webp"
+              }
+            ],
+            "alt": "Poolen lyfts på plats med kranbil"
+          },
+          {
+            "src": "/photos/uppdrag-pool01.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-pool01-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-pool01-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-pool01.webp"
+              }
+            ],
+            "alt": "Glasfiberpoolen står på plats i gropen"
+          },
+          {
+            "src": "/photos/uppdrag-pool00.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-pool00-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-pool00-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-pool00.webp"
+              }
+            ],
+            "alt": "Färdig pool med poolöverbyggnad och stenlagd terrass"
+          }
+        ]
+      },
+      "stenlaggning-tradgard": {
+        "tag": "Markarbeten",
+        "title": "Stenläggning och murar vid pool",
+        "href": "/tjanster/stenlaggning",
+        "image": {
+          "src": "/photos/uppdrag-mark03.webp",
+          "variants": [
+            {
+              "width": 480,
+              "src": "/photos/uppdrag-mark03-480.webp"
+            },
+            {
+              "width": 800,
+              "src": "/photos/uppdrag-mark03-800.webp"
+            },
+            {
+              "width": 960,
+              "src": "/photos/uppdrag-mark03.webp"
+            }
+          ],
+          "alt": "Färdig stenläggning med mur i en trädgård"
+        },
+        "gallery": [
+          {
+            "src": "/photos/uppdrag-mark05.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-mark05-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-mark05-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-mark05.webp"
+              }
+            ],
+            "alt": "Sten och material på plats inför stenläggningen"
+          },
+          {
+            "src": "/photos/uppdrag-mark04.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-mark04-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-mark04-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-mark04.webp"
+              }
+            ],
+            "alt": "Stensättning runt poolen pågår"
+          },
+          {
+            "src": "/photos/uppdrag-mark02.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-mark02-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-mark02-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-mark02-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-mark02.webp"
+              }
+            ],
+            "alt": "Stenläggning pågår vid poolen"
+          },
+          {
+            "src": "/photos/uppdrag-mark01.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-mark01-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-mark01-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-mark01.webp"
+              }
+            ],
+            "alt": "Stenläggningen växer fram runt poolen"
+          },
+          {
+            "src": "/photos/uppdrag-mark03.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-mark03-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-mark03-800.webp"
               },
               {
                 "width": 960,
-                "src": "/photos/markmontage-pool-lyft.webp"
+                "src": "/photos/uppdrag-mark03.webp"
               }
             ],
-            "alt": "En pool lyfts med kran ner i en trädgård"
+            "alt": "Färdig stenläggning och mur"
           },
           {
-            "src": "/photos/markmontage-pool-glasfiber.webp",
+            "src": "/photos/uppdrag-mark00.webp",
             "variants": [
               {
                 "width": 480,
-                "src": "/photos/markmontage-pool-glasfiber-480.webp"
+                "src": "/photos/uppdrag-mark00-480.webp"
               },
               {
                 "width": 800,
-                "src": "/photos/markmontage-pool-glasfiber-800.webp"
+                "src": "/photos/uppdrag-mark00-800.webp"
               },
               {
                 "width": 1200,
-                "src": "/photos/markmontage-pool-glasfiber-1200.webp"
+                "src": "/photos/uppdrag-mark00-1200.webp"
               },
               {
                 "width": 1600,
-                "src": "/photos/markmontage-pool-glasfiber-1600.webp"
-              },
-              {
-                "width": 1800,
-                "src": "/photos/markmontage-pool-glasfiber.webp"
+                "src": "/photos/uppdrag-mark00.webp"
               }
             ],
-            "alt": "En glasfiberpool på plats i en schaktad grop i en trädgård"
-          },
+            "alt": "Den färdiga terrassen med mur"
+          }
+        ]
+      },
+      "schakt": {
+        "tag": "Markarbeten",
+        "title": "Schakt och markarbeten",
+        "href": "/tjanster/schaktning-markarbeten",
+        "image": {
+          "src": "/photos/uppdrag-mark07.webp",
+          "variants": [
+            {
+              "width": 480,
+              "src": "/photos/uppdrag-mark07-480.webp"
+            },
+            {
+              "width": 800,
+              "src": "/photos/uppdrag-mark07-800.webp"
+            },
+            {
+              "width": 1200,
+              "src": "/photos/uppdrag-mark07-1200.webp"
+            },
+            {
+              "width": 1600,
+              "src": "/photos/uppdrag-mark07.webp"
+            }
+          ],
+          "alt": "Minigrävare schaktar vid ett stenhus"
+        },
+        "gallery": [
           {
-            "src": "/photos/markmontage-pool-terrass.webp",
+            "src": "/photos/uppdrag-mark13.webp",
             "variants": [
               {
                 "width": 480,
-                "src": "/photos/markmontage-pool-terrass-480.webp"
+                "src": "/photos/uppdrag-mark13-480.webp"
               },
               {
-                "width": 732,
-                "src": "/photos/markmontage-pool-terrass.webp"
+                "width": 800,
+                "src": "/photos/uppdrag-mark13-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-mark13-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-mark13.webp"
               }
             ],
-            "alt": "Färdig pool med poolöverbyggnad, omgiven av en stenlagd terrass"
+            "alt": "Inmätning och utsättning inför arbetet"
+          },
+          {
+            "src": "/photos/uppdrag-mark07.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-mark07-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-mark07-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-mark07-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-mark07.webp"
+              }
+            ],
+            "alt": "Minigrävare schaktar vid ett stenhus"
+          },
+          {
+            "src": "/photos/uppdrag-mark10.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-mark10-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-mark10-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-mark10-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-mark10.webp"
+              }
+            ],
+            "alt": "Grävmaskin i arbete vid en avstängd gångbana i stan"
           }
         ]
       },
       "grund": {
         "tag": "Grund & dränering",
+        "title": "Husgrund och platta på mark",
         "href": "/tjanster/grundlaggning",
         "image": {
-          "alt": "Markduk utlagd på en avschaktad yta innan bärlagret läggs",
-          "src": "/photos/markmontage-geotextil.webp",
+          "src": "/photos/uppdrag-grund07.webp",
           "variants": [
             {
               "width": 480,
-              "src": "/photos/markmontage-geotextil-480.webp"
+              "src": "/photos/uppdrag-grund07-480.webp"
             },
             {
               "width": 800,
-              "src": "/photos/markmontage-geotextil-800.webp"
+              "src": "/photos/uppdrag-grund07-800.webp"
             },
             {
               "width": 1200,
-              "src": "/photos/markmontage-geotextil-1200.webp"
+              "src": "/photos/uppdrag-grund07.webp"
+            }
+          ],
+          "alt": "Färdig platta på mark på en byggtomt"
+        },
+        "gallery": [
+          {
+            "src": "/photos/uppdrag-grund05.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-grund05-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-grund05-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-grund05.webp"
+              }
+            ],
+            "alt": "Schaktad tomt inför husgrunden"
+          },
+          {
+            "src": "/photos/uppdrag-grund06.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-grund06-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-grund06-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-grund06-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-grund06.webp"
+              }
+            ],
+            "alt": "Rör och ledningar läggs i schaktet"
+          },
+          {
+            "src": "/photos/uppdrag-grund02.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-grund02-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-grund02-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-grund02-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-grund02.webp"
+              }
+            ],
+            "alt": "Tomten fylld och packad med makadam"
+          },
+          {
+            "src": "/photos/uppdrag-grund07.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-grund07-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-grund07-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-grund07.webp"
+              }
+            ],
+            "alt": "Den färdiga plattan på mark"
+          }
+        ]
+      },
+      "dagvatten": {
+        "tag": "Grund & dränering",
+        "title": "Dränering runt villa",
+        "href": "/tjanster/dranering",
+        "image": {
+          "src": "/photos/uppdrag-grund00.webp",
+          "variants": [
+            {
+              "width": 480,
+              "src": "/photos/uppdrag-grund00-480.webp"
             },
             {
-              "width": 1600,
-              "src": "/photos/markmontage-geotextil.webp"
+              "width": 800,
+              "src": "/photos/uppdrag-grund00.webp"
             }
-          ]
+          ],
+          "alt": "Villa med färdig dränering och återställd tomt"
         },
-        "title": "Platta på mark och grundsulor"
+        "gallery": [
+          {
+            "src": "/photos/uppdrag-grund04.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-grund04-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-grund04.webp"
+              }
+            ],
+            "alt": "Schakt längs husets grund"
+          },
+          {
+            "src": "/photos/uppdrag-grund01.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-grund01-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-grund01.webp"
+              }
+            ],
+            "alt": "Isolering mot källarväggen"
+          },
+          {
+            "src": "/photos/uppdrag-grund03.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-grund03-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-grund03.webp"
+              }
+            ],
+            "alt": "Grundmursskivor och dränering på plats"
+          },
+          {
+            "src": "/photos/uppdrag-grund00.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-grund00-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-grund00.webp"
+              }
+            ],
+            "alt": "Färdig dränering och återställd tomt"
+          }
+        ]
       },
       "vagar": {
         "tag": "Markarbeten",
         "href": "/tjanster/anlaggning-vagar-planer",
         "image": {
-          "alt": "Färdig stenlagd gårdsplan framför ett hus",
           "src": "/photos/markmontage-stenlagd-gard.webp",
           "variants": [
             {
@@ -1949,10 +2445,47 @@
               "width": 1600,
               "src": "/photos/markmontage-stenlagd-gard.webp"
             }
-          ]
+          ],
+          "alt": "Färdigstenlagd gård framför huset"
         },
-        "title": "Vägar, planer och uppfarter",
+        "title": "Stenläggning av gård",
         "gallery": [
+          {
+            "src": "/photos/markmontage-minigravare-tradgard.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/markmontage-minigravare-tradgard-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/markmontage-minigravare-tradgard-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/markmontage-minigravare-tradgard-1200.webp"
+              },
+              {
+                "width": 1400,
+                "src": "/photos/markmontage-minigravare-tradgard.webp"
+              }
+            ],
+            "alt": "Minigrävare tar bort den gamla ytan"
+          },
+          {
+            "src": "/photos/uppdrag-mark17.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-mark17-480.webp"
+              },
+              {
+                "width": 599,
+                "src": "/photos/uppdrag-mark17.webp"
+              }
+            ],
+            "alt": "Ytan är avjämnad med grus"
+          },
           {
             "src": "/photos/markmontage-geotextil.webp",
             "variants": [
@@ -1973,7 +2506,7 @@
                 "src": "/photos/markmontage-geotextil.webp"
               }
             ],
-            "alt": "Geotextil utlagd framför ett hus inför stenläggning"
+            "alt": "Geotextil utlagd inför stenläggningen"
           },
           {
             "src": "/photos/markmontage-stenlaggning-pagar.webp",
@@ -1995,7 +2528,7 @@
                 "src": "/photos/markmontage-stenlaggning-pagar.webp"
               }
             ],
-            "alt": "Stenläggning pågår framför huset"
+            "alt": "Stenläggningen pågår"
           },
           {
             "src": "/photos/markmontage-stenlagd-gard.webp",
@@ -2017,181 +2550,7 @@
                 "src": "/photos/markmontage-stenlagd-gard.webp"
               }
             ],
-            "alt": "Färdigstenlagd gård framför huset"
-          }
-        ]
-      },
-      "schakt": {
-        "tag": "Markarbeten",
-        "href": "/tjanster/schaktning-markarbeten",
-        "image": {
-          "alt": "Minigrävare som schaktar i en gräsmatta",
-          "src": "/photos/markmontage-minigravare-grasmatta.webp",
-          "variants": [
-            {
-              "width": 480,
-              "src": "/photos/markmontage-minigravare-grasmatta-480.webp"
-            },
-            {
-              "width": 720,
-              "src": "/photos/markmontage-minigravare-grasmatta.webp"
-            }
-          ]
-        },
-        "title": "Schakt och massförflyttning",
-        "gallery": [
-          {
-            "src": "/photos/markmontage-minigravare-grasmatta.webp",
-            "variants": [
-              {
-                "width": 480,
-                "src": "/photos/markmontage-minigravare-grasmatta-480.webp"
-              },
-              {
-                "width": 720,
-                "src": "/photos/markmontage-minigravare-grasmatta.webp"
-              }
-            ],
-            "alt": "Minigrävare schaktar i en gräsmatta"
-          },
-          {
-            "src": "/photos/markmontage-minigravare-tradgard.webp",
-            "variants": [
-              {
-                "width": 480,
-                "src": "/photos/markmontage-minigravare-tradgard-480.webp"
-              },
-              {
-                "width": 800,
-                "src": "/photos/markmontage-minigravare-tradgard-800.webp"
-              },
-              {
-                "width": 1200,
-                "src": "/photos/markmontage-minigravare-tradgard-1200.webp"
-              },
-              {
-                "width": 1400,
-                "src": "/photos/markmontage-minigravare-tradgard.webp"
-              }
-            ],
-            "alt": "Minigrävare schaktar vid en husvägg"
-          },
-          {
-            "src": "/photos/markmontage-minigravare.webp",
-            "variants": [
-              {
-                "width": 480,
-                "src": "/photos/markmontage-minigravare-480.webp"
-              },
-              {
-                "width": 800,
-                "src": "/photos/markmontage-minigravare-800.webp"
-              },
-              {
-                "width": 1200,
-                "src": "/photos/markmontage-minigravare-1200.webp"
-              },
-              {
-                "width": 1500,
-                "src": "/photos/markmontage-minigravare.webp"
-              }
-            ],
-            "alt": "Minigrävare i arbete i en trädgård"
-          }
-        ]
-      },
-      "kranlyft": {
-        "tag": "Transporter",
-        "href": "/tjanster/transporter-kranbil",
-        "image": {
-          "alt": "Kranbil med arbetskorg vid en fasad i stan",
-          "src": "/photos/markmontage-kranbil-fasad.webp",
-          "variants": [
-            {
-              "width": 480,
-              "src": "/photos/markmontage-kranbil-fasad-480.webp"
-            },
-            {
-              "width": 800,
-              "src": "/photos/markmontage-kranbil-fasad-800.webp"
-            },
-            {
-              "width": 1200,
-              "src": "/photos/markmontage-kranbil-fasad-1200.webp"
-            },
-            {
-              "width": 1512,
-              "src": "/photos/markmontage-kranbil-fasad.webp"
-            }
-          ]
-        },
-        "title": "Kranlyft med arbetskorg",
-        "gallery": [
-          {
-            "src": "/photos/markmontage-kranbil-korg.webp",
-            "variants": [
-              {
-                "width": 480,
-                "src": "/photos/markmontage-kranbil-korg-480.webp"
-              },
-              {
-                "width": 800,
-                "src": "/photos/markmontage-kranbil-korg-800.webp"
-              },
-              {
-                "width": 1200,
-                "src": "/photos/markmontage-kranbil-korg-1200.webp"
-              },
-              {
-                "width": 1242,
-                "src": "/photos/markmontage-kranbil-korg.webp"
-              }
-            ],
-            "alt": "Kranbil med arbetskorg"
-          },
-          {
-            "src": "/photos/markmontage-kranbil-stolpe.webp",
-            "variants": [
-              {
-                "width": 480,
-                "src": "/photos/markmontage-kranbil-stolpe-480.webp"
-              },
-              {
-                "width": 800,
-                "src": "/photos/markmontage-kranbil-stolpe-800.webp"
-              },
-              {
-                "width": 1200,
-                "src": "/photos/markmontage-kranbil-stolpe-1200.webp"
-              },
-              {
-                "width": 1512,
-                "src": "/photos/markmontage-kranbil-stolpe.webp"
-              }
-            ],
-            "alt": "Arbete på höjd vid en stolpe från kranens korg"
-          },
-          {
-            "src": "/photos/markmontage-kranbil-fasad.webp",
-            "variants": [
-              {
-                "width": 480,
-                "src": "/photos/markmontage-kranbil-fasad-480.webp"
-              },
-              {
-                "width": 800,
-                "src": "/photos/markmontage-kranbil-fasad-800.webp"
-              },
-              {
-                "width": 1200,
-                "src": "/photos/markmontage-kranbil-fasad-1200.webp"
-              },
-              {
-                "width": 1512,
-                "src": "/photos/markmontage-kranbil-fasad.webp"
-              }
-            ],
-            "alt": "Kranbil lyfter vid en fasad"
+            "alt": "Den färdiga gården"
           }
         ]
       },
@@ -2203,20 +2562,20 @@
           "src": "/photos/markmontage-gatsten-stad.webp",
           "variants": [
             {
-              "width": 480,
-              "src": "/photos/markmontage-gatsten-stad-480.webp"
+              "src": "/photos/markmontage-gatsten-stad-480.webp",
+              "width": 480
             },
             {
-              "width": 800,
-              "src": "/photos/markmontage-gatsten-stad-800.webp"
+              "src": "/photos/markmontage-gatsten-stad-800.webp",
+              "width": 800
             },
             {
-              "width": 1200,
-              "src": "/photos/markmontage-gatsten-stad.webp"
+              "src": "/photos/markmontage-gatsten-stad.webp",
+              "width": 1200
             }
           ]
         },
-        "title": "Marksten och kantsten",
+        "title": "Gatsten i stadsmiljö",
         "gallery": [
           {
             "src": "/photos/markmontage-kranbil-stad.webp",
@@ -2234,7 +2593,25 @@
                 "src": "/photos/markmontage-kranbil-stad.webp"
               }
             ],
-            "alt": "Kranbil lossar sten vid en gata i stan"
+            "alt": "Kranbil lossar sten vid gatan"
+          },
+          {
+            "src": "/photos/uppdrag-mark09.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-mark09-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-mark09-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-mark09.webp"
+              }
+            ],
+            "alt": "Den gamla stenen tas upp"
           },
           {
             "src": "/photos/markmontage-gatsten-stad.webp",
@@ -2252,274 +2629,611 @@
                 "src": "/photos/markmontage-gatsten-stad.webp"
               }
             ],
-            "alt": "Gatsten läggs om vid en gata i stan"
-          }
-        ]
-      },
-      "dagvatten": {
-        "tag": "Grund & dränering",
-        "href": "/tjanster/dranering",
-        "image": {
-          "alt": "Orange dagvattenrör med rördelar i en schakt",
-          "src": "/photos/markmontage-dagvatten-ror.webp",
-          "variants": [
-            {
-              "width": 480,
-              "src": "/photos/markmontage-dagvatten-ror-480.webp"
-            },
-            {
-              "width": 800,
-              "src": "/photos/markmontage-dagvatten-ror-800.webp"
-            },
-            {
-              "width": 1200,
-              "src": "/photos/markmontage-dagvatten-ror.webp"
-            }
-          ]
-        },
-        "title": "Dagvatten och fuktskydd",
-        "gallery": [
-          {
-            "src": "/photos/markmontage-dagvatten-ror.webp",
-            "variants": [
-              {
-                "width": 480,
-                "src": "/photos/markmontage-dagvatten-ror-480.webp"
-              },
-              {
-                "width": 800,
-                "src": "/photos/markmontage-dagvatten-ror-800.webp"
-              },
-              {
-                "width": 1200,
-                "src": "/photos/markmontage-dagvatten-ror.webp"
-              }
-            ],
-            "alt": "Dagvattenrör läggs i en schaktad grop"
-          },
-          {
-            "src": "/photos/markmontage-dranering-ror.webp",
-            "variants": [
-              {
-                "width": 480,
-                "src": "/photos/markmontage-dranering-ror-480.webp"
-              },
-              {
-                "width": 800,
-                "src": "/photos/markmontage-dranering-ror-800.webp"
-              },
-              {
-                "width": 1200,
-                "src": "/photos/markmontage-dranering-ror.webp"
-              }
-            ],
-            "alt": "Dräneringsrör och anslutning i en grop"
+            "alt": "Gatsten läggs om vid gatan"
           }
         ]
       },
       "fiber-sjo": {
         "tag": "Fiber",
+        "title": "Fiberblåsning och fiberinstallation",
         "href": "/tjanster/fiber",
         "image": {
           "alt": "Medarbetare vid avspärrningen på en arbetsplats med servicebilar",
           "src": "/photos/markmontage-arbete.webp",
           "variants": [
             {
-              "width": 480,
-              "src": "/photos/markmontage-arbete-480.webp"
+              "src": "/photos/markmontage-arbete-480.webp",
+              "width": 480
             },
             {
-              "width": 800,
-              "src": "/photos/markmontage-arbete-800.webp"
+              "src": "/photos/markmontage-arbete-800.webp",
+              "width": 800
             },
             {
-              "width": 1200,
-              "src": "/photos/markmontage-arbete-1200.webp"
+              "src": "/photos/markmontage-arbete-1200.webp",
+              "width": 1200
             },
             {
-              "width": 1600,
-              "src": "/photos/markmontage-arbete-1600.webp"
+              "src": "/photos/markmontage-arbete-1600.webp",
+              "width": 1600
             },
             {
-              "width": 1745,
-              "src": "/photos/markmontage-arbete.webp"
+              "src": "/photos/markmontage-arbete.webp",
+              "width": 1745
             }
           ]
         },
-        "title": "Kabelförläggning över vatten",
         "gallery": [
           {
-            "src": "/photos/markmontage-fiber-kabeltrumma.webp",
+            "src": "/photos/uppdrag-fiber02.webp",
             "variants": [
               {
                 "width": 480,
-                "src": "/photos/markmontage-fiber-kabeltrumma-480.webp"
+                "src": "/photos/uppdrag-fiber02-480.webp"
               },
               {
                 "width": 800,
-                "src": "/photos/markmontage-fiber-kabeltrumma-800.webp"
+                "src": "/photos/uppdrag-fiber02-800.webp"
               },
               {
-                "width": 1125,
-                "src": "/photos/markmontage-fiber-kabeltrumma.webp"
+                "width": 1200,
+                "src": "/photos/uppdrag-fiber02-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-fiber02.webp"
               }
             ],
-            "alt": "Kabeltrumma med fiberkabel vid vattnet"
+            "alt": "Fräsmaskin lägger ner fiber i gatan"
           },
           {
-            "src": "/photos/markmontage-fiber-bat.webp",
+            "src": "/photos/uppdrag-fiber06.webp",
             "variants": [
               {
                 "width": 480,
-                "src": "/photos/markmontage-fiber-bat-480.webp"
+                "src": "/photos/uppdrag-fiber06-480.webp"
               },
               {
                 "width": 800,
-                "src": "/photos/markmontage-fiber-bat-800.webp"
+                "src": "/photos/uppdrag-fiber06-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-fiber06-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-fiber06.webp"
+              }
+            ],
+            "alt": "Fiberblåsningsmaskinen i arbete"
+          },
+          {
+            "src": "/photos/uppdrag-fiber01.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-fiber01-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-fiber01.webp"
+              }
+            ],
+            "alt": "Fiberkabel dras längs vägen"
+          },
+          {
+            "src": "/photos/uppdrag-fiber07.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-fiber07-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-fiber07-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-fiber07-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-fiber07.webp"
+              }
+            ],
+            "alt": "Fiberdragning i stolpe"
+          },
+          {
+            "src": "/photos/uppdrag-fiber03.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-fiber03-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-fiber03-800.webp"
               },
               {
                 "width": 1125,
-                "src": "/photos/markmontage-fiber-bat.webp"
+                "src": "/photos/uppdrag-fiber03.webp"
               }
             ],
-            "alt": "Fiberkabel läggs ut från en båt"
+            "alt": "Sjöförläggning av fiberkabel från pråm"
+          },
+          {
+            "src": "/photos/uppdrag-fiber04.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-fiber04-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-fiber04-800.webp"
+              },
+              {
+                "width": 1125,
+                "src": "/photos/uppdrag-fiber04.webp"
+              }
+            ],
+            "alt": "Fiberkabel läggs ut över sjön"
+          },
+          {
+            "src": "/photos/uppdrag-fiber08.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-fiber08-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-fiber08-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-fiber08-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-fiber08.webp"
+              }
+            ],
+            "alt": "Fiberinstallation inomhus"
+          },
+          {
+            "src": "/photos/uppdrag-fiber09.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-fiber09-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-fiber09-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-fiber09-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-fiber09.webp"
+              }
+            ],
+            "alt": "Fiberinstallation i skåp"
           }
         ]
       },
-      "betongpool": {
-        "tag": "Grund & dränering",
-        "href": "/tjanster/pooler",
+      "kranlyft": {
+        "tag": "Transporter",
+        "title": "Transporter och kranlyft",
+        "href": "/tjanster/transporter-kranbil",
         "image": {
-          "alt": "Gjuten bottenplatta med armering för en pool",
-          "src": "/photos/markmontage-pool-bottenplatta.webp",
+          "src": "/photos/uppdrag-transport01.webp",
           "variants": [
             {
               "width": 480,
-              "src": "/photos/markmontage-pool-bottenplatta-480.webp"
+              "src": "/photos/uppdrag-transport01-480.webp"
             },
             {
               "width": 800,
-              "src": "/photos/markmontage-pool-bottenplatta-800.webp"
+              "src": "/photos/uppdrag-transport01-800.webp"
             },
             {
               "width": 1200,
-              "src": "/photos/markmontage-pool-bottenplatta-1200.webp"
+              "src": "/photos/uppdrag-transport01-1200.webp"
             },
             {
               "width": 1600,
-              "src": "/photos/markmontage-pool-bottenplatta-1600.webp"
-            },
-            {
-              "width": 2016,
-              "src": "/photos/markmontage-pool-bottenplatta.webp"
+              "src": "/photos/uppdrag-transport01.webp"
             }
-          ]
+          ],
+          "alt": "Kranbil med kranen uppfälld"
         },
-        "title": "Bottenplatta för betongpool",
         "gallery": [
           {
-            "src": "/photos/markmontage-pool-isolering.webp",
+            "src": "/photos/uppdrag-transport01.webp",
             "variants": [
               {
                 "width": 480,
-                "src": "/photos/markmontage-pool-isolering-480.webp"
+                "src": "/photos/uppdrag-transport01-480.webp"
               },
               {
                 "width": 800,
-                "src": "/photos/markmontage-pool-isolering-800.webp"
+                "src": "/photos/uppdrag-transport01-800.webp"
               },
               {
                 "width": 1200,
-                "src": "/photos/markmontage-pool-isolering-1200.webp"
+                "src": "/photos/uppdrag-transport01-1200.webp"
               },
               {
                 "width": 1600,
-                "src": "/photos/markmontage-pool-isolering-1600.webp"
-              },
-              {
-                "width": 1800,
-                "src": "/photos/markmontage-pool-isolering.webp"
+                "src": "/photos/uppdrag-transport01.webp"
               }
             ],
-            "alt": "Isolerskivor utlagda i en schaktad grop"
+            "alt": "Kranbil med kranen uppfälld"
           },
           {
-            "src": "/photos/markmontage-pool-bottenplatta.webp",
+            "src": "/photos/uppdrag-transport02.webp",
             "variants": [
               {
                 "width": 480,
-                "src": "/photos/markmontage-pool-bottenplatta-480.webp"
+                "src": "/photos/uppdrag-transport02-480.webp"
               },
               {
                 "width": 800,
-                "src": "/photos/markmontage-pool-bottenplatta-800.webp"
+                "src": "/photos/uppdrag-transport02-800.webp"
               },
               {
                 "width": 1200,
-                "src": "/photos/markmontage-pool-bottenplatta-1200.webp"
+                "src": "/photos/uppdrag-transport02-1200.webp"
               },
               {
                 "width": 1600,
-                "src": "/photos/markmontage-pool-bottenplatta-1600.webp"
-              },
-              {
-                "width": 2016,
-                "src": "/photos/markmontage-pool-bottenplatta.webp"
+                "src": "/photos/uppdrag-transport02.webp"
               }
             ],
-            "alt": "Gjuten bottenplatta med armering för en pool"
+            "alt": "Fordonsparken: fyra kranbilar"
           },
           {
-            "src": "/photos/markmontage-pool-vaggar.webp",
+            "src": "/photos/uppdrag-transport04.webp",
             "variants": [
               {
                 "width": 480,
-                "src": "/photos/markmontage-pool-vaggar-480.webp"
+                "src": "/photos/uppdrag-transport04-480.webp"
               },
               {
                 "width": 800,
-                "src": "/photos/markmontage-pool-vaggar-800.webp"
+                "src": "/photos/uppdrag-transport04-800.webp"
               },
               {
                 "width": 1200,
-                "src": "/photos/markmontage-pool-vaggar-1200.webp"
-              },
-              {
-                "width": 1600,
-                "src": "/photos/markmontage-pool-vaggar-1600.webp"
-              },
-              {
-                "width": 2016,
-                "src": "/photos/markmontage-pool-vaggar.webp"
+                "src": "/photos/uppdrag-transport04.webp"
               }
             ],
-            "alt": "Poolväggar av formblock i kvällsljus"
+            "alt": "Kranbil lastad med byggmaterial"
           },
           {
-            "src": "/photos/markmontage-pool-gjutning.webp",
+            "src": "/photos/uppdrag-transport05.webp",
             "variants": [
               {
                 "width": 480,
-                "src": "/photos/markmontage-pool-gjutning-480.webp"
+                "src": "/photos/uppdrag-transport05-480.webp"
               },
               {
                 "width": 800,
-                "src": "/photos/markmontage-pool-gjutning-800.webp"
+                "src": "/photos/uppdrag-transport05-800.webp"
               },
               {
                 "width": 1200,
-                "src": "/photos/markmontage-pool-gjutning-1200.webp"
-              },
-              {
-                "width": 1600,
-                "src": "/photos/markmontage-pool-gjutning-1600.webp"
-              },
-              {
-                "width": 2016,
-                "src": "/photos/markmontage-pool-gjutning.webp"
+                "src": "/photos/uppdrag-transport05.webp"
               }
             ],
-            "alt": "Betongbil gjuter en pool i en villaträdgård"
+            "alt": "Kranbil med container"
+          },
+          {
+            "src": "/photos/uppdrag-transport08.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-transport08-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-transport08-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-transport08.webp"
+              }
+            ],
+            "alt": "Kranbil vid lagret"
+          },
+          {
+            "src": "/photos/uppdrag-transport00.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-transport00-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-transport00.webp"
+              }
+            ],
+            "alt": "Lyft av betongfundament"
+          },
+          {
+            "src": "/photos/uppdrag-transport03.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-transport03-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-transport03-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-transport03.webp"
+              }
+            ],
+            "alt": "Lyft vid en fasad på hög höjd"
+          },
+          {
+            "src": "/photos/uppdrag-transport06.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-transport06-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-transport06-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-transport06.webp"
+              }
+            ],
+            "alt": "Lyft vid en vägskylt"
+          },
+          {
+            "src": "/photos/uppdrag-transport09.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-transport09-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-transport09-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-transport09.webp"
+              }
+            ],
+            "alt": "Lyft över en häck"
+          },
+          {
+            "src": "/photos/uppdrag-transport10.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-transport10-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-transport10-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-transport10.webp"
+              }
+            ],
+            "alt": "Lyft av grävmaskin upp på en slänt"
+          },
+          {
+            "src": "/photos/uppdrag-transport11.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-transport11-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-transport11-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-transport11.webp"
+              }
+            ],
+            "alt": "Lyft av takstolar"
+          },
+          {
+            "src": "/photos/uppdrag-transport12.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-transport12-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-transport12-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-transport12.webp"
+              }
+            ],
+            "alt": "Lyft upp på en mur"
+          },
+          {
+            "src": "/photos/uppdrag-transport13.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-transport13-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-transport13-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-transport13.webp"
+              }
+            ],
+            "alt": "Lyft av byggmaterial"
+          },
+          {
+            "src": "/photos/uppdrag-transport14.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-transport14-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-transport14-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-transport14.webp"
+              }
+            ],
+            "alt": "Lyft upp på ett tak"
+          },
+          {
+            "src": "/photos/uppdrag-transport15.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-transport15-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-transport15-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-transport15.webp"
+              }
+            ],
+            "alt": "Lyft vid en truckshow"
+          },
+          {
+            "src": "/photos/uppdrag-transport16.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-transport16-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-transport16-800.webp"
+              },
+              {
+                "width": 900,
+                "src": "/photos/uppdrag-transport16.webp"
+              }
+            ],
+            "alt": "Lyft med grip"
+          },
+          {
+            "src": "/photos/uppdrag-transport17.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-transport17-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-transport17-800.webp"
+              },
+              {
+                "width": 900,
+                "src": "/photos/uppdrag-transport17.webp"
+              }
+            ],
+            "alt": "Kranbil i stadsmiljö"
+          },
+          {
+            "src": "/photos/uppdrag-transport18.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-transport18-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-transport18-800.webp"
+              },
+              {
+                "width": 900,
+                "src": "/photos/uppdrag-transport18.webp"
+              }
+            ],
+            "alt": "Lyft av växthus"
+          },
+          {
+            "src": "/photos/uppdrag-transport19.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-transport19-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-transport19-800.webp"
+              },
+              {
+                "width": 900,
+                "src": "/photos/uppdrag-transport19.webp"
+              }
+            ],
+            "alt": "Kranbil vid belysningsmast"
+          },
+          {
+            "src": "/photos/uppdrag-transport20.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-transport20-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-transport20-800.webp"
+              },
+              {
+                "width": 900,
+                "src": "/photos/uppdrag-transport20.webp"
+              }
+            ],
+            "alt": "Lyft av plåtar"
+          },
+          {
+            "src": "/photos/uppdrag-transport07.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-transport07-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-transport07-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-transport07.webp"
+              }
+            ],
+            "alt": "Kranbilar i arbete på kvällen"
           }
         ]
       },
@@ -2531,61 +3245,100 @@
           "src": "/photos/markmontage-kranbil-gravmaskin.webp",
           "variants": [
             {
-              "width": 480,
-              "src": "/photos/markmontage-kranbil-gravmaskin-480.webp"
+              "src": "/photos/markmontage-kranbil-gravmaskin-480.webp",
+              "width": 480
             },
             {
-              "width": 720,
-              "src": "/photos/markmontage-kranbil-gravmaskin.webp"
+              "src": "/photos/markmontage-kranbil-gravmaskin.webp",
+              "width": 720
             }
           ]
         },
         "title": "Transport av grävmaskin",
         "gallery": [
           {
+            "alt": "Kranbil lyfter en grävmaskin",
             "src": "/photos/markmontage-kranbil-gravmaskin.webp",
             "variants": [
               {
-                "width": 480,
-                "src": "/photos/markmontage-kranbil-gravmaskin-480.webp"
+                "src": "/photos/markmontage-kranbil-gravmaskin-480.webp",
+                "width": 480
               },
               {
-                "width": 720,
-                "src": "/photos/markmontage-kranbil-gravmaskin.webp"
+                "src": "/photos/markmontage-kranbil-gravmaskin.webp",
+                "width": 720
               }
-            ],
-            "alt": "Kranbil lyfter en grävmaskin"
+            ]
           },
           {
+            "alt": "Minigrävare på släp",
             "src": "/photos/markmontage-minigravare-slap.webp",
             "variants": [
               {
-                "width": 480,
-                "src": "/photos/markmontage-minigravare-slap-480.webp"
+                "src": "/photos/markmontage-minigravare-slap-480.webp",
+                "width": 480
               },
               {
-                "width": 720,
-                "src": "/photos/markmontage-minigravare-slap.webp"
+                "src": "/photos/markmontage-minigravare-slap.webp",
+                "width": 720
               }
-            ],
-            "alt": "Minigrävare på släp"
+            ]
+          }
+        ]
+      },
+      "bod": {
+        "tag": "Transporter",
+        "href": "/tjanster/transporter-kranbil",
+        "image": {
+          "alt": "Kranbil lyfter en blå byggbod",
+          "src": "/photos/markmontage-kranbil-bod.webp",
+          "focus": "40% 45%",
+          "variants": [
+            {
+              "src": "/photos/markmontage-kranbil-bod-480.webp",
+              "width": 480
+            },
+            {
+              "src": "/photos/markmontage-kranbil-bod-800.webp",
+              "width": 800
+            },
+            {
+              "src": "/photos/markmontage-kranbil-bod-1200.webp",
+              "width": 1200
+            },
+            {
+              "src": "/photos/markmontage-kranbil-bod.webp",
+              "width": 1242
+            }
+          ]
+        },
+        "title": "Lyft av byggbod",
+        "gallery": [
+          {
+            "alt": "Kranbil lyfter en byggbod",
+            "src": "/photos/markmontage-kranbil-bod.webp",
+            "variants": [
+              {
+                "src": "/photos/markmontage-kranbil-bod-480.webp",
+                "width": 480
+              },
+              {
+                "src": "/photos/markmontage-kranbil-bod-800.webp",
+                "width": 800
+              },
+              {
+                "src": "/photos/markmontage-kranbil-bod-1200.webp",
+                "width": 1200
+              },
+              {
+                "src": "/photos/markmontage-kranbil-bod.webp",
+                "width": 1242
+              }
+            ]
           }
         ]
       }
-    },
-    "order": [
-      "schakt",
-      "pool",
-      "betongpool",
-      "grund",
-      "dagvatten",
-      "vagar",
-      "marksten",
-      "fiber-sjo",
-      "kranlyft",
-      "maskintransport",
-      "bod"
-    ]
+    }
   },
   "notFound": {
     "text": "Sidan du letar efter finns inte längre, eller så har adressen ändrats.",
@@ -2613,16 +3366,16 @@
           "focus": "50% 45%",
           "variants": [
             {
-              "width": 480,
-              "src": "/photos/markmontage-fiber-bat-480.webp"
+              "src": "/photos/markmontage-fiber-bat-480.webp",
+              "width": 480
             },
             {
-              "width": 800,
-              "src": "/photos/markmontage-fiber-bat-800.webp"
+              "src": "/photos/markmontage-fiber-bat-800.webp",
+              "width": 800
             },
             {
-              "width": 1125,
-              "src": "/photos/markmontage-fiber-bat.webp"
+              "src": "/photos/markmontage-fiber-bat.webp",
+              "width": 1125
             }
           ]
         },
@@ -2648,12 +3401,12 @@
           "focus": "50% 40%",
           "variants": [
             {
-              "width": 480,
-              "src": "/photos/markmontage-pool-terrass-480.webp"
+              "src": "/photos/markmontage-pool-terrass-480.webp",
+              "width": 480
             },
             {
-              "width": 732,
-              "src": "/photos/markmontage-pool-terrass.webp"
+              "src": "/photos/markmontage-pool-terrass.webp",
+              "width": 732
             }
           ]
         },
@@ -2678,16 +3431,16 @@
           "src": "/photos/markmontage-dranering-ror.webp",
           "variants": [
             {
-              "width": 480,
-              "src": "/photos/markmontage-dranering-ror-480.webp"
+              "src": "/photos/markmontage-dranering-ror-480.webp",
+              "width": 480
             },
             {
-              "width": 800,
-              "src": "/photos/markmontage-dranering-ror-800.webp"
+              "src": "/photos/markmontage-dranering-ror-800.webp",
+              "width": 800
             },
             {
-              "width": 1200,
-              "src": "/photos/markmontage-dranering-ror.webp"
+              "src": "/photos/markmontage-dranering-ror.webp",
+              "width": 1200
             }
           ]
         },
@@ -2712,20 +3465,20 @@
           "src": "/photos/markmontage-gravmaskin-ror.webp",
           "variants": [
             {
-              "width": 480,
-              "src": "/photos/markmontage-gravmaskin-ror-480.webp"
+              "src": "/photos/markmontage-gravmaskin-ror-480.webp",
+              "width": 480
             },
             {
-              "width": 800,
-              "src": "/photos/markmontage-gravmaskin-ror-800.webp"
+              "src": "/photos/markmontage-gravmaskin-ror-800.webp",
+              "width": 800
             },
             {
-              "width": 1200,
-              "src": "/photos/markmontage-gravmaskin-ror-1200.webp"
+              "src": "/photos/markmontage-gravmaskin-ror-1200.webp",
+              "width": 1200
             },
             {
-              "width": 1500,
-              "src": "/photos/markmontage-gravmaskin-ror.webp"
+              "src": "/photos/markmontage-gravmaskin-ror.webp",
+              "width": 1500
             }
           ]
         },
@@ -2750,20 +3503,20 @@
           "src": "/photos/markmontage-stenlaggning-pagar.webp",
           "variants": [
             {
-              "width": 480,
-              "src": "/photos/markmontage-stenlaggning-pagar-480.webp"
+              "src": "/photos/markmontage-stenlaggning-pagar-480.webp",
+              "width": 480
             },
             {
-              "width": 800,
-              "src": "/photos/markmontage-stenlaggning-pagar-800.webp"
+              "src": "/photos/markmontage-stenlaggning-pagar-800.webp",
+              "width": 800
             },
             {
-              "width": 1200,
-              "src": "/photos/markmontage-stenlaggning-pagar-1200.webp"
+              "src": "/photos/markmontage-stenlaggning-pagar-1200.webp",
+              "width": 1200
             },
             {
-              "width": 1600,
-              "src": "/photos/markmontage-stenlaggning-pagar.webp"
+              "src": "/photos/markmontage-stenlaggning-pagar.webp",
+              "width": 1600
             }
           ]
         },
@@ -2788,16 +3541,16 @@
           "src": "/photos/markmontage-stalstomme.webp",
           "variants": [
             {
-              "width": 480,
-              "src": "/photos/markmontage-stalstomme-480.webp"
+              "src": "/photos/markmontage-stalstomme-480.webp",
+              "width": 480
             },
             {
-              "width": 800,
-              "src": "/photos/markmontage-stalstomme-800.webp"
+              "src": "/photos/markmontage-stalstomme-800.webp",
+              "width": 800
             },
             {
-              "width": 1125,
-              "src": "/photos/markmontage-stalstomme.webp"
+              "src": "/photos/markmontage-stalstomme.webp",
+              "width": 1125
             }
           ]
         },
@@ -2823,24 +3576,24 @@
           "focus": "50% 55%",
           "variants": [
             {
-              "width": 480,
-              "src": "/photos/markmontage-fordonsparken-480.webp"
+              "src": "/photos/markmontage-fordonsparken-480.webp",
+              "width": 480
             },
             {
-              "width": 800,
-              "src": "/photos/markmontage-fordonsparken-800.webp"
+              "src": "/photos/markmontage-fordonsparken-800.webp",
+              "width": 800
             },
             {
-              "width": 1200,
-              "src": "/photos/markmontage-fordonsparken-1200.webp"
+              "src": "/photos/markmontage-fordonsparken-1200.webp",
+              "width": 1200
             },
             {
-              "width": 1600,
-              "src": "/photos/markmontage-fordonsparken-1600.webp"
+              "src": "/photos/markmontage-fordonsparken-1600.webp",
+              "width": 1600
             },
             {
-              "width": 2016,
-              "src": "/photos/markmontage-fordonsparken.webp"
+              "src": "/photos/markmontage-fordonsparken.webp",
+              "width": 2016
             }
           ]
         },
@@ -2864,20 +3617,20 @@
           "src": "/photos/markmontage-minigravare.webp",
           "variants": [
             {
-              "width": 480,
-              "src": "/photos/markmontage-minigravare-480.webp"
+              "src": "/photos/markmontage-minigravare-480.webp",
+              "width": 480
             },
             {
-              "width": 800,
-              "src": "/photos/markmontage-minigravare-800.webp"
+              "src": "/photos/markmontage-minigravare-800.webp",
+              "width": 800
             },
             {
-              "width": 1200,
-              "src": "/photos/markmontage-minigravare-1200.webp"
+              "src": "/photos/markmontage-minigravare-1200.webp",
+              "width": 1200
             },
             {
-              "width": 1500,
-              "src": "/photos/markmontage-minigravare.webp"
+              "src": "/photos/markmontage-minigravare.webp",
+              "width": 1500
             }
           ]
         },
@@ -2902,20 +3655,20 @@
           "src": "/photos/markmontage-vagarbete-avstangning.webp",
           "variants": [
             {
-              "width": 480,
-              "src": "/photos/markmontage-vagarbete-avstangning-480.webp"
+              "src": "/photos/markmontage-vagarbete-avstangning-480.webp",
+              "width": 480
             },
             {
-              "width": 800,
-              "src": "/photos/markmontage-vagarbete-avstangning-800.webp"
+              "src": "/photos/markmontage-vagarbete-avstangning-800.webp",
+              "width": 800
             },
             {
-              "width": 1200,
-              "src": "/photos/markmontage-vagarbete-avstangning-1200.webp"
+              "src": "/photos/markmontage-vagarbete-avstangning-1200.webp",
+              "width": 1200
             },
             {
-              "width": 1400,
-              "src": "/photos/markmontage-vagarbete-avstangning.webp"
+              "src": "/photos/markmontage-vagarbete-avstangning.webp",
+              "width": 1400
             }
           ]
         },
@@ -2967,6 +3720,16 @@
           "kind": "link",
           "label": "Hem"
         },
+        "admin": {
+          "href": "/logga-in",
+          "kind": "link",
+          "label": "Admin – logga in"
+        },
+        "jobba": {
+          "href": "/om-oss#jobba",
+          "kind": "link",
+          "label": "Jobba hos oss"
+        },
         "om-oss": {
           "href": "/om-oss",
           "kind": "link",
@@ -2987,6 +3750,11 @@
           "kind": "link",
           "label": "Uppdrag"
         },
+        "personal": {
+          "href": "/personal",
+          "kind": "link",
+          "label": "Personal – logga in"
+        },
         "tjanster": {
           "href": "/#tjanster",
           "kind": "services",
@@ -2996,21 +3764,6 @@
           "href": "/hallbarhet",
           "kind": "link",
           "label": "Hållbarhet"
-        },
-        "jobba": {
-          "label": "Jobba hos oss",
-          "href": "/om-oss#jobba",
-          "kind": "link"
-        },
-        "personal": {
-          "label": "Personal – logga in",
-          "href": "/personal",
-          "kind": "link"
-        },
-        "admin": {
-          "label": "Admin – logga in",
-          "href": "/logga-in",
-          "kind": "link"
         }
       },
       "order": [
@@ -3028,6 +3781,14 @@
     },
     "barLinks": {
       "items": {
+        "admin": {
+          "href": "/logga-in",
+          "label": "Admin"
+        },
+        "jobba": {
+          "href": "/om-oss#jobba",
+          "label": "Jobba hos oss"
+        },
         "om-oss": {
           "href": "/om-oss",
           "label": "Om oss"
@@ -3044,6 +3805,10 @@
           "href": "/projekt",
           "label": "Uppdrag"
         },
+        "personal": {
+          "href": "/personal",
+          "label": "Personal"
+        },
         "tjanster": {
           "href": "/#tjanster",
           "label": "Tjänster"
@@ -3051,18 +3816,6 @@
         "hallbarhet": {
           "href": "/hallbarhet",
           "label": "Hållbarhet"
-        },
-        "jobba": {
-          "label": "Jobba hos oss",
-          "href": "/om-oss#jobba"
-        },
-        "personal": {
-          "label": "Personal",
-          "href": "/personal"
-        },
-        "admin": {
-          "label": "Admin",
-          "href": "/logga-in"
         }
       },
       "order": [

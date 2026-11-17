@@ -10,7 +10,7 @@
     480,
     800,
     1200,
-    1240
+    1242
   ],
   "markmontage-dagvatten-ror": [
     480,
@@ -257,5 +257,306 @@
     480,
     800,
     1170
+  ],
+  "uppdrag-fiber01": [
+    480,
+    800
+  ],
+  "uppdrag-fiber02": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "uppdrag-fiber03": [
+    480,
+    800,
+    1125
+  ],
+  "uppdrag-fiber04": [
+    480,
+    800,
+    1125
+  ],
+  "uppdrag-fiber06": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "uppdrag-fiber07": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "uppdrag-fiber08": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "uppdrag-fiber09": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "uppdrag-grund00": [
+    480,
+    800
+  ],
+  "uppdrag-grund01": [
+    480,
+    800
+  ],
+  "uppdrag-grund02": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "uppdrag-grund03": [
+    480,
+    800
+  ],
+  "uppdrag-grund04": [
+    480,
+    800
+  ],
+  "uppdrag-grund05": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-grund06": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "uppdrag-grund07": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-mark00": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "uppdrag-mark01": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-mark02": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "uppdrag-mark03": [
+    480,
+    800,
+    960
+  ],
+  "uppdrag-mark04": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-mark05": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-mark07": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "uppdrag-mark09": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-mark10": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "uppdrag-mark13": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "uppdrag-mark17": [
+    480,
+    599
+  ],
+  "uppdrag-pool00": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-pool01": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-pool02": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-pool03": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "uppdrag-pool04": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-pool05": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "uppdrag-pool06": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-pool07": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "uppdrag-pool08": [
+    480,
+    800,
+    1086
+  ],
+  "uppdrag-pool09": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "uppdrag-transport00": [
+    480,
+    800
+  ],
+  "uppdrag-transport01": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "uppdrag-transport02": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "uppdrag-transport03": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-transport04": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-transport05": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-transport06": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-transport07": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-transport08": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-transport09": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-transport10": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-transport11": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-transport12": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-transport13": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-transport14": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-transport15": [
+    480,
+    800,
+    1200
+  ],
+  "uppdrag-transport16": [
+    480,
+    800,
+    900
+  ],
+  "uppdrag-transport17": [
+    480,
+    800,
+    900
+  ],
+  "uppdrag-transport18": [
+    480,
+    800,
+    900
+  ],
+  "uppdrag-transport19": [
+    480,
+    800,
+    900
+  ],
+  "uppdrag-transport20": [
+    480,
+    800,
+    900
   ]
 }
