@@ -1595,10 +1595,6 @@
           "href": "/#faq",
           "label": "Vanliga frågor"
         },
-        "admin": {
-          "href": "/logga-in",
-          "label": "Admin"
-        },
         "jobba": {
           "href": "/om-oss#jobba",
           "label": "Jobba hos oss"
@@ -1623,10 +1619,6 @@
           "href": "/projekt",
           "label": "Uppdrag"
         },
-        "personal": {
-          "href": "/personal",
-          "label": "Personal"
-        },
         "hallbarhet": {
           "href": "/hallbarhet",
           "label": "Hållbarhet"
@@ -1640,9 +1632,7 @@
         "faq",
         "omdomen",
         "jobba",
-        "kontakt",
-        "personal",
-        "admin"
+        "kontakt"
       ]
     },
     "copyrightName": "Markmontage BEAB AB",
@@ -3665,11 +3655,6 @@
           "kind": "link",
           "label": "Hem"
         },
-        "admin": {
-          "href": "/logga-in",
-          "kind": "link",
-          "label": "Admin – logga in"
-        },
         "jobba": {
           "href": "/om-oss#jobba",
           "kind": "link",
@@ -3695,11 +3680,6 @@
           "kind": "link",
           "label": "Uppdrag"
         },
-        "personal": {
-          "href": "/personal",
-          "kind": "link",
-          "label": "Personal – logga in"
-        },
         "tjanster": {
           "href": "/#tjanster",
           "kind": "services",
@@ -3719,9 +3699,7 @@
         "hallbarhet",
         "omdomen",
         "jobba",
-        "kontakt",
-        "personal",
-        "admin"
+        "kontakt"
       ]
     },
     "barLinks": {
@@ -3746,10 +3724,6 @@
           "href": "/projekt",
           "label": "Uppdrag"
         },
-        "personal": {
-          "href": "/personal",
-          "label": "Personal"
-        },
         "tjanster": {
           "href": "/#tjanster",
           "label": "Tjänster"
@@ -3766,8 +3740,7 @@
         "hallbarhet",
         "omdomen",
         "jobba",
-        "kontakt",
-        "personal"
+        "kontakt"
       ]
     },
     "menuButton": "Begär offert"

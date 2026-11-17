@@ -168,6 +168,22 @@ export function Footer({ site }: { site: SiteData }) {
           </p>
         </Reveal>
         <ElevateCredit />
+        {/* The way in for the staff and the admin: small and faint, for those who know it is there. */}
+        <nav aria-label="Inloggning" className="flex justify-center gap-5 pb-1 text-[12px]">
+          {[
+            { href: "/personal", label: "Personal" },
+            { href: "/logga-in", label: "Admin" },
+          ].map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="inline-flex min-h-8 items-center gap-1 text-footer-text/30 transition-colors duration-200 hover:text-footer-text/80 focus-visible:text-footer-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-footer-text"
+            >
+              <Icon name="Lock" aria-hidden="true" className="h-3 w-3" />
+              {link.label}
+            </Link>
+          ))}
+        </nav>
       </div>
     </footer>
   );
