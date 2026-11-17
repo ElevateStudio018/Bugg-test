@@ -561,7 +561,10 @@
               "items": {
                 "order": [
                   "christian-haglund",
-                  "tomas-kangasoja"
+                  "tomas-kangasoja",
+                  "therese-jacobsson",
+                  "ronny-jonsson",
+                  "tobias-johansson"
                 ],
                 "items": {
                   "christian-haglund": {
@@ -575,6 +578,27 @@
                     "name": "Tomas Kangasoja",
                     "image": null,
                     "quote": "Bra firma med enkelhet i fokus.",
+                    "detail": "Recension på Google",
+                    "rating": 5
+                  },
+                  "therese-jacobsson": {
+                    "name": "Therese Jacobsson",
+                    "image": null,
+                    "quote": "",
+                    "detail": "Recension på Google",
+                    "rating": 5
+                  },
+                  "ronny-jonsson": {
+                    "name": "Ronny Jönsson",
+                    "image": null,
+                    "quote": "",
+                    "detail": "Recension på Google",
+                    "rating": 5
+                  },
+                  "tobias-johansson": {
+                    "name": "Tobias Johansson",
+                    "image": null,
+                    "quote": "",
                     "detail": "Recension på Google",
                     "rating": 5
                   }

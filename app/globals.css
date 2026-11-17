@@ -95,8 +95,12 @@
 .marquee-track {
   animation: marquee var(--marquee-duration, 40s) linear infinite;
 }
-.marquee:hover .marquee-track,
-.marquee:focus-within .marquee-track {
+/* The second row runs the other way. A row stops only while a card in it is pointed at or has focus. */
+.marquee-track-reverse {
+  animation-direction: reverse;
+}
+.marquee-track:has(.marquee-card:hover),
+.marquee-track:focus-within {
   animation-play-state: paused;
 }
 @keyframes marquee {

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
-import { ExternalLink, Images, Inbox, LayoutDashboard, Lightbulb, LogOut, Menu, PanelsTopLeft, Settings, Users, X, type LucideIcon } from "lucide-react";
+import { ExternalLink, Images, Inbox, LayoutDashboard, Lightbulb, LogOut, Menu, PanelsTopLeft, Settings, Star, Users, X, type LucideIcon } from "lucide-react";
 import { Wordmark } from "@/components/Wordmark";
 import { StatusBar } from "./StatusBar";
 import { ConflictBanner } from "./ConflictBanner";
@@ -21,6 +21,7 @@ const nav: NavItem[] = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/hemsidan", label: "Hemsidan", icon: PanelsTopLeft },
   { href: "/admin/bilder", label: "Bilder", icon: Images },
+  { href: "/admin/recensioner", label: "Recensioner", icon: Star },
   { href: "/admin/offertforfragningar", label: "Offertförfrågningar", icon: Inbox },
   { href: "/admin/forbattringsforslag", label: "Förbättringsförslag", icon: Lightbulb },
   { href: "/admin/personal", label: "Personal", icon: Users },
