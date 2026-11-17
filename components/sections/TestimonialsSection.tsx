@@ -8,13 +8,16 @@ import { fill } from "@/lib/site/format.ts";
 import { key } from "@/lib/site/edit.ts";
 import type { SectionProps } from "./types";
 
+// The colours Google gives the round initials of reviewers without a photo.
+const avatarColours = ["#1A73E8", "#D93025", "#188038", "#E37400", "#8430CE", "#12B5CB"];
+
 type Review = SectionProps<"testimonials">["section"]["items"]["items"][string] & { id: string };
 
 // A star with sharp points and straight sides, as Google draws it.
 const STAR = "12 1.6 14.95 8.55 22.5 9.2 16.78 14.15 18.5 21.5 12 17.6 5.5 21.5 7.22 14.15 1.5 9.2 9.05 8.55";
 
-/** Five stars, as many filled as the rating (rounded): in the site's green on the cards, light on the green heading. */
-function Stars({ rating, className, light = false }: { rating: number; className: string; light?: boolean }) {
+/** Five stars in Google's yellow, as many filled as the rating (rounded). */
+function Stars({ rating, className }: { rating: number; className: string }) {
   return (
     <span aria-hidden="true" className="flex gap-0.5">
       {Array.from({ length: 5 }, (_, star) => (
@@ -22,7 +25,7 @@ function Stars({ rating, className, light = false }: { rating: number; className
           key={star}
           viewBox="0 0 24 24"
           focusable="false"
-          className={`${className} ${star < Math.round(rating) ? (light ? "fill-on-primary text-on-primary" : "fill-primary text-primary") : light ? "fill-on-primary/30" : "fill-subtle text-subtle"}`}
+          className={`${className} ${star < Math.round(rating) ? "fill-[#FBBC04]" : "fill-[#dadce0]"}`}
         >
           <polygon points={STAR} />
         </svg>
@@ -31,11 +34,11 @@ function Stars({ rating, className, light = false }: { rating: number; className
   );
 }
 
-/** One review on a square card: the reviewer, Google's "G", the stars when given, and what they wrote (if anything). */
-function ReviewCard({ item, base, ratingLabel }: { item: Review; base?: string; ratingLabel: string }) {
+/** One review as it looks on Google, on a white card: the reviewer, Google's "G", the stars when given, and what they wrote (if anything). */
+function ReviewCard({ item, colour, base, ratingLabel }: { item: Review; colour: string; base?: string; ratingLabel: string }) {
   const k = base && key(base, "items.items", item.id);
   return (
-    <figure className="marquee-card flex h-full w-[300px] shrink-0 flex-col bg-page p-6 sm:w-[360px]">
+    <figure className="marquee-card flex h-full w-[300px] shrink-0 flex-col rounded-[10px] bg-white p-6 shadow-[0_16px_36px_-18px_rgba(0,0,0,0.6)] sm:w-[360px]">
       <figcaption className="flex items-center gap-3">
         {item.image ? (
           <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-primary/20">
@@ -50,17 +53,18 @@ function ReviewCard({ item, base, ratingLabel }: { item: Review; base?: string; 
         ) : (
           <span
             aria-hidden="true"
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-copy font-semibold text-on-primary"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-copy font-semibold text-white"
+            style={{ background: colour }}
           >
             {item.name.trim().charAt(0).toUpperCase()}
           </span>
         )}
         <span className="min-w-0 flex-1">
-          <span data-k={k && `${k}.name`} className="block truncate text-copy font-semibold text-heading">
+          <span data-k={k && `${k}.name`} className="block truncate text-copy font-semibold text-[#202124]">
             {item.name}
           </span>
           {item.detail && (
-            <span data-k={k && `${k}.detail`} className="block truncate text-small text-muted">
+            <span data-k={k && `${k}.detail`} className="block truncate text-small text-[#5f6368]">
               {item.detail}
             </span>
           )}
@@ -74,7 +78,7 @@ function ReviewCard({ item, base, ratingLabel }: { item: Review; base?: string; 
         </p>
       )}
       {item.quote.trim() && (
-        <blockquote data-k={k && `${k}.quote`} className="mt-4 flex-1 text-copy leading-relaxed text-body">
+        <blockquote data-k={k && `${k}.quote`} className="mt-4 flex-1 text-copy leading-relaxed text-[#3c4043]">
           {item.quote}
         </blockquote>
       )}
@@ -91,12 +95,14 @@ function ReviewRow({
   reviews,
   reverse,
   base,
+  colours,
   ratingLabel,
 }: {
   reviews: Review[];
   reverse: boolean;
   /** The section's place in the content; left out for a row that only repeats the other, which is then not read out. */
   base?: string;
+  colours: Map<string, string>;
   ratingLabel: string;
 }) {
   const repeat = Math.max(1, Math.ceil(6 / reviews.length));
@@ -111,7 +117,7 @@ function ReviewRow({
           const first = Boolean(base) && copy === 0 && index < reviews.length;
           return (
             <li key={`${copy}-${index}`} aria-hidden={first ? undefined : true} className="flex">
-              <ReviewCard item={item} base={first ? base : undefined} ratingLabel={ratingLabel} />
+              <ReviewCard item={item} colour={colours.get(item.id) ?? avatarColours[0]} base={first ? base : undefined} ratingLabel={ratingLabel} />
             </li>
           );
         }),
@@ -124,6 +130,7 @@ function ReviewRow({
 export function TestimonialsSection({ section, ctx }: SectionProps<"testimonials">) {
   const items = list(section.items);
   if (items.length === 0) return null;
+  const colours = new Map(items.map((item, index) => [item.id, avatarColours[index % avatarColours.length]]));
   // With many reviews each row has its own half; with few both rows show all of them, the second starting halfway.
   const split = items.length >= 8;
   const half = Math.ceil(items.length / 2);
@@ -150,7 +157,7 @@ export function TestimonialsSection({ section, ctx }: SectionProps<"testimonials
                 <span aria-hidden="true" className="text-h3 text-on-primary">
                   {average.toLocaleString("sv-SE", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
                 </span>
-                <Stars rating={average} className="h-[18px] w-[18px]" light />
+                <Stars rating={average} className="h-[18px] w-[18px]" />
               </span>
             )}
             Recensioner på Google
@@ -166,6 +173,7 @@ export function TestimonialsSection({ section, ctx }: SectionProps<"testimonials
             reviews={row}
             reverse={index === 1}
             base={split || index === 0 ? ctx.path : undefined}
+            colours={colours}
             ratingLabel={ctx.site.ui.ratingLabel}
           />
         ))}
