@@ -3726,10 +3726,6 @@
     },
     "barLinks": {
       "items": {
-        "admin": {
-          "href": "/logga-in",
-          "label": "Admin"
-        },
         "jobba": {
           "href": "/om-oss#jobba",
           "label": "Jobba hos oss"
@@ -3771,8 +3767,7 @@
         "omdomen",
         "jobba",
         "kontakt",
-        "personal",
-        "admin"
+        "personal"
       ]
     },
     "menuButton": "Begär offert"
