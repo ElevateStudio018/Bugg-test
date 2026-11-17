@@ -1,12 +1,12 @@
 import { GoogleMark } from "../GoogleMark";
 import { Photo } from "../Photo";
 import { SectionIntro } from "./SectionIntro";
-import { Topography } from "../Topography";
 import { list } from "@/lib/site/collection.ts";
 import { focusStyle, imageProps } from "@/lib/site/images.ts";
 import { fill } from "@/lib/site/format.ts";
 import { key } from "@/lib/site/edit.ts";
 import type { SectionProps } from "./types";
+import topography from "@/assets/patterns/topography.svg";
 
 // The colours Google gives the round initials of reviewers without a photo.
 const avatarColours = ["#1A73E8", "#D93025", "#188038", "#E37400", "#8430CE", "#12B5CB"];
@@ -143,8 +143,16 @@ export function TestimonialsSection({ section, ctx }: SectionProps<"testimonials
 
   return (
     <section id={section.anchor || undefined} data-k={ctx.path} className="relative scroll-mt-20 overflow-hidden bg-primary text-on-primary">
-      {/* The contour lines of the footer, faint behind the cards. */}
-      <Topography className="pointer-events-none absolute -right-48 -top-48 h-[900px] w-[900px] text-on-primary/[0.07]" />
+      {/* The footer's faint contour lines, tiling over the whole section behind the cards. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-repeat opacity-[0.07]"
+        style={{
+          backgroundImage: `url(${topography.src})`,
+          backgroundSize: `${topography.width}px ${topography.height}px`,
+          backgroundPosition: "center top",
+        }}
+      />
       <div className="relative mx-auto max-w-content px-4 pt-16 sm:px-6 sm:pt-20 lg:px-8 lg:pt-28">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionIntro heading={section.heading} text={section.text} tone="primary" k={ctx.path} />
