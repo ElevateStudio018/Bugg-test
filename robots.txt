@@ -2,5 +2,7 @@ User-Agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /forslag/
+Disallow: /personal/
+Disallow: /logga-in/
 
 Sitemap: https://www.markmontagebeab.se/sitemap.xml
