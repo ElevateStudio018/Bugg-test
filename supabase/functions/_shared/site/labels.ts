@@ -586,7 +586,7 @@ export const rootCollections = {
 export const rootFields: Record<"navigation" | "footer" | "form" | "servicePage" | "notFound" | "ui" | "company" | "settings", FieldSpec[]> = {
   navigation: [
     text("menuButton", "Knappen i menyraden", 16),
-    { key: "barLinks", label: "Länkar i menyraden (stora skärmar)", kind: "collection", item: linkItem("Länk", 8) },
+    { key: "barLinks", label: "Länkar i menyraden (stora skärmar)", kind: "collection", item: linkItem("Länk", 12) },
     {
       key: "menu",
       label: "Rader i menyn",

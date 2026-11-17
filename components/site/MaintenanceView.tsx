@@ -12,7 +12,7 @@ export function MaintenanceView({ site }: { site: SiteData }) {
     <main id="innehall" className="flex min-h-svh flex-col bg-page">
       <div className="bg-nav px-4 py-5 text-nav-text sm:px-6 lg:px-8">
         <div className="mx-auto max-w-content">
-          <Wordmark content={{ logo: settings.logo, name: company.shortName }} />
+          <Wordmark content={{ logo: settings.logo, name: company.shortName }} onDark />
         </div>
       </div>
       <div className="mx-auto flex w-full max-w-content flex-1 flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">

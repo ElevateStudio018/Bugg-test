@@ -1,5 +1,5 @@
-// Signing in to the admin, with a limit of five failed attempts per address (and twenty per network) in fifteen
-// minutes. Returns the session for the admin to keep.
+// Signing in to the admin, or to the staff's page (area "staff"), with a limit of five failed attempts per address
+// (and twenty per network) in fifteen minutes. Returns the session to keep. An admin may also open the staff's page.
 import { z } from "zod";
 import { createClient } from "@supabase/supabase-js";
 import { clientIp, handle, json, readJson, UserError } from "../_shared/http.ts";
@@ -7,14 +7,18 @@ import { serviceClient } from "../_shared/supabase.ts";
 import { sha256 } from "../_shared/crypto.ts";
 import { config } from "../_shared/env.ts";
 
-const credentials = z.object({ email: z.string().trim().toLowerCase().email().max(200), password: z.string().min(1).max(200) });
+const credentials = z.object({
+  email: z.string().trim().toLowerCase().email().max(200),
+  password: z.string().min(1).max(200),
+  area: z.enum(["admin", "staff"]).default("admin"),
+});
 
 Deno.serve(
   handle(async (request) => {
     if (request.method !== "POST") throw new UserError(405, "method", "Fel metod.");
     const parsed = credentials.safeParse(await readJson(request, 5_000));
     if (!parsed.success) throw new UserError(400, "invalid", "Ange e-postadress och lösenord.");
-    const { email, password } = parsed.data;
+    const { email, password, area } = parsed.data;
 
     const salt = config.secret("IP_HASH_SALT", "login");
     const emailHash = await sha256(email, salt);
@@ -35,15 +39,16 @@ Deno.serve(
     }
 
     const { data: profile } = await service.from("profiles").select("role, full_name").eq("id", data.user.id).maybeSingle();
-    if (profile?.role !== "admin") {
+    const allowedRoles = area === "staff" ? ["staff", "admin"] : ["admin"];
+    if (!allowedRoles.includes(profile?.role ?? "")) {
       await service.rpc("record_login", { p_email_hash: emailHash, p_ip_hash: ipHash, p_success: false });
       await service.auth.admin.signOut(data.session.access_token).catch(() => {});
       throw new UserError(401, "wrong_credentials", "Fel e-postadress eller lösenord.");
     }
 
     await service.rpc("record_login", { p_email_hash: emailHash, p_ip_hash: ipHash, p_success: true });
-    await service.from("audit_log").insert({ action: "auth.login", entity: email, actor: data.user.id });
+    await service.from("audit_log").insert({ action: area === "staff" ? "auth.login_staff" : "auth.login", entity: email, actor: data.user.id });
     const { access_token, refresh_token, expires_in, expires_at, token_type } = data.session;
-    return json(request, { session: { access_token, refresh_token, expires_in, expires_at, token_type } });
+    return json(request, { session: { access_token, refresh_token, expires_in, expires_at, token_type }, name: profile?.full_name ?? "" });
   })
 );

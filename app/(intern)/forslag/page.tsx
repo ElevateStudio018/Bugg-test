@@ -20,7 +20,7 @@ export default function SuggestionsPage() {
       <div className="min-h-svh bg-page">
         <header className="bg-nav text-nav-text">
           <div className="mx-auto max-w-content px-4 py-4 sm:px-6 lg:px-8">
-            <Wordmark content={{ logo: site.settings.logo, name: site.company.shortName }} />
+            <Wordmark content={{ logo: site.settings.logo, name: site.company.shortName }} onDark />
           </div>
         </header>
         <main id="innehall" className="mx-auto max-w-2xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">

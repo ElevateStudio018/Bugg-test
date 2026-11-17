@@ -63,12 +63,12 @@ export function Navbar({ content }: { content: NavContent }) {
       <header data-k="navigation" className="header-shadow fixed inset-x-0 top-0 z-40 bg-nav">
         <div className="mx-auto flex h-16 max-w-content items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
           <Link href="/" aria-label={content.labels.homeLink} className="flex min-h-12 items-center text-nav-text">
-            <Wordmark content={content.logo} />
+            <Wordmark content={content.logo} onDark />
           </Link>
 
           <div className="flex items-center gap-8">
-            <nav aria-label={content.labels.quickLinks} className="hidden lg:block">
-              <ul className="flex items-center gap-8">
+            <nav aria-label={content.labels.quickLinks} className="hidden xl:block">
+              <ul className="flex items-center gap-6">
                 {content.barLinks.map((link) => {
                   const isActive = !link.href.includes("#") && pathname.startsWith(link.href);
                   return (
@@ -77,7 +77,7 @@ export function Navbar({ content }: { content: NavContent }) {
                         href={link.href}
                         data-k={`navigation.barLinks.items.${link.id}`}
                         aria-current={isActive ? "page" : undefined}
-                        className={`relative py-2 text-[16px] font-semibold transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:bg-nav-text after:transition-transform after:duration-200 hover:text-nav-text hover:after:scale-x-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-nav-text ${
+                        className={`relative whitespace-nowrap py-2 text-[15px] font-semibold transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:bg-nav-text after:transition-transform after:duration-200 hover:text-nav-text hover:after:scale-x-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-nav-text ${
                           isActive ? "text-nav-text after:scale-x-100" : "text-nav-text/75 after:scale-x-0"
                         }`}
                       >

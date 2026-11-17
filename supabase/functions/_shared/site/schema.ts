@@ -213,7 +213,14 @@ export const serviceSchema = z.object({
 });
 export type Service = z.infer<typeof serviceSchema>;
 
-export const uppdragSchema = z.object({ tag: text(60), title: text(120), href: hrefSchema, image: imageSchema });
+export const uppdragSchema = z.object({
+  tag: text(60),
+  title: text(120),
+  href: hrefSchema,
+  image: imageSchema,
+  /** The project's photos in the order the work was done, shown one at a time when the card is opened; none: the card links to `href`. */
+  gallery: z.array(imageSchema).max(40).optional(),
+});
 export type Uppdrag = z.infer<typeof uppdragSchema>;
 
 export const certificateSchema = z.object({
@@ -475,7 +482,7 @@ export type Page = z.infer<typeof pageSchema>;
 
 export const navigationSchema = z.object({
   /** The links in the bar on wide screens. */
-  barLinks: collectionSchema(linkSchema, 8),
+  barLinks: collectionSchema(linkSchema, 12),
   /** The rows of the full-screen menu; "services" lists every service under its label. */
   menu: collectionSchema(z.object({ label: lineText, href: hrefSchema, kind: z.enum(["link", "services"]) }), 12),
   menuButton: lineText,

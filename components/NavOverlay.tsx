@@ -133,7 +133,7 @@ export function NavOverlay({ content, onClose }: { content: NavContent; onClose:
     <div ref={overlayRef} role="dialog" aria-modal="true" aria-label={labels.menu} className="fixed inset-0 z-[60] flex flex-col bg-nav pr-[var(--scrollbar-width,0px)]">
       <div className="mx-auto flex h-16 w-full max-w-content items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
         <Link href="/" onClick={onClose} aria-label={labels.homeLink} className="flex min-h-12 items-center text-nav-text">
-          <Wordmark content={content.logo} />
+          <Wordmark content={content.logo} onDark />
         </Link>
         <button type="button" onClick={onClose} aria-label={labels.closeMenu} className={burgerButtonClasses}>
           <BurgerIcon cross={hasEntered} />
