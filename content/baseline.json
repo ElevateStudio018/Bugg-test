@@ -559,34 +559,26 @@
               "text": "Omdömen från våra kunder på Google.",
               "type": "testimonials",
               "items": {
+                "order": [
+                  "christian-haglund",
+                  "tomas-kangasoja"
+                ],
                 "items": {
-                  "omdome-1": {
-                    "name": "Kundens namn",
+                  "christian-haglund": {
+                    "name": "Christian Haglund",
                     "image": null,
-                    "quote": "Här visas ett omdöme från en kund på Google. Vi lägger in de riktiga omdömena när vi har dem.",
-                    "detail": "Omdöme på Google",
+                    "quote": "Mycket bra företag, bra service och kunnig personal.",
+                    "detail": "Recension på Google",
                     "rating": 0
                   },
-                  "omdome-2": {
-                    "name": "Kundens namn",
+                  "tomas-kangasoja": {
+                    "name": "Tomas Kangasoja",
                     "image": null,
-                    "quote": "Här visas ett omdöme från en kund på Google. Vi lägger in de riktiga omdömena när vi har dem.",
-                    "detail": "Omdöme på Google",
-                    "rating": 0
-                  },
-                  "omdome-3": {
-                    "name": "Kundens namn",
-                    "image": null,
-                    "quote": "Här visas ett omdöme från en kund på Google. Vi lägger in de riktiga omdömena när vi har dem.",
-                    "detail": "Omdöme på Google",
+                    "quote": "Bra firma med enkelhet i fokus.",
+                    "detail": "Recension på Google",
                     "rating": 0
                   }
-                },
-                "order": [
-                  "omdome-1",
-                  "omdome-2",
-                  "omdome-3"
-                ]
+                }
               },
               "label": "",
               "anchor": "kundomdomen",
