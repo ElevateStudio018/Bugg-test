@@ -25,15 +25,12 @@ export function CertificatesSection({ section, ctx }: SectionProps<"certificates
 
       <Heading
         data-k={key(ctx.path, "heading")}
-        className="mt-4 animate-rise text-display text-heading [animation-delay:250ms] lg:mt-8 lg:text-[56px] lg:leading-[1.08]"
+        className="mt-4 animate-rise text-display text-heading [animation-delay:250ms] lg:mt-8 lg:text-display-lg"
       >
         {section.heading}
       </Heading>
       {section.text && (
-        <p
-          data-k={key(ctx.path, "text")}
-          className="mt-3 max-w-3xl animate-rise text-copy text-body [animation-delay:350ms] lg:mt-6 lg:text-[21px] lg:leading-[1.3]"
-        >
+        <p data-k={key(ctx.path, "text")} className="mt-3 max-w-3xl animate-rise text-copy text-body [animation-delay:350ms] lg:mt-6 lg:text-lead">
           {section.text}
         </p>
       )}
@@ -59,7 +56,7 @@ export function CertificatesSection({ section, ctx }: SectionProps<"certificates
                   {certificate.name}
                 </h2>
                 {certificate.issuer && (
-                  <p className="mt-2 text-[15px] text-muted">
+                  <p className="mt-2 text-small text-muted">
                     <span data-k={key(ctx.path, "issuerPrefix")}>{section.issuerPrefix}</span>{" "}
                     <span data-k={`${base}.issuer`}>{certificate.issuer}</span>
                   </p>
@@ -72,7 +69,7 @@ export function CertificatesSection({ section, ctx }: SectionProps<"certificates
                 {(certificate.validUntil || certificate.document) && (
                   <div className="mt-auto pt-6">
                     {certificate.validUntil && (
-                      <p className="text-[15px] text-muted">
+                      <p className="text-small text-muted">
                         <span data-k={key(ctx.path, "validUntilPrefix")}>{section.validUntilPrefix}</span>{" "}
                         <span data-k={`${base}.validUntil`}>{certificate.validUntil}</span>
                       </p>

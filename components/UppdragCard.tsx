@@ -35,15 +35,12 @@ export function UppdragCard({ item }: { item: Uppdrag & { id?: string } }) {
         {item.tag}
       </span>
       {gallery.length > 0 && (
-        <span className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full bg-black/55 px-3 py-1.5 text-[13px] font-semibold text-white">
+        <span className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full bg-black/55 px-3 py-1.5 text-small font-semibold text-white">
           <Icon name="Images" className="h-4 w-4" />
           {gallery.length} bilder
         </span>
       )}
-      <h3
-        data-k={base && `${base}.title`}
-        className="absolute inset-x-0 bottom-8 px-6 text-center text-[26px] font-semibold leading-tight text-white sm:bottom-10"
-      >
+      <h3 data-k={base && `${base}.title`} className="absolute inset-x-0 bottom-8 px-6 text-center text-h3 text-white sm:bottom-10">
         {item.title}
       </h3>
     </>

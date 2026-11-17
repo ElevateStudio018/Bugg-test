@@ -62,10 +62,10 @@ export function UppdragGallery({
       <div className="flex items-start justify-between gap-4 px-4 pb-2 pt-4 sm:px-6">
         <div className="min-w-0">
           <p className="text-tag uppercase text-white/60">{tag}</p>
-          <h2 className="mt-1 truncate text-[20px] font-semibold leading-tight sm:text-[24px]">{title}</h2>
+          <h2 className="mt-1 truncate text-h3">{title}</h2>
         </div>
         <div className="flex shrink-0 items-center gap-3">
-          <span className="text-[14px] tabular-nums text-white/70" aria-live="polite">
+          <span className="text-small tabular-nums text-white/70" aria-live="polite">
             {index + 1} / {count}
           </span>
           <button
@@ -112,7 +112,7 @@ export function UppdragGallery({
       </div>
 
       <div className="px-4 pb-5 pt-3 sm:px-6">
-        {image.alt && <p className="mx-auto max-w-3xl text-center text-[15px] leading-snug text-white/80">{image.alt}</p>}
+        {image.alt && <p className="mx-auto max-w-3xl text-center text-small text-white/80">{image.alt}</p>}
         {count > 1 && (
           <ul className="no-scrollbar mx-auto mt-3 flex max-w-full justify-center gap-2 overflow-x-auto" aria-label="Alla bilder">
             {images.map((thumb, position) => (

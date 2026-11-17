@@ -12,7 +12,7 @@ export function NotFoundView({ site }: { site: SiteData }) {
           {texts.eyebrow}
         </p>
       )}
-      <h1 data-k="notFound.heading" className="mt-4 text-display text-heading lg:text-[56px] lg:leading-[1.08]">
+      <h1 data-k="notFound.heading" className="mt-4 text-display text-heading lg:text-display-lg">
         {texts.heading}
       </h1>
       {texts.text && (

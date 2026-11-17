@@ -11,11 +11,11 @@ import type { SiteData } from "@/lib/site/schema.ts";
 import topography from "@/assets/patterns/topography.svg";
 import { ElevateCredit } from "./ElevateCredit";
 
-const headingClass = "text-[19px] font-semibold leading-tight lg:text-[22px]";
+const headingClass = "text-lead font-semibold lg:text-h3";
 // A thin line slides in from the left under a link on hover, like the links in the top bar. On phones the padding makes
 // each link a full-size tap target.
 const linkClass =
-  "relative inline-block py-3 text-[15px] leading-snug text-footer-text transition-colors after:absolute after:inset-x-0 after:bottom-2.5 after:h-px after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-out hover:text-footer-text/70 hover:after:scale-x-100 lg:py-1 lg:text-[16px] lg:after:bottom-0.5";
+  "relative inline-block py-3 text-copy leading-snug text-footer-text transition-colors after:absolute after:inset-x-0 after:bottom-2.5 after:h-px after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-out hover:text-footer-text/70 hover:after:scale-x-100 lg:py-1 lg:after:bottom-0.5";
 
 const socialIcons: { key: keyof SiteData["company"]["social"]; icon: IconKey; label: string }[] = [
   { key: "facebook", icon: "Facebook", label: "Facebook" },
@@ -57,7 +57,7 @@ export function Footer({ site }: { site: SiteData }) {
             <h2 data-k="footer.contactHeading" className={headingClass}>
               {footer.contactHeading}
             </h2>
-            <ul className="mt-1.5 text-[17px] leading-snug lg:mt-2.5 lg:text-[18px]">
+            <ul className="mt-1.5 text-copy leading-snug lg:mt-2.5">
               {company.phone && (
                 <li>
                   <a href={toTelHref(company.phone)} className="flex min-h-11 items-center gap-3 transition-colors hover:text-footer-text/70">
@@ -148,7 +148,7 @@ export function Footer({ site }: { site: SiteData }) {
 
         <Reveal
           delayMs={300}
-          className="mt-9 flex flex-col gap-1 border-t border-footer-text/15 pt-5 text-[13px] text-footer-text/70 sm:flex-row sm:justify-between lg:mt-12 lg:text-[14px]"
+          className="mt-9 flex flex-col gap-1 border-t border-footer-text/15 pt-5 text-small text-footer-text/70 sm:flex-row sm:justify-between lg:mt-12"
         >
           {/* Joined into the same pieces of text as ever, so the line sets exactly as before. */}
           <p>
@@ -169,7 +169,7 @@ export function Footer({ site }: { site: SiteData }) {
         </Reveal>
         <ElevateCredit />
         {/* The way in for the staff and the admin: small and faint, for those who know it is there. */}
-        <nav aria-label="Inloggning" className="flex justify-center gap-5 pb-1 text-[12px]">
+        <nav aria-label="Inloggning" className="flex justify-center gap-5 pb-1 text-small">
           {[
             { href: "/personal", label: "Personal" },
             { href: "/logga-in", label: "Admin" },

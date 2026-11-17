@@ -35,9 +35,9 @@ export interface QuoteFormContent {
 }
 
 const fieldBaseClass =
-  "w-full border border-line/15 bg-field py-3.5 pl-12 pr-4 text-[17px] text-heading placeholder:text-muted transition-colors duration-150 focus:border-accent focus:outline focus:outline-2 focus:outline-accent/25";
+  "w-full border border-line/15 bg-field py-3.5 pl-12 pr-4 text-copy text-heading placeholder:text-muted transition-colors duration-150 focus:border-accent focus:outline focus:outline-2 focus:outline-accent/25";
 
-const labelClass = "mb-2 block text-[15px] font-semibold text-heading";
+const labelClass = "mb-2 block text-small font-semibold text-heading";
 
 // With the site connected to its backend, requests are stored for the admin's list and e-mailed by the submit-quote
 // function. Without it they go by e-mail through FormSubmit (formsubmit.co) to fallbackFormEmail; the first request to a
@@ -186,7 +186,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
           />
         </div>
         {errors.namn && (
-          <p id={`${idPrefix}-namn-error`} className="mt-1.5 animate-error-in text-[14px] text-error">
+          <p id={`${idPrefix}-namn-error`} className="mt-1.5 animate-error-in text-small text-error">
             {errors.namn}
           </p>
         )}
@@ -210,7 +210,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
           />
         </div>
         {errors.telefon && (
-          <p id={`${idPrefix}-telefon-error`} className="mt-1.5 animate-error-in text-[14px] text-error">
+          <p id={`${idPrefix}-telefon-error`} className="mt-1.5 animate-error-in text-small text-error">
             {errors.telefon}
           </p>
         )}
@@ -234,14 +234,14 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
           />
         </div>
         {errors.epost && (
-          <p id={`${idPrefix}-epost-error`} className="mt-1.5 animate-error-in text-[14px] text-error">
+          <p id={`${idPrefix}-epost-error`} className="mt-1.5 animate-error-in text-small text-error">
             {errors.epost}
           </p>
         )}
         <p
           id={`${idPrefix}-kontakt`}
           data-k={errors.kontakt ? "form.errors.contact" : "form.contactHint"}
-          className={`mt-1.5 text-[14px] ${errors.kontakt ? "animate-error-in text-error" : "text-muted"}`}
+          className={`mt-1.5 text-small ${errors.kontakt ? "animate-error-in text-error" : "text-muted"}`}
         >
           {errors.kontakt ?? texts.contactHint}
         </p>
@@ -273,7 +273,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
           <Icon name="ChevronDown" className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted transition-colors duration-200 group-focus-within/field:text-accent" />
         </div>
         {errors.typAvArbete && (
-          <p id={`${idPrefix}-typ-error`} className="mt-1.5 animate-error-in text-[14px] text-error">
+          <p id={`${idPrefix}-typ-error`} className="mt-1.5 animate-error-in text-small text-error">
             {errors.typAvArbete}
           </p>
         )}
@@ -309,7 +309,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
           )}
         </button>
         {sendFailed && (
-          <p role="alert" className="mt-3 animate-error-in text-[14px] text-error">
+          <p role="alert" className="mt-3 animate-error-in text-small text-error">
             {texts.sendFailed}{" "}
             <a href={toTelHref(phone)} className={`${tapTarget} whitespace-nowrap font-semibold underline underline-offset-2`}>
               {phone}
@@ -320,7 +320,7 @@ export function QuoteForm({ variant = "inline", content }: { variant?: "inline" 
       </div>
 
       {variant === "modal" && (
-        <p className={`text-center text-[14px] text-muted ${entrance(6).className}`} style={entrance(6).style}>
+        <p className={`text-center text-small text-muted ${entrance(6).className}`} style={entrance(6).style}>
           {texts.closeHint}{" "}
           <button type="button" onClick={close} className={`${tapTarget} underline underline-offset-2`}>
             {texts.closeHintButton}

@@ -81,19 +81,15 @@ export function ContactSection({ section, ctx }: SectionProps<"contact">) {
               <li key={row.icon} className="flex items-start gap-5">
                 <Icon name={row.icon} strokeWidth={2.25} className="mt-1 h-7 w-7 shrink-0 text-accent" />
                 <div>
-                  <p data-k={row.labelKey} className="text-[15px] font-semibold text-muted">
+                  <p data-k={row.labelKey} className="text-small font-semibold text-muted">
                     {row.label}
                   </p>
                   {row.href ? (
-                    <a
-                      href={row.href}
-                      data-k={row.valueKey}
-                      className={`${tapTarget} text-[20px] font-semibold text-heading transition-colors hover:text-accent`}
-                    >
+                    <a href={row.href} data-k={row.valueKey} className={`${tapTarget} text-h3 text-heading transition-colors hover:text-accent`}>
                       {row.value}
                     </a>
                   ) : (
-                    <p data-k={row.valueKey} className="text-[20px] font-semibold text-heading">
+                    <p data-k={row.valueKey} className="text-h3 text-heading">
                       {row.value}
                     </p>
                   )}
@@ -103,7 +99,7 @@ export function ContactSection({ section, ctx }: SectionProps<"contact">) {
           </ul>
 
           {section.orgLabel && company.orgNumber && (
-            <p className="mt-9 text-[15px] text-muted">
+            <p className="mt-9 text-small text-muted">
               <span data-k={key(ctx.path, "orgLabel")}>{section.orgLabel}</span> <span data-k="company.orgNumber">{company.orgNumber}</span>
             </p>
           )}
@@ -111,7 +107,7 @@ export function ContactSection({ section, ctx }: SectionProps<"contact">) {
 
         <div>
           <div className="bg-card p-6 sm:p-8 lg:p-10">
-            <h3 data-k={key(ctx.path, "formHeading")} className="text-[24px] font-semibold leading-tight text-heading">
+            <h3 data-k={key(ctx.path, "formHeading")} className="text-h3 text-heading">
               {section.formHeading}
             </h3>
             <div className="mt-6">

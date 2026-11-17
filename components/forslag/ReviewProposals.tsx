@@ -41,7 +41,7 @@ function Stars({
 function Initial({
   name,
   index,
-  className = "h-11 w-11 text-[18px]",
+  className = "h-11 w-11 text-copy",
   square = false,
   accent = false,
 }: {
@@ -110,11 +110,11 @@ function Tag({ light = false, children = "Omdömen" }: { light?: boolean; childr
 
 function GoogleLine({ count, light = false }: { count: number; light?: boolean }) {
   return (
-    <p className={`flex flex-wrap items-center gap-2.5 text-[15px] font-semibold ${light ? "text-white/80" : "text-muted"}`}>
+    <p className={`flex flex-wrap items-center gap-2.5 text-small font-semibold ${light ? "text-white/80" : "text-muted"}`}>
       <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white">
         <GoogleMark className="h-5 w-5" />
       </span>
-      <span className={`text-[18px] font-bold ${light ? "text-white" : "text-heading"}`}>5,0</span>
+      <span className={`text-copy font-bold ${light ? "text-white" : "text-heading"}`}>5,0</span>
       <Stars className="h-[18px] w-[18px]" />
       {count} recensioner på Google
     </p>
@@ -144,12 +144,12 @@ function P1({ reviews }: { reviews: ProposalReview[] }) {
             {fillTo(row, 6).map((review, i) => (
               <figure key={i} className="marquee-card flex w-[300px] flex-col border-t-[3px] border-accent bg-card p-7 sm:w-[360px]">
                 <div className="flex items-center justify-between">
-                  <Initial name={review.name} index={reviews.indexOf(review)} square accent className="h-12 w-12 text-[20px]" />
+                  <Initial name={review.name} index={reviews.indexOf(review)} square accent className="h-12 w-12 text-h3" />
                   <GoogleMark className="h-6 w-6" />
                 </div>
                 <Stars className="mt-6 h-5 w-5" />
-                {review.quote && <blockquote className="mt-4 text-[17px] leading-relaxed text-body">”{review.quote}”</blockquote>}
-                <figcaption className="mt-auto pt-5 text-[16px] font-semibold text-heading">{review.name}</figcaption>
+                {review.quote && <blockquote className="mt-4 text-copy leading-relaxed text-body">”{review.quote}”</blockquote>}
+                <figcaption className="mt-auto pt-5 text-copy font-semibold text-heading">{review.name}</figcaption>
               </figure>
             ))}
           </Marquee>
@@ -187,12 +187,12 @@ function P2({ reviews }: { reviews: ProposalReview[] }) {
                   <Initial name={review.name} index={reviews.indexOf(review)} />
                   <div className="min-w-0 flex-1">
                     <p className="truncate font-semibold">{review.name}</p>
-                    <p className="text-[14px] text-white/60">Recension på Google</p>
+                    <p className="text-small text-white/60">Recension på Google</p>
                   </div>
                   <GoogleMark className="h-6 w-6" />
                 </div>
                 <Stars className="mt-5 h-5 w-5" />
-                {review.quote && <blockquote className="mt-4 text-[17px] leading-relaxed text-white/90">{review.quote}</blockquote>}
+                {review.quote && <blockquote className="mt-4 text-copy leading-relaxed text-white/90">{review.quote}</blockquote>}
               </figure>
             ))}
           </Marquee>
@@ -216,13 +216,13 @@ function P3({ reviews }: { reviews: ProposalReview[] }) {
       <div className="mx-auto grid max-w-content gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_320px] lg:items-center lg:px-8">
         <div>
           <Tag />
-          <span aria-hidden="true" className="mt-4 block font-heading text-[120px] font-bold leading-[0.7] text-accent">
+          <span aria-hidden="true" className="mt-4 block font-heading text-display-lg text-accent">
             ”
           </span>
-          <blockquote key={review.id} className="mt-2 animate-fade-up text-[30px] font-semibold leading-[1.2] text-heading lg:text-[44px]">
+          <blockquote key={review.id} className="mt-2 animate-fade-up text-h2 text-heading lg:text-h2-lg">
             {review.quote}
           </blockquote>
-          <p className="mt-6 flex items-center gap-3 text-[17px] font-semibold text-heading">
+          <p className="mt-6 flex items-center gap-3 text-copy font-semibold text-heading">
             <span className="h-[3px] w-10 bg-accent" />
             {review.name}
           </p>
@@ -241,8 +241,8 @@ function P3({ reviews }: { reviews: ProposalReview[] }) {
         <div className="bg-page p-8">
           <p className="text-stat text-heading">5,0</p>
           <Stars className="mt-3 h-6 w-6" />
-          <p className="mt-4 text-[16px] text-body">Snittbetyg från {reviews.length} recensioner på Google</p>
-          <p className="mt-5 flex items-center gap-2 text-[14px] font-semibold text-muted">
+          <p className="mt-4 text-copy text-body">Snittbetyg från {reviews.length} recensioner på Google</p>
+          <p className="mt-5 flex items-center gap-2 text-small font-semibold text-muted">
             <GoogleMark className="h-5 w-5" /> Google
           </p>
         </div>
@@ -264,9 +264,9 @@ function P4({ reviews }: { reviews: ProposalReview[] }) {
             </div>
           </div>
           <div className="mt-10">
-            <p className="text-[88px] font-extrabold leading-none">5,0</p>
+            <p className="text-stat font-extrabold leading-none">5,0</p>
             <Stars className="mt-3 h-7 w-7" />
-            <p className="mt-4 flex items-center gap-2 text-[16px] text-white/80">
+            <p className="mt-4 flex items-center gap-2 text-copy text-white/80">
               <GoogleMark className="h-5 w-5" /> {reviews.length} recensioner på Google
             </p>
           </div>
@@ -280,7 +280,7 @@ function P4({ reviews }: { reviews: ProposalReview[] }) {
                   <p className="font-semibold text-heading">{review.name}</p>
                   <Stars className="h-4 w-4" />
                 </div>
-                {review.quote && <blockquote className="mt-2 text-[16px] leading-relaxed text-body">{review.quote}</blockquote>}
+                {review.quote && <blockquote className="mt-2 text-copy leading-relaxed text-body">{review.quote}</blockquote>}
               </div>
               <GoogleMark className="h-5 w-5 shrink-0" />
             </figure>
@@ -308,8 +308,8 @@ function P5({ reviews }: { reviews: ProposalReview[] }) {
             <figure key={review.id} className="relative pl-[30px]">
               <span className="absolute inset-y-0 left-0 w-[6px] bg-accent" />
               <Stars className="h-5 w-5" />
-              <blockquote className="mt-4 text-[24px] font-semibold leading-snug text-heading lg:text-[28px]">”{review.quote}”</blockquote>
-              <figcaption className="mt-4 text-[16px] text-muted">{review.name} · Recension på Google</figcaption>
+              <blockquote className="mt-4 text-h3 text-heading lg:text-h2">”{review.quote}”</blockquote>
+              <figcaption className="mt-4 text-copy text-muted">{review.name} · Recension på Google</figcaption>
             </figure>
           ))}
         </div>
@@ -317,7 +317,7 @@ function P5({ reviews }: { reviews: ProposalReview[] }) {
           <ul className="mt-12 flex flex-wrap gap-3 border-t border-line/15 pt-8">
             {starsOnly.map((review) => (
               <li key={review.id} className="flex items-center gap-3 bg-card px-4 py-3">
-                <Initial name={review.name} index={reviews.indexOf(review)} className="h-8 w-8 text-[14px]" />
+                <Initial name={review.name} index={reviews.indexOf(review)} className="h-8 w-8 text-small" />
                 <span className="font-semibold text-heading">{review.name}</span>
                 <Stars className="h-4 w-4" />
               </li>
@@ -344,13 +344,13 @@ function P6({ reviews }: { reviews: ProposalReview[] }) {
           <li key={review.id} className="flex w-[82%] shrink-0 snap-start flex-col bg-page p-7 sm:w-[340px]">
             <div className="flex items-start justify-between">
               <Stars className="h-5 w-5" />
-              <span aria-hidden="true" className="text-[44px] font-semibold leading-none text-heading/15">
+              <span aria-hidden="true" className="text-stat text-heading/15">
                 {String(i + 1).padStart(2, "0")}
               </span>
             </div>
-            <blockquote className="mt-5 flex-1 text-[17px] leading-relaxed text-body">{review.quote || "Gav 5 av 5 stjärnor på Google."}</blockquote>
+            <blockquote className="mt-5 flex-1 text-copy leading-relaxed text-body">{review.quote || "Gav 5 av 5 stjärnor på Google."}</blockquote>
             <figcaption className="mt-6 flex items-center gap-3 border-t border-line/15 pt-5">
-              <Initial name={review.name} index={i} className="h-9 w-9 text-[15px]" />
+              <Initial name={review.name} index={i} className="h-9 w-9 text-small" />
               <span className="font-semibold text-heading">{review.name}</span>
               <GoogleMark className="ml-auto h-5 w-5" />
             </figcaption>
@@ -374,7 +374,7 @@ function P7({ reviews }: { reviews: ProposalReview[] }) {
       <div className="mt-10 bg-primary py-5 text-white">
         <Marquee seconds={35}>
           {fillTo(reviews, 8).map((review, i) => (
-            <p key={i} className="marquee-card flex items-center gap-4 whitespace-nowrap pr-6 text-[18px]">
+            <p key={i} className="marquee-card flex items-center gap-4 whitespace-nowrap pr-6 text-copy">
               <Stars className="h-[18px] w-[18px]" />
               <span className="font-semibold">{review.name}</span>
               {review.quote && <span className="text-white/75">”{review.quote}”</span>}
@@ -411,7 +411,7 @@ function P8({ reviews }: { reviews: ProposalReview[] }) {
                 <GoogleMark className="h-6 w-6" />
               </div>
               <Stars className="mt-5 h-5 w-5" />
-              {review.quote && <blockquote className="mt-4 text-[16px] leading-relaxed text-[#3c4043]">{review.quote}</blockquote>}
+              {review.quote && <blockquote className="mt-4 text-copy leading-relaxed text-[#3c4043]">{review.quote}</blockquote>}
             </figure>
           ))}
         </Marquee>
@@ -473,7 +473,7 @@ function P9({ reviews }: { reviews: ProposalReview[] }) {
                   <GoogleMark className="h-6 w-6" />
                 </div>
                 <Stars className="mt-5 h-5 w-5" />
-                <blockquote className="mt-4 text-[18px] leading-relaxed text-body">{review.quote || "Gav 5 av 5 stjärnor på Google."}</blockquote>
+                <blockquote className="mt-4 text-copy leading-relaxed text-body">{review.quote || "Gav 5 av 5 stjärnor på Google."}</blockquote>
               </figure>
             );
           })}
@@ -496,7 +496,7 @@ function P10({ reviews }: { reviews: ProposalReview[] }) {
           <div className="mt-4">
             <Heading light />
           </div>
-          <p className="mt-10 text-[72px] font-extrabold leading-none">5,0</p>
+          <p className="mt-10 text-stat font-extrabold leading-none">5,0</p>
           <Stars className="mt-3 h-6 w-6" />
           <p className="mt-4 flex items-center gap-2 text-white/80">
             <GoogleMark className="h-5 w-5" /> {reviews.length} recensioner på Google
@@ -509,9 +509,9 @@ function P10({ reviews }: { reviews: ProposalReview[] }) {
             {fillTo(column, 5).map((review, i) => (
               <figure key={i} className="marquee-card bg-card p-6">
                 <Stars className="h-4 w-4" />
-                {review.quote && <blockquote className="mt-3 text-[16px] leading-relaxed text-body">{review.quote}</blockquote>}
-                <figcaption className="mt-4 flex items-center gap-2.5 text-[15px] font-semibold text-heading">
-                  <Initial name={review.name} index={reviews.indexOf(review)} className="h-7 w-7 text-[13px]" />
+                {review.quote && <blockquote className="mt-3 text-copy leading-relaxed text-body">{review.quote}</blockquote>}
+                <figcaption className="mt-4 flex items-center gap-2.5 text-small font-semibold text-heading">
+                  <Initial name={review.name} index={reviews.indexOf(review)} className="h-7 w-7 text-small" />
                   {review.name}
                 </figcaption>
               </figure>
@@ -531,7 +531,7 @@ function P11({ reviews }: { reviews: ProposalReview[] }) {
       <div className="mx-auto grid max-w-content items-center gap-12 px-4 sm:px-6 lg:grid-cols-[300px_1fr] lg:px-8">
         <div className="mx-auto flex h-[260px] w-[260px] flex-col items-center justify-center rounded-full border-[3px] border-accent bg-card text-center ring-8 ring-card">
           <GoogleMark className="h-9 w-9" />
-          <p className="mt-2 text-[56px] font-extrabold leading-none text-heading">5,0</p>
+          <p className="mt-2 text-stat font-extrabold leading-none text-heading">5,0</p>
           <Stars className="mt-2 h-5 w-5" />
           <p className="mt-2 text-tag uppercase text-muted">{reviews.length} recensioner</p>
         </div>
@@ -543,15 +543,15 @@ function P11({ reviews }: { reviews: ProposalReview[] }) {
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
             {quoted.map((review) => (
               <figure key={review.id} className="bg-card p-6">
-                <blockquote className="text-[18px] leading-relaxed text-heading">”{review.quote}”</blockquote>
-                <figcaption className="mt-4 flex items-center justify-between text-[15px] text-muted">
+                <blockquote className="text-copy leading-relaxed text-heading">”{review.quote}”</blockquote>
+                <figcaption className="mt-4 flex items-center justify-between text-small text-muted">
                   {review.name}
                   <Stars className="h-4 w-4" />
                 </figcaption>
               </figure>
             ))}
           </div>
-          <p className="mt-5 text-[15px] text-muted">
+          <p className="mt-5 text-small text-muted">
             Även{" "}
             {reviews
               .filter((review) => !review.quote)
@@ -579,11 +579,11 @@ function P12({ reviews }: { reviews: ProposalReview[] }) {
         <Marquee seconds={40}>
           {fillTo(reviews, 6).map((review, i) => (
             <figure key={i} className="marquee-card relative flex w-[300px] flex-col border-2 border-heading p-7 sm:w-[340px]">
-              <span aria-hidden="true" className="absolute -top-5 left-5 bg-card px-2 font-heading text-[64px] font-bold leading-none text-accent">
+              <span aria-hidden="true" className="absolute -top-5 left-5 bg-card px-2 font-heading text-stat font-bold leading-none text-accent">
                 ”
               </span>
               <Stars className="mt-2 h-5 w-5" />
-              <blockquote className="mt-4 flex-1 text-[17px] leading-relaxed text-heading">{review.quote || "5 av 5 stjärnor."}</blockquote>
+              <blockquote className="mt-4 flex-1 text-copy leading-relaxed text-heading">{review.quote || "5 av 5 stjärnor."}</blockquote>
               <figcaption className="mt-5 flex items-center justify-between text-label uppercase text-heading">
                 {review.name}
                 <GoogleMark className="h-5 w-5" />
@@ -608,12 +608,12 @@ function P13({ reviews }: { reviews: ProposalReview[] }) {
         <ul className="mt-10 border-t-[3px] border-accent">
           {reviews.map((review, i) => (
             <li key={review.id} className="grid items-center gap-x-8 gap-y-2 border-b border-line/15 py-6 sm:grid-cols-[240px_140px_1fr]">
-              <p className="flex items-center gap-3 text-[18px] font-semibold text-heading">
-                <Initial name={review.name} index={i} className="h-9 w-9 text-[15px]" />
+              <p className="flex items-center gap-3 text-copy font-semibold text-heading">
+                <Initial name={review.name} index={i} className="h-9 w-9 text-small" />
                 {review.name}
               </p>
               <Stars className="h-5 w-5" />
-              <p className="text-[17px] text-body">{review.quote ? `”${review.quote}”` : <span className="text-muted">Betyg utan kommentar</span>}</p>
+              <p className="text-copy text-body">{review.quote ? `”${review.quote}”` : <span className="text-muted">Betyg utan kommentar</span>}</p>
             </li>
           ))}
         </ul>
@@ -637,7 +637,7 @@ function P14({ reviews }: { reviews: ProposalReview[] }) {
           <div className="col-span-2 row-span-1 flex flex-col justify-between bg-primary p-7 text-white lg:col-span-1 lg:row-span-2">
             <GoogleMark className="h-8 w-8" />
             <div>
-              <p className="text-[64px] font-extrabold leading-none">5,0</p>
+              <p className="text-stat font-extrabold leading-none">5,0</p>
               <Stars className="mt-2 h-5 w-5" />
               <p className="mt-3 text-white/75">{reviews.length} recensioner på Google</p>
             </div>
@@ -645,9 +645,9 @@ function P14({ reviews }: { reviews: ProposalReview[] }) {
           {quoted.map((review, i) => (
             <figure key={review.id} className="col-span-2 flex flex-col bg-page p-7 lg:row-span-1">
               <Stars className="h-5 w-5" />
-              <blockquote className="mt-4 flex-1 text-[22px] font-semibold leading-snug text-heading">”{review.quote}”</blockquote>
+              <blockquote className="mt-4 flex-1 text-h3 font-semibold leading-snug text-heading">”{review.quote}”</blockquote>
               <figcaption className="mt-4 flex items-center gap-3 text-muted">
-                <Initial name={review.name} index={i} className="h-8 w-8 text-[14px]" />
+                <Initial name={review.name} index={i} className="h-8 w-8 text-small" />
                 {review.name}
               </figcaption>
             </figure>
@@ -656,7 +656,7 @@ function P14({ reviews }: { reviews: ProposalReview[] }) {
             <figure key={review.id} className="flex flex-col justify-between bg-page p-5">
               <Stars className="h-5 w-5" />
               <figcaption className="mt-4 flex items-center gap-2.5 font-semibold text-heading">
-                <Initial name={review.name} index={quoted.length + i} className="h-8 w-8 text-[14px]" />
+                <Initial name={review.name} index={quoted.length + i} className="h-8 w-8 text-small" />
                 {review.name}
               </figcaption>
             </figure>
@@ -671,7 +671,7 @@ function P14({ reviews }: { reviews: ProposalReview[] }) {
 function P15({ reviews }: { reviews: ProposalReview[] }) {
   const band = (light: boolean) =>
     fillTo(reviews, 8).map((review, i) => (
-      <p key={i} className={`marquee-card flex items-center gap-4 whitespace-nowrap pr-8 text-[19px] ${light ? "text-heading" : "text-white"}`}>
+      <p key={i} className={`marquee-card flex items-center gap-4 whitespace-nowrap pr-8 text-copy ${light ? "text-heading" : "text-white"}`}>
         <Stars className="h-5 w-5" />
         <span className="font-semibold">{review.name}</span>
         {review.quote && <span className={light ? "text-body" : "text-white/80"}>”{review.quote}”</span>}
@@ -730,7 +730,7 @@ export function ReviewProposals({ reviews }: { reviews: ProposalReview[] }) {
             <li key={proposal.name} className="shrink-0">
               <a
                 href={`#forslag-${i + 1}`}
-                className="flex min-h-10 items-center rounded-full bg-card px-4 text-[14px] font-semibold text-heading hover:bg-primary hover:text-white"
+                className="flex min-h-10 items-center rounded-full bg-card px-4 text-small font-semibold text-heading hover:bg-primary hover:text-white"
               >
                 {i + 1}. {proposal.name}
               </a>
@@ -742,10 +742,10 @@ export function ReviewProposals({ reviews }: { reviews: ProposalReview[] }) {
         <section key={name} id={`forslag-${i + 1}`} className="scroll-mt-16 border-b-[6px] border-heading/10">
           <div className="bg-heading px-4 py-4 text-white sm:px-6 lg:px-8">
             <div className="mx-auto flex max-w-content flex-wrap items-baseline gap-x-4 gap-y-1">
-              <h2 className="text-[22px] font-semibold">
+              <h2 className="text-h3 font-semibold">
                 Förslag {i + 1}: {name}
               </h2>
-              <p className="text-[15px] text-white/75">{text}</p>
+              <p className="text-small text-white/75">{text}</p>
             </div>
           </div>
           <View reviews={reviews} />

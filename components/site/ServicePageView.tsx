@@ -75,22 +75,22 @@ export function ServicePageView({ site, service }: { site: SiteData; service: Se
                 {texts.badge}
               </span>
             )}
-            <h1 data-k={sk("name")} className="mt-4 animate-rise text-[38px] font-semibold leading-[1.1] tracking-[-0.01em] text-heading [animation-delay:330ms] lg:text-[56px]">
+            <h1 data-k={sk("name")} className="mt-4 animate-rise text-display text-heading [animation-delay:330ms] lg:text-display-lg">
               {service.name}
             </h1>
-            <p data-k={sk("shortDescription")} className="mt-6 animate-rise text-copy text-body [animation-delay:410ms] lg:text-[21px]">
+            <p data-k={sk("shortDescription")} className="mt-6 animate-rise text-copy text-body [animation-delay:410ms] lg:text-lead">
               {service.shortDescription}
             </p>
             <div className="mt-6 animate-rise space-y-5 [animation-delay:490ms]">
               {service.description.map((paragraph, index) => (
-                <p key={index} data-k={sk(`description.${index}`)} className="text-copy text-body lg:text-[18px]">
+                <p key={index} data-k={sk(`description.${index}`)} className="text-copy text-body">
                   {paragraph}
                 </p>
               ))}
             </div>
 
             <AccentBlock className="mt-12">
-              <h2 data-k="servicePage.cta.heading" className="text-h2 text-heading lg:text-[38px]">
+              <h2 data-k="servicePage.cta.heading" className="text-h2 text-heading lg:text-h2-lg">
                 {texts.cta.heading}
               </h2>
               {texts.cta.text && (
@@ -120,15 +120,15 @@ export function ServicePageView({ site, service }: { site: SiteData; service: Se
             />
 
             <div className="bg-card px-6 py-7 sm:px-8 sm:py-8">
-              <p data-k="company.legalName" className="text-[22px] font-semibold leading-tight text-heading">
+              <p data-k="company.legalName" className="text-h3 text-heading">
                 {company.legalName}
               </p>
               {texts.contactTagline && (
-                <p data-k="servicePage.contactTagline" className="mt-1 text-[17px] text-body">
+                <p data-k="servicePage.contactTagline" className="mt-1 text-copy text-body">
                   {texts.contactTagline}
                 </p>
               )}
-              <ul className="mt-6 space-y-6 text-[18px] text-heading">
+              <ul className="mt-6 space-y-6 text-copy text-heading">
                 {company.phone && (
                   <li>
                     <a href={toTelHref(company.phone)} className={`${tapTarget} flex items-center gap-4 transition-colors hover:text-accent`}>

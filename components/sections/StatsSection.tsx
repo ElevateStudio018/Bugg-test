@@ -28,10 +28,10 @@ export function StatsSection({ section, id, ctx }: SectionProps<"stats">) {
               // The figures rise into place one after another. Number first visually, but the label stays the <dt> so
               // it is read before the value.
               <Reveal key={stat.id} delayMs={120 + index * 120} className="flex flex-col-reverse">
-                <dt data-k={key(ctx.path, "items.items", stat.id, "label")} className="text-[17px] leading-[1.35] lg:text-[19px]">
+                <dt data-k={key(ctx.path, "items.items", stat.id, "label")} className="text-copy lg:text-lead">
                   {stat.label}
                 </dt>
-                <dd data-k={key(ctx.path, "items.items", stat.id, "value")} className="text-stat text-on-primary lg:text-[72px]">
+                <dd data-k={key(ctx.path, "items.items", stat.id, "value")} className="text-stat text-on-primary">
                   {stat.countUp ? <CountUp value={value} /> : value}
                 </dd>
               </Reveal>

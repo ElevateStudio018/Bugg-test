@@ -16,8 +16,8 @@ export interface StaffContent {
 // The two places to sign in keep their sessions apart: the admin's is the one the admin panel itself reads.
 const storageKeys = { admin: "markmontage-admin", staff: "markmontage-personal" } as const;
 const fieldClass =
-  "w-full border border-line/15 bg-field px-4 py-3.5 text-[17px] text-heading placeholder:text-muted transition-colors duration-150 focus:border-accent focus:outline focus:outline-2 focus:outline-accent/25";
-const labelClass = "mb-2 block text-[15px] font-semibold text-heading";
+  "w-full border border-line/15 bg-field px-4 py-3.5 text-copy text-heading placeholder:text-muted transition-colors duration-150 focus:border-accent focus:outline focus:outline-2 focus:outline-accent/25";
+const labelClass = "mb-2 block text-small font-semibold text-heading";
 
 async function makeClient(area: keyof typeof storageKeys): Promise<SupabaseClient> {
   const { createClient } = await import("@supabase/supabase-js");
@@ -154,7 +154,7 @@ export function SiteLogin({ area, staff }: { area: "admin" | "staff"; staff?: St
         />
       </div>
       {error && (
-        <p role="alert" className="text-[15px] text-error">
+        <p role="alert" className="text-small text-error">
           {error}
         </p>
       )}
@@ -169,7 +169,7 @@ export function SiteLogin({ area, staff }: { area: "admin" | "staff"; staff?: St
           </>
         )}
       </button>
-      <p className="text-[15px] text-muted">
+      <p className="text-small text-muted">
         {area === "admin" ? (
           <>
             Glömt lösenordet?{" "}
@@ -240,17 +240,17 @@ function StaffPage({ name, staff, onSignOut }: { name: string; staff: StaffConte
             {staff.people.map((person) => (
               <li key={person.name} className="bg-card px-5 py-4">
                 <p className="font-semibold text-heading">{person.name}</p>
-                {person.role && <p className="text-[15px] text-muted">{person.role}</p>}
+                {person.role && <p className="text-small text-muted">{person.role}</p>}
                 {person.phone && (
                   <a
                     href={`tel:${person.phone.replace(/[^\d+]/g, "")}`}
-                    className="mt-2 flex items-center gap-2 text-[15px] text-heading hover:text-accent"
+                    className="mt-2 flex items-center gap-2 text-small text-heading hover:text-accent"
                   >
                     <Icon name="Phone" className="h-4 w-4 text-accent" /> {person.phone}
                   </a>
                 )}
                 {person.email && (
-                  <a href={`mailto:${person.email}`} className="mt-1 flex items-center gap-2 break-all text-[15px] text-heading hover:text-accent">
+                  <a href={`mailto:${person.email}`} className="mt-1 flex items-center gap-2 break-all text-small text-heading hover:text-accent">
                     <Icon name="Mail" className="h-4 w-4 shrink-0 text-accent" /> {person.email}
                   </a>
                 )}

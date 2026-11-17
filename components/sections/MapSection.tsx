@@ -34,7 +34,7 @@ export function MapSection({ section, id, ctx }: SectionProps<"map">) {
 
       <div className="bg-field">
         <div className="mx-auto flex max-w-content flex-col gap-4 px-4 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <p className="flex items-center gap-3 text-[18px] text-heading">
+          <p className="flex items-center gap-3 text-copy text-heading">
             <DropPin className="flex shrink-0" />
             <span data-k={key(ctx.path, "addressPrefix")}>{section.addressPrefix}</span> <span data-k="company.address">{address}</span>
           </p>

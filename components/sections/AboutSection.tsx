@@ -20,7 +20,7 @@ export function AboutSection({ section, ctx }: SectionProps<"about">) {
             </SiteLink>
           )}
           {section.subheading && (
-            <p data-k={key(ctx.path, "subheading")} className="mt-6 text-copy font-semibold text-heading lg:text-[22px]">
+            <p data-k={key(ctx.path, "subheading")} className="mt-6 text-copy font-semibold text-heading lg:text-lead">
               {section.subheading}
             </p>
           )}

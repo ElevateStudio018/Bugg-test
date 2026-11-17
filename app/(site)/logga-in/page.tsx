@@ -11,7 +11,7 @@ export default function AdminLoginPage() {
   return (
     <div className="mx-auto max-w-content px-4 pb-20 pt-8 sm:px-6 lg:px-8 lg:pb-28 lg:pt-10">
       <Breadcrumbs items={[{ label: site.ui.breadcrumbHome, href: "/" }, { label: "Admin" }]} label={site.ui.breadcrumbsLabel} />
-      <h1 className="mt-6 text-display text-heading lg:text-[56px] lg:leading-[1.08]">Admin</h1>
+      <h1 className="mt-6 text-display text-heading lg:text-display-lg">Admin</h1>
       <p className="mt-4 max-w-2xl text-copy text-body lg:text-lead">
         Logga in för att ändra hemsidan, se offertförfrågningar och förbättringsförslag.
       </p>

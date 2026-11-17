@@ -16,7 +16,7 @@ export function FaqSection({ section, ctx }: SectionProps<"faq">) {
             {section.heading}
           </h2>
           {section.phonePrompt && phone && (
-            <p className="mt-3 text-copy text-body/75 lg:mt-5 lg:text-lead">
+            <p className="mt-3 text-copy text-muted lg:mt-5 lg:text-lead">
               <span data-k={key(ctx.path, "phonePrompt")}>{section.phonePrompt}</span>{" "}
               <a
                 href={toTelHref(phone)}

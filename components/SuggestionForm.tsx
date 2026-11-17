@@ -8,8 +8,8 @@ import { fallbackFormEmail, isConnected, supabaseAnonKey, supabaseUrl } from "@/
 // The form's own words: an internal tool for the company's staff, not part of the public site's content.
 const NAME_KEY = "markmontage-forslag-namn";
 const fieldClass =
-  "w-full border border-line/15 bg-field px-4 py-3.5 text-[17px] text-heading placeholder:text-muted transition-colors duration-150 focus:border-accent focus:outline focus:outline-2 focus:outline-accent/25";
-const labelClass = "mb-2 block text-[15px] font-semibold text-heading";
+  "w-full border border-line/15 bg-field px-4 py-3.5 text-copy text-heading placeholder:text-muted transition-colors duration-150 focus:border-accent focus:outline focus:outline-2 focus:outline-accent/25";
+const labelClass = "mb-2 block text-small font-semibold text-heading";
 
 /** Name, subject and the suggestion; sent to the admin, or by e-mail while the site has no backend. */
 export function SuggestionForm() {
@@ -92,7 +92,7 @@ export function SuggestionForm() {
           <Icon name="Check" strokeWidth={2.5} className="h-12 w-12" />
         </span>
         <p className="mt-4 text-h3 text-heading">Tack {sentBy}! Förslaget är skickat.</p>
-        <p className="mt-2 text-[17px] text-body">Tack för att du hjälper oss att bli bättre.</p>
+        <p className="mt-2 text-copy text-body">Tack för att du hjälper oss att bli bättre.</p>
         <button type="button" onClick={() => setState("idle")} className={buttonClasses("outline", "mt-7")}>
           Skriv ett förslag till
         </button>
@@ -117,7 +117,7 @@ export function SuggestionForm() {
           aria-describedby={errors.name ? `${id}-namn-fel` : undefined}
         />
         {errors.name && (
-          <p id={`${id}-namn-fel`} className="mt-1.5 text-[14px] text-error">
+          <p id={`${id}-namn-fel`} className="mt-1.5 text-small text-error">
             {errors.name}
           </p>
         )}
@@ -136,7 +136,7 @@ export function SuggestionForm() {
           aria-describedby={errors.subject ? `${id}-amne-fel` : undefined}
         />
         {errors.subject && (
-          <p id={`${id}-amne-fel`} className="mt-1.5 text-[14px] text-error">
+          <p id={`${id}-amne-fel`} className="mt-1.5 text-small text-error">
             {errors.subject}
           </p>
         )}
@@ -156,7 +156,7 @@ export function SuggestionForm() {
           aria-describedby={errors.message ? `${id}-forslag-fel` : undefined}
         />
         {errors.message && (
-          <p id={`${id}-forslag-fel`} className="mt-1.5 text-[14px] text-error">
+          <p id={`${id}-forslag-fel`} className="mt-1.5 text-small text-error">
             {errors.message}
           </p>
         )}
@@ -172,7 +172,7 @@ export function SuggestionForm() {
         )}
       </button>
       {state === "failed" && (
-        <p role="alert" className="text-[14px] text-error">
+        <p role="alert" className="text-small text-error">
           {failure}
         </p>
       )}

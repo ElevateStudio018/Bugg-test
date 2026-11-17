@@ -15,10 +15,7 @@ export function PricelistSection({ section, ctx }: SectionProps<"pricelist">) {
             {list(section.rows).map((row) => (
               <div key={row.id} className="flex items-start justify-between gap-6 border-b border-line/15 py-4 lg:py-5">
                 <dt>
-                  <span
-                    data-k={key(ctx.path, "rows.items", row.id, "name")}
-                    className="block text-[18px] font-bold leading-[1.25] text-heading lg:text-[20px]"
-                  >
+                  <span data-k={key(ctx.path, "rows.items", row.id, "name")} className="block text-copy font-semibold text-heading">
                     {row.name}
                   </span>
                   {row.description && (
@@ -27,17 +24,14 @@ export function PricelistSection({ section, ctx }: SectionProps<"pricelist">) {
                     </span>
                   )}
                 </dt>
-                <dd
-                  data-k={key(ctx.path, "rows.items", row.id, "price")}
-                  className="shrink-0 whitespace-nowrap text-[18px] font-semibold text-heading lg:text-[20px]"
-                >
+                <dd data-k={key(ctx.path, "rows.items", row.id, "price")} className="shrink-0 whitespace-nowrap text-copy font-semibold text-heading">
                   {row.price}
                 </dd>
               </div>
             ))}
           </dl>
           {section.note && (
-            <p data-k={key(ctx.path, "note")} className="mt-5 text-[15px] leading-snug text-muted">
+            <p data-k={key(ctx.path, "note")} className="mt-5 text-small text-muted">
               {section.note}
             </p>
           )}

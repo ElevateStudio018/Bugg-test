@@ -17,7 +17,7 @@ export function PoliciesSection({ section, ctx }: SectionProps<"policies">) {
       data-k={ctx.path}
       className={`mx-auto max-w-content px-4 sm:px-6 lg:px-8 ${ctx.attached ? "pt-12 lg:pt-16" : ""}`}
     >
-      <h2 data-k={key(ctx.path, "heading")} className="text-h2 text-heading lg:text-[38px]">
+      <h2 data-k={key(ctx.path, "heading")} className="text-h2 text-heading lg:text-h2-lg">
         {section.heading}
       </h2>
       {section.text && (
@@ -42,14 +42,14 @@ export function PoliciesSection({ section, ctx }: SectionProps<"policies">) {
               ))}
               {list(policy.goals).map((goal) => (
                 <div key={goal.id} className="mt-5 border-l-2 border-accent pl-4">
-                  <p data-k={key(ctx.path, "goalLabel")} className="text-[15px] font-semibold uppercase tracking-[0.06em] text-heading">
+                  <p data-k={key(ctx.path, "goalLabel")} className="text-tag uppercase text-heading">
                     {section.goalLabel}
                   </p>
                   <p data-k={key(base, "goals.items", goal.id, "goal")} className="mt-1 text-copy leading-[1.35] text-body">
                     {goal.goal}
                   </p>
                   {goal.measure && (
-                    <p className="mt-2 text-[15px] leading-snug text-muted">
+                    <p className="mt-2 text-small text-muted">
                       <span data-k={key(ctx.path, "measureLabel")} className="font-semibold">
                         {section.measureLabel}
                       </span>{" "}

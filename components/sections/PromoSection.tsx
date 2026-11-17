@@ -44,11 +44,11 @@ export function PromoSection({ section, ctx }: SectionProps<"promo">) {
                   className={`pointer-events-none absolute h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 text-on-primary/[0.09] ${classes.pattern}`}
                 />
                 <div className="relative">
-                  <h2 data-k={key(boxKey, "heading")} className="text-h2 sm:text-[38px] sm:leading-[1.12] lg:text-[52px] lg:leading-[1.06]">
+                  <h2 data-k={key(boxKey, "heading")} className="text-h2 lg:text-h2-lg">
                     {box.heading}
                   </h2>
                   {box.text && (
-                    <p data-k={key(boxKey, "text")} className="mt-3 text-copy sm:text-lead lg:mt-5 lg:text-[22px] lg:leading-[1.4]">
+                    <p data-k={key(boxKey, "text")} className="mt-3 text-copy sm:text-lead lg:mt-5">
                       {box.text}
                     </p>
                   )}

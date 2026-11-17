@@ -16,11 +16,11 @@ export function CertificateStripSection({ section, ctx }: SectionProps<"certific
     <section id={section.anchor || undefined} data-k={ctx.path} className="scroll-mt-20 border-b border-line/10 bg-card">
       <div className="mx-auto flex max-w-content flex-col items-center gap-6 px-4 py-8 sm:px-6 lg:flex-row lg:justify-between lg:gap-10 lg:px-8 lg:py-10">
         {section.heading && (
-          <h2 data-k={key(ctx.path, "heading")} className="text-center text-h3 text-heading lg:max-w-[16em] lg:text-left">
+          <h2 data-k={key(ctx.path, "heading")} className="text-center text-h3 text-heading lg:max-w-[12em] lg:text-left">
             {section.heading}
           </h2>
         )}
-        <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 sm:gap-x-10">
+        <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 sm:gap-x-10 lg:flex-nowrap lg:gap-x-6 xl:gap-x-10">
           {badges.map((certificate, index) =>
             certificate.image ? (
               <Reveal key={certificate.id} as="li" delayMs={index * 80}>

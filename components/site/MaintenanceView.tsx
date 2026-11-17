@@ -16,7 +16,7 @@ export function MaintenanceView({ site }: { site: SiteData }) {
         </div>
       </div>
       <div className="mx-auto flex w-full max-w-content flex-1 flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
-        <h1 className="max-w-3xl text-display text-heading lg:text-[56px] lg:leading-[1.08]">{heading}</h1>
+        <h1 className="max-w-3xl text-display text-heading lg:text-display-lg">{heading}</h1>
         {text && <p className="mt-5 max-w-prose text-copy text-body lg:text-lead">{text}</p>}
         <div className="mt-9 flex flex-wrap gap-3">
           {company.phone && (

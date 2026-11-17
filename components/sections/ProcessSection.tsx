@@ -34,7 +34,7 @@ export function ProcessSection({ section, ctx }: SectionProps<"process">) {
                 <span className="flex h-12 w-12 items-center justify-center bg-accent text-on-primary">
                   <Icon name={step.icon} className="h-6 w-6" />
                 </span>
-                <span className="text-[44px] font-semibold leading-none text-heading/15" aria-hidden="true">
+                <span className="text-stat text-heading/15" aria-hidden="true">
                   {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
@@ -44,7 +44,7 @@ export function ProcessSection({ section, ctx }: SectionProps<"process">) {
                 </span>
                 <span data-k={key(ctx.path, "steps.items", step.id, "title")}>{step.title}</span>
               </h3>
-              <p data-k={key(ctx.path, "steps.items", step.id, "description")} className="mt-3 text-[16px] leading-relaxed text-body">
+              <p data-k={key(ctx.path, "steps.items", step.id, "description")} className="mt-3 text-copy leading-relaxed text-body">
                 {step.description}
               </p>
             </li>

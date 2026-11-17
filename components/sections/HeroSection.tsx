@@ -83,7 +83,7 @@ function CollageHero({ section, extras, base }: { section: HeroProps["section"];
       </div>
       {/* On desktop the text lines up with the logo above it, however wide the screen. */}
       <div className="flex flex-1 flex-col justify-center px-4 py-10 sm:px-6 sm:py-14 lg:order-1 lg:py-16 lg:pl-[max(2rem,calc((100vw-1280px)/2+2rem))] lg:pr-12">
-        <HeroText section={section} base={base} button="on-primary" compact />
+        <HeroText section={section} base={base} button="on-primary" />
       </div>
     </section>
   );
@@ -117,29 +117,17 @@ function CollagePhoto({
 }
 
 /** Eyebrow, heading and button, rising into place one after another as the page loads. */
-function HeroText({
-  section,
-  base,
-  button,
-  compact = false,
-}: {
-  section: HeroProps["section"];
-  base?: string;
-  button: ButtonVariant;
-  compact?: boolean;
-}) {
+function HeroText({ section, base, button }: { section: HeroProps["section"]; base?: string; button: ButtonVariant }) {
   return (
     <>
       {section.eyebrow && (
-        <p data-k={key(base, "eyebrow")} className="animate-rise text-tag uppercase text-white/85 [animation-delay:150ms] lg:text-[14px]">
+        <p data-k={key(base, "eyebrow")} className="animate-rise text-tag uppercase text-white/85 [animation-delay:150ms]">
           {section.eyebrow}
         </p>
       )}
       <h1
         data-k={key(base, "heading")}
-        className={`mt-4 max-w-[9.5em] animate-rise [animation-delay:300ms] text-[36px] font-semibold leading-[1.04] tracking-[-0.02em] text-white min-[380px]:text-[40px] sm:text-[56px] lg:mt-6 ${
-          compact ? "lg:text-[44px] xl:text-[54px] 2xl:text-[64px]" : "lg:text-[52px] xl:text-[64px] 2xl:text-[88px]"
-        }`}
+        className="mt-4 max-w-[9.5em] animate-rise text-display text-white [animation-delay:300ms] sm:text-h2-lg lg:mt-6 lg:text-display-lg"
       >
         {section.heading}
       </h1>

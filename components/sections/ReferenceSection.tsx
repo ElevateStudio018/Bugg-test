@@ -28,7 +28,7 @@ export function ReferenceSection({ section, ctx }: SectionProps<"reference">) {
             {section.badge}
           </p>
         )}
-        <h2 data-k={key(ctx.path, "heading")} className="mt-2.5 text-h2 text-heading lg:text-[42px] lg:leading-[1.08]">
+        <h2 data-k={key(ctx.path, "heading")} className="mt-2.5 text-h2 text-heading lg:text-h2-lg">
           {section.heading}
         </h2>
         {section.text && (
@@ -51,7 +51,7 @@ export function ReferenceSection({ section, ctx }: SectionProps<"reference">) {
               {step.label && (
                 <span
                   data-k={key(ctx.path, "steps.items", step.id, "label")}
-                  className={`mx-6 mt-5 self-start rounded-full px-3 py-1 text-[13px] font-extrabold uppercase tracking-[0.16em] ${labelTones[index % labelTones.length]}`}
+                  className={`mx-6 mt-5 self-start rounded-full px-3 py-1 text-tag uppercase ${labelTones[index % labelTones.length]}`}
                 >
                   {step.label}
                 </span>

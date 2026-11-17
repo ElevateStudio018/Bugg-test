@@ -77,7 +77,7 @@ export function Navbar({ content }: { content: NavContent }) {
                         href={link.href}
                         data-k={`navigation.barLinks.items.${link.id}`}
                         aria-current={isActive ? "page" : undefined}
-                        className={`relative whitespace-nowrap py-2 text-[15px] font-semibold transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:bg-nav-text after:transition-transform after:duration-200 hover:text-nav-text hover:after:scale-x-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-nav-text ${
+                        className={`relative whitespace-nowrap py-2 text-small font-semibold transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:bg-nav-text after:transition-transform after:duration-200 hover:text-nav-text hover:after:scale-x-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-nav-text ${
                           isActive ? "text-nav-text after:scale-x-100" : "text-nav-text/75 after:scale-x-0"
                         }`}
                       >

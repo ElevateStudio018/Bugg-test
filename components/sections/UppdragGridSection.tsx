@@ -16,11 +16,11 @@ export function UppdragGridSection({ section, ctx }: SectionProps<"uppdragGrid">
         </div>
       )}
 
-      <Heading data-k={key(ctx.path, "heading")} className="mt-8 animate-rise [animation-delay:250ms] text-[38px] font-semibold leading-[1.1] tracking-[-0.01em] text-heading lg:text-[56px]">
+      <Heading data-k={key(ctx.path, "heading")} className="mt-8 animate-rise [animation-delay:250ms] text-display text-heading lg:text-display-lg">
         {section.heading}
       </Heading>
       {section.text && (
-        <p data-k={key(ctx.path, "text")} className="mt-5 max-w-3xl animate-rise text-copy text-body [animation-delay:350ms] lg:text-[21px]">
+        <p data-k={key(ctx.path, "text")} className="mt-5 max-w-3xl animate-rise text-copy text-body [animation-delay:350ms] lg:text-lead">
           {section.text}
         </p>
       )}

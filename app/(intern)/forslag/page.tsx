@@ -25,8 +25,8 @@ export default function SuggestionsPage() {
         </header>
         <main id="innehall" className="mx-auto max-w-2xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
           <p className="text-tag uppercase text-muted">För medarbetare på {site.company.shortName}</p>
-          <h1 className="mt-4 text-display text-heading lg:text-[46px] lg:leading-[1.1]">Förbättringsförslag</h1>
-          <p className="mt-5 text-[18px] leading-relaxed text-body">
+          <h1 className="mt-4 text-display text-heading lg:text-display-lg">Förbättringsförslag</h1>
+          <p className="mt-5 text-copy leading-relaxed text-body">
             Har du en idé om hur vi kan bli bättre? Skriv ditt namn, vad det gäller och ditt förslag.
           </p>
           <div className="mt-9 bg-card p-6 sm:p-8">

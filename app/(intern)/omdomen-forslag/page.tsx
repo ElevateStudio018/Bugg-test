@@ -27,7 +27,7 @@ export default function ReviewProposalsPage() {
         <header className="bg-nav text-nav-text">
           <div className="mx-auto flex max-w-content flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
             <Wordmark content={{ logo: site.settings.logo, name: site.company.shortName }} onDark />
-            <p className="text-[15px] text-nav-text/80">15 förslag på omdömen</p>
+            <p className="text-small text-nav-text/80">15 förslag på omdömen</p>
           </div>
         </header>
         <main id="innehall">{reviews.length > 0 ? <ReviewProposals reviews={reviews} /> : <p className="p-8">Inga omdömen.</p>}</main>

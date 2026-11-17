@@ -45,7 +45,7 @@ export function PageView({
             {previewIds && <span data-preview-section={section.id} className="block scroll-mt-20" aria-hidden="true" />}
             {section.hidden ? (
               <div className="relative opacity-50">
-                <span className="absolute left-4 top-4 z-10 rounded-full bg-black/80 px-3 py-1.5 text-[13px] font-semibold text-white">{reveal?.label}</span>
+                <span className="absolute left-4 top-4 z-10 rounded-full bg-black/80 px-3 py-1.5 text-small font-semibold text-white">{reveal?.label}</span>
                 <Component section={section} id={section.id} ctx={{ site, attached, path, breadcrumbs: index === opener ? breadcrumbs : undefined }} />
               </div>
             ) : (

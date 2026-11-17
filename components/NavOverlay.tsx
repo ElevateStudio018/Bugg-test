@@ -31,13 +31,13 @@ function RowLink({ row, onClose, entrance, isCurrent }: { row: NavRow; onClose: 
     <li className={`border-b border-nav-text/15 py-4 ${entrance.className}`} style={entrance.style}>
       <Link href={row.href} onClick={onClose} aria-current={isCurrent ? "page" : undefined} className="group flex items-baseline gap-4">
         <span
-          className={`text-sm font-bold transition-colors duration-300 group-hover:text-nav-text ${isCurrent ? "text-nav-text" : "text-nav-text/50"}`}
+          className={`text-small font-bold transition-colors duration-300 group-hover:text-nav-text ${isCurrent ? "text-nav-text" : "text-nav-text/50"}`}
         >
           {row.number}
         </span>
         {/* The page you are on is underlined. */}
         <span
-          className={`text-3xl font-semibold text-nav-text transition duration-300 ease-out group-hover:translate-x-2 group-hover:text-nav-text/70 sm:text-4xl lg:text-5xl ${
+          className={`text-h2 text-nav-text transition duration-300 ease-out group-hover:translate-x-2 group-hover:text-nav-text/70 lg:text-h2-lg ${
             isCurrent ? "underline decoration-2 underline-offset-[10px]" : ""
           }`}
         >
@@ -147,8 +147,8 @@ export function NavOverlay({ content, onClose }: { content: NavContent; onClose:
               row.kind === "services" ? (
                 <li key={row.id} className={`border-b border-nav-text/15 py-4 ${entrance(index).className}`} style={entrance(index).style}>
                   <div className="flex items-baseline gap-4">
-                    <span className={`text-sm font-bold ${current.startsWith("/tjanster/") ? "text-nav-text" : "text-nav-text/50"}`}>{row.number}</span>
-                    <span className="text-3xl font-semibold text-nav-text sm:text-4xl lg:text-5xl">{row.label}</span>
+                    <span className={`text-small font-bold ${current.startsWith("/tjanster/") ? "text-nav-text" : "text-nav-text/50"}`}>{row.number}</span>
+                    <span className="text-h2 text-nav-text lg:text-h2-lg">{row.label}</span>
                   </div>
                   <ul className="ml-[2.6rem] mt-2.5 grid grid-cols-1 gap-x-10 sm:grid-cols-2 xl:grid-cols-4">
                     {services.map((service) => (
@@ -157,7 +157,7 @@ export function NavOverlay({ content, onClose }: { content: NavContent; onClose:
                           href={`/tjanster/${service.slug}`}
                           onClick={onClose}
                           aria-current={current === `/tjanster/${service.slug}` ? "page" : undefined}
-                          className={`block py-3 text-[17px] transition duration-300 ease-out hover:translate-x-1.5 hover:text-nav-text ${
+                          className={`block py-3 text-copy transition duration-300 ease-out hover:translate-x-1.5 hover:text-nav-text ${
                             current === `/tjanster/${service.slug}` ? "text-nav-text underline underline-offset-[6px]" : "text-nav-text/75"
                           }`}
                         >
@@ -191,7 +191,7 @@ export function NavOverlay({ content, onClose }: { content: NavContent; onClose:
             {content.menuButton}
           </button>
           {content.phone && (
-            <a href={toTelHref(content.phone)} className="flex items-center gap-3 text-[18px] font-semibold text-nav-text hover:text-nav-text/70">
+            <a href={toTelHref(content.phone)} className="flex items-center gap-3 text-copy font-semibold text-nav-text hover:text-nav-text/70">
               <Icon name="Phone" className="h-5 w-5 text-nav-text/60" />
               {content.phone}
             </a>

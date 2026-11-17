@@ -105,7 +105,7 @@ export function QuoteModal({ content, closeLabel }: { content: QuoteFormContent;
             ))}
           </span>
         </button>
-        <h2 id="quote-modal-heading" className="mb-6 animate-rise-fast pr-10 text-[26px] font-semibold leading-tight text-heading [animation-delay:40ms]">
+        <h2 id="quote-modal-heading" className="mb-6 animate-rise-fast pr-10 text-h2 text-heading [animation-delay:40ms]">
           {content.texts.modalHeading}
         </h2>
         <QuoteForm variant="modal" content={content} />

@@ -8,7 +8,7 @@ export interface Crumb {
 export function Breadcrumbs({ items, label }: { items: Crumb[]; label: string }) {
   return (
     <nav aria-label={label}>
-      <ol className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[16px] text-muted">
+      <ol className="flex flex-wrap items-center gap-x-3 gap-y-1 text-small text-muted">
         {items.map((item, index) => (
           <li key={`${index}-${item.label}`} className="flex items-center gap-3">
             {index > 0 && <span aria-hidden="true">-</span>}

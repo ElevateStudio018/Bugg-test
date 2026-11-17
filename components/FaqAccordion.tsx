@@ -29,7 +29,7 @@ export function FaqAccordion({ items, base }: { items: FaqEntry[]; base?: string
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="flex w-full items-center justify-between gap-6 py-4 text-left text-[18px] font-bold leading-[1.25] text-heading transition-colors duration-200 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:py-5 lg:text-[20px]"
+                className="flex w-full items-center justify-between gap-6 py-4 text-left text-copy font-semibold text-heading transition-colors duration-200 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:py-5 lg:text-h3"
               >
                 <span data-k={base && `${base}.${item.id}.question`}>{item.question}</span>
                 {/* A downward chevron of two thin bars that pivot on its tip. Opening the answer turns both arms

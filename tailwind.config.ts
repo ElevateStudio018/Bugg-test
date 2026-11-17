@@ -60,6 +60,7 @@ const config: Config = {
         lead: ["19px", { lineHeight: "1.3" }],
         copy: ["17px", { lineHeight: "1.12" }],
         label: ["17px", { lineHeight: "1.18", letterSpacing: "0.03em", fontWeight: "700" }],
+        small: ["14px", { lineHeight: "1.3" }],
         tag: ["13px", { lineHeight: "1", letterSpacing: "0.2em", fontWeight: "700" }],
         stat: ["50px", { lineHeight: "1", letterSpacing: "-0.01em", fontWeight: "800" }],
       },

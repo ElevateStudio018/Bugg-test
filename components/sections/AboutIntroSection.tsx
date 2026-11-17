@@ -21,17 +21,17 @@ export function AboutIntroSection({ section, ctx }: SectionProps<"aboutIntro">) 
 
       <div className="mt-4 grid grid-cols-1 gap-12 lg:mt-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
         <article>
-          <Heading data-k={key(ctx.path, "heading")} className="animate-rise text-display text-heading [animation-delay:250ms] lg:text-[56px] lg:leading-[1.08]">
+          <Heading data-k={key(ctx.path, "heading")} className="animate-rise text-display text-heading [animation-delay:250ms] lg:text-display-lg">
             {section.heading}
           </Heading>
           {section.subheading && (
-            <p data-k={key(ctx.path, "subheading")} className="mt-3 animate-rise text-copy font-semibold text-heading [animation-delay:350ms] lg:mt-6 lg:text-[21px]">
+            <p data-k={key(ctx.path, "subheading")} className="mt-3 animate-rise text-copy font-semibold text-heading [animation-delay:350ms] lg:mt-6 lg:text-lead">
               {section.subheading}
             </p>
           )}
           <div className="mt-4 animate-rise space-y-4 [animation-delay:450ms]">
             {section.paragraphs.map((paragraph, index) => (
-              <p key={index} data-k={key(ctx.path, "paragraphs", index)} className="text-copy text-body lg:text-[18px]">
+              <p key={index} data-k={key(ctx.path, "paragraphs", index)} className="text-copy text-body">
                 {paragraph}
               </p>
             ))}

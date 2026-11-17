@@ -33,7 +33,7 @@ export function ConfirmationToast({ message }: { message: string }) {
             }`}
           />
         </svg>
-        <p className="text-[16px] font-semibold text-on-primary">{message}</p>
+        <p className="text-copy font-semibold text-on-primary">{message}</p>
         {/* A thin line along the bottom runs out over the time the message stays. */}
         <span
           aria-hidden="true"

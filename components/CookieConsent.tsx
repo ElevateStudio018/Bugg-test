@@ -89,7 +89,7 @@ export function CookieConsent({ analyticsId, text, accept, decline }: { analytic
       aria-label={text}
       className="fixed inset-x-3 bottom-3 z-[250] mx-auto max-w-xl animate-rise-fast bg-card p-5 shadow-[0_18px_48px_-16px_rgba(0,0,0,0.35)] ring-1 ring-line/10 sm:inset-x-6 sm:bottom-6 sm:p-6"
     >
-      <p className="text-[16px] leading-relaxed text-body">{text}</p>
+      <p className="text-copy leading-relaxed text-body">{text}</p>
       <div className="mt-4 flex flex-wrap gap-3">
         <button type="button" onClick={() => answer("accepted")} className={buttonClasses("solid", "!px-6 !py-3")}>
           {accept}

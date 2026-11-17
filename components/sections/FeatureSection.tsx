@@ -31,7 +31,7 @@ export function FeatureSection({ section, ctx }: SectionProps<"feature">) {
 
         <div className="mx-auto max-w-content px-4 pb-24 pt-14 sm:px-6 lg:px-8 lg:pb-44 lg:pt-24">
           <Reveal className="max-w-[560px] lg:max-w-[640px]">
-            <h2 data-k={key(ctx.path, "heading")} className="text-balance text-display lg:text-[56px] lg:leading-[1.06]">
+            <h2 data-k={key(ctx.path, "heading")} className="text-balance text-h2 lg:text-h2-lg">
               {section.heading}
             </h2>
             {section.text && (

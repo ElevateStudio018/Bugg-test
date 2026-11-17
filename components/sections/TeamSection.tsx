@@ -32,16 +32,16 @@ export function TeamSection({ section, ctx }: SectionProps<"team">) {
                 </div>
               )}
               <div className="flex flex-1 flex-col px-4 py-4 sm:px-6 sm:py-6">
-                <h3 data-k={key(base, "name")} className="text-[17px] font-semibold leading-snug text-heading sm:text-h3">
+                <h3 data-k={key(base, "name")} className="text-copy font-semibold text-heading sm:text-h3">
                   {member.name}
                 </h3>
                 {member.role && (
-                  <p data-k={key(base, "role")} className="mt-1 text-[15px] text-muted sm:text-[16px]">
+                  <p data-k={key(base, "role")} className="mt-1 text-small text-muted">
                     {member.role}
                   </p>
                 )}
                 {(member.phone || member.email) && (
-                  <ul className="mt-auto space-y-2 pt-4 text-[15px] text-heading sm:text-[16px]">
+                  <ul className="mt-auto space-y-2 pt-4 text-small text-heading">
                     {member.phone && (
                       <li>
                         <a href={toTelHref(member.phone)} className={`${tapTarget} inline-flex items-center gap-2 transition-colors hover:text-accent`}>

@@ -26,7 +26,7 @@ export function GallerySection({ section, ctx }: SectionProps<"gallery">) {
                   />
                 </div>
                 {entry.caption && (
-                  <figcaption data-k={key(ctx.path, "images.items", entry.id, "caption")} className="mt-2.5 text-[15px] leading-snug text-muted">
+                  <figcaption data-k={key(ctx.path, "images.items", entry.id, "caption")} className="mt-2.5 text-small text-muted">
                     {entry.caption}
                   </figcaption>
                 )}
