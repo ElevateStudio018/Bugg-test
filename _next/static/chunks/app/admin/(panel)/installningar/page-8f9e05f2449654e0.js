@@ -83,4 +83,4 @@
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */let r=(0,t(8030).Z)("Undo2",[["path",{d:"M9 14 4 9l5-5",key:"102s5s"}],["path",{d:"M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11",key:"f3b9sd"}]])}},function(e){e.O(0,[9762,3688,4301,9900,1469,9225,447,7021,2864,1520,2971,7023,1744],function(){return e(e.s=4733)}),_N_E=e.O()}]);
+ */let r=(0,t(8030).Z)("Undo2",[["path",{d:"M9 14 4 9l5-5",key:"102s5s"}],["path",{d:"M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11",key:"f3b9sd"}]])}},function(e){e.O(0,[9762,3688,9900,4301,1469,9225,447,7021,2864,1520,2971,7023,1744],function(){return e(e.s=4733)}),_N_E=e.O()}]);
