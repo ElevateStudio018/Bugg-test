@@ -2,6 +2,7 @@ import { GoogleMark } from "../GoogleMark";
 import { Icon } from "../Icon";
 import { Photo } from "../Photo";
 import { SectionIntro } from "./SectionIntro";
+import { Topography } from "../Topography";
 import { list } from "@/lib/site/collection.ts";
 import { focusStyle, imageProps } from "@/lib/site/images.ts";
 import { fill } from "@/lib/site/format.ts";
@@ -28,7 +29,7 @@ function Stars({ rating, className }: { rating: number; className: string }) {
 function ReviewCard({ item, colour, base, ratingLabel }: { item: Review; colour: string; base?: string; ratingLabel: string }) {
   const k = base && key(base, "items.items", item.id);
   return (
-    <figure className="marquee-card flex h-full w-[300px] shrink-0 flex-col rounded-[18px] bg-white p-6 shadow-[0_12px_32px_-14px_rgba(0,0,0,0.3)] sm:w-[360px]">
+    <figure className="marquee-card flex h-full w-[300px] shrink-0 flex-col bg-white p-6 shadow-[0_16px_36px_-18px_rgba(0,0,0,0.6)] sm:w-[360px]">
       <figcaption className="flex items-center gap-3">
         {item.image ? (
           <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-primary/20">
@@ -116,7 +117,7 @@ function ReviewRow({
   );
 }
 
-/** What customers say on Google, as Google-style cards in two rows that scroll by in opposite directions. */
+/** What customers say on Google: white cards in two rows that scroll by in opposite directions, on the dark green with contour lines. */
 export function TestimonialsSection({ section, ctx }: SectionProps<"testimonials">) {
   const items = list(section.items);
   if (items.length === 0) return null;
@@ -132,15 +133,19 @@ export function TestimonialsSection({ section, ctx }: SectionProps<"testimonials
   const average = rated.length ? Math.round((rated.reduce((sum, item) => sum + item.rating, 0) / rated.length) * 10) / 10 : 0;
 
   return (
-    <section id={section.anchor || undefined} data-k={ctx.path} className="scroll-mt-20 overflow-hidden bg-card">
-      <div className="mx-auto max-w-content px-4 pt-16 sm:px-6 sm:pt-20 lg:px-8 lg:pt-28">
+    <section id={section.anchor || undefined} data-k={ctx.path} className="relative scroll-mt-20 overflow-hidden bg-primary text-on-primary">
+      {/* The contour lines of the footer, faint behind the cards. */}
+      <Topography className="pointer-events-none absolute -right-48 -top-48 h-[900px] w-[900px] text-on-primary/[0.07]" />
+      <div className="relative mx-auto max-w-content px-4 pt-16 sm:px-6 sm:pt-20 lg:px-8 lg:pt-28">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionIntro heading={section.heading} text={section.text} k={ctx.path} />
-          <p className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[15px] font-semibold text-muted">
-            <GoogleMark className="h-6 w-6" />
+          <SectionIntro heading={section.heading} text={section.text} tone="primary" k={ctx.path} />
+          <p className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[15px] font-semibold text-on-primary/80">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white">
+              <GoogleMark className="h-5 w-5" />
+            </span>
             {average > 0 && (
               <span className="flex items-center gap-1.5" aria-label={fill(ctx.site.ui.ratingLabel, { n: average.toLocaleString("sv-SE") })}>
-                <span aria-hidden="true" className="text-[18px] font-bold text-heading">
+                <span aria-hidden="true" className="text-[18px] font-bold text-on-primary">
                   {average.toLocaleString("sv-SE", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}
                 </span>
                 <Stars rating={average} className="h-[18px] w-[18px]" />
