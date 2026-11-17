@@ -1,5 +1,4 @@
 import { GoogleMark } from "../GoogleMark";
-import { Icon } from "../Icon";
 import { Photo } from "../Photo";
 import { SectionIntro } from "./SectionIntro";
 import { Topography } from "../Topography";
@@ -14,12 +13,22 @@ const avatarColours = ["#1A73E8", "#D93025", "#188038", "#E37400", "#8430CE", "#
 
 type Review = SectionProps<"testimonials">["section"]["items"]["items"][string] & { id: string };
 
+// A star with sharp points and straight sides, as Google draws it.
+const STAR = "12 1.6 14.95 8.55 22.5 9.2 16.78 14.15 18.5 21.5 12 17.6 5.5 21.5 7.22 14.15 1.5 9.2 9.05 8.55";
+
 /** Five stars in Google's yellow, as many filled as the rating (rounded). */
 function Stars({ rating, className }: { rating: number; className: string }) {
   return (
     <span aria-hidden="true" className="flex gap-0.5">
       {Array.from({ length: 5 }, (_, star) => (
-        <Icon key={star} name="Star" className={`${className} ${star < Math.round(rating) ? "fill-[#FBBC04] text-[#FBBC04]" : "text-[#dadce0]"}`} />
+        <svg
+          key={star}
+          viewBox="0 0 24 24"
+          focusable="false"
+          className={`${className} ${star < Math.round(rating) ? "fill-[#FBBC04]" : "fill-[#dadce0]"}`}
+        >
+          <polygon points={STAR} />
+        </svg>
       ))}
     </span>
   );
@@ -29,7 +38,7 @@ function Stars({ rating, className }: { rating: number; className: string }) {
 function ReviewCard({ item, colour, base, ratingLabel }: { item: Review; colour: string; base?: string; ratingLabel: string }) {
   const k = base && key(base, "items.items", item.id);
   return (
-    <figure className="marquee-card flex h-full w-[300px] shrink-0 flex-col bg-white p-6 shadow-[0_16px_36px_-18px_rgba(0,0,0,0.6)] sm:w-[360px]">
+    <figure className="marquee-card flex h-full w-[300px] shrink-0 flex-col rounded-[10px] bg-white p-6 shadow-[0_16px_36px_-18px_rgba(0,0,0,0.6)] sm:w-[360px]">
       <figcaption className="flex items-center gap-3">
         {item.image ? (
           <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-primary/20">
