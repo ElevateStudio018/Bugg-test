@@ -3320,21 +3320,28 @@
         "name": "Fiberblåsning & fiberinstallation",
         "slug": "fiber",
         "image": {
-          "alt": "Båt bogserar pråmen med kabeltrumman vid kabelförläggning i sjö",
-          "src": "/photos/markmontage-fiber-bat.webp",
-          "focus": "50% 45%",
+          "alt": "Servicebil och utrustning för fiberblåsning vid en väg",
+          "src": "/photos/tjanst-fiber.webp",
           "variants": [
             {
-              "src": "/photos/markmontage-fiber-bat-480.webp",
+              "src": "/photos/tjanst-fiber-480.webp",
               "width": 480
             },
             {
-              "src": "/photos/markmontage-fiber-bat-800.webp",
+              "src": "/photos/tjanst-fiber-800.webp",
               "width": 800
             },
             {
-              "src": "/photos/markmontage-fiber-bat.webp",
-              "width": 1125
+              "src": "/photos/tjanst-fiber-1200.webp",
+              "width": 1200
+            },
+            {
+              "src": "/photos/tjanst-fiber-1600.webp",
+              "width": 1600
+            },
+            {
+              "src": "/photos/tjanst-fiber.webp",
+              "width": 2400
             }
           ]
         },
@@ -3355,17 +3362,28 @@
         "name": "Pooler",
         "slug": "pooler",
         "image": {
-          "alt": "Färdig pool med poolöverbyggnad, omgiven av en stenlagd terrass i en villaträdgård",
-          "src": "/photos/markmontage-pool-terrass.webp",
-          "focus": "50% 40%",
+          "alt": "Färdig pool med poolskydd och stenläggning runt om",
+          "src": "/photos/tjanst-pooler.webp",
           "variants": [
             {
-              "src": "/photos/markmontage-pool-terrass-480.webp",
+              "src": "/photos/tjanst-pooler-480.webp",
               "width": 480
             },
             {
-              "src": "/photos/markmontage-pool-terrass.webp",
-              "width": 732
+              "src": "/photos/tjanst-pooler-800.webp",
+              "width": 800
+            },
+            {
+              "src": "/photos/tjanst-pooler-1200.webp",
+              "width": 1200
+            },
+            {
+              "src": "/photos/tjanst-pooler-1600.webp",
+              "width": 1600
+            },
+            {
+              "src": "/photos/tjanst-pooler.webp",
+              "width": 2400
             }
           ]
         },
@@ -3386,20 +3404,16 @@
         "name": "Dränering",
         "slug": "dranering",
         "image": {
-          "alt": "Orange dräneringsrör med grenrör i en öppen schakt",
-          "src": "/photos/markmontage-dranering-ror.webp",
+          "alt": "Färdig dränering och återfyllnad längs en villa i tegel",
+          "src": "/photos/tjanst-dranering.webp",
           "variants": [
             {
-              "src": "/photos/markmontage-dranering-ror-480.webp",
+              "src": "/photos/tjanst-dranering-480.webp",
               "width": 480
             },
             {
-              "src": "/photos/markmontage-dranering-ror-800.webp",
+              "src": "/photos/tjanst-dranering.webp",
               "width": 800
-            },
-            {
-              "src": "/photos/markmontage-dranering-ror.webp",
-              "width": 1200
             }
           ]
         },
@@ -3458,24 +3472,20 @@
         "name": "Stenläggning & plattläggning",
         "slug": "stenlaggning",
         "image": {
-          "alt": "Marksten läggs på en gårdsplan framför ett hus",
-          "src": "/photos/markmontage-stenlaggning-pagar.webp",
+          "alt": "Nylagd plattsättning med murblock i en trädgård",
+          "src": "/photos/tjanst-stenlaggning.webp",
           "variants": [
             {
-              "src": "/photos/markmontage-stenlaggning-pagar-480.webp",
+              "src": "/photos/tjanst-stenlaggning-480.webp",
               "width": 480
             },
             {
-              "src": "/photos/markmontage-stenlaggning-pagar-800.webp",
+              "src": "/photos/tjanst-stenlaggning-800.webp",
               "width": 800
             },
             {
-              "src": "/photos/markmontage-stenlaggning-pagar-1200.webp",
-              "width": 1200
-            },
-            {
-              "src": "/photos/markmontage-stenlaggning-pagar.webp",
-              "width": 1600
+              "src": "/photos/tjanst-stenlaggning.webp",
+              "width": 960
             }
           ]
         },
@@ -3496,20 +3506,28 @@
         "name": "Grundläggning",
         "slug": "grundlaggning",
         "image": {
-          "alt": "Kranbil och medarbetare vid ett vägarbete",
-          "src": "/photos/markmontage-stalstomme.webp",
+          "alt": "Förberedd tomt med makadam inför grundläggning",
+          "src": "/photos/tjanst-grundlaggning.webp",
           "variants": [
             {
-              "src": "/photos/markmontage-stalstomme-480.webp",
+              "src": "/photos/tjanst-grundlaggning-480.webp",
               "width": 480
             },
             {
-              "src": "/photos/markmontage-stalstomme-800.webp",
+              "src": "/photos/tjanst-grundlaggning-800.webp",
               "width": 800
             },
             {
-              "src": "/photos/markmontage-stalstomme.webp",
-              "width": 1125
+              "src": "/photos/tjanst-grundlaggning-1200.webp",
+              "width": 1200
+            },
+            {
+              "src": "/photos/tjanst-grundlaggning-1600.webp",
+              "width": 1600
+            },
+            {
+              "src": "/photos/tjanst-grundlaggning.webp",
+              "width": 2400
             }
           ]
         },
@@ -3530,29 +3548,28 @@
         "name": "Transporter & kranbil",
         "slug": "transporter-kranbil",
         "image": {
-          "alt": "Markmontages lastbilar och kranbilar på rad",
-          "src": "/photos/markmontage-fordonsparken.webp",
-          "focus": "50% 55%",
+          "alt": "Röd kranbil med utfälld kran",
+          "src": "/photos/tjanst-transporter-kranbil.webp",
           "variants": [
             {
-              "src": "/photos/markmontage-fordonsparken-480.webp",
+              "src": "/photos/tjanst-transporter-kranbil-480.webp",
               "width": 480
             },
             {
-              "src": "/photos/markmontage-fordonsparken-800.webp",
+              "src": "/photos/tjanst-transporter-kranbil-800.webp",
               "width": 800
             },
             {
-              "src": "/photos/markmontage-fordonsparken-1200.webp",
+              "src": "/photos/tjanst-transporter-kranbil-1200.webp",
               "width": 1200
             },
             {
-              "src": "/photos/markmontage-fordonsparken-1600.webp",
+              "src": "/photos/tjanst-transporter-kranbil-1600.webp",
               "width": 1600
             },
             {
-              "src": "/photos/markmontage-fordonsparken.webp",
-              "width": 2016
+              "src": "/photos/tjanst-transporter-kranbil.webp",
+              "width": 2400
             }
           ]
         },
@@ -3572,24 +3589,28 @@
         "name": "Schaktning & markarbeten",
         "slug": "schaktning-markarbeten",
         "image": {
-          "alt": "Gul minigrävare vid markarbete i en trädgård",
-          "src": "/photos/markmontage-minigravare.webp",
+          "alt": "Minigrävare och medarbetare som schaktar vid en stenbyggnad",
+          "src": "/photos/tjanst-schaktning-markarbeten.webp",
           "variants": [
             {
-              "src": "/photos/markmontage-minigravare-480.webp",
+              "src": "/photos/tjanst-schaktning-markarbeten-480.webp",
               "width": 480
             },
             {
-              "src": "/photos/markmontage-minigravare-800.webp",
+              "src": "/photos/tjanst-schaktning-markarbeten-800.webp",
               "width": 800
             },
             {
-              "src": "/photos/markmontage-minigravare-1200.webp",
+              "src": "/photos/tjanst-schaktning-markarbeten-1200.webp",
               "width": 1200
             },
             {
-              "src": "/photos/markmontage-minigravare.webp",
-              "width": 1500
+              "src": "/photos/tjanst-schaktning-markarbeten-1600.webp",
+              "width": 1600
+            },
+            {
+              "src": "/photos/tjanst-schaktning-markarbeten.webp",
+              "width": 1787
             }
           ]
         },

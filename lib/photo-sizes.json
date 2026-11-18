@@ -223,11 +223,6 @@
     1600,
     1805
   ],
-  "markmontage-stalstomme": [
-    480,
-    800,
-    1125
-  ],
   "markmontage-stenlagd-gard": [
     480,
     800,
@@ -257,6 +252,50 @@
     480,
     800,
     1170
+  ],
+  "tjanst-dranering": [
+    480,
+    800
+  ],
+  "tjanst-fiber": [
+    480,
+    800,
+    1200,
+    1600,
+    2400
+  ],
+  "tjanst-grundlaggning": [
+    480,
+    800,
+    1200,
+    1600,
+    2400
+  ],
+  "tjanst-pooler": [
+    480,
+    800,
+    1200,
+    1600,
+    2400
+  ],
+  "tjanst-schaktning-markarbeten": [
+    480,
+    800,
+    1200,
+    1600,
+    1787
+  ],
+  "tjanst-stenlaggning": [
+    480,
+    800,
+    960
+  ],
+  "tjanst-transporter-kranbil": [
+    480,
+    800,
+    1200,
+    1600,
+    2400
   ],
   "uppdrag-fiber01": [
     480,
