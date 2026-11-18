@@ -104,7 +104,7 @@
                     "question": "Hur lång tid tar ett mark- eller grundarbete?"
                   },
                   "tjale": {
-                    "answer": "Tjäle påverkar när och hur vissa markarbeten kan utföras. Vid hembesöket bedömer vi förutsättningarna för just din tomt och planerar arbetet efter årstid och väderlek, så att du får en realistisk tidsplan redan från start.",
+                    "answer": "Tjäle påverkar när och hur vissa markarbeten kan utföras. Vid hembesöket bedömer vi förutsättningarna för just din tomt och planerar arbetet efter årstid och väderlek, så att du får en realistisk tidsplan redan från start. Vi erbjuder även tjältining och kan utföra schaktarbeten året runt.",
                     "question": "Kan ni arbeta året runt, även när det är tjäle i marken?"
                   },
                   "offert": {
@@ -162,7 +162,11 @@
                     "src": "/photos/markmontage-bil-solnedgang-1200.webp"
                   },
                   {
-                    "width": 1242,
+                    "width": 1600,
+                    "src": "/photos/markmontage-bil-solnedgang-1600.webp"
+                  },
+                  {
+                    "width": 2400,
                     "src": "/photos/markmontage-bil-solnedgang.webp"
                   }
                 ],
@@ -341,8 +345,8 @@
               "heading": "Om oss",
               "subheading": "Markmontage BEAB AB har sin bas i Romelanda utanför Kungälv och grundades 2002.",
               "button": {
-                "label": "Kontakta oss",
-                "href": "/#kontakt"
+                "label": "Få gratis offert",
+                "href": "#offert"
               }
             },
             "kontakt": {
@@ -1037,20 +1041,24 @@
                       "focus": "60% 60%",
                       "variants": [
                         {
-                          "src": "/photos/markmontage-bil-solnedgang-480.webp",
-                          "width": 480
+                          "width": 480,
+                          "src": "/photos/markmontage-bil-solnedgang-480.webp"
                         },
                         {
-                          "src": "/photos/markmontage-bil-solnedgang-800.webp",
-                          "width": 800
+                          "width": 800,
+                          "src": "/photos/markmontage-bil-solnedgang-800.webp"
                         },
                         {
-                          "src": "/photos/markmontage-bil-solnedgang-1200.webp",
-                          "width": 1200
+                          "width": 1200,
+                          "src": "/photos/markmontage-bil-solnedgang-1200.webp"
                         },
                         {
-                          "src": "/photos/markmontage-bil-solnedgang.webp",
-                          "width": 1240
+                          "width": 1600,
+                          "src": "/photos/markmontage-bil-solnedgang-1600.webp"
+                        },
+                        {
+                          "width": 2400,
+                          "src": "/photos/markmontage-bil-solnedgang.webp"
                         }
                       ]
                     },
@@ -1686,268 +1694,17 @@
   },
   "uppdrag": {
     "order": [
-      "betongpool",
-      "pool",
-      "stenlaggning-tradgard",
       "schakt",
+      "fiber-sjo",
       "grund",
       "dagvatten",
       "vagar",
       "marksten",
-      "fiber-sjo",
-      "kranlyft"
+      "stenlaggning-tradgard",
+      "kranlyft",
+      "poolbygge"
     ],
     "items": {
-      "betongpool": {
-        "tag": "Poolbygge",
-        "title": "Betongpool i villaträdgård",
-        "href": "/tjanster/pooler",
-        "image": {
-          "src": "/photos/uppdrag-pool09.webp",
-          "variants": [
-            {
-              "width": 480,
-              "src": "/photos/uppdrag-pool09-480.webp"
-            },
-            {
-              "width": 800,
-              "src": "/photos/uppdrag-pool09-800.webp"
-            },
-            {
-              "width": 1200,
-              "src": "/photos/uppdrag-pool09-1200.webp"
-            },
-            {
-              "width": 1600,
-              "src": "/photos/uppdrag-pool09.webp"
-            }
-          ],
-          "alt": "Färdig betongpool med blått vatten och stenkant i en trädgård"
-        },
-        "gallery": [
-          {
-            "src": "/photos/uppdrag-pool06.webp",
-            "variants": [
-              {
-                "width": 480,
-                "src": "/photos/uppdrag-pool06-480.webp"
-              },
-              {
-                "width": 800,
-                "src": "/photos/uppdrag-pool06-800.webp"
-              },
-              {
-                "width": 1200,
-                "src": "/photos/uppdrag-pool06.webp"
-              }
-            ],
-            "alt": "Isolering utlagd i den schaktade gropen"
-          },
-          {
-            "src": "/photos/uppdrag-pool07.webp",
-            "variants": [
-              {
-                "width": 480,
-                "src": "/photos/uppdrag-pool07-480.webp"
-              },
-              {
-                "width": 800,
-                "src": "/photos/uppdrag-pool07-800.webp"
-              },
-              {
-                "width": 1200,
-                "src": "/photos/uppdrag-pool07-1200.webp"
-              },
-              {
-                "width": 1600,
-                "src": "/photos/uppdrag-pool07.webp"
-              }
-            ],
-            "alt": "Bottenplattan med armering är gjuten"
-          },
-          {
-            "src": "/photos/uppdrag-pool05.webp",
-            "variants": [
-              {
-                "width": 480,
-                "src": "/photos/uppdrag-pool05-480.webp"
-              },
-              {
-                "width": 800,
-                "src": "/photos/uppdrag-pool05-800.webp"
-              },
-              {
-                "width": 1200,
-                "src": "/photos/uppdrag-pool05-1200.webp"
-              },
-              {
-                "width": 1600,
-                "src": "/photos/uppdrag-pool05.webp"
-              }
-            ],
-            "alt": "Betongbilen gjuter poolens väggar"
-          },
-          {
-            "src": "/photos/uppdrag-pool04.webp",
-            "variants": [
-              {
-                "width": 480,
-                "src": "/photos/uppdrag-pool04-480.webp"
-              },
-              {
-                "width": 800,
-                "src": "/photos/uppdrag-pool04-800.webp"
-              },
-              {
-                "width": 1200,
-                "src": "/photos/uppdrag-pool04.webp"
-              }
-            ],
-            "alt": "Stenläggningen runt poolen tar form"
-          },
-          {
-            "src": "/photos/uppdrag-pool09.webp",
-            "variants": [
-              {
-                "width": 480,
-                "src": "/photos/uppdrag-pool09-480.webp"
-              },
-              {
-                "width": 800,
-                "src": "/photos/uppdrag-pool09-800.webp"
-              },
-              {
-                "width": 1200,
-                "src": "/photos/uppdrag-pool09-1200.webp"
-              },
-              {
-                "width": 1600,
-                "src": "/photos/uppdrag-pool09.webp"
-              }
-            ],
-            "alt": "Den färdiga poolen"
-          },
-          {
-            "src": "/photos/uppdrag-pool03.webp",
-            "variants": [
-              {
-                "width": 480,
-                "src": "/photos/uppdrag-pool03-480.webp"
-              },
-              {
-                "width": 800,
-                "src": "/photos/uppdrag-pool03-800.webp"
-              },
-              {
-                "width": 1200,
-                "src": "/photos/uppdrag-pool03-1200.webp"
-              },
-              {
-                "width": 1600,
-                "src": "/photos/uppdrag-pool03.webp"
-              }
-            ],
-            "alt": "Poolen med poolöverbyggnad"
-          }
-        ]
-      },
-      "pool": {
-        "tag": "Poolbygge",
-        "title": "Glasfiberpool i trädgård",
-        "href": "/tjanster/pooler",
-        "image": {
-          "src": "/photos/uppdrag-pool00.webp",
-          "variants": [
-            {
-              "width": 480,
-              "src": "/photos/uppdrag-pool00-480.webp"
-            },
-            {
-              "width": 800,
-              "src": "/photos/uppdrag-pool00-800.webp"
-            },
-            {
-              "width": 1200,
-              "src": "/photos/uppdrag-pool00.webp"
-            }
-          ],
-          "alt": "Färdig glasfiberpool med poolöverbyggnad och stenlagd terrass"
-        },
-        "gallery": [
-          {
-            "src": "/photos/uppdrag-pool02.webp",
-            "variants": [
-              {
-                "width": 480,
-                "src": "/photos/uppdrag-pool02-480.webp"
-              },
-              {
-                "width": 800,
-                "src": "/photos/uppdrag-pool02-800.webp"
-              },
-              {
-                "width": 1200,
-                "src": "/photos/uppdrag-pool02.webp"
-              }
-            ],
-            "alt": "Schaktad grop med makadambädd för poolen"
-          },
-          {
-            "src": "/photos/uppdrag-pool08.webp",
-            "variants": [
-              {
-                "width": 480,
-                "src": "/photos/uppdrag-pool08-480.webp"
-              },
-              {
-                "width": 800,
-                "src": "/photos/uppdrag-pool08-800.webp"
-              },
-              {
-                "width": 1086,
-                "src": "/photos/uppdrag-pool08.webp"
-              }
-            ],
-            "alt": "Poolen lyfts på plats med kranbil"
-          },
-          {
-            "src": "/photos/uppdrag-pool01.webp",
-            "variants": [
-              {
-                "width": 480,
-                "src": "/photos/uppdrag-pool01-480.webp"
-              },
-              {
-                "width": 800,
-                "src": "/photos/uppdrag-pool01-800.webp"
-              },
-              {
-                "width": 1200,
-                "src": "/photos/uppdrag-pool01.webp"
-              }
-            ],
-            "alt": "Glasfiberpoolen står på plats i gropen"
-          },
-          {
-            "src": "/photos/uppdrag-pool00.webp",
-            "variants": [
-              {
-                "width": 480,
-                "src": "/photos/uppdrag-pool00-480.webp"
-              },
-              {
-                "width": 800,
-                "src": "/photos/uppdrag-pool00-800.webp"
-              },
-              {
-                "width": 1200,
-                "src": "/photos/uppdrag-pool00.webp"
-              }
-            ],
-            "alt": "Färdig pool med poolöverbyggnad och stenlagd terrass"
-          }
-        ]
-      },
       "stenlaggning-tradgard": {
         "tag": "Markarbeten",
         "title": "Stenläggning och murar vid pool",
@@ -3213,6 +2970,231 @@
                 "width": 1242
               }
             ]
+          }
+        ]
+      },
+      "poolbygge": {
+        "tag": "Poolbygge",
+        "title": "Poolbygge",
+        "href": "/tjanster/pooler",
+        "image": {
+          "src": "/photos/uppdrag-pool09.webp",
+          "variants": [
+            {
+              "width": 480,
+              "src": "/photos/uppdrag-pool09-480.webp"
+            },
+            {
+              "width": 800,
+              "src": "/photos/uppdrag-pool09-800.webp"
+            },
+            {
+              "width": 1200,
+              "src": "/photos/uppdrag-pool09-1200.webp"
+            },
+            {
+              "width": 1600,
+              "src": "/photos/uppdrag-pool09.webp"
+            }
+          ],
+          "alt": "Färdig betongpool med blått vatten och stenkant i en trädgård"
+        },
+        "gallery": [
+          {
+            "src": "/photos/uppdrag-pool09.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-pool09-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-pool09-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-pool09-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-pool09.webp"
+              }
+            ],
+            "alt": "Den färdiga poolen"
+          },
+          {
+            "src": "/photos/uppdrag-pool06.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-pool06-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-pool06-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-pool06.webp"
+              }
+            ],
+            "alt": "Isolering utlagd i den schaktade gropen"
+          },
+          {
+            "src": "/photos/uppdrag-pool07.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-pool07-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-pool07-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-pool07-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-pool07.webp"
+              }
+            ],
+            "alt": "Bottenplattan med armering är gjuten"
+          },
+          {
+            "src": "/photos/uppdrag-pool05.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-pool05-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-pool05-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-pool05-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-pool05.webp"
+              }
+            ],
+            "alt": "Betongbilen gjuter poolens väggar"
+          },
+          {
+            "src": "/photos/uppdrag-pool04.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-pool04-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-pool04-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-pool04.webp"
+              }
+            ],
+            "alt": "Stenläggningen runt poolen tar form"
+          },
+          {
+            "src": "/photos/uppdrag-pool03.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-pool03-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-pool03-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-pool03-1200.webp"
+              },
+              {
+                "width": 1600,
+                "src": "/photos/uppdrag-pool03.webp"
+              }
+            ],
+            "alt": "Poolen med poolöverbyggnad"
+          },
+          {
+            "src": "/photos/uppdrag-pool02.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-pool02-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-pool02-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-pool02.webp"
+              }
+            ],
+            "alt": "Schaktad grop med makadambädd för poolen"
+          },
+          {
+            "src": "/photos/uppdrag-pool08.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-pool08-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-pool08-800.webp"
+              },
+              {
+                "width": 1086,
+                "src": "/photos/uppdrag-pool08.webp"
+              }
+            ],
+            "alt": "Poolen lyfts på plats med kranbil"
+          },
+          {
+            "src": "/photos/uppdrag-pool01.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-pool01-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-pool01-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-pool01.webp"
+              }
+            ],
+            "alt": "Glasfiberpoolen står på plats i gropen"
+          },
+          {
+            "src": "/photos/uppdrag-pool00.webp",
+            "variants": [
+              {
+                "width": 480,
+                "src": "/photos/uppdrag-pool00-480.webp"
+              },
+              {
+                "width": 800,
+                "src": "/photos/uppdrag-pool00-800.webp"
+              },
+              {
+                "width": 1200,
+                "src": "/photos/uppdrag-pool00.webp"
+              }
+            ],
+            "alt": "Färdig pool med poolöverbyggnad och stenlagd terrass"
           }
         ]
       }

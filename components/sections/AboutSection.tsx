@@ -6,11 +6,11 @@ import { focusStyle, imageProps } from "@/lib/site/images.ts";
 import { key } from "@/lib/site/edit.ts";
 import type { SectionProps } from "./types";
 
-/** About the company on the homepage: heading with a link, introduction and text (with a button under it if there is one) beside a photo. */
+/** About the company on the homepage: heading with a link, introduction and text (with a button under it if there is one), vertically centred beside a photo. */
 export function AboutSection({ section, ctx }: SectionProps<"about">) {
   return (
     <section id={section.anchor || undefined} data-k={ctx.path} className="scroll-mt-20 bg-card">
-      <div className="mx-auto grid max-w-content grid-cols-1 gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16 lg:px-8 lg:py-28">
+      <div className="mx-auto grid max-w-content grid-cols-1 gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-center lg:gap-16 lg:px-8 lg:py-28">
         <Reveal>
           <h2 data-k={key(ctx.path, "heading")} className="text-h2 text-heading lg:text-h2-lg">
             {section.heading}
@@ -39,7 +39,7 @@ export function AboutSection({ section, ctx }: SectionProps<"about">) {
           )}
         </Reveal>
 
-        <Reveal delayMs={120} className="lg:pt-2">
+        <Reveal delayMs={120}>
           <div className="relative aspect-[4/3] overflow-hidden bg-primary/20 lg:aspect-[4/5]">
             <ZoomImage
               {...imageProps(section.image, "(min-width: 1280px) 480px, (min-width: 1024px) 40vw, 100vw")}
