@@ -285,6 +285,8 @@ const aboutSection = z.object({
   link: linkSchema,
   subheading: longText,
   text: longText,
+  /** A button under the text; none: the text ends the column. */
+  button: linkSchema.nullable().default(null),
   image: imageSchema,
 });
 const processStepSchema = z.object({ title: lineText, description: longText, icon: contentIconSchema });

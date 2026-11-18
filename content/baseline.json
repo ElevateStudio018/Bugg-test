@@ -339,7 +339,11 @@
               "anchor": "om-oss",
               "hidden": false,
               "heading": "Om oss",
-              "subheading": "Markmontage BEAB AB har sin bas i Romelanda utanför Kungälv och grundades 2002."
+              "subheading": "Markmontage BEAB AB har sin bas i Romelanda utanför Kungälv och grundades 2002.",
+              "button": {
+                "label": "Kontakta oss",
+                "href": "/#kontakt"
+              }
             },
             "kontakt": {
               "text": "Hör av dig för en kostnadsfri offert, så återkommer vi så snart vi kan.",
@@ -716,10 +720,7 @@
                 "Du är varmt välkommen att kontakta oss!"
               ],
               "subheading": "Markmontage BEAB AB har sin bas i Romelanda utanför Kungälv och grundades 2002.",
-              "button": {
-                "label": "Kontakta oss",
-                "href": "/#kontakt"
-              }
+              "button": null
             },
             "jobba": {
               "tone": "card",

@@ -1,11 +1,12 @@
 import { Reveal } from "../Reveal";
 import { SiteLink } from "../SiteLink";
-import { ArrowLabel, arrowLinkClasses } from "../Button";
+import { ArrowLabel, arrowLinkClasses, buttonClasses } from "../Button";
 import { ZoomImage } from "../ZoomImage";
 import { focusStyle, imageProps } from "@/lib/site/images.ts";
 import { key } from "@/lib/site/edit.ts";
 import type { SectionProps } from "./types";
 
+/** About the company on the homepage: heading with a link, introduction and text (with a button under it if there is one) beside a photo. */
 export function AboutSection({ section, ctx }: SectionProps<"about">) {
   return (
     <section id={section.anchor || undefined} data-k={ctx.path} className="scroll-mt-20 bg-card">
@@ -28,6 +29,13 @@ export function AboutSection({ section, ctx }: SectionProps<"about">) {
             <p data-k={key(ctx.path, "text")} className="mt-4 text-copy text-body">
               {section.text}
             </p>
+          )}
+          {section.button?.label && (
+            <SiteLink href={section.button.href} k={key(ctx.path, "button")} className={buttonClasses("solid", "group/arrow mt-8")}>
+              <span>
+                <ArrowLabel spaced>{section.button.label}</ArrowLabel>
+              </span>
+            </SiteLink>
           )}
         </Reveal>
 

@@ -178,6 +178,7 @@ export const sectionFields: Record<SectionType, FieldSpec[]> = {
     link("link", "Länk under rubriken"),
     { key: "subheading", label: "Ingress", kind: "textarea", recommended: 160 },
     intro("text", "Text", 400),
+    { key: "button", label: "Knapp under texten", kind: "optionalLink" },
     { key: "image", label: "Bild", kind: "image", imageUsage: "portrait" },
   ],
   process: [
