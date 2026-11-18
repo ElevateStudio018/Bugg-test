@@ -724,7 +724,7 @@
               "label": "",
               "anchor": "jobba",
               "button": {
-                "href": "mailto:info@markmontage.se?subject=Intresseanm%C3%A4lan",
+                "href": "#intresseanmalan",
                 "label": "Skicka en intresseanmälan"
               },
               "hidden": false,
@@ -1076,24 +1076,6 @@
                       ]
                     },
                     "caption": "Lyft av väggpaneler med vakuumlyft"
-                  },
-                  "minigravare-slap": {
-                    "image": {
-                      "alt": "Gul minigrävare på släpvagn",
-                      "src": "/photos/markmontage-minigravare-slap.webp",
-                      "focus": "50% 50%",
-                      "variants": [
-                        {
-                          "src": "/photos/markmontage-minigravare-slap-480.webp",
-                          "width": 480
-                        },
-                        {
-                          "src": "/photos/markmontage-minigravare-slap.webp",
-                          "width": 720
-                        }
-                      ]
-                    },
-                    "caption": "Minigrävare på släp"
                   }
                 },
                 "order": [
@@ -1105,8 +1087,7 @@
                   "stolpe",
                   "grip",
                   "korg",
-                  "betong",
-                  "minigravare-slap"
+                  "betong"
                 ]
               },
               "heading": "Fler bilder från våra jobb"
@@ -1709,9 +1690,7 @@
       "vagar",
       "marksten",
       "fiber-sjo",
-      "kranlyft",
-      "maskintransport",
-      "bod"
+      "kranlyft"
     ],
     "items": {
       "betongpool": {
@@ -2787,7 +2766,7 @@
       },
       "kranlyft": {
         "tag": "Transporter",
-        "title": "Transporter och kranlyft",
+        "title": "Lyft och transport",
         "href": "/tjanster/transporter-kranbil",
         "image": {
           "src": "/photos/uppdrag-transport01.webp",
@@ -3193,28 +3172,7 @@
               }
             ],
             "alt": "Kranbilar i arbete på kvällen"
-          }
-        ]
-      },
-      "maskintransport": {
-        "tag": "Transporter",
-        "href": "/tjanster/transporter-kranbil",
-        "image": {
-          "alt": "Kranlastbil med en grävmaskin på flaket",
-          "src": "/photos/markmontage-kranbil-gravmaskin.webp",
-          "variants": [
-            {
-              "src": "/photos/markmontage-kranbil-gravmaskin-480.webp",
-              "width": 480
-            },
-            {
-              "src": "/photos/markmontage-kranbil-gravmaskin.webp",
-              "width": 720
-            }
-          ]
-        },
-        "title": "Transport av grävmaskin",
-        "gallery": [
+          },
           {
             "alt": "Kranbil lyfter en grävmaskin",
             "src": "/photos/markmontage-kranbil-gravmaskin.webp",
@@ -3229,50 +3187,6 @@
               }
             ]
           },
-          {
-            "alt": "Minigrävare på släp",
-            "src": "/photos/markmontage-minigravare-slap.webp",
-            "variants": [
-              {
-                "src": "/photos/markmontage-minigravare-slap-480.webp",
-                "width": 480
-              },
-              {
-                "src": "/photos/markmontage-minigravare-slap.webp",
-                "width": 720
-              }
-            ]
-          }
-        ]
-      },
-      "bod": {
-        "tag": "Transporter",
-        "href": "/tjanster/transporter-kranbil",
-        "image": {
-          "alt": "Kranbil lyfter en blå byggbod",
-          "src": "/photos/markmontage-kranbil-bod.webp",
-          "focus": "40% 45%",
-          "variants": [
-            {
-              "src": "/photos/markmontage-kranbil-bod-480.webp",
-              "width": 480
-            },
-            {
-              "src": "/photos/markmontage-kranbil-bod-800.webp",
-              "width": 800
-            },
-            {
-              "src": "/photos/markmontage-kranbil-bod-1200.webp",
-              "width": 1200
-            },
-            {
-              "src": "/photos/markmontage-kranbil-bod.webp",
-              "width": 1242
-            }
-          ]
-        },
-        "title": "Lyft av byggbod",
-        "gallery": [
           {
             "alt": "Kranbil lyfter en byggbod",
             "src": "/photos/markmontage-kranbil-bod.webp",

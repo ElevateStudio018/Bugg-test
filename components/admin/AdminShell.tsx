@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
-import { ExternalLink, Images, Inbox, LayoutDashboard, Lightbulb, LogOut, Menu, PanelsTopLeft, Settings, Star, Users, X, type LucideIcon } from "lucide-react";
+import { BriefcaseBusiness, ExternalLink, Images, Inbox, LayoutDashboard, Lightbulb, LogOut, Menu, PanelsTopLeft, Settings, Star, Users, X, type LucideIcon } from "lucide-react";
 import { Wordmark } from "@/components/Wordmark";
 import { StatusBar } from "./StatusBar";
 import { ConflictBanner } from "./ConflictBanner";
@@ -24,17 +24,19 @@ const nav: NavItem[] = [
   { href: "/admin/recensioner", label: "Recensioner", icon: Star },
   { href: "/admin/offertforfragningar", label: "Offertförfrågningar", icon: Inbox },
   { href: "/admin/forbattringsforslag", label: "Förbättringsförslag", icon: Lightbulb },
+  { href: "/admin/intresseanmalningar", label: "Intresseanmälningar", icon: BriefcaseBusiness },
   { href: "/admin/personal", label: "Personal", icon: Users },
   { href: "/admin/installningar", label: "Inställningar", icon: Settings },
 ];
 
 function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname().replace(/\/$/, "");
-  const { newQuotes, newSuggestions } = useAdminData();
+  const { newQuotes, newSuggestions, newApplications } = useAdminData();
   // What is waiting behind a page: new quote requests, and new improvement suggestions from the staff.
   const counts: Record<string, { count: number; label: string }> = {
     "/admin/offertforfragningar": { count: newQuotes, label: `${newQuotes} nya` },
     "/admin/forbattringsforslag": { count: newSuggestions, label: newSuggestions === 1 ? "1 nytt förslag" : `${newSuggestions} nya förslag` },
+    "/admin/intresseanmalningar": { count: newApplications, label: newApplications === 1 ? "1 ny anmälan" : `${newApplications} nya anmälningar` },
   };
   return (
     <ul className="space-y-0.5">

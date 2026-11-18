@@ -21,6 +21,8 @@ export const config = {
   adminUrl: () => env("ADMIN_URL", `${env("SITE_URL", "https://elevatestudio018.github.io/Bugg-test")}/admin`),
   /** Elevate Studio, who approve resets and receive the staff's improvement suggestions, and quote requests until launch. */
   agencyEmail: () => env("AGENCY_EMAIL", "elevate.studio018@gmail.com"),
+  /** The company's inbox, which receives the interest in working there (Jobba hos oss). */
+  applicationEmail: () => env("APPLICATION_EMAIL", "info@markmontage.se"),
   /** A secret for one purpose: its own setting when there is one, otherwise derived from the service role key, so a new
    * project needs no extra random strings made up for it. */
   secret: (name: string, purpose: string) => optionalEnv(name) ?? `${purpose}:${env("SUPABASE_SERVICE_ROLE_KEY")}`,

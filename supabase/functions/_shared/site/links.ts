@@ -9,6 +9,14 @@ export function isQuoteHref(href: string): boolean {
   return href === QUOTE_HREF;
 }
 
+/** The href that opens the form for interest in working at the company ("Jobba hos oss"). */
+export const APPLICATION_HREF = "#intresseanmalan";
+
+/** Links that open the application form rather than going anywhere. */
+export function isApplicationHref(href: string): boolean {
+  return href === APPLICATION_HREF;
+}
+
 /** Addresses outside the site, which open in a new tab. */
 export function isExternalHref(href: string): boolean {
   return /^https?:\/\//.test(href);

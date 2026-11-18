@@ -437,3 +437,6 @@ verify_jwt = false
 
 [functions.submit-suggestion]
 verify_jwt = false
+
+[functions.submit-application]
+verify_jwt = false

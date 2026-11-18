@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Navbar } from "../Navbar";
 import { Footer } from "../Footer";
 import { QuoteModal } from "../QuoteModal";
+import { ApplicationModal } from "../ApplicationForm";
 import { ConfirmationToast } from "../ConfirmationToast";
 import { QuoteModalProvider } from "@/contexts/QuoteModalContext";
 import { themeCss } from "@/lib/site/theme.ts";
@@ -13,7 +14,7 @@ import { quoteFormContent } from "./quoteFormContent";
 import { MaintenanceView } from "./MaintenanceView";
 import { CookieConsent } from "../CookieConsent";
 
-/** Everything around a public page: the theme, the header and menu, the footer and the quote window. */
+/** Everything around a public page: the theme, the header and menu, the footer, the quote window and the application window. */
 export function SiteShell({ site, children }: { site: SiteData; children: ReactNode }) {
   // While the owner has the site in maintenance mode, every address shows the same short notice.
   if (site.settings.maintenance.enabled) {
@@ -42,6 +43,7 @@ export function SiteShell({ site, children }: { site: SiteData; children: ReactN
         </main>
         <Footer site={site} />
         <QuoteModal content={quoteFormContent(site)} closeLabel={site.ui.closeLabel} />
+        <ApplicationModal closeLabel={site.ui.closeLabel} />
         <ConfirmationToast message={site.form.confirmation} />
       </QuoteModalProvider>
       {/* Statistics only with the visitor's consent, and only when the owner has connected Google Analytics. */}

@@ -5,6 +5,7 @@ import { DraftStore, type DraftState } from "@/lib/admin/draftStore";
 import { supabase } from "@/lib/admin/supabase";
 import { applyPrime } from "@/lib/admin/prime";
 import { countNewSuggestions } from "@/lib/admin/suggestions";
+import { countNewApplications } from "@/lib/admin/applications";
 
 export interface PendingReset {
   id: string;
@@ -20,6 +21,9 @@ interface AdminData {
   /** The staff's improvement suggestions not yet seen (Förbättringsförslag). */
   newSuggestions: number;
   refreshSuggestions: () => Promise<void>;
+  /** Interest in working at the company not yet seen (Intresseanmälningar). */
+  newApplications: number;
+  refreshApplications: () => Promise<void>;
   /** A "Rensa alla ändringar" request waiting for Elevate Studio, if any. */
   pendingReset: PendingReset | null;
   refreshReset: () => Promise<void>;
@@ -34,6 +38,7 @@ export function AdminDataProvider({ children }: { children: ReactNode }) {
   const store = storeRef.current;
   const [newQuotes, setNewQuotes] = useState(0);
   const [newSuggestions, setNewSuggestions] = useState(0);
+  const [newApplications, setNewApplications] = useState(0);
   const [pendingReset, setPendingReset] = useState<PendingReset | null>(null);
 
   const refreshReset = useCallback(async () => {
@@ -55,26 +60,33 @@ export function AdminDataProvider({ children }: { children: ReactNode }) {
     setNewSuggestions(await countNewSuggestions());
   }, []);
 
+  const refreshApplications = useCallback(async () => {
+    setNewApplications(await countNewApplications());
+  }, []);
+
   useEffect(() => {
     void store.start();
     void refreshQuotes();
     void refreshSuggestions();
+    void refreshApplications();
     void refreshReset();
     const channel = supabase()
       .channel("admin-inbox")
       .on("postgres_changes", { event: "*", schema: "public", table: "quote_requests" }, () => void refreshQuotes())
       .on("postgres_changes", { event: "*", schema: "public", table: "site_suggestions" }, () => void refreshSuggestions())
+      .on("postgres_changes", { event: "*", schema: "public", table: "job_applications" }, () => void refreshApplications())
       .subscribe();
     // Without Realtime, a gentle poll keeps the counters fresh.
     const poll = setInterval(() => {
       void refreshQuotes();
       void refreshSuggestions();
+      void refreshApplications();
     }, 60_000);
     return () => {
       clearInterval(poll);
       void supabase().removeChannel(channel);
     };
-  }, [store, refreshQuotes, refreshSuggestions, refreshReset]);
+  }, [store, refreshQuotes, refreshSuggestions, refreshApplications, refreshReset]);
 
   // The prime colour follows the saved setting.
   const adminPrime = useSyncExternalStore(store.subscribe, () => store.getState().adminColors.primary, () => undefined);
@@ -84,8 +96,8 @@ export function AdminDataProvider({ children }: { children: ReactNode }) {
   }, [adminPrime]);
 
   const value = useMemo(
-    () => ({ store, newQuotes, refreshQuotes, newSuggestions, refreshSuggestions, pendingReset, refreshReset }),
-    [store, newQuotes, refreshQuotes, newSuggestions, refreshSuggestions, pendingReset, refreshReset]
+    () => ({ store, newQuotes, refreshQuotes, newSuggestions, refreshSuggestions, newApplications, refreshApplications, pendingReset, refreshReset }),
+    [store, newQuotes, refreshQuotes, newSuggestions, refreshSuggestions, newApplications, refreshApplications, pendingReset, refreshReset]
   );
   return <AdminDataContext.Provider value={value}>{children}</AdminDataContext.Provider>;
 }
