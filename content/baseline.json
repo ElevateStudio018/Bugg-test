@@ -810,11 +810,190 @@
               "anchor": "kranbilar",
               "hidden": false,
               "heading": "Våra kranbilar"
+            },
+            "bildrad": {
+              "type": "gallery",
+              "anchor": "",
+              "hidden": false,
+              "label": "Bilder under texten",
+              "heading": "",
+              "text": "",
+              "images": {
+                "order": [
+                  "teamet-konferens",
+                  "gravmaskin",
+                  "fordon",
+                  "arbete",
+                  "kranlyft",
+                  "fasad"
+                ],
+                "items": {
+                  "teamet-konferens": {
+                    "image": {
+                      "alt": "Medarbetare samlade på en konferens",
+                      "src": "/photos/markmontage-konferens.webp",
+                      "variants": [
+                        {
+                          "src": "/photos/markmontage-konferens-480.webp",
+                          "width": 480
+                        },
+                        {
+                          "src": "/photos/markmontage-konferens-800.webp",
+                          "width": 800
+                        },
+                        {
+                          "src": "/photos/markmontage-konferens.webp",
+                          "width": 960
+                        }
+                      ]
+                    },
+                    "caption": ""
+                  },
+                  "gravmaskin": {
+                    "image": {
+                      "alt": "Grävmaskin och medarbetare vid rörarbete",
+                      "src": "/photos/markmontage-gravmaskin-ror.webp",
+                      "variants": [
+                        {
+                          "src": "/photos/markmontage-gravmaskin-ror-480.webp",
+                          "width": 480
+                        },
+                        {
+                          "src": "/photos/markmontage-gravmaskin-ror-800.webp",
+                          "width": 800
+                        },
+                        {
+                          "src": "/photos/markmontage-gravmaskin-ror-1200.webp",
+                          "width": 1200
+                        },
+                        {
+                          "src": "/photos/markmontage-gravmaskin-ror.webp",
+                          "width": 1500
+                        }
+                      ]
+                    },
+                    "caption": ""
+                  },
+                  "fordon": {
+                    "image": {
+                      "alt": "Markmontages kranbilar och lastbilar på rad",
+                      "src": "/photos/markmontage-fordonsparken.webp",
+                      "variants": [
+                        {
+                          "src": "/photos/markmontage-fordonsparken-480.webp",
+                          "width": 480
+                        },
+                        {
+                          "src": "/photos/markmontage-fordonsparken-800.webp",
+                          "width": 800
+                        },
+                        {
+                          "src": "/photos/markmontage-fordonsparken-1200.webp",
+                          "width": 1200
+                        },
+                        {
+                          "src": "/photos/markmontage-fordonsparken-1600.webp",
+                          "width": 1600
+                        },
+                        {
+                          "src": "/photos/markmontage-fordonsparken.webp",
+                          "width": 2016
+                        }
+                      ]
+                    },
+                    "caption": ""
+                  },
+                  "arbete": {
+                    "image": {
+                      "alt": "Medarbetare vid en avspärrad brunn",
+                      "src": "/photos/markmontage-arbete.webp",
+                      "variants": [
+                        {
+                          "src": "/photos/markmontage-arbete-480.webp",
+                          "width": 480
+                        },
+                        {
+                          "src": "/photos/markmontage-arbete-800.webp",
+                          "width": 800
+                        },
+                        {
+                          "src": "/photos/markmontage-arbete-1200.webp",
+                          "width": 1200
+                        },
+                        {
+                          "src": "/photos/markmontage-arbete-1600.webp",
+                          "width": 1600
+                        },
+                        {
+                          "src": "/photos/markmontage-arbete.webp",
+                          "width": 1745
+                        }
+                      ]
+                    },
+                    "caption": ""
+                  },
+                  "kranlyft": {
+                    "image": {
+                      "alt": "Kranbil som lyfter på en byggarbetsplats",
+                      "src": "/photos/markmontage-kran-flagga.webp",
+                      "variants": [
+                        {
+                          "src": "/photos/markmontage-kran-flagga-480.webp",
+                          "width": 480
+                        },
+                        {
+                          "src": "/photos/markmontage-kran-flagga-800.webp",
+                          "width": 800
+                        },
+                        {
+                          "src": "/photos/markmontage-kran-flagga-1200.webp",
+                          "width": 1200
+                        },
+                        {
+                          "src": "/photos/markmontage-kran-flagga-1600.webp",
+                          "width": 1600
+                        },
+                        {
+                          "src": "/photos/markmontage-kran-flagga.webp",
+                          "width": 1800
+                        }
+                      ]
+                    },
+                    "caption": ""
+                  },
+                  "fasad": {
+                    "image": {
+                      "alt": "Kranbil med personkorg vid en fasad",
+                      "src": "/photos/markmontage-kranbil-fasad.webp",
+                      "variants": [
+                        {
+                          "src": "/photos/markmontage-kranbil-fasad-480.webp",
+                          "width": 480
+                        },
+                        {
+                          "src": "/photos/markmontage-kranbil-fasad-800.webp",
+                          "width": 800
+                        },
+                        {
+                          "src": "/photos/markmontage-kranbil-fasad-1200.webp",
+                          "width": 1200
+                        },
+                        {
+                          "src": "/photos/markmontage-kranbil-fasad.webp",
+                          "width": 1512
+                        }
+                      ]
+                    },
+                    "caption": ""
+                  }
+                }
+              }
             }
           },
           "order": [
             "bild",
             "intro",
+            "bildrad",
             "kontakt",
             "kranbilar",
             "grunden",
