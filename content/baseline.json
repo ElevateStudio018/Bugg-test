@@ -167,6 +167,10 @@
                   },
                   {
                     "width": 2400,
+                    "src": "/photos/markmontage-bil-solnedgang-2400.webp"
+                  },
+                  {
+                    "width": 3200,
                     "src": "/photos/markmontage-bil-solnedgang.webp"
                   }
                 ],
@@ -1058,6 +1062,10 @@
                         },
                         {
                           "width": 2400,
+                          "src": "/photos/markmontage-bil-solnedgang-2400.webp"
+                        },
+                        {
+                          "width": 3200,
                           "src": "/photos/markmontage-bil-solnedgang.webp"
                         }
                       ]
