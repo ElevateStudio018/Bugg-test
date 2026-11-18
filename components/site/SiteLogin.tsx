@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { buttonClasses } from "../Button";
 import { Icon } from "../Icon";
@@ -121,7 +121,7 @@ export function SiteLogin({ area, staff }: { area: "admin" | "staff"; staff?: St
   }
 
   if (state === "signed-in" && staff) {
-    return <StaffPage name={name} staff={staff} onSignOut={() => void signOut()} />;
+    return <StaffPage name={name} staff={staff} client={client.current} onSignOut={() => void signOut()} />;
   }
 
   return (
@@ -185,8 +185,143 @@ export function SiteLogin({ area, staff }: { area: "admin" | "staff"; staff?: St
   );
 }
 
-/** What the staff see when signed in: a suggestion box, the company's documents and who to call. */
-function StaffPage({ name, staff, onSignOut }: { name: string; staff: StaffContent; onSignOut: () => void }) {
+interface Suggestion {
+  id: string;
+  name: string;
+  area: string;
+  message: string;
+  status: "new" | "read" | "done";
+  created_at: string;
+}
+
+const statusLabels: Record<Suggestion["status"], string> = { new: "Nytt", read: "Läst", done: "Genomfört" };
+const statusClasses: Record<Suggestion["status"], string> = {
+  new: "bg-primary text-on-primary",
+  read: "bg-page text-heading ring-1 ring-inset ring-line/20",
+  done: "bg-success/15 text-success",
+};
+const filters = [
+  { id: "all", label: "Alla" },
+  { id: "new", label: "Nya" },
+  { id: "read", label: "Lästa" },
+  { id: "done", label: "Genomförda" },
+] as const;
+
+/** Every suggestion that has come in, newest first: who sent it, what it is about, when, how far it has come and the text. */
+function SuggestionList({ client, version }: { client: SupabaseClient | null; version: number }) {
+  const [items, setItems] = useState<Suggestion[] | null>(null);
+  const [failed, setFailed] = useState(false);
+  const [filter, setFilter] = useState<(typeof filters)[number]["id"]>("all");
+  const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    if (!client) return;
+    let cancelled = false;
+    void (async () => {
+      const { data, error } = await client
+        .from("site_suggestions")
+        .select("id, name, area, message, status, created_at")
+        .order("created_at", { ascending: false })
+        .limit(300);
+      if (cancelled) return;
+      setFailed(Boolean(error));
+      setItems((data as Suggestion[] | null) ?? []);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [client, version]);
+
+  const shown = useMemo(() => {
+    const words = query.trim().toLowerCase();
+    return (items ?? []).filter(
+      (item) => (filter === "all" || item.status === filter) && (!words || `${item.name} ${item.area} ${item.message}`.toLowerCase().includes(words)),
+    );
+  }, [items, filter, query]);
+
+  if (items === null && !failed) {
+    return (
+      <p role="status" className="mt-6 flex items-center gap-3 text-copy text-body">
+        <Icon name="Loader2" className="h-5 w-5 animate-spin" /> Hämtar förslagen…
+      </p>
+    );
+  }
+  if (failed) return <p className="mt-6 text-copy text-error">Förslagen kunde inte hämtas. Ladda om sidan och försök igen.</p>;
+
+  const counts = { all: items!.length, new: 0, read: 0, done: 0 };
+  for (const item of items!) counts[item.status]++;
+  const dateFormat = new Intl.DateTimeFormat("sv-SE", { day: "numeric", month: "short", year: "numeric" });
+
+  return (
+    <div className="mt-6">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div role="group" aria-label="Visa" className="flex flex-wrap gap-2">
+          {filters.map((option) => (
+            <button
+              key={option.id}
+              type="button"
+              aria-pressed={filter === option.id}
+              onClick={() => setFilter(option.id)}
+              className={`min-h-10 rounded-full px-4 text-small font-semibold transition-colors ${
+                filter === option.id ? "bg-primary text-on-primary" : "bg-card text-heading hover:bg-primary/10"
+              }`}
+            >
+              {option.label} <span className="opacity-70">{counts[option.id]}</span>
+            </button>
+          ))}
+        </div>
+        <label className="relative block sm:w-72">
+          <span className="sr-only">Sök bland förslagen</span>
+          <Icon name="Search" className="pointer-events-none absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-muted" />
+          <input
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Sök namn, ämne eller text"
+            className="w-full border border-line/15 bg-field py-2.5 pl-11 pr-3 text-copy text-heading placeholder:text-muted focus:border-accent focus:outline focus:outline-2 focus:outline-accent/25"
+          />
+        </label>
+      </div>
+
+      {items!.length === 0 ? (
+        <p className="mt-6 bg-card px-5 py-6 text-copy text-body">Inga förslag har kommit in än. Bli den första!</p>
+      ) : shown.length === 0 ? (
+        <p className="mt-6 bg-card px-5 py-6 text-copy text-body">Inga förslag matchar.</p>
+      ) : (
+        <ul className="mt-5 space-y-3">
+          {shown.map((item) => (
+            <li key={item.id} className="bg-card p-5 sm:p-6">
+              <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+                <div className="flex min-w-0 items-center gap-3">
+                  <span
+                    aria-hidden="true"
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-copy font-semibold text-on-primary"
+                  >
+                    {item.name.trim().charAt(0).toUpperCase()}
+                  </span>
+                  <div className="min-w-0">
+                    <p className="truncate text-copy font-semibold text-heading">{item.name}</p>
+                    <p className="text-small text-muted">
+                      <time dateTime={item.created_at}>{dateFormat.format(new Date(item.created_at))}</time>
+                      {item.area && <> · {item.area}</>}
+                    </p>
+                  </div>
+                </div>
+                <span className={`rounded-full px-3 py-1 text-small font-semibold ${statusClasses[item.status]}`}>{statusLabels[item.status]}</span>
+              </div>
+              <p className="mt-4 whitespace-pre-line break-words text-copy leading-relaxed text-body">{item.message}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+/** What the staff see when signed in: a suggestion box with all suggestions so far, the company's documents and who to call. */
+function StaffPage({ name, staff, client, onSignOut }: { name: string; staff: StaffContent; client: SupabaseClient | null; onSignOut: () => void }) {
+  // Counts sent suggestions, so the list below fetches again and shows the new one.
+  const [sent, setSent] = useState(0);
   return (
     <div className="space-y-10">
       <div className="flex flex-wrap items-center justify-between gap-4">
@@ -204,8 +339,18 @@ function StaffPage({ name, staff, onSignOut }: { name: string; staff: StaffConte
           Har du en idé om hur vi kan bli bättre? Skriv ditt namn, vad det gäller och ditt förslag.
         </p>
         <div className="mt-6 max-w-2xl">
-          <SuggestionForm />
+          <SuggestionForm onSent={() => setSent((count) => count + 1)} />
         </div>
+      </section>
+
+      <section aria-labelledby="personal-inkomna">
+        <h2 id="personal-inkomna" className="text-h2 text-heading">
+          Inkomna förslag
+        </h2>
+        <p className="mt-3 max-w-2xl text-copy text-body">
+          Alla förslag som har skickats in, nyast först, och hur långt ledningen har kommit med dem.
+        </p>
+        <SuggestionList client={client} version={sent} />
       </section>
 
       {staff.documents.length > 0 && (

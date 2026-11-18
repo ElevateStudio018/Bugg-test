@@ -47,6 +47,7 @@ import {
   X,
   Zap,
   type LucideProps,
+  Search,
 } from "lucide-react";
 import type { ContentIcon } from "@/lib/site/schema.ts";
 
@@ -93,6 +94,7 @@ const iconMap = {
   X,
   Images,
   Lock,
+  Search,
   User,
   MessageSquare,
   Loader2,

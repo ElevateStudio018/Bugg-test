@@ -12,7 +12,7 @@ const fieldClass =
 const labelClass = "mb-2 block text-small font-semibold text-heading";
 
 /** Name, subject and the suggestion; sent to the admin, or by e-mail while the site has no backend. */
-export function SuggestionForm() {
+export function SuggestionForm({ onSent }: { onSent?: () => void } = {}) {
   const id = useId();
   const [name, setName] = useState("");
   const [subject, setSubject] = useState("");
@@ -79,6 +79,7 @@ export function SuggestionForm() {
       setSubject("");
       setMessage("");
       setState("sent");
+      onSent?.();
     } catch (error) {
       setFailure(error instanceof Error && /[åäö]/i.test(error.message) ? error.message : "Förslaget kunde inte skickas. Försök igen om en stund.");
       setState("failed");
