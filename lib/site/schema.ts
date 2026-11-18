@@ -325,6 +325,8 @@ const aboutIntroSection = z.object({
   heading: lineText,
   subheading: longText,
   paragraphs: z.array(longText).max(20),
+  /** A button under the text; none: the text ends the column. */
+  button: linkSchema.nullable().default(null),
   factsTitle: lineText,
   facts: collectionSchema(factSchema, 12),
 });

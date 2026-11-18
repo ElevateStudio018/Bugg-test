@@ -1,10 +1,12 @@
 import { Breadcrumbs } from "../Breadcrumbs";
 import { FaktaBox } from "../FaktaBox";
+import { SiteLink } from "../SiteLink";
+import { ArrowLabel, buttonClasses } from "../Button";
 import { list } from "@/lib/site/collection.ts";
 import { key } from "@/lib/site/edit.ts";
 import type { SectionProps } from "./types";
 
-/** The opening of the about page: heading, introduction and the company's facts beside it. */
+/** The opening of the about page: heading, introduction (with a button under it if there is one) and the company's facts beside it. */
 export function AboutIntroSection({ section, ctx }: SectionProps<"aboutIntro">) {
   const { breadcrumbs } = ctx;
   const Heading = breadcrumbs ? "h1" : "h2";
@@ -36,6 +38,15 @@ export function AboutIntroSection({ section, ctx }: SectionProps<"aboutIntro">) 
               </p>
             ))}
           </div>
+          {section.button?.label && (
+            <div className="animate-rise [animation-delay:500ms]">
+              <SiteLink href={section.button.href} k={key(ctx.path, "button")} className={buttonClasses("solid", "group/arrow mt-8")}>
+                <span>
+                  <ArrowLabel spaced>{section.button.label}</ArrowLabel>
+                </span>
+              </SiteLink>
+            </div>
+          )}
         </article>
 
         {facts.length > 0 && (

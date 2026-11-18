@@ -248,6 +248,7 @@ export const sectionFields: Record<SectionType, FieldSpec[]> = {
     heading(),
     { key: "subheading", label: "Ingress", kind: "textarea", recommended: 160 },
     { key: "paragraphs", label: "Text", kind: "paragraphs", hint: "Tom rad mellan stycken." },
+    { key: "button", label: "Knapp under texten", kind: "optionalLink" },
     { key: "factsTitle", label: "Faktarutans rubrik", kind: "text" },
     {
       key: "facts",
