@@ -42,10 +42,10 @@ Deno.serve(
       throw new UserError(429, "rate_limited", "Du har skickat flera förfrågningar på kort tid. Ring oss gärna istället.");
     }
 
-    // Until launch the requests go to Elevate Studio; at launch QUOTE_NOTIFY_EMAIL is set to the company's address.
+    // The company's inbox gets every request; QUOTE_NOTIFY_EMAIL can send them elsewhere.
     const { data: snapshot } = await service.from("site_snapshot").select("data").eq("id", 1).single();
     const site = snapshot?.data;
-    const to = optionalEnv("QUOTE_NOTIFY_EMAIL") ?? config.agencyEmail();
+    const to = optionalEnv("QUOTE_NOTIFY_EMAIL") ?? config.companyEmail();
     if (to) {
       await sendMail({
         to,

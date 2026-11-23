@@ -782,18 +782,10 @@
                     "email": "jens@markmontage.se",
                     "image": null,
                     "phone": "070-434 40 56"
-                  },
-                  "alice": {
-                    "name": "Alice",
-                    "role": "",
-                    "email": "alice@markmontage.se",
-                    "image": null,
-                    "phone": ""
                   }
                 },
                 "order": [
-                  "jens",
-                  "alice"
+                  "jens"
                 ]
               }
             },

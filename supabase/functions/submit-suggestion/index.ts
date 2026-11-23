@@ -1,5 +1,5 @@
 // The staff's improvement suggestions (/forslag): checks what was sent, stores it for the admin (Förbättringsförslag)
-// and e-mails Elevate Studio.
+// and e-mails the company.
 import { z } from "zod";
 import { clientIp, handle, json, readJson, UserError } from "../_shared/http.ts";
 import { serviceClient } from "../_shared/supabase.ts";
@@ -38,9 +38,9 @@ Deno.serve(
       throw new UserError(429, "rate_limited", "Du har skickat många förslag på kort tid. Vänta en stund och försök igen.");
     }
 
-    // Elevate Studio, who looks after the website, gets them by e-mail; the customer sees them in the admin.
+    // The company's inbox gets them by e-mail, and they show in the admin.
     await sendMail({
-      to: config.agencyEmail(),
+      to: config.companyEmail(),
       subject: `Förbättringsförslag från ${form.name}: ${form.area}`,
       blocks: [
         block.heading("Nytt förbättringsförslag"),
