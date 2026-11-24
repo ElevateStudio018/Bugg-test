@@ -4,20 +4,20 @@ DirectoryIndex index.html
 ErrorDocument 404 /404.html
 Options -Indexes
 
-# One address for the whole site: https://www.markmontagebeab.se, the same as the canonical links and the sitemap.
+# One address for the whole site: https://www.markmontage.se, the same as the canonical links and the sitemap.
 # Only the real domain is redirected, so a preview or test address at Inleed is left alone.
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # markmontagebeab.se, over http or https → https://www.markmontagebeab.se
-  RewriteCond %{HTTP_HOST} ^markmontagebeab\.se$ [NC]
-  RewriteRule ^ https://www.markmontagebeab.se%{REQUEST_URI} [R=301,L]
+  # markmontage.se, over http or https → https://www.markmontage.se
+  RewriteCond %{HTTP_HOST} ^markmontage\.se$ [NC]
+  RewriteRule ^ https://www.markmontage.se%{REQUEST_URI} [R=301,L]
 
-  # http://www.markmontagebeab.se → https. X-Forwarded-Proto keeps it from looping behind a proxy that ends HTTPS.
-  RewriteCond %{HTTP_HOST} ^www\.markmontagebeab\.se$ [NC]
+  # http://www.markmontage.se → https. X-Forwarded-Proto keeps it from looping behind a proxy that ends HTTPS.
+  RewriteCond %{HTTP_HOST} ^www\.markmontage\.se$ [NC]
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !https
-  RewriteRule ^ https://www.markmontagebeab.se%{REQUEST_URI} [R=301,L]
+  RewriteRule ^ https://www.markmontage.se%{REQUEST_URI} [R=301,L]
 
   # The certificates moved to the Hållbarhet page.
   RewriteRule ^certifikat/?$ /hallbarhet/ [R=301,L]
