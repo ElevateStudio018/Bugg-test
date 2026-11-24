@@ -36,10 +36,23 @@ export function ServicePageView({ site, service }: { site: SiteData; service: Se
           areaServed: company.serviceArea,
           provider: {
             "@type": "HomeAndConstructionBusiness",
+            "@id": `${site.settings.siteUrl}/#business`,
             name: company.legalName,
             ...(company.phone ? { telephone: toE164(company.phone) } : {}),
             ...(company.email ? { email: company.email } : {}),
           },
+        }}
+      />
+
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: ui.breadcrumbHome, item: `${site.settings.siteUrl}/` },
+            { "@type": "ListItem", position: 2, name: texts.breadcrumbLabel, item: `${site.settings.siteUrl}${texts.breadcrumbHref}` },
+            { "@type": "ListItem", position: 3, name: service.name, item: `${site.settings.siteUrl}/tjanster/${service.slug}/` },
+          ],
         }}
       />
 

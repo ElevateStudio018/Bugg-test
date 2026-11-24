@@ -8,6 +8,7 @@ import "./globals.css";
 import { getSite } from "@/lib/site/data.ts";
 import { homePage } from "@/lib/site/pages.ts";
 import { withBasePath } from "@/lib/site/images.ts";
+import { shareImagePath, shareImages } from "@/lib/site/seo.ts";
 
 export function generateMetadata(): Metadata {
   const site = getSite();
@@ -23,6 +24,13 @@ export function generateMetadata(): Metadata {
       siteName: site.settings.siteName,
       locale: "sv_SE",
       type: "website",
+      images: shareImages(site),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seo.title,
+      description: seo.description,
+      images: [shareImagePath(site)],
     },
     alternates: { canonical: "/" },
     icons: { icon: withBasePath(site.settings.favicon.src), apple: withBasePath("/apple-touch-icon.png") },

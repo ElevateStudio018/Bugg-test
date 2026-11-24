@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ServicePageView } from "@/components/site/ServicePageView";
 import { getSite } from "@/lib/site/data.ts";
 import { list } from "@/lib/site/collection.ts";
+import { shareImages } from "@/lib/site/seo.ts";
 import type { SiteData } from "@/lib/site/schema.ts";
 
 export const dynamicParams = false;
@@ -24,12 +25,15 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title,
     description,
-    alternates: { canonical: `/tjanster/${service.slug}` },
+    alternates: { canonical: `/tjanster/${service.slug}/` },
     openGraph: {
       title: `${title} | ${site.settings.siteName}`,
       description,
-      url: `${site.settings.siteUrl}/tjanster/${service.slug}`,
+      url: `${site.settings.siteUrl}/tjanster/${service.slug}/`,
+      siteName: site.settings.siteName,
+      locale: "sv_SE",
       type: "website",
+      images: shareImages(site),
     },
   };
 }
