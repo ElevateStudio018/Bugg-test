@@ -6,4 +6,4 @@ Disallow: /omdomen-forslag/
 Disallow: /personal/
 Disallow: /logga-in/
 
-Sitemap: https://www.markmontagebeab.se/sitemap.xml
+Sitemap: https://www.markmontage.se/sitemap.xml
