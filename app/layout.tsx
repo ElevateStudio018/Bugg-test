@@ -33,7 +33,13 @@ export function generateMetadata(): Metadata {
       images: [shareImagePath(site)],
     },
     alternates: { canonical: "/" },
-    icons: { icon: withBasePath(site.settings.favicon.src), apple: withBasePath("/apple-touch-icon.png") },
+    icons: {
+      icon: [
+        { url: withBasePath("/favicon.ico"), sizes: "any" },
+        { url: withBasePath(site.settings.favicon.src), type: "image/png" },
+      ],
+      apple: withBasePath("/apple-touch-icon.png"),
+    },
     // The maintenance notice is not something search engines should keep.
     ...(site.settings.maintenance.enabled ? { robots: { index: false, follow: false } } : {}),
   };
