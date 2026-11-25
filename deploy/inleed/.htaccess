@@ -21,6 +21,23 @@ Options -Indexes
 
   # The certificates moved to the Hållbarhet page.
   RewriteRule ^certifikat/?$ /hallbarhet/ [R=301,L]
+
+  # Addresses from the previous website, still in Google's index, sent to the closest current page so old
+  # search results land somewhere real instead of a dead end. Google then replaces them with the new pages.
+  RewriteRule ^start/?$ / [R=301,L]
+  RewriteRule ^om_oss(/.*)?$ /om-oss/ [R=301,L]
+  RewriteRule ^(referenser_1|pagaende-projekt|vara-projekt)(/.*)?$ /projekt/ [R=301,L]
+  RewriteRule ^vad_vi_erbjuder_1/?$ / [R=301,L]
+  RewriteRule ^(kontakta-oss|kontakta_oss)/?$ /om-oss/ [R=301,L]
+  RewriteRule ^jobb/?$ / [R=301,L]
+  RewriteRule ^(nyheter|category|author|uncategorized|tag|2017|kunskap-som-ger-trygghet|webbkarta)(/.*)?$ / [R=301,L]
+  RewriteRule ^(feed|comments/feed)/?$ / [R=301,L]
+
+  # Old system and WordPress paths that no longer exist → 410 Gone, so search engines drop them quickly.
+  # (The admin panel at /admin/ is left alone; only the old /admin/index.php is removed.)
+  RewriteRule ^(wp-content|wp-includes|wp-admin|wp-json|content|cache)(/.*)?$ - [G]
+  RewriteRule ^(wp-login\.php|xmlrpc\.php|wp-cron\.php|wp-signup\.php|wp-comments-post\.php|admin/index\.php)$ - [G]
+  RewriteRule ^contact-form-7(/.*)?$ - [G]
 </IfModule>
 
 <IfModule mod_headers.c>
