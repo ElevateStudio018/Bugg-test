@@ -1,5 +1,6 @@
-// E-mail through Resend (resend.com). RESEND_API_URL can point elsewhere for tests. All mail is HTML with a plain-text
-// twin, in a simple layout in the site's colours.
+// E-mail for the site. Sends through Gmail (SMTP) when GMAIL_USER and GMAIL_APP_PASSWORD are set, otherwise through
+// Resend (resend.com). RESEND_API_URL can point elsewhere for tests. All mail is HTML with a plain-text twin, in a
+// simple layout in the site's colours.
 import { env, optionalEnv } from "./env.ts";
 
 export interface Mail {
@@ -57,8 +58,117 @@ function plain(mail: Mail): string {
     .trim();
 }
 
-/** Sends one e-mail; returns false (and logs) instead of throwing, so a mail problem never undoes the action itself. */
-export async function sendMail(mail: Mail): Promise<boolean> {
+const recipients = (to: string | string[]) => (Array.isArray(to) ? to : [to]);
+
+// ---- Gmail / SMTP ---------------------------------------------------------
+
+function base64Bytes(bytes: Uint8Array): string {
+  let binary = "";
+  const chunk = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunk) binary += String.fromCharCode(...bytes.subarray(i, i + chunk));
+  return btoa(binary);
+}
+const base64Text = (text: string) => base64Bytes(new TextEncoder().encode(text));
+const base64Wrapped = (text: string) => base64Text(text).replace(/(.{76})/g, "$1\r\n");
+// RFC 2047 for a Subject that may hold Swedish letters; plain ASCII is left as-is.
+const encodeSubject = (subject: string) => (/^[\x20-\x7e]*$/.test(subject) ? subject : `=?UTF-8?B?${base64Text(subject)}?=`);
+
+/** Sends one e-mail through Gmail over SMTPS (port 465). Returns false on any problem; never throws. */
+async function sendViaGmail(mail: Mail, user: string, password: string, from: string): Promise<boolean> {
+  const to = recipients(mail.to);
+  const encoder = new TextEncoder();
+  const decoder = new TextDecoder();
+  let conn: Deno.TlsConn | undefined;
+
+  const withTimeout = <T>(promise: Promise<T>, ms: number) =>
+    Promise.race([promise, new Promise<T>((_, reject) => setTimeout(() => reject(new Error("SMTP timeout")), ms))]);
+
+  const readReply = async (): Promise<{ code: number; text: string }> => {
+    let out = "";
+    const buf = new Uint8Array(4096);
+    while (true) {
+      const n = await withTimeout(conn!.read(buf), 20000);
+      if (n === null) break;
+      out += decoder.decode(buf.subarray(0, n));
+      const lines = out.split("\r\n").filter((l) => l.length > 0);
+      const last = lines[lines.length - 1];
+      if (last && /^\d{3} /.test(last)) return { code: parseInt(last.slice(0, 3), 10), text: out };
+    }
+    return { code: 0, text: out };
+  };
+  const writeAll = async (text: string) => {
+    const bytes = encoder.encode(text);
+    let offset = 0;
+    while (offset < bytes.length) offset += await withTimeout(conn!.write(bytes.subarray(offset)), 20000);
+  };
+  const cmd = async (line: string, ok: number[]) => {
+    await writeAll(line + "\r\n");
+    const reply = await readReply();
+    if (!ok.includes(reply.code)) throw new Error(`SMTP "${line.split(" ")[0]}" → ${reply.text.trim().slice(0, 200)}`);
+    return reply;
+  };
+
+  const boundary = `mm_${crypto.randomUUID()}`;
+  const message =
+    [
+      `From: ${from}`,
+      `To: ${to.join(", ")}`,
+      ...(mail.replyTo ? [`Reply-To: ${mail.replyTo}`] : []),
+      `Subject: ${encodeSubject(mail.subject)}`,
+      `Date: ${new Date().toUTCString()}`,
+      `Message-ID: <${crypto.randomUUID()}@markmontage.se>`,
+      `MIME-Version: 1.0`,
+      `Content-Type: multipart/alternative; boundary="${boundary}"`,
+      "",
+      `--${boundary}`,
+      `Content-Type: text/plain; charset=UTF-8`,
+      `Content-Transfer-Encoding: base64`,
+      "",
+      base64Wrapped(plain(mail)),
+      `--${boundary}`,
+      `Content-Type: text/html; charset=UTF-8`,
+      `Content-Transfer-Encoding: base64`,
+      "",
+      base64Wrapped(html(mail)),
+      `--${boundary}--`,
+      "",
+    ].join("\r\n");
+
+  try {
+    conn = await withTimeout(Deno.connectTls({ hostname: "smtp.gmail.com", port: 465 }), 20000);
+    const greeting = await readReply();
+    if (greeting.code !== 220) throw new Error(`SMTP greeting → ${greeting.text.trim().slice(0, 200)}`);
+    await cmd("EHLO markmontage.se", [250]);
+    await cmd("AUTH LOGIN", [334]);
+    await cmd(btoa(user), [334]);
+    await cmd(btoa(password), [235]);
+    await cmd(`MAIL FROM:<${user}>`, [250]);
+    for (const rcpt of to) await cmd(`RCPT TO:<${rcpt}>`, [250, 251]);
+    await cmd("DATA", [354]);
+    await writeAll(message + "\r\n.\r\n");
+    const done = await readReply();
+    if (done.code !== 250) throw new Error(`SMTP DATA → ${done.text.trim().slice(0, 200)}`);
+    try {
+      await cmd("QUIT", [221]);
+    } catch {
+      // Closing is best-effort once the mail is accepted.
+    }
+    return true;
+  } catch (error) {
+    console.error("Could not send via Gmail:", error instanceof Error ? error.message : error, "—", mail.subject);
+    return false;
+  } finally {
+    try {
+      conn?.close();
+    } catch {
+      // Already closed.
+    }
+  }
+}
+
+// ---- Resend ---------------------------------------------------------------
+
+async function sendViaResend(mail: Mail, from: string): Promise<boolean> {
   const apiKey = optionalEnv("RESEND_API_KEY");
   if (!apiKey) {
     console.error("RESEND_API_KEY is not set; e-mail not sent:", mail.subject);
@@ -69,8 +179,8 @@ export async function sendMail(mail: Mail): Promise<boolean> {
       method: "POST",
       headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        from: env("EMAIL_FROM", "Markmontage <onboarding@resend.dev>"),
-        to: Array.isArray(mail.to) ? mail.to : [mail.to],
+        from,
+        to: recipients(mail.to),
         subject: mail.subject,
         html: html(mail),
         text: plain(mail),
@@ -86,4 +196,14 @@ export async function sendMail(mail: Mail): Promise<boolean> {
     console.error("Could not reach Resend:", error);
     return false;
   }
+}
+
+/** Sends one e-mail; returns false (and logs) instead of throwing, so a mail problem never undoes the action itself. */
+export async function sendMail(mail: Mail): Promise<boolean> {
+  const gmailUser = optionalEnv("GMAIL_USER");
+  const gmailPassword = optionalEnv("GMAIL_APP_PASSWORD");
+  if (gmailUser && gmailPassword) {
+    return await sendViaGmail(mail, gmailUser, gmailPassword, env("EMAIL_FROM", `Markmontage <${gmailUser}>`));
+  }
+  return await sendViaResend(mail, env("EMAIL_FROM", "Markmontage <onboarding@resend.dev>"));
 }
